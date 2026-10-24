@@ -1,6 +1,6 @@
 # Browser STT
 
-**Local speech recognition for browsers and embedded WebViews.** Browser STT combines Conformer CTC Small, Zipformer 20M and Moonshine Base into a streaming transcript with vocabulary hints, word confidence and persistent model caching. It is the speech engine used by [Pageborne](https://github.com/mjtomei/pageborn), and has no glasses SDK, chat provider or agent dependency.
+**Local speech recognition for browsers and embedded WebViews.** Browser STT combines Conformer CTC Small, Zipformer 20M and Moonshine Base into a streaming transcript with vocabulary hints, word confidence and persistent model caching. It is the speech engine used by [Pageborne](https://github.com/mjtomei/pageborne), and has no glasses SDK, chat provider or agent dependency.
 
 Our contribution is the browser inference integration, streaming, hypothesis alignment, bounded vocabulary weighting, punctuation preservation and storage/memory work around pretrained models we did not train. Transcription stays on the device. A consuming app decides whether to send the resulting text elsewhere.
 
