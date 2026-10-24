@@ -38,3 +38,9 @@ and actual-model Chromium/WebKit smoke checks passed again. Both browser tests
 prepared and transcribed with all three recognizers, streamed paced PCM through
 the ensemble, and reloaded cached models with network access disabled. No
 physical-phone measurement or historical accuracy benchmark was repeated.
+
+The first GitHub Actions run passed installation, builds, units and types, then
+flagged ONNX Runtime's public upstream Actions build path because it starts
+with the CI runner's home directory. The audit now normalizes only that known
+upstream build root before checking home paths. Private checkout paths and
+credentials remain checked; no runtime binary is exempted.
