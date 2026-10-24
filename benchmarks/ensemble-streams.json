@@ -1,0 +1,2667 @@
+{
+  "case": "01-clean-6930-81414",
+  "seconds": 97.88000000000001,
+  "scope": "One representative long passage per configuration; shared desktop, not phone. Native incremental and Chrome WASM are separate runtimes. Tails are endpoint-relative exact three-word matches, not forced-aligned word latency. Only recognized tails contribute delay; preserve missing counts.",
+  "rows": [
+    {
+      "model": "moonshine-base",
+      "hints": false,
+      "window": 15,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-moonshine-base-paced-15-plain.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1291.9000000953674,
+      "releaseMs": 5337.199999928474,
+      "loadMs": 1937.6000000238419,
+      "maxFeedLateMs": 5.300000071525574,
+      "updates": 305,
+      "revisions": 29,
+      "p95BacklogSeconds": 6.5,
+      "finalErrors": 10,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 3.3391000000238407,
+          "stableDelay": 3.3391000000238407
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 7.717100000023844,
+          "stableDelay": 7.717100000023844
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 4.756400000095368,
+          "stableDelay": 4.756400000095368
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 4.654700000047683,
+          "stableDelay": 4.654700000047683
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 5.187999999999995,
+          "stableDelay": 5.187999999999995
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 3.5419999999999945,
+          "stableDelay": 3.5419999999999945
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 5.024100000023843,
+          "stableDelay": 5.024100000023843
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 4.008400000095364,
+          "stableDelay": 4.008400000095364
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 3.053100000023832,
+          "stableDelay": 3.053100000023832
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 2.8631000000238487,
+          "stableDelay": 2.8631000000238487
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 2.78420000004769,
+          "stableDelay": 2.78420000004769
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 3.9117000000476736,
+          "stableDelay": 3.9117000000476736
+        }
+      ],
+      "medianRecognizedTailDelay": 4.008400000095364,
+      "text": "No words were spoken, no language was uttered, save that of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and not in reality. I heard a noise behind. I turned and saw Kafir, his black eyes shining While in his hand he held a gleaming knife, he lifted it above his head as if to strike, but I had the strength of ten men, and I hurled him from me. Onward, said a distant voice. No sound broke the stillness of the night. The sound of the night. night. The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said. What was that? What then? a human hand, large and shapely, appeared distinctly on the surface of the pond, nothing more, not even the wrist, to which it might be attached. it did not beckon or indeed move at all it was as still as the hand of death i awoke to consciousness fighting at first it seemed as if i was fighting with the phantom but gradually my opponent became more real to me. It was caffer, a sound of voices, a flash of light, a feeling of freedom and i was awake where said another voice which i recognized as Voltaire's. Caffer? I had scarcely known what I had been saying or doing up to this time, but as he spoke, I looked at my hand."
+    },
+    {
+      "model": "moonshine-base",
+      "hints": true,
+      "window": 15,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-moonshine-base-paced-15.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1264.1000000238419,
+      "releaseMs": 4577.599999904633,
+      "loadMs": 1545.8999999761581,
+      "maxFeedLateMs": 5.100000023841858,
+      "updates": 308,
+      "revisions": 28,
+      "p95BacklogSeconds": 6.5,
+      "finalErrors": 10,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 1.845400000095367,
+          "stableDelay": 1.845400000095367
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 4.25890000009537,
+          "stableDelay": 4.25890000009537
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 3.3408000000715248,
+          "stableDelay": 3.3408000000715248
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 2.7394000000953653,
+          "stableDelay": 2.7394000000953653
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 5.608600000023834,
+          "stableDelay": 5.608600000023834
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 3.951900000095364,
+          "stableDelay": 3.951900000095364
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 2.169400000095365,
+          "stableDelay": 2.169400000095365
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 2.859700000047681,
+          "stableDelay": 2.859700000047681
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 2.307200000047686,
+          "stableDelay": 2.307200000047686
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 3.611100000023839,
+          "stableDelay": 3.611100000023839
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 2.48290000009537,
+          "stableDelay": 2.48290000009537
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 3.1934000000953517,
+          "stableDelay": 3.1934000000953517
+        }
+      ],
+      "medianRecognizedTailDelay": 3.1934000000953517,
+      "text": "No words were spoken, no language was uttered, save that of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and not in reality. I heard a noise behind. I turned and saw Kafir, his black eyes shining While in his hand he held a gleaming knife, he lifted it above his head as if to strike, but I had the strength of ten men, and I hurled him from me. Onward, said a distant voice. No sound broke the stillness of the night. The sound of the night. night. The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said. What was that? What then? a human hand, large and shapely, appeared distinctly on the surface of the pond, nothing more, not even the wrist, to which it might be attached. it did not beckon or indeed move at all it was as still as the hand of death i awoke to consciousness fighting at first it seemed as if i was fighting with the phantom but gradually my opponent became more real to me. It was caffer, a sound of voices, a flash of light, a feeling of freedom, and I was awake. Where said another voice, which I recognized as Voltaire's. Caffer? I had scarcely known what I had been saying or doing up to this time, but as he spoke, I looked at my hand."
+    },
+    {
+      "model": "moonshine-base",
+      "hints": true,
+      "window": 30,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-moonshine-base-paced-30.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1258.2999999523163,
+      "releaseMs": 5652.100000023842,
+      "loadMs": 1511.9000000953674,
+      "maxFeedLateMs": 9.600000023841858,
+      "updates": 285,
+      "revisions": 15,
+      "p95BacklogSeconds": 11,
+      "finalErrors": 8,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 3.6445000000000007,
+          "stableDelay": 3.6445000000000007
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 13.422299999952319,
+          "stableDelay": 13.422299999952319
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 10.548899999976157,
+          "stableDelay": 10.548899999976157
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 7.732899999976155,
+          "stableDelay": 7.732899999976155
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 8.705499999999994,
+          "stableDelay": 8.705499999999994
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 6.890499999999996,
+          "stableDelay": 6.890499999999996
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 5.031399999976159,
+          "stableDelay": 5.031399999976159
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 6.615100000023837,
+          "stableDelay": 6.615100000023837
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 4.927899999976162,
+          "stableDelay": 4.927899999976162
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 3.6244999999999976,
+          "stableDelay": 3.6244999999999976
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 8.938399999976156,
+          "stableDelay": 8.938399999976156
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 5.649600000023838,
+          "stableDelay": 5.649600000023838
+        }
+      ],
+      "medianRecognizedTailDelay": 6.890499999999996,
+      "text": "No words were spoken, no language was uttered, save that of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and not in reality. I heard a noise behind. I turned and saw Kafir, his black eyes shining. While in his hand he held a gleaming knife. He lifted it above his head as if to strike, but I had the strength of ten men, and I hurled him from me. \"'Honward,' said a distant voice. \"'No sound broke the stillness of the night.' The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said. What was that? What then a human hand, large and shapely, appeared distinctly on the surface of the pond, nothing more, not even the wrist, to which it might be attached. it did not beckon or indeed move at all it was as still as the hand of death i awoke to consciousness fighting at first it seemed as if i was fighting with the phantom but gradually my opponent became more real to me it was caffer a sound of voices a flash of light a feeling of freedom and i was awake where said another voice which i recognized as Voltaire's Kaffer, I had scarcely known what I had been saying or doing up to this time, but as he spoke, I looked at my hand."
+    },
+    {
+      "model": "moonshine-base",
+      "hints": true,
+      "window": 60,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-moonshine-base-paced-60.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1262.3999999761581,
+      "releaseMs": 44987.700000047684,
+      "loadMs": 1620.6000000238419,
+      "maxFeedLateMs": 4.5,
+      "updates": 227,
+      "revisions": 14,
+      "p95BacklogSeconds": 33,
+      "finalErrors": 90,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": false,
+          "firstDelay": 1.6940000000000008,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 12.253699999928475,
+          "stableDelay": 12.253699999928475
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 9.422699999928469,
+          "stableDelay": 9.422699999928469
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 15.498199999928474,
+          "stableDelay": 15.498199999928474
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 18.31489999997615,
+          "stableDelay": 18.31489999997615
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 16.701499999999996,
+          "stableDelay": 16.701499999999996
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 24.22619999992847,
+          "stableDelay": 24.22619999992847
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 32.344799999952315,
+          "stableDelay": 32.344799999952315
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 16.49479999995232,
+          "stableDelay": 16.49479999995232
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 47.64500000000001,
+          "stableDelay": 47.64500000000001
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 44.5677999999523,
+          "stableDelay": 44.5677999999523
+        }
+      ],
+      "medianRecognizedTailDelay": 16.701499999999996,
+      "text": "No words were spoken, no language was uttered, save that of wailing and hissing, while in his hand he held a gleaming knife. He lifted it above his head as if to strike, but I had the strength of ten men, and I hurled him from me. Onward, said a distant voice. No sound broke the stillness of the night. The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said. What was that? What then, a human hand, large and shapely, appeared distinctly on the surface of the pond. Nothing more. What then, a human hand, large and shapely, appeared distinctly on the surface of the pond. Nothing more. What then, a human hand, large and shapely, appeared distinctly on the surface of the pond. Nothing more. What then, a human hand, large and shapely, appeared distinctly on the surface of the pond. did not beckon or indeed move at all It was as still as the hand of death I awoke to consciousness fighting at first it seemed as if i was fighting with the phantom but gradually my opponent became more real to me it was caffer a sound of voices a flash of light a feeling of freedom and i was awake where said another voice which i recognized as Voltaire's. Kafir? I had scarcely known what I had been saying or doing up to this time, but as he spoke, I looked at my hand. I was not sure what to do."
+    },
+    {
+      "model": "moonshine-tiny",
+      "hints": false,
+      "window": 15,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-moonshine-tiny-paced-15-plain.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 2685.600000023842,
+      "releaseMs": 2748.100000023842,
+      "loadMs": 1524.2000000476837,
+      "maxFeedLateMs": 5.600000023841858,
+      "updates": 333,
+      "revisions": 50,
+      "p95BacklogSeconds": 3.3,
+      "finalErrors": 9,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 2.2537999999523173,
+          "stableDelay": 2.2537999999523173
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 1.0381000000238387,
+          "stableDelay": 1.0381000000238387
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 1.5622999999523088,
+          "stableDelay": 1.5622999999523088
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 1.629499999999993,
+          "stableDelay": 1.629499999999993
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 0.8392000000476827,
+          "stableDelay": 0.8392000000476827
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 0.9946000000238442,
+          "stableDelay": 0.9946000000238442
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 1.3230000000000004,
+          "stableDelay": 1.3230000000000004
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 1.5978999999761498,
+          "stableDelay": 1.5978999999761498
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 1.6702000000476858,
+          "stableDelay": 1.6702000000476858
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 1.542700000047688,
+          "stableDelay": 1.542700000047688
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 2.043999999999997,
+          "stableDelay": 2.043999999999997
+        }
+      ],
+      "medianRecognizedTailDelay": 1.5622999999523088,
+      "text": "No words were spoken, no language was uttered, save down of wailing and hissing, and that somehow was indistinct as if it existed in fancy and naught in reality. I heard a noise behind. I turned and saw Kaffer, his black eyes shining, while in his hand he held a gleaming knife. He lifted it above his head as if to strike, but I had the strength of ten men, and I hurled him from me. Onward, said a distant voice. No sound broke the stillness of the night. The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said. What was that? What then a human hand large and shapely, appeared distinctly on the surface of the pond, nothing more, not even the wrist to which it might be attached. It did not beckon, or indeed, move at all. it was as still as the hand of death. I awoke to consciousness, fighting at first, it seemed as if I was fighting with the phantom, but gradually my opponent became more. A real to me, it was Kaffer, a sound of voices, a flash of light, a feeling of freedom, and I was awake. Where? said another voice which I recognized as Voltaire's. Caffer? I had scarcely known what I had been saying or doing after this time, but as he spoke, I looked at my hand."
+    },
+    {
+      "model": "moonshine-tiny",
+      "hints": true,
+      "window": 15,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-moonshine-tiny-paced-15.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 2691.2999999523163,
+      "releaseMs": 1810.8999999761581,
+      "loadMs": 1334.1000000238419,
+      "maxFeedLateMs": 14.100000023841858,
+      "updates": 348,
+      "revisions": 49,
+      "p95BacklogSeconds": 3.7,
+      "finalErrors": 9,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 2.313200000047683,
+          "stableDelay": 2.313200000047683
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 0.9518999999761562,
+          "stableDelay": 0.9518999999761562
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 1.0882999999523122,
+          "stableDelay": 1.0882999999523122
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 0.9776000000238341,
+          "stableDelay": 0.9776000000238341
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 1.0232999999523145,
+          "stableDelay": 1.0232999999523145
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 0.6544999999999987,
+          "stableDelay": 0.6544999999999987
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 1.9982000000476816,
+          "stableDelay": 1.9982000000476816
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 1.1589999999999918,
+          "stableDelay": 1.1589999999999918
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 2.319700000047689,
+          "stableDelay": 2.319700000047689
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 1.8556000000238413,
+          "stableDelay": 7.122600000023837
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 1.1727000000476693,
+          "stableDelay": 1.1727000000476693
+        }
+      ],
+      "medianRecognizedTailDelay": 1.1589999999999918,
+      "text": "No words were spoken, no language was uttered, save down of wailing and hissing, and that somehow was indistinct as if it existed in fancy and naught in reality. I heard a noise behind. I turned and saw Kaffer, his black eyes shining, while in his hand he held a gleaming knife. He lifted it above his head as if to strike, but I had the strength of ten men, and I hurled him from me. Onward, said a distant voice. No sound broke the stillness of the night. The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said. What was that? What then a human hand large and shapely, appeared distinctly on the surface of the pond, nothing more, not even the wrist to which it might be attached. It did not beckon, or indeed, move at all. it was as still as the hand of death. I awoke to consciousness, fighting at first, it seemed as if I was fighting with the phantom, but gradually my opponent became more. A real to me, it was Kaffer, a sound of voices, a flash of light, a feeling of freedom, and I was awake. Where? said another voice which I recognized as Voltaire's. Kaffer? I had scarcely known what I had been saying or doing after this time, but as he spoke, I looked at my hand."
+    },
+    {
+      "model": "moonshine-tiny",
+      "hints": true,
+      "window": 30,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-moonshine-tiny-paced-30.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 3289.0999999046326,
+      "releaseMs": 2558.3000000715256,
+      "loadMs": 1182.2999999523163,
+      "maxFeedLateMs": 9.5,
+      "updates": 370,
+      "revisions": 36,
+      "p95BacklogSeconds": 5,
+      "finalErrors": 7,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 6.434500000000003,
+          "stableDelay": 6.434500000000003
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 3.2856999999284753,
+          "stableDelay": 3.2856999999284753
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 2.033699999928473,
+          "stableDelay": 2.033699999928473
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 3.447399999976149,
+          "stableDelay": 7.061199999928469
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 1.6323999999761512,
+          "stableDelay": 9.667799999952315
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 2.867799999952318,
+          "stableDelay": 2.867799999952318
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 3.7949999999999946,
+          "stableDelay": 3.7949999999999946
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 1.0795999999046302,
+          "stableDelay": 1.0795999999046302
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 2.1808999999761625,
+          "stableDelay": 2.1808999999761625
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 1.95159999990463,
+          "stableDelay": 1.95159999990463
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 2.5558999999761483,
+          "stableDelay": 2.5558999999761483
+        }
+      ],
+      "medianRecognizedTailDelay": 2.5558999999761483,
+      "text": "No words were spoken, no language was uttered, save down of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and naught in reality. I heard a noise behind. I turned and saw kaffir his black eyes shining, while in his hand he held a gleaming knife. he lifted it above his head as if to strike, but i had the strength of ten men, and I hurled him from me onward said a distant voice no sound broke the stillness of the night. The story of its evil influence came back to me and in my bewildered condition i wondered whether there was not some truth in what had been said. What was that? What then a human hand large and shapely appeared distinctly on the surface of the pond, nothing more, not even the wrist to which it might be attached. it did not beckon or indeed move at all it was as still as the hand of death I awoke to consciousness fighting at first it seemed as if I was fighting with the phantom but gradually my opponent became more real to me. It was Kafir, a sound of voices, a flash of light, a feeling of freedom, and I was awake. Where? said another voice which I recognized as Voltaire's Kaffer, I had scarcely known when I had been saying or doing up to this time, but as he spoke, I looked at my hand."
+    },
+    {
+      "model": "moonshine-tiny",
+      "hints": true,
+      "window": 60,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-moonshine-tiny-paced-60.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 3395,
+      "releaseMs": 21613.699999928474,
+      "loadMs": 1332.5,
+      "maxFeedLateMs": 8.399999976158142,
+      "updates": 405,
+      "revisions": 17,
+      "p95BacklogSeconds": 22.5,
+      "finalErrors": 237,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 24.455499999999997,
+          "stableDelay": 44.99550000000001
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": false,
+          "firstDelay": 3.753099999904631,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": false,
+          "firstDelay": 3.9351999999284715,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 4.566499999999998,
+          "stableDelay": 4.566499999999998
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 4.570799999952307,
+          "stableDelay": 4.570799999952307
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 9.535499999999999,
+          "stableDelay": 9.535499999999999
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 18.820699999928465,
+          "stableDelay": 18.820699999928465
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 17.5,
+          "stableDelay": 17.5
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 29.393099999904635,
+          "stableDelay": 29.393099999904635
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 21.44139999997614,
+          "stableDelay": 21.44139999997614
+        }
+      ],
+      "medianRecognizedTailDelay": 17.5,
+      "text": "\"'No words were spoken. No language was uttered, save down of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and not in reality. \"'I heard a noise behind. I turned and saw Caffer, his black eyes shining. While in his hand he held a gleaming knife. He lifted it above his head, as if to strike, but a hand he held a gleaming knife. He lifted it above his head, as if to strike, but a hand he held a hand. He held a hand on the ground. He said, \"'No sound broke the stillness of the night.' The story of its evil influence came back to me, and in my bewildered condition, I wondered whether there was not some truth in what had been said. What was that? What was that? What then? A human hand, large and shapely, appeared distinctly on the surface of the night. What was that? What then, a human hand, large and shapeless, appeared distinctly on the surface of the night. What was that? What then? A human hand, a lard and shapeless, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock, and a flock of a flock of a flock, and a flock, and It not beckon or indeed move at all. It was as still as the hand of death. I awoke to consciousness, fighting at first it seemed as if I was fighting with the phantom, but gradually my opponent became more real to me. It was Kafir, a sound of voices, a flash of light, a feeling of freedom, and I was awake. Where? said another voice which I recognized as Voltaire's. Kaffer? I had scarcely known when I had been saying or doing up to this time, but as he spoke, I looked at my hand. I was not afraid of anything."
+    },
+    {
+      "model": "whisper-base.en",
+      "hints": false,
+      "window": 15,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-whisper-base.en-paced-15-plain.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 2559.5,
+      "releaseMs": 7366.899999976158,
+      "loadMs": 1345.6000000238419,
+      "maxFeedLateMs": 7.900000095367432,
+      "updates": 284,
+      "revisions": 16,
+      "p95BacklogSeconds": 7,
+      "finalErrors": 8,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 2.309900000095368,
+          "stableDelay": 2.309900000095368
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 3.1378000000715254,
+          "stableDelay": 3.1378000000715254
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 2.6874000000953657,
+          "stableDelay": 2.6874000000953657
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 5.58310000002384,
+          "stableDelay": 5.58310000002384
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 4.671100000023834,
+          "stableDelay": 4.671100000023834
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 2.95060000002384,
+          "stableDelay": 2.95060000002384
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 5.213600000023838,
+          "stableDelay": 5.213600000023838
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 4.110600000023837,
+          "stableDelay": 4.110600000023837
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 4.0035000000000025,
+          "stableDelay": 4.0035000000000025
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 3.2879000000953766,
+          "stableDelay": 3.2879000000953766
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 4.412499999999994,
+          "stableDelay": 4.412499999999994
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 4.860700000047672,
+          "stableDelay": 4.860700000047672
+        }
+      ],
+      "medianRecognizedTailDelay": 4.110600000023837,
+      "text": "No words were spoken, no language was uttered, saved out of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and not in reality. I heard a noise behind. I turned and saw Caffir, his black eyes shining. While in his hand he held a gleaming knife. He lifted it above his head as if to strike, but I had the strength of ten men, and I hurled him from me. Onward, said a distant voice. No sound broke the stillness of the night. The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said. What was that? What then, a human hand, large and shapely, appeared distinctly on the surface of the pond. Nothing more, not even the wrist, to which it might be attached. It did not beckon, or indeed move at all. It was as still as the hand of death. I awoke to consciousness fighting, at first it seemed as if I was fighting with the phantom but gradually my opponent became more real to me. It was kaffir. A sound of voices, a flash of light, a feeling of freedom, and I was awake. Where?\" He said another voice, which I recognized as vultures. Caffer? I had scarcely known what I had been saying or doing up to this time, but as he spoke I looked at my hand."
+    },
+    {
+      "model": "whisper-base.en",
+      "hints": true,
+      "window": 15,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-whisper-base.en-paced-15.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 2846.100000023842,
+      "releaseMs": 15853.5,
+      "loadMs": 1208.8999999761581,
+      "maxFeedLateMs": 5.800000071525574,
+      "updates": 103,
+      "revisions": 10,
+      "p95BacklogSeconds": 13.6,
+      "finalErrors": 97,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 6.067499999999999,
+          "stableDelay": 6.067499999999999
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 6.006900000095367,
+          "stableDelay": 6.006900000095367
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 6.0589999999999975,
+          "stableDelay": 6.0589999999999975
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 3.1119999999999948,
+          "stableDelay": 3.1119999999999948
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 10.505999999999993,
+          "stableDelay": 10.505999999999993
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 6.273300000071515,
+          "stableDelay": 6.273300000071515
+        }
+      ],
+      "medianRecognizedTailDelay": 6.067499999999999,
+      "text": "NO WORDS WERE SPOKEN. NO LANGUAGE WAS UTHARD. SAVE THAT OF WAILING AND HISSING. AND THAT SOMEHOW WAS INDISTINCT. AS IF IT EXISED IN FANTSY AND NOT IN REALITY. I HEARD A NOISE BEHIND. I TURED. AND SALL. CAFFAR. HIS BLACK-EYES. shining. While in HIS hand he held A gleaming knife. He lifted it above his head as if to strike, but I had the strength of ten men AND I hurled him FROM ME. ONWARD. SAID. A DISTANT VOICE. NO SOUND. BROKE. THE STILLNESS OF THE NIGHT. THE STORY OF IT'S EVIL INFLUENCE. CAME BACK TO ME. AND IN MY BEWILDERED CONDITION, I WONDERED WEATHER THERE WAS NOT SOME TRUTH IN WHITHER. What was that? What then, a human hand large and shapely appears to be a human hand. HEY. I WOKE. TO CONCH. I WERE. A I'M A LITTLE. REFUSER. I had scarcely known what I had been saying or doing up to this time, but as he spoke I looked at my hand."
+    },
+    {
+      "model": "whisper-base.en",
+      "hints": true,
+      "window": 30,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-whisper-base.en-paced-30.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 2838.0999999046326,
+      "releaseMs": 7122.399999976158,
+      "loadMs": 1220.9000000953674,
+      "maxFeedLateMs": 11.899999976158142,
+      "updates": 282,
+      "revisions": 31,
+      "p95BacklogSeconds": 10.9,
+      "finalErrors": 21,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 5.784899999976158,
+          "stableDelay": 5.784899999976158
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 8.250699999928475,
+          "stableDelay": 8.250699999928475
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 8.581599999904633,
+          "stableDelay": 8.581599999904633
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 5.528499999999994,
+          "stableDelay": 5.528499999999994
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 9.839399999976152,
+          "stableDelay": 9.839399999976152
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 8.119799999952313,
+          "stableDelay": 8.119799999952313
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 5.636199999928472,
+          "stableDelay": 5.636199999928472
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 7.21429999995231,
+          "stableDelay": 7.21429999995231
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 4.871299999952313,
+          "stableDelay": 4.871299999952313
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": true,
+          "firstDelay": 19.190299999952316,
+          "stableDelay": 19.190299999952316
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 6.642299999952314,
+          "stableDelay": 6.642299999952314
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 6.174199999928476,
+          "stableDelay": 6.174199999928476
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 7.103099999904629,
+          "stableDelay": 7.103099999904629
+        }
+      ],
+      "medianRecognizedTailDelay": 7.103099999904629,
+      "text": "NO WORDS WERE SPOKEN. NO LANGUAGE WAS UTHARD. SAVE THAT OF WAILING AND HISSEEN. AND THAT SOMEHOW WAS INDISTINCT. AS IF IT EXISED IT IN FANTSY AND NOT IN REALITY. I HEARD A NOISE BEHIND. I TURNED AND SALL KAFFAR. HIS BLACK-EYES SHINING. WHILE IN HIS HAND HE HEELD A GLEEMING NIFE. HE LIFTED IT ABOVES HIS HEAD AS IF TO STRICK. BUT I HAD THE STRENGTH OF TEN MAN. AND I HURLD HIM FROM ME. ONWARD. SAID. A DISTANT VOICE. NO SOUND. BROKE. THE STILLNESS OF THE NIGHT. THE STORY OF IT'S EVIL INFLUENCE. CAME BACK TO ME. AND IN MY BEWILDERED CONDITION. I WONDERED. WEATHER THERE WAS NOT SOME TRUTH IN WHAT HAD BEEN SAID. WHAT WAS THAT? WHAT THEN? A HUMAN HAND. LARGE AND SHAPELY APPEARED. DISTINCTLY ON THE SURFESS OF THE POND. NOTHING. MORE. NOT EVEN THE RISK. TO WHICH IT MIGHT BE ATTACHED. IT DID not beckon, or AND indeed MOVE. at all, IT WAS as STILL. AS. the hand OF death. I awoke to consciousness, fighting, at first it seemed as if I was fighting with the phantom But gradually my opponent became more real to me. It was KAFFAR. A sound of voices. A flash of light. A feeling of freedom, and I was awake. Where? Said another voice which I recognized as Vultures. Caffar? I had scarcely known what I had been saying or doing up to this time, but as he spoke I looked at my hand."
+    },
+    {
+      "model": "whisper-tiny.en",
+      "hints": false,
+      "window": 15,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-whisper-tiny.en-paced-15-plain.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1483.8000000715256,
+      "releaseMs": 4384.600000023842,
+      "loadMs": 1087.6000000238419,
+      "maxFeedLateMs": 5.300000071525574,
+      "updates": 303,
+      "revisions": 23,
+      "p95BacklogSeconds": 3.8,
+      "finalErrors": 6,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 1.383000000000001,
+          "stableDelay": 1.383000000000001
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 3.530700000047684,
+          "stableDelay": 3.530700000047684
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 1.7759999999999962,
+          "stableDelay": 1.7759999999999962
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 1.7641000000238378,
+          "stableDelay": 1.7641000000238378
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 1.6923999999761534,
+          "stableDelay": 1.6923999999761534
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 1.4387000000476817,
+          "stableDelay": 1.4387000000476817
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 1.079800000071522,
+          "stableDelay": 1.079800000071522
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 1.6042000000476833,
+          "stableDelay": 1.6042000000476833
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 2.3913000000715243,
+          "stableDelay": 2.3913000000715243
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 2.7071000000238428,
+          "stableDelay": 2.7071000000238428
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 1.546999999999997,
+          "stableDelay": 1.546999999999997
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 1.3807000000476677,
+          "stableDelay": 1.3807000000476677
+        }
+      ],
+      "medianRecognizedTailDelay": 1.6923999999761534,
+      "text": "No words were spoken, no language was uttered, saved out of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and not in reality. I heard a noise behind. I turned and saw Caffar, his black eyes shining, while in his hand he held a gleaming knife. He lifted it above his head as if to strike, but I had the strength of ten men, and I hurled him from me. Onward said a distant voice. No sound broke the stillness of the night. The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said. What was that? What, then, a human hand large and shapely, appeared distinctly on the surface of the pond. Nothing more, not even the wrist to which it might be attached. It did not beckon, or indeed move at all. It was as still as the hand of death. I awoke to consciousness fighting, at first it seemed as if I was fighting with the phantom but gradually my opponent became more real to me it was caffar A sound of voices a flash of light a feeling of freedom, and I was awake. Where?\" said another voice which I recognized as Voltaire's. Cafford? I had scarcely known what I had been saying or doing up to this time, but as he spoke I looked at my hand."
+    },
+    {
+      "model": "whisper-tiny.en",
+      "hints": true,
+      "window": 15,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-whisper-tiny.en-paced-15.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1667.5,
+      "releaseMs": 3888.5999999046326,
+      "loadMs": 1181,
+      "maxFeedLateMs": 6.300000071525574,
+      "updates": 206,
+      "revisions": 40,
+      "p95BacklogSeconds": 5.3,
+      "finalErrors": 38,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 2.1501000000238424,
+          "stableDelay": 2.1501000000238424
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 2.684000000000001,
+          "stableDelay": 2.684000000000001
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 1.0879000000953667,
+          "stableDelay": 4.961900000095362
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 1.7889999999999944,
+          "stableDelay": 1.7889999999999944
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 3.4853000000715184,
+          "stableDelay": 3.4853000000715184
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 1.7407000000476813,
+          "stableDelay": 1.7407000000476813
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 2.9781000000238436,
+          "stableDelay": 2.9781000000238436
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 2.4573000000715197,
+          "stableDelay": 2.4573000000715197
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 3.9338000000715283,
+          "stableDelay": 3.9338000000715283
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 3.281000000000006,
+          "stableDelay": 3.281000000000006
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 2.9118000000715227,
+          "stableDelay": 2.9118000000715227
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 2.355800000071511,
+          "stableDelay": 2.355800000071511
+        }
+      ],
+      "medianRecognizedTailDelay": 2.684000000000001,
+      "text": "NO WORDS were spoken. No language was uttered, saved out of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and not in reality. I heard a noise behind. THE He lifted it above his head as if to strike, but I had the strength of ten men, and I hurled him from me. Onward said a distant voice. No sound broke the stillness of the night. THE STORY OF ITS EVIL INFLUENCE CAME BACK TO ME AND IN MY BILL WILDERED CONDITION, I WONDERED whether there WAS not some truth in what had been said. What was that? What then, a human hand, large and shapely appeared distinctly on the surface of the pond. Nothing more. Not even the wrist, to which it might be attached. It did IT'S NOT BECKEN, OR, INDIED, MOVED AT ALL. IT WAS AS STILL AS THE HAND OF DEATH. I AM WOKE TO CONCH FIGHTING, AT FIRST IT SEEMED AS IF I WAS FIGHTING WITH THE FANTON, BUT GRADUALLY MY APONIT BECAME MORE A REAL to me, it was CAFFAR. A sound of voices, A FLASH OF light, A feeling of freedom, and I was awake. Where? Said another voice, which I recognized as vultures. Caffar! THE FOUR. I had scarcely known what I had been saying or doing up to this time, but as he spoke, I looked at my hand."
+    },
+    {
+      "model": "whisper-tiny.en",
+      "hints": true,
+      "window": 30,
+      "runtime": "Chrome WASM SIMD / 1 thread",
+      "raw": "ensemble-browser-whisper-tiny.en-paced-30.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1639.6000000238419,
+      "releaseMs": 2473.7999999523163,
+      "loadMs": 1107.8999999761581,
+      "maxFeedLateMs": 7.800000071525574,
+      "updates": 279,
+      "revisions": 47,
+      "p95BacklogSeconds": 7.1,
+      "finalErrors": 33,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 1.4271000000238416,
+          "stableDelay": 1.4271000000238416
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 4.6676000000238425,
+          "stableDelay": 4.6676000000238425
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": false,
+          "firstDelay": 3.5591000000238395,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 2.656399999976152,
+          "stableDelay": 2.656399999976152
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 4.297100000023839,
+          "stableDelay": 4.297100000023839
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 2.551399999976155,
+          "stableDelay": 2.551399999976155
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 3.3248000000715265,
+          "stableDelay": 3.3248000000715265
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 4.964600000023843,
+          "stableDelay": 4.964600000023843
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 3.587999999999994,
+          "stableDelay": 3.587999999999994
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 4.443100000023847,
+          "stableDelay": 4.443100000023847
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 9.134899999976156,
+          "stableDelay": 9.134899999976156
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 2.4664999999999964,
+          "stableDelay": 2.4664999999999964
+        }
+      ],
+      "medianRecognizedTailDelay": 3.587999999999994,
+      "text": "NO WORDS WERE SPOKEN. NO LANGUAGE WAS UTERD. SAVE THAT OF WALEING IN HISTORY AND THAT SOMEhow was indistinct, as if it existed in fancy and not in reality. I heard a noise behind. I turned and saw Caffar, his black eyes shining, while in his hand he held a gleaming knife. He lifted it above his head as if to strike, but I had the strength of ten men, and I hurled him from me. THE STILLNESS OF THE NIGHT. THE STORY OF ITS EVIL INFLUENCE CAME BACK TO ME AND IN MY BILL WILDERED CONDITION, I WONDERED WEATHER THERE WAS NOT SOME TRUTH IN WHAT HAD BEEN SAID. WHAT WAS THAT? WHAT THEN A HUMAN HAND LARGE AND SHAPELEE UP HERE DISTINCTLY ON THE SURFEST OF THE POND. NOTHING MORE. NOT EVEN THE RISK TO which it might be attached. It did not IT'S NOT BECKEN, OR, INDID, MOVED AT ALL. IT WAS AS STILL AS THE HAND OF DEATH. I AWOKE TO CONGESTNESS FIGHTING, AT FIRST IT SEEMED AS IF I WAS FIGHTING WITH THE FANTON, BUT GRADUALLY MY APONIT BECAME MORE REAL to ME. IT WAS Caffar. A sound of voices. A flash of light. A feeling of freedom. and I was awake. Where? Said another voice which I recognized as vultures. Caffar? I had scarcely known what I had been saying or doing up to this time, but as he spoke I looked at my hand."
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "hints": true,
+      "window": "incremental",
+      "runtime": "Native incremental CPU / one thread; shared ARM64 workstation",
+      "raw": "ensemble-native-paced-moonshine-tiny-streaming.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1196.9075839733705,
+      "releaseMs": 1346.6168699134046,
+      "loadMs": 110.36757403053343,
+      "maxFeedLateMs": 21.106533962296226,
+      "updates": 157,
+      "revisions": 66,
+      "p95BacklogSeconds": 0.9980418269988149,
+      "finalErrors": 17,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 0.935585786011071,
+          "stableDelay": 0.935585786011071
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 0.4173294969927497,
+          "stableDelay": 0.4173294969927497
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 0.17879793092608054,
+          "stableDelay": 0.17879793092608054
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 1.4503333749389213,
+          "stableDelay": 1.4503333749389213
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 0.05704451699740787,
+          "stableDelay": 0.05704451699740787
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 0.9440253979107354,
+          "stableDelay": 0.9440253979107354
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 1.5058540539070933,
+          "stableDelay": 1.5058540539070933
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 1.3367065359605448,
+          "stableDelay": 1.3367065359605448
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 0.5067550109699397,
+          "stableDelay": 0.5067550109699397
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": -0.19626261410303414,
+          "stableDelay": -0.19626261410303414
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 1.1613411149056532,
+          "stableDelay": 1.1613411149056532
+        }
+      ],
+      "medianRecognizedTailDelay": 0.935585786011071,
+      "text": "No words were spoken. No language was uttered, saved on of wailing in his thing, and that somehow was indistinct, as if it existed. This didn't fancy a non-in reality. I heard a noise behind, I turned and saw Kaffir, his black eyes shining while in his hand he held a gleaming knife. He lifted it above his head as if to strike, but had the strength of ten men, and I hurled him from me. Onward, said a distant voice. No sound broke the stillness of the night, The story of its evil influence came back to me, and in my bewildered condition, I wondered whether there was not some truth in what had been said. What was that? What then a human hand, large and shapely, appeared distinctly on the surface of the pond, nothing more, not even the wrist to which it might. Jim might be attached. It did not beckon or indeed move at all. It was as still as the hand of death. I awoke to consciousness fighting at first, it seemed as if I was fighting with the phantom, but gradually my opponent became more real to me. me. It was Kaffir, A sound of voices, a flash of light, A feeling of freedom, and I was awake. Where? Said another voice, which I recognized as Voltaire's. Kaffer? I had scarcely known what I had been saying or doing up to this time, but as he spoke, I looked at my hand."
+    },
+    {
+      "model": "vosk-small",
+      "hints": true,
+      "window": "incremental",
+      "runtime": "Native incremental CPU / one thread; shared ARM64 workstation",
+      "raw": "ensemble-native-paced-vosk-small.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1234.9808940198272,
+      "releaseMs": 28.99110992903786,
+      "loadMs": 444.96682297904044,
+      "maxFeedLateMs": 2.3159389616935755,
+      "updates": 242,
+      "revisions": 36,
+      "p95BacklogSeconds": 0.02687006692867744,
+      "finalErrors": 21,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": -0.4782780610071491,
+          "stableDelay": -0.4782780610071491
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 0.03963069094345073,
+          "stableDelay": 0.03963069094345073
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": -0.07395000703633059,
+          "stableDelay": -0.07395000703633059
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": -0.06959771599620979,
+          "stableDelay": -0.06959771599620979
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": -0.2272700740350473,
+          "stableDelay": -0.2272700740350473
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": -0.3432638900307978,
+          "stableDelay": -0.3432638900307978
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 0.26327830194961166,
+          "stableDelay": 0.26327830194961166
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 0.0036803370062230556,
+          "stableDelay": 0.0036803370062230556
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": -0.3488321779761492,
+          "stableDelay": -0.3488321779761492
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": -0.10310448305681064,
+          "stableDelay": -0.10310448305681064
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": -0.010878636036068201,
+          "stableDelay": -0.010878636036068201
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 0.008357530930069856,
+          "stableDelay": 0.008357530930069856
+        }
+      ],
+      "medianRecognizedTailDelay": -0.06959771599620979,
+      "text": "no words were spoken know language was uttered save that of wailing in the hissing and that somehow was indistinct as if it existed in fancy and not in reality i heard a noise behind i turned and saw caf for his black eyes shining while in his hand he held a gleaming knife he lifted it above his head as if to strike but i had the strength of ten men and i hurled him from me onward said a distant voice no sound broke the stillness of the night the story of it's evil influence came back to me and in my bewildered condition i wondered whether there was not some truth in what had been said what was that what than a human hand large and shapely appeared distinctly on the surface of the pond nothing more not even the risk to which it might be attached it did not back in or indeed move at all he was as still as the hand of death i awoke to consciousness fighting at first it seemed as if i was fighting with the phantom but gradually my opponent became more real to me it was caf for a sound of voices a flash of light a feeling of freedom and i was awake where said another voice which i recognize though falters care for i had scarcely known when i had been saying or doing up to this time by as he spoke i looked at my hand"
+    },
+    {
+      "model": "zipformer-20m",
+      "hints": true,
+      "window": "incremental",
+      "runtime": "Native incremental CPU / one thread; shared ARM64 workstation",
+      "raw": "ensemble-native-paced-zipformer-20m.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1712.7356340643018,
+      "releaseMs": 14.772606086907558,
+      "loadMs": 588.8630439294502,
+      "maxFeedLateMs": 0.5613280227407813,
+      "updates": 236,
+      "revisions": 50,
+      "p95BacklogSeconds": 0.013655675994229455,
+      "finalErrors": 7,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": 0.01784896002616776,
+          "stableDelay": 0.01784896002616776
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 0.13296921505127202,
+          "stableDelay": 0.13296921505127202
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": -0.27195013902615983,
+          "stableDelay": -0.27195013902615983
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": -0.0670587659301276,
+          "stableDelay": -0.0670587659301276
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": -0.026887619015766973,
+          "stableDelay": -0.026887619015766973
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": -0.2419373999768908,
+          "stableDelay": -0.2419373999768908
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 0.35786555803380793,
+          "stableDelay": 0.35786555803380793
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 0.19325314708519414,
+          "stableDelay": 0.19325314708519414
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": -0.16141907002311484,
+          "stableDelay": -0.16141907002311484
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": -0.011140937986780841,
+          "stableDelay": -0.011140937986780841
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": -0.21128452697303146,
+          "stableDelay": -0.21128452697303146
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": -0.165721578984531,
+          "stableDelay": -0.165721578984531
+        }
+      ],
+      "medianRecognizedTailDelay": -0.026887619015766973,
+      "text": "S WERE SPOKEN NO LANGUAGE WAS UTTERED SAVE THAT OF WAILING AND HISSING AND THAT SOMEHOW WAS INDISTINCT AS IF IT EXISTED IN FANCY AND NOT IN REALITY I HEARD A NOISE BEHIND I TURNED AND SAW KAFFIR HIS BLACK EYES SHINING WHILE IN HIS HAND HE HELD A GLEAMING KNIFE HE LIFTED IT ABOVE HIS HEAD AS IF TO STRIKE BUT I HAD THE STRENGTH OF TEN MEN AND I HURLED HIM FROM ME ONWARD SAID A DISTANT VOICE NO SOUND BROKE THE STILLNESS OF THE NIGHT THE STORY OF ITS EVIL INFLUENCE CAME BACK TO ME AND IN MY BEWILDERED CONDITION I WONDERED WHETHER THERE WAS NOT SOME TRUTH IN WHAT HAD BEEN SAID WHAT WAS THAT WHAT THEN A HUMAN HAND LARGE AND SHAPELY APPEARED DISTINCTLY ON THE SURFACE OF THE POND NOTHING MORE NOT EVEN THE WRIST TO WHICH IT MIGHT BE ATTACHED IT DID NOT BECKON OR INDEED MOVE AT ALL IT WAS AS STILL AS THE HAND OF DEATH I AWOKE TO CONSCIOUSNESS FIGHTING AT FIRST IT SEEMED AS IF I WAS FIGHTING WITH THE PHANTOM BUT GRADUALLY MY OPPONENT BECAME MORE REAL TO ME IT WAS KAFFIR A SOUND OF VOICES A FLASH OF LIGHT A FEELING OF FREEDOM AND I WAS AWAKE WHERE SAID ANOTHER VOICE WHICH I RECOGNIZED AS VOLTAIRE'S KAFFIR I HAD SCARCELY KNOWN WHEN I HAD BEEN SAYING OR DOING UP TO THIS TIME BUT AS HE SPOKE I LOOKED AT MY HAND"
+    },
+    {
+      "model": "conformer-small",
+      "hints": true,
+      "window": 15,
+      "runtime": "Native Conformer CPU through production SpeechStream; not WASM/phone",
+      "raw": "ensemble-native-window-conformer-small-paced-15.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 620.8220139999999,
+      "releaseMs": 485.6925110000011,
+      "loadMs": 1330.2380380000002,
+      "maxFeedLateMs": 16.734511999995448,
+      "updates": 189,
+      "revisions": 37,
+      "p95BacklogSeconds": 0.7,
+      "finalErrors": 5,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": -0.24479273899999932,
+          "stableDelay": -0.24479273899999932
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 0.568580322999999,
+          "stableDelay": 0.568580322999999
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": -0.09042671400000302,
+          "stableDelay": -0.09042671400000302
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 0.22650638999999728,
+          "stableDelay": 0.22650638999999728
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 0.13109352499999716,
+          "stableDelay": 0.13109352499999716
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": -0.47146023600000575,
+          "stableDelay": -0.47146023600000575
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 0.5354317179999981,
+          "stableDelay": 0.5354317179999981
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 0.37172184699999633,
+          "stableDelay": 0.37172184699999633
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": -0.031226815000010788,
+          "stableDelay": -0.031226815000010788
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 0.14690346000000432,
+          "stableDelay": 0.14690346000000432
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": -0.12869065799999646,
+          "stableDelay": -0.12869065799999646
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 0.042145702999988544,
+          "stableDelay": 0.042145702999988544
+        }
+      ],
+      "medianRecognizedTailDelay": 0.13109352499999716,
+      "text": "no words were spoken no language was uttered save that of wailing and hissing and that somehow was indistinct as if it existed in fancy and not in reality i heard a noise behind i turned and saw kffer his black eyes shining while in his hand he held a gleaming knife he lifted it above his head as if to strike but i had the strength of ten men and i hurled him from me onward said a distant voice no sound broke the stillness of the night the story of its evil influence came back to me and in my bewildered condition i wondered whether there was not some truth in what had been said what was that what then a human hand large and shapely appeared distinctly on the surface of the pond nothing more not even the wrist to which it might be attached it did not beckon or indeed move at all it was as still as the hand of death i awoke to consciousness fighting at first it seemed as if i was fighting with a phantom but gradually my opponent became more real to me it was kffre a sound of voices a flash of light a feeling of freedom and i was awake where said another voice which i recognized as vol chairs caffer i had scarcely known what i had been saying or doing up to this time but as he spoke i looked at my hand"
+    },
+    {
+      "model": "conformer-small",
+      "hints": true,
+      "window": 30,
+      "runtime": "Native Conformer CPU through production SpeechStream; not WASM/phone",
+      "raw": "ensemble-native-window-conformer-small-paced-30.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 621.4936889999999,
+      "releaseMs": 884.6450979999936,
+      "loadMs": 1267.066335,
+      "maxFeedLateMs": 25.496689999999944,
+      "updates": 153,
+      "revisions": 39,
+      "p95BacklogSeconds": 1.4,
+      "finalErrors": 4,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": -0.034503814999998994,
+          "stableDelay": -0.034503814999998994
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 1.1735815350000038,
+          "stableDelay": 1.1735815350000038
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 0.12872629199999608,
+          "stableDelay": 0.12872629199999608
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 0.46100470999999743,
+          "stableDelay": 0.46100470999999743
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 0.27606472999999454,
+          "stableDelay": 0.27606472999999454
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 0.04628392299999007,
+          "stableDelay": 0.04628392299999007
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 1.0785133449999975,
+          "stableDelay": 1.0785133449999975
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 1.0859143919999923,
+          "stableDelay": 1.0859143919999923
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": -0.20557036800001072,
+          "stableDelay": -0.20557036800001072
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 0.5003310550000037,
+          "stableDelay": 0.5003310550000037
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 0.7659431379999972,
+          "stableDelay": 0.7659431379999972
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 0.32508963199998675,
+          "stableDelay": 0.32508963199998675
+        }
+      ],
+      "medianRecognizedTailDelay": 0.46100470999999743,
+      "text": "no words were spoken no language was uttered save that of wailing and hissing and that somehow was indistinct as if it existed in fancy and not in reality i heard a noise behind i turned and saw kffer his black eyes shining while in his hand he held a gleaming knife he lifted it above his head as if to strike but i had the strength of ten men and i hurled him from me onward said a distant voice no sound broke the stillness of the night the story of its evil influence came back to me and in my bewildered condition i wondered whether there was not some truth in what had been said what was that what then a human hand large and shapely appeared distinctly on the surface of the pond nothing more not even the wrist to which it might be attached it did not beckon or indeed move at all it was as still as the hand of death i awoke to consciousness fighting at first it seemed as if i was fighting with a phantom but gradually my opponent became more real to me it was kffer a sound of voices a flash of light a feeling of freedom and i was awake where said another voice which i recognized as voltaires kffer i had scarcely known what i had been saying or doing up to this time but as he spoke i looked at my hand"
+    },
+    {
+      "model": "conformer-small",
+      "hints": true,
+      "window": 60,
+      "runtime": "Native Conformer CPU through production SpeechStream; not WASM/phone",
+      "raw": "ensemble-native-window-conformer-small-paced-60.json",
+      "case": "01-clean-6930-81414",
+      "firstWordMs": 1124.366822,
+      "releaseMs": 1409.0611460000073,
+      "loadMs": 1162.2383300000001,
+      "maxFeedLateMs": 138.97473300001002,
+      "updates": 92,
+      "revisions": 27,
+      "p95BacklogSeconds": 4,
+      "finalErrors": 4,
+      "referenceWords": 245,
+      "tails": [
+        {
+          "clip": "6930-81414-0000",
+          "phrase": "not in reality",
+          "clipEndSeconds": 12.895,
+          "final": true,
+          "firstDelay": -0.1533367279999993,
+          "stableDelay": -0.1533367279999993
+        },
+        {
+          "clip": "6930-81414-0001",
+          "phrase": "him from me",
+          "clipEndSeconds": 30.38,
+          "final": true,
+          "firstDelay": 0.9563831399999998,
+          "stableDelay": 0.9563831399999998
+        },
+        {
+          "clip": "6930-81414-0002",
+          "phrase": "a distant voice",
+          "clipEndSeconds": 33.685,
+          "final": true,
+          "firstDelay": 0.7850291459999994,
+          "stableDelay": 0.7850291459999994
+        },
+        {
+          "clip": "6930-81414-0003",
+          "phrase": "of the night",
+          "clipEndSeconds": 36.980000000000004,
+          "final": true,
+          "firstDelay": 1.0850842269999958,
+          "stableDelay": 1.0850842269999958
+        },
+        {
+          "clip": "6930-81414-0004",
+          "phrase": "had been said",
+          "clipEndSeconds": 46.540000000000006,
+          "final": true,
+          "firstDelay": 2.377134596999987,
+          "stableDelay": 2.377134596999987
+        },
+        {
+          "clip": "6930-81414-0005",
+          "phrase": "what was that",
+          "clipEndSeconds": 48.355000000000004,
+          "final": true,
+          "firstDelay": 2.5050784279999974,
+          "stableDelay": 2.5050784279999974
+        },
+        {
+          "clip": "6930-81414-0006",
+          "phrase": "of the pond",
+          "clipEndSeconds": 55.155,
+          "final": true,
+          "firstDelay": 2.279333047999998,
+          "stableDelay": 2.279333047999998
+        },
+        {
+          "clip": "6930-81414-0007",
+          "phrase": "might be attached",
+          "clipEndSeconds": 59.52,
+          "final": true,
+          "firstDelay": 3.0990891189999914,
+          "stableDelay": 3.0990891189999914
+        },
+        {
+          "clip": "6930-81414-0008",
+          "phrase": "hand of death",
+          "clipEndSeconds": 65.575,
+          "final": true,
+          "firstDelay": 0.5024027239999924,
+          "stableDelay": 0.5024027239999924
+        },
+        {
+          "clip": "6930-81414-0009",
+          "phrase": "it was kaffar",
+          "clipEndSeconds": 77.59,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0010",
+          "phrase": "flash of light",
+          "clipEndSeconds": 81.425,
+          "final": true,
+          "firstDelay": 3.820868343000015,
+          "stableDelay": 3.820868343000015
+        },
+        {
+          "clip": "6930-81414-0011",
+          "phrase": "was awake where",
+          "clipEndSeconds": 86.125,
+          "final": true,
+          "firstDelay": 4.252929226000006,
+          "stableDelay": 4.252929226000006
+        },
+        {
+          "clip": "6930-81414-0012",
+          "phrase": "as voltaire's kaffar",
+          "clipEndSeconds": 90.555,
+          "final": false,
+          "firstDelay": null,
+          "stableDelay": null
+        },
+        {
+          "clip": "6930-81414-0013",
+          "phrase": "at my hand",
+          "clipEndSeconds": 97.88000000000001,
+          "final": true,
+          "firstDelay": 1.4083870149999882,
+          "stableDelay": 1.4083870149999882
+        }
+      ],
+      "medianRecognizedTailDelay": 2.279333047999998,
+      "text": "no words were spoken no language was uttered save that of wailing and hissing and that somehow was indistinct as if it existed in fancy and not in reality i heard a noise behind i turned and saw kffer his black eyes shining while in his hand he held a gleaming knife he lifted it above his head as if to strike but i had the strength of ten men and i hurled him from me onward said a distant voice no sound broke the stillness of the night the story of its evil influence came back to me and in my bewildered condition i wondered whether there was not some truth in what had been said what was that what then a human hand large and shapely appeared distinctly on the surface of the pond nothing more not even the wrist to which it might be attached it did not beckon or indeed move at all it was as still as the hand of death i awoke to consciousness fighting at first it seemed as if i was fighting with a phantom but gradually my opponent became more real to me it was caffer a sound of voices a flash of light a feeling of freedom and i was awake where said another voice which i recognized as voltairees caffer i had scarcely known what i had been saying or doing up to this time but as he spoke i looked at my hand"
+    }
+  ]
+}

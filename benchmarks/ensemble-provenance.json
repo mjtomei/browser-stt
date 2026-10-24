@@ -1,0 +1,720 @@
+{
+  "platform": "Linux 7.0.0-1019-nvidia aarch64",
+  "moonshineSourceRevision": "234f60faa0eb388b01cdf7e60aca232af37aefda",
+  "zipformerBpeRevision": "be162ecc09bade73063a671fad9d18220149d25b",
+  "zipformerBpeRepository": "desh2608/icefall-asr-librispeech-pruned-transducer-stateless7-streaming-small",
+  "modelFiles": [
+    {
+      "file": "models/download.moonshine.ai/model/spelling-en/spelling_cnn.ort",
+      "bytes": 1664920,
+      "sha256": "79abb40b6849cf7c013e83a3f276a0d822bb94c3edcc9ad003d38815c2cf37d4"
+    },
+    {
+      "file": "models/download.moonshine.ai/model/spelling-en/spelling_cnn_meta.json",
+      "bytes": 622,
+      "sha256": "1d297cb4801652ccea6cecfd2973338f7cfdf99b7b77a5f5988548cb77ff11f4"
+    },
+    {
+      "file": "models/download.moonshine.ai/model/tiny-streaming-en/quantized_26_08_21/adapter.ort",
+      "bytes": 1319664,
+      "sha256": "22ecc949e146c49667fda28d102d4e30749a107dc88a396292aa8f277ef1347c"
+    },
+    {
+      "file": "models/download.moonshine.ai/model/tiny-streaming-en/quantized_26_08_21/cross_kv.ort",
+      "bytes": 1287544,
+      "sha256": "143a36667b8d05fd9d04e8c337b7ee121f37ef299aea6b3d82bdb3d3401950b4"
+    },
+    {
+      "file": "models/download.moonshine.ai/model/tiny-streaming-en/quantized_26_08_21/decoder_kv.ort",
+      "bytes": 32583720,
+      "sha256": "8852553f312adb6c9aa4d17418015049b30f412209ee569d336548c0044627de"
+    },
+    {
+      "file": "models/download.moonshine.ai/model/tiny-streaming-en/quantized_26_08_21/encoder.ort",
+      "bytes": 7675440,
+      "sha256": "a8414e1a5dedf9f2093d7680601dd8a9b0433e7020260eafe0e370ead91134ca"
+    },
+    {
+      "file": "models/download.moonshine.ai/model/tiny-streaming-en/quantized_26_08_21/frontend.model.ort",
+      "bytes": 23344,
+      "sha256": "5121b561417b638afce0c6c31b760e37c93cf97f80d9b0031aad1fe7b6f25d61"
+    },
+    {
+      "file": "models/download.moonshine.ai/model/tiny-streaming-en/quantized_26_08_21/frontend.weights.ort",
+      "bytes": 2093464,
+      "sha256": "217da24ac6f522ebf02da8ef288e77d1ac68d50d4a6821433182e4fbf4204bbd"
+    },
+    {
+      "file": "models/download.moonshine.ai/model/tiny-streaming-en/quantized_26_08_21/streaming_config.json",
+      "bytes": 509,
+      "sha256": "74fe5ddebd63b17caf59e8a3b18c17547ff7bce1642050edbb1c3962674f8950"
+    },
+    {
+      "file": "models/download.moonshine.ai/model/tiny-streaming-en/quantized_26_08_21/tokenizer.bin",
+      "bytes": 249974,
+      "sha256": "6884b35fd6377d4c4d32336a0bc152f36b64d1e45b6503683cdc238250a8472d"
+    },
+    {
+      "file": "models/moonshine-base/config.json",
+      "bytes": 922,
+      "sha256": "fab7241d1e9fc6c2370c4c6dfb5da79bb54d67ed9ab6b507ac51d29d2abe01d1"
+    },
+    {
+      "file": "models/moonshine-base/generation_config.json",
+      "bytes": 147,
+      "sha256": "f9b3f711b57be7def2e50a8942f64f36ee0a55fad5b84ff93a687b6c5bcc1d44"
+    },
+    {
+      "file": "models/moonshine-base/onnx/decoder_model_merged_q4.onnx",
+      "bytes": 72781828,
+      "sha256": "9f26db50c9f3b2eb1962ab93e9753f908c56367817d791032af58cbf7dba3803"
+    },
+    {
+      "file": "models/moonshine-base/onnx/encoder_model.onnx",
+      "bytes": 80818781,
+      "sha256": "153e128e7abd64a74ee47f2c3f585c3171c4d46cbb368b032827934c4e01e779"
+    },
+    {
+      "file": "models/moonshine-base/preprocessor_config.json",
+      "bytes": 128,
+      "sha256": "fa43a7017ef85cd1d0fba0d9aae77c8adb16990ae6f11115631f41ec5d8aa679"
+    },
+    {
+      "file": "models/moonshine-base/special_tokens_map.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "file": "models/moonshine-base/tokenizer.json",
+      "bytes": 3761754,
+      "sha256": "7b913404bdd039af4756783218af4440bc07fb7d6d8258d677e34f95b3ec416f"
+    },
+    {
+      "file": "models/moonshine-base/tokenizer_config.json",
+      "bytes": 135735,
+      "sha256": "edaee394565d428ea98a663ae7209cdcfeefc5585c42d7a570ff7c986df2cd15"
+    },
+    {
+      "file": "models/moonshine-tiny/config.json",
+      "bytes": 921,
+      "sha256": "558e1e02069137c796ace1e50c48d8fe451f04a295929138e6bea885517f0edb"
+    },
+    {
+      "file": "models/moonshine-tiny/generation_config.json",
+      "bytes": 147,
+      "sha256": "f9b3f711b57be7def2e50a8942f64f36ee0a55fad5b84ff93a687b6c5bcc1d44"
+    },
+    {
+      "file": "models/moonshine-tiny/onnx/decoder_model_merged_q4.onnx",
+      "bytes": 44650684,
+      "sha256": "451510e9bc0d4d829e50f4feffda384a38fd0a7cc8aee72667b8fdb1fb4c7e08"
+    },
+    {
+      "file": "models/moonshine-tiny/onnx/encoder_model.onnx",
+      "bytes": 30882331,
+      "sha256": "cbbf580f703b2af2137e0f6d14cd87f31cc67bd858bfd8715403a9489982d1a5"
+    },
+    {
+      "file": "models/moonshine-tiny/preprocessor_config.json",
+      "bytes": 128,
+      "sha256": "fa43a7017ef85cd1d0fba0d9aae77c8adb16990ae6f11115631f41ec5d8aa679"
+    },
+    {
+      "file": "models/moonshine-tiny/special_tokens_map.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "file": "models/moonshine-tiny/tokenizer.json",
+      "bytes": 3761754,
+      "sha256": "7b913404bdd039af4756783218af4440bc07fb7d6d8258d677e34f95b3ec416f"
+    },
+    {
+      "file": "models/moonshine-tiny/tokenizer_config.json",
+      "bytes": 135735,
+      "sha256": "edaee394565d428ea98a663ae7209cdcfeefc5585c42d7a570ff7c986df2cd15"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/README.md",
+      "bytes": 548,
+      "sha256": "bb679a433f881263aee98b137f4370591311e7cafa955a610c12d04c69c0ebd0"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/add-model-metadata.py",
+      "bytes": 1297,
+      "sha256": "117d5544c9d149dfe67b5e04bdc05bd4cae7a8847464dbe6d3cced066bd21585"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/model.int8.onnx",
+      "bytes": 46419854,
+      "sha256": "66cfde4ce0b6da9e1a4352e58f0c968f87da23070cf229c81ae0d520cddad2a2"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/model.onnx",
+      "bytes": 85328165,
+      "sha256": "441328b21c76594232602e7bb10aad195809502093b39b16ebeba06ef86e0b17"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/quantize-model.py",
+      "bytes": 362,
+      "sha256": "a2b969152809ded74bab22780d919c331468e42bafccd3f9516e81b8075b43e9"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/test.py",
+      "bytes": 2801,
+      "sha256": "c22a64fa9b7ffdf3ba1ac801889fd24c876fa5e117296be84f342a41f2572901"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/test_wavs/0.wav",
+      "bytes": 212044,
+      "sha256": "6bc58a4efdf20daac252b6b1502632601a71efe0308f6757dc1eda34891a7e4f"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/test_wavs/1.wav",
+      "bytes": 534924,
+      "sha256": "5143a6ba93c4b274e2c4ac22deb75c2c48936c853f0519add1de828b6c79cc5a"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/test_wavs/8k.wav",
+      "bytes": 77244,
+      "sha256": "9988c305f0d1915c4d593fbf73d035ee4608a401f61e1dc9c820d808211bb60c"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/test_wavs/trans.txt",
+      "bytes": 449,
+      "sha256": "b9ac44e7b794abb1a2d5faf0005e98a665971e7ac2ed15435832cc34edaa9100"
+    },
+    {
+      "file": "models/sherpa-onnx-nemo-ctc-en-conformer-small/tokens.txt",
+      "bytes": 11611,
+      "sha256": "1adce7866285e6a4aac6208b120d5b8e4302b7cae5f2ae541c343097773fd988"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/README.md",
+      "bytes": 304,
+      "sha256": "505f6b0e8a39f066a0794c4fb0b5689533d3bcd9d1dc5e5f47ccffeef1af9877"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/bpe.model",
+      "bytes": 244865,
+      "sha256": "c53433de083c4a6ad12d034550ef22de68cec62c4f58932a7b6b8b2f1e743fa5"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/bpe.vocab",
+      "bytes": 12590,
+      "sha256": "f191a4935f668fa8cd8e607bcd378404f948321cd3134a5ea13d324ba921673d"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/decoder-epoch-99-avg-1.int8.onnx",
+      "bytes": 539499,
+      "sha256": "21e2a2acd961b3ac72f55be2f10f1a285e1b0b0ba010d7c0b6eab141411b163c"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/decoder-epoch-99-avg-1.onnx",
+      "bytes": 2092272,
+      "sha256": "45a7f940ecfb53d89fa270ad11b88b961e53a317203eb24b1c8e95ed208b0f30"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/encoder-epoch-99-avg-1.int8.onnx",
+      "bytes": 42845182,
+      "sha256": "3810755ce7c3ab26b42a8bcf39d191308fa27fb0f53358823ba46141d03b7eb3"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/encoder-epoch-99-avg-1.onnx",
+      "bytes": 88804590,
+      "sha256": "f77a22f4ff94604e1afb2aeb13504d7699363528c047c97d3436087c95c9b659"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/export-onnx-en-20M.sh",
+      "bytes": 998,
+      "sha256": "76abe8e1f8f134fa33a1df07d21240a7c8e7033be1d7c9587d45ed36a46d2e59"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/joiner-epoch-99-avg-1.int8.onnx",
+      "bytes": 259572,
+      "sha256": "e085d73b593cf9b0707f370dbd656d58327d3fe36d80d849202ef81df02cb01e"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/joiner-epoch-99-avg-1.onnx",
+      "bytes": 1026462,
+      "sha256": "343e17dffa4f386ca206e00d3c406908f68f473c3d35968d6c3cddd5b8559a94"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/test_wavs/0.wav",
+      "bytes": 212044,
+      "sha256": "6bc58a4efdf20daac252b6b1502632601a71efe0308f6757dc1eda34891a7e4f"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/test_wavs/1.wav",
+      "bytes": 534924,
+      "sha256": "5143a6ba93c4b274e2c4ac22deb75c2c48936c853f0519add1de828b6c79cc5a"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/test_wavs/8k.wav",
+      "bytes": 77244,
+      "sha256": "f6f3c8b33e2534cdc154fe773ad2750f1f6a2ca5096179cdf037ae782456613e"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/test_wavs/trans.txt",
+      "bytes": 449,
+      "sha256": "b9ac44e7b794abb1a2d5faf0005e98a665971e7ac2ed15435832cc34edaa9100"
+    },
+    {
+      "file": "models/sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/tokens.txt",
+      "bytes": 5048,
+      "sha256": "49e3c2646595fd907228b3c6787069658f67b17377c60aeb8619c4551b2316fb"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/README",
+      "bytes": 199,
+      "sha256": "c0cf286e4f7783306c5f6469b37db69228fb16803b03cae661edb2d7bba64ebb"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/am/final.mdl",
+      "bytes": 15962575,
+      "sha256": "75370a0137f9daf8f469dedd7daa4513ae7a621f03240c6e512e2b50b656a7b6"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/conf/mfcc.conf",
+      "bytes": 131,
+      "sha256": "1e2228006d01d805ad1c267fee9f79709ca87ac51bd82b0e3f5c69ba543f0fc4"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/conf/model.conf",
+      "bytes": 290,
+      "sha256": "8f14cb1eeb07c762c371db648c6be688d347236155ca0f64fb13b6567a8ce81f"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/graph/Gr.fst",
+      "bytes": 24013795,
+      "sha256": "023c8b7e30704a9e37765c635c252e608a02f361235bf94abdcf2a5225d85b20"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/graph/HCLr.fst",
+      "bytes": 22416994,
+      "sha256": "5caafba3081e1646545ac6bff0dd7a318e53dcbdc86f237909ce1d2ac1293d34"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/graph/disambig_tid.int",
+      "bytes": 102,
+      "sha256": "9ad87cc166d0998f08f758f47a6223a120dfffcbee805c4849c3aa5e6bb3c0fc"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int",
+      "bytes": 1761,
+      "sha256": "da199d9c991e0e84681ddbb34627b915b26302d50a8fdaa23c51e2bc3a50b5c3"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/ivector/final.dubm",
+      "bytes": 168048,
+      "sha256": "8c5d7dd69d2122313baaf19f61f35dd3fa18b70c62ac0687e311e1c46e6daca7"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/ivector/final.ie",
+      "bytes": 8288887,
+      "sha256": "3f37faf90c375b9e4740b569398b5829ed9cc07d19be6d441f72c3b71d7efcc6"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/ivector/final.mat",
+      "bytes": 44975,
+      "sha256": "ddd83586dc5f928cda8738b922c85ffe38fc789cb5f9151a712ca12f37265382"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats",
+      "bytes": 1080,
+      "sha256": "33be09afcc80059847a275c3d043b51f1ab954c7c2438ddbbf4745e8ba144ff9"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf",
+      "bytes": 95,
+      "sha256": "a2f3571754b64297cb7efb2e7ca3df61995c5a45fcbb97188f90613552bb2dfe"
+    },
+    {
+      "file": "models/vosk-model-small-en-us-0.15/ivector/splice.conf",
+      "bytes": 35,
+      "sha256": "9f0c5f7c82d18eaf25d8bce470efa9f7741f88411fe428774bc0a9bb69a24756"
+    },
+    {
+      "file": "models/whisper-base.en/added_tokens.json",
+      "bytes": 34604,
+      "sha256": "560be47bea388757f8d4cc185c5d82067426cbb6361e38016dd90ddc01ab203a"
+    },
+    {
+      "file": "models/whisper-base.en/config.json",
+      "bytes": 2197,
+      "sha256": "c8a0de5ed8a083565a4319db29d0c210fda35b4d6076c2d711cae53ae00f3cb1"
+    },
+    {
+      "file": "models/whisper-base.en/generation_config.json",
+      "bytes": 1556,
+      "sha256": "3479b1f44a07e41db799e22599222fee5816738036def94a39841cb9cdbb4120"
+    },
+    {
+      "file": "models/whisper-base.en/normalizer.json",
+      "bytes": 52666,
+      "sha256": "bf1c507dc8724ca9cf9903640dacfb69dae2f00edee4f21ceba106a7392f26dd"
+    },
+    {
+      "file": "models/whisper-base.en/onnx/decoder_model_merged_quantized.onnx",
+      "bytes": 53692803,
+      "sha256": "dd4761a3f7add26afda3512abff4706920404c2517e85a9f2ff090b0c0987909"
+    },
+    {
+      "file": "models/whisper-base.en/onnx/encoder_model_quantized.onnx",
+      "bytes": 23201320,
+      "sha256": "6e8001198c490bbae018c0044f630c2915efb826bad957006ce36152d0ab2a10"
+    },
+    {
+      "file": "models/whisper-base.en/preprocessor_config.json",
+      "bytes": 339,
+      "sha256": "a6a76d28c93edb273669eb9e0b0636a2bddbb1272c3261e47b7ca6dfdbac1b8d"
+    },
+    {
+      "file": "models/whisper-base.en/quantize_config.json",
+      "bytes": 10126,
+      "sha256": "6e0e27f293a5c17ff2ca8046f06079c0120aa2ede6456faac8ec4b3203471a55"
+    },
+    {
+      "file": "models/whisper-base.en/special_tokens_map.json",
+      "bytes": 2173,
+      "sha256": "98bdf3ec5b32e31575b02f64b0a32bde7c0449075d34484a7df9bdd3cdeb9fb9"
+    },
+    {
+      "file": "models/whisper-base.en/tokenizer.json",
+      "bytes": 2405679,
+      "sha256": "5eb60cec1e77aeeb6869a2bb5a8e01a84c3fe5d072d75369343021fe6f5310d0"
+    },
+    {
+      "file": "models/whisper-base.en/tokenizer_config.json",
+      "bytes": 282662,
+      "sha256": "93879c3dccdd4b976f709acd85b44778873f30c275e67026f30ca1e4c975230c"
+    },
+    {
+      "file": "models/whisper-base.en/vocab.json",
+      "bytes": 999186,
+      "sha256": "f6bd25a65e4e63ca31360e9fb11c7e4f9a391a78385d640acd814092dd6eee4f"
+    },
+    {
+      "file": "models/whisper-tiny.en/added_tokens.json",
+      "bytes": 34604,
+      "sha256": "560be47bea388757f8d4cc185c5d82067426cbb6361e38016dd90ddc01ab203a"
+    },
+    {
+      "file": "models/whisper-tiny.en/config.json",
+      "bytes": 2197,
+      "sha256": "251ea843b5901a99efa58c0b99b8052c6019aa3e7d2baf46693a1128ff606233"
+    },
+    {
+      "file": "models/whisper-tiny.en/generation_config.json",
+      "bytes": 1646,
+      "sha256": "7b2e8451ed5f118e75fdd991409d72119d21d2fef1eba9723f68fb9c57fe5dc9"
+    },
+    {
+      "file": "models/whisper-tiny.en/normalizer.json",
+      "bytes": 52666,
+      "sha256": "bf1c507dc8724ca9cf9903640dacfb69dae2f00edee4f21ceba106a7392f26dd"
+    },
+    {
+      "file": "models/whisper-tiny.en/onnx/decoder_model_merged_quantized.onnx",
+      "bytes": 30718858,
+      "sha256": "c0592d0749413c960569e1c7fb806b060d5d18f3ebad4a95cbf9a77dc6e9be52"
+    },
+    {
+      "file": "models/whisper-tiny.en/onnx/encoder_model_quantized.onnx",
+      "bytes": 10124993,
+      "sha256": "e93ec822f16a8fd264e7de972ad17d615ea7334b75a52d54c50c2e18dd503a25"
+    },
+    {
+      "file": "models/whisper-tiny.en/preprocessor_config.json",
+      "bytes": 339,
+      "sha256": "a6a76d28c93edb273669eb9e0b0636a2bddbb1272c3261e47b7ca6dfdbac1b8d"
+    },
+    {
+      "file": "models/whisper-tiny.en/quantize_config.json",
+      "bytes": 10126,
+      "sha256": "6e0e27f293a5c17ff2ca8046f06079c0120aa2ede6456faac8ec4b3203471a55"
+    },
+    {
+      "file": "models/whisper-tiny.en/special_tokens_map.json",
+      "bytes": 2173,
+      "sha256": "98bdf3ec5b32e31575b02f64b0a32bde7c0449075d34484a7df9bdd3cdeb9fb9"
+    },
+    {
+      "file": "models/whisper-tiny.en/tokenizer.json",
+      "bytes": 2405679,
+      "sha256": "5eb60cec1e77aeeb6869a2bb5a8e01a84c3fe5d072d75369343021fe6f5310d0"
+    },
+    {
+      "file": "models/whisper-tiny.en/tokenizer_config.json",
+      "bytes": 282662,
+      "sha256": "93879c3dccdd4b976f709acd85b44778873f30c275e67026f30ca1e4c975230c"
+    },
+    {
+      "file": "models/whisper-tiny.en/vocab.json",
+      "bytes": 999186,
+      "sha256": "f6bd25a65e4e63ca31360e9fb11c7e4f9a391a78385d640acd814092dd6eee4f"
+    }
+  ],
+  "contextSha256": {
+    "12-other-6128-63244.json": "3dc450479251265cb3f5c44cbf2cd8267b875f372df903f884efd5cf2a9b533d",
+    "02-clean-260-123288.json": "b3c2df1a635ac526185aed4929b3d1d8cdd79e87081405d4a1681b2586894c20",
+    "15-other-4852-28330.json": "1f46f7ef1aed9b99fa426697aa77023acd1473de566fbeadba8410d78cced0f9",
+    "05-clean-1284-1180.json": "145086e6a1742c61237ec89d7ee5d5833f7718e03fac48bc853cff26514b86d9",
+    "07-clean-4077-13754.json": "257ee3607dcadd9e729107d1efd35ff2fd9798ca893873d320891af501e5ebd9",
+    "06-clean-2830-3980.json": "de2469549abab1d1fe90b286669c1f998e974d35595bdd5e86cbf8a63564fee3",
+    "14-other-3538-163624.json": "64d5aa090b1c5091a68b09f9ca350b0a1fbfa56e885ca27ffd73040cf5f672dc",
+    "09-clean-5105-28233.json": "01379a71b4e8892344919c23aa1c2d400963183e2f7152e7f3b08c53f4dfd0f8",
+    "01-clean-6930-81414.json": "b531a325e8fa02c62fd9eff3493d39f3be07a8e107d2d2484ca120b662e21b69",
+    "11-other-7902-96592.json": "65db1954b6283ba300d1af9bc17437ddd168f0210d4b1e0b45b0373c776ab785",
+    "04-clean-8230-279154.json": "1ed63cd94edd636ac2e2e54ebe2c76ec7e12870287b05088ad088fe63528d4fd",
+    "03-clean-7127-75947.json": "2a9f69115aaeb75177ee4a34ff7ff6ff9be625c5ac987f5301625d86590bf034",
+    "08-clean-8224-274384.json": "4502b2542a21d1ab2add6279c81eca3f9921032b38dfd7cd2ce256cf872eafbc",
+    "10-clean-2300-131720.json": "567cab92c1101e295d19f6f05b7496eef15deca631292b6eba6c1e93ffd858a7",
+    "13-other-7975-280076.json": "755d3b3661fcd7ae0ec5f82c65fd1d25cddc53d9b9fa5e74c385dd554e130d73"
+  },
+  "inputsSha256": "9c6da520e41d25cad735e061a250f3e9358111a375a72aa5606e15a851b33784",
+  "vocabularyRankerSha256": "7a92980487fb1a783660a63f4fc38b7a37cbf78855bbccb24c7bdfabdbeb23e7",
+  "runtimes": {
+    "nativeJs": "1.30.0",
+    "wasm": "1.31.0-dev.20260914-8d85527a0",
+    "transformersJs": "4.3.0",
+    "nativeMoonshineCppOrt": "1.23.2",
+    "pythonOrt": "1.31.0",
+    "sherpa": "1.13.8",
+    "vosk": "0.3.45"
+  },
+  "host": {
+    "lscpu": [
+      {
+        "field": "Architecture:",
+        "data": "aarch64"
+      },
+      {
+        "field": "CPU op-mode(s):",
+        "data": "64-bit"
+      },
+      {
+        "field": "Byte Order:",
+        "data": "Little Endian"
+      },
+      {
+        "field": "CPU(s):",
+        "data": "20"
+      },
+      {
+        "field": "On-line CPU(s) list:",
+        "data": "0-19"
+      },
+      {
+        "field": "Vendor ID:",
+        "data": "ARM"
+      },
+      {
+        "field": "Model name:",
+        "data": "Cortex-X925"
+      },
+      {
+        "field": "Model:",
+        "data": "1"
+      },
+      {
+        "field": "Thread(s) per core:",
+        "data": "1"
+      },
+      {
+        "field": "Core(s) per socket:",
+        "data": "10"
+      },
+      {
+        "field": "Socket(s):",
+        "data": "1"
+      },
+      {
+        "field": "Stepping:",
+        "data": "r0p1"
+      },
+      {
+        "field": "Frequency boost:",
+        "data": "disabled"
+      },
+      {
+        "field": "CPU(s) scaling MHz:",
+        "data": "100%"
+      },
+      {
+        "field": "CPU max MHz:",
+        "data": "3900.0000"
+      },
+      {
+        "field": "CPU min MHz:",
+        "data": "1378.0000"
+      },
+      {
+        "field": "BogoMIPS:",
+        "data": "2000.00"
+      },
+      {
+        "field": "Flags:",
+        "data": "fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp sve2 sveaes svepmull svebitperm svesha3 svesm4 flagm2 frint svei8mm svebf16 i8mm bf16 dgh bti ecv afp wfxt"
+      },
+      {
+        "field": "Model name:",
+        "data": "Cortex-A725"
+      },
+      {
+        "field": "Model:",
+        "data": "1"
+      },
+      {
+        "field": "Thread(s) per core:",
+        "data": "1"
+      },
+      {
+        "field": "Core(s) per socket:",
+        "data": "10"
+      },
+      {
+        "field": "Socket(s):",
+        "data": "1"
+      },
+      {
+        "field": "Stepping:",
+        "data": "r0p1"
+      },
+      {
+        "field": "CPU(s) scaling MHz:",
+        "data": "100%"
+      },
+      {
+        "field": "CPU max MHz:",
+        "data": "2808.0000"
+      },
+      {
+        "field": "CPU min MHz:",
+        "data": "338.0000"
+      },
+      {
+        "field": "BogoMIPS:",
+        "data": "2000.00"
+      },
+      {
+        "field": "Flags:",
+        "data": "fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp sve2 sveaes svepmull svebitperm svesha3 svesm4 flagm2 frint svei8mm svebf16 i8mm bf16 dgh bti ecv afp wfxt"
+      },
+      {
+        "field": "L1d cache:",
+        "data": "1.3 MiB (20 instances)"
+      },
+      {
+        "field": "L1i cache:",
+        "data": "1.3 MiB (20 instances)"
+      },
+      {
+        "field": "L2 cache:",
+        "data": "25 MiB (20 instances)"
+      },
+      {
+        "field": "L3 cache:",
+        "data": "24 MiB (2 instances)"
+      },
+      {
+        "field": "NUMA node(s):",
+        "data": "1"
+      },
+      {
+        "field": "NUMA node0 CPU(s):",
+        "data": "0-19"
+      },
+      {
+        "field": "Vulnerability Gather data sampling:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Ghostwrite:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Indirect target selection:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Itlb multihit:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability L1tf:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Mds:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Meltdown:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Mmio stale data:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Old microcode:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Reg file data sampling:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Retbleed:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Spec rstack overflow:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Spec store bypass:",
+        "data": "Mitigation; Speculative Store Bypass disabled via prctl"
+      },
+      {
+        "field": "Vulnerability Spectre v1:",
+        "data": "Mitigation; __user pointer sanitization"
+      },
+      {
+        "field": "Vulnerability Spectre v2:",
+        "data": "Mitigation; CSV2, BHB"
+      },
+      {
+        "field": "Vulnerability Srbds:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Tsa:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Tsx async abort:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Vmscape:",
+        "data": "Not affected"
+      }
+    ]
+  },
+  "streamCpuAffinity": {
+    "Chrome hinted": [
+      15,
+      16
+    ],
+    "Chrome no-hint control": [
+      5,
+      6
+    ],
+    "native incremental and Conformer windows": [
+      11,
+      12
+    ]
+  }
+}

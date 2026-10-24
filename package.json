@@ -1,0 +1,61 @@
+{
+  "name": "@pageborne/browser-stt",
+  "version": "0.1.17",
+  "private": true,
+  "type": "module",
+  "description": "Local browser speech recognition with a streaming three-model ensemble, vocabulary hints, word confidence and persistent caching.",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "files": [
+    "src",
+    "dist",
+    "scripts/assets.mjs",
+    "scripts/serial-speech-sessions.mjs",
+    "vendor",
+    "README.md",
+    "NOTICE",
+    "types",
+    "docs",
+    "benchmarks",
+    "scripts/build-ensemble-wasm.sh",
+    "scripts/wasm"
+  ],
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./vite": "./scripts/assets.mjs",
+    "./benchmark": "./src/speech-benchmark.js",
+    "./confidence": "./src/speech-confidence.js",
+    "./*": "./src/*.js",
+    "./manifests/*": "./vendor/stt/*"
+  },
+  "scripts": {
+    "build": "vite build && vite build --mode cpu",
+    "test": "node --test test/*.test.js",
+    "dev": "npm run build && vite --config demo/vite.config.js --host 127.0.0.1",
+    "build:demo": "npm run build && vite build --config demo/vite.config.js",
+    "test:browser": "node scripts/browser-test.mjs",
+    "test:types": "tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext test/api-types.ts",
+    "prepare": "npm run build",
+    "test:ensemble": "node scripts/ensemble-browser-test.mjs",
+    "release:audit": "node scripts/release-audit.mjs"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "4.3.0",
+    "@noble/hashes": "2.4.0",
+    "wasm-feature-detect": "1.9.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2",
+    "typescript": "5.9.3",
+    "vite": "6.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mjtomei/browser-stt.git"
+  },
+  "homepage": "https://github.com/mjtomei/browser-stt#readme"
+}

@@ -1,0 +1,281 @@
+{
+  "date": "2026-10-19",
+  "physicalPhone": false,
+  "engine": "0.1.17",
+  "protocol": "Production WASM inference. Paced 50ms PCM chunks; timer includes capture duration from recording start, excludes microphone/BLE/display. Cold means saved weights/checks but unloaded workers. Shared desktop, single paired run per browser/clip; early text can be revised. Dictionary vocabulary comes from disjoint same-chapter excerpts; terms set selects a <=12s clip per speaker with the most hint occurrences. Not a broad/dedicated biomedical evaluation.",
+  "latency": [
+    {
+      "browser": "chromium",
+      "version": "baseline",
+      "id": "check",
+      "cold": false,
+      "firstTextMs": 1247,
+      "firstCorrectOpeningWordMs": 1247,
+      "releaseMs": 1995,
+      "maxFeedLateMs": 2,
+      "finalText": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel."
+    },
+    {
+      "browser": "chromium",
+      "version": "baseline",
+      "id": "6930-81414-0004",
+      "cold": false,
+      "firstTextMs": 627,
+      "firstCorrectOpeningWordMs": 1248,
+      "releaseMs": 2806,
+      "maxFeedLateMs": 3,
+      "finalText": "The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said."
+    },
+    {
+      "browser": "chromium",
+      "version": "baseline",
+      "id": "260-123288-0008",
+      "cold": false,
+      "firstTextMs": 628,
+      "firstCorrectOpeningWordMs": 1252,
+      "releaseMs": 1034,
+      "maxFeedLateMs": 2,
+      "finalText": "There's a heavy storm coming on, I cried, pointing towards the horizon."
+    },
+    {
+      "browser": "chromium",
+      "version": "baseline",
+      "id": "check",
+      "cold": true,
+      "firstTextMs": 3481,
+      "firstCorrectOpeningWordMs": 3481,
+      "releaseMs": 2244,
+      "maxFeedLateMs": 3,
+      "finalText": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel."
+    },
+    {
+      "browser": "chromium",
+      "version": "candidate",
+      "id": "check",
+      "cold": false,
+      "firstTextMs": 789,
+      "firstCorrectOpeningWordMs": 789,
+      "releaseMs": 2612,
+      "maxFeedLateMs": 2,
+      "finalText": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel."
+    },
+    {
+      "browser": "chromium",
+      "version": "candidate",
+      "id": "6930-81414-0004",
+      "cold": false,
+      "firstTextMs": 527,
+      "firstCorrectOpeningWordMs": 666,
+      "releaseMs": 2417,
+      "maxFeedLateMs": 2,
+      "finalText": "The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said."
+    },
+    {
+      "browser": "chromium",
+      "version": "candidate",
+      "id": "260-123288-0008",
+      "cold": false,
+      "firstTextMs": 788,
+      "firstCorrectOpeningWordMs": 1408,
+      "releaseMs": 1269,
+      "maxFeedLateMs": 3,
+      "finalText": "There's a heavy storm coming on, I cried, pointing towards the horizon."
+    },
+    {
+      "browser": "chromium",
+      "version": "candidate",
+      "id": "check",
+      "cold": true,
+      "firstTextMs": 3340,
+      "firstCorrectOpeningWordMs": 3340,
+      "releaseMs": 2320,
+      "maxFeedLateMs": 3,
+      "finalText": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel."
+    },
+    {
+      "browser": "webkit",
+      "version": "baseline",
+      "id": "check",
+      "cold": false,
+      "firstTextMs": 1223,
+      "firstCorrectOpeningWordMs": 1250,
+      "releaseMs": 2225,
+      "maxFeedLateMs": 5,
+      "finalText": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel."
+    },
+    {
+      "browser": "webkit",
+      "version": "baseline",
+      "id": "6930-81414-0004",
+      "cold": false,
+      "firstTextMs": 628,
+      "firstCorrectOpeningWordMs": 1204,
+      "releaseMs": 2866,
+      "maxFeedLateMs": 5,
+      "finalText": "The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said."
+    },
+    {
+      "browser": "webkit",
+      "version": "baseline",
+      "id": "260-123288-0008",
+      "cold": false,
+      "firstTextMs": 1198,
+      "firstCorrectOpeningWordMs": 1214,
+      "releaseMs": 1127,
+      "maxFeedLateMs": 4,
+      "finalText": "There's a heavy storm coming on, I cried, pointing towards the horizon."
+    },
+    {
+      "browser": "webkit",
+      "version": "baseline",
+      "id": "check",
+      "cold": true,
+      "firstTextMs": 2553,
+      "firstCorrectOpeningWordMs": 2553,
+      "releaseMs": 2138,
+      "maxFeedLateMs": 69,
+      "finalText": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel."
+    },
+    {
+      "browser": "webkit",
+      "version": "candidate",
+      "id": "check",
+      "cold": false,
+      "firstTextMs": 800,
+      "firstCorrectOpeningWordMs": 800,
+      "releaseMs": 1358,
+      "maxFeedLateMs": 6,
+      "finalText": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel."
+    },
+    {
+      "browser": "webkit",
+      "version": "candidate",
+      "id": "6930-81414-0004",
+      "cold": false,
+      "firstTextMs": 558,
+      "firstCorrectOpeningWordMs": 669,
+      "releaseMs": 2603,
+      "maxFeedLateMs": 3,
+      "finalText": "The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said."
+    },
+    {
+      "browser": "webkit",
+      "version": "candidate",
+      "id": "260-123288-0008",
+      "cold": false,
+      "firstTextMs": 798,
+      "firstCorrectOpeningWordMs": 1423,
+      "releaseMs": 1237,
+      "maxFeedLateMs": 5,
+      "finalText": "There's a heavy storm coming on, I cried, pointing towards the horizon."
+    },
+    {
+      "browser": "webkit",
+      "version": "candidate",
+      "id": "check",
+      "cold": true,
+      "firstTextMs": 2488,
+      "firstCorrectOpeningWordMs": 2488,
+      "releaseMs": 2093,
+      "maxFeedLateMs": 169,
+      "finalText": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel."
+    }
+  ],
+  "dictionary": {
+    "speakers": 15,
+    "conditions": {
+      "conformer plain": {
+        "words": 277,
+        "errors": 14,
+        "terms": 37,
+        "missedTerms": 7
+      },
+      "zipformer plain": {
+        "words": 277,
+        "errors": 56,
+        "terms": 37,
+        "missedTerms": 12
+      },
+      "moonshine plain": {
+        "words": 277,
+        "errors": 12,
+        "terms": 37,
+        "missedTerms": 5
+      },
+      "ensemble plain": {
+        "words": 277,
+        "errors": 10,
+        "terms": 37,
+        "missedTerms": 5
+      },
+      "weighted plain": {
+        "words": 277,
+        "errors": 10,
+        "terms": 37,
+        "missedTerms": 5
+      },
+      "conformer hinted": {
+        "words": 277,
+        "errors": 13,
+        "terms": 37,
+        "missedTerms": 6
+      },
+      "zipformer hinted": {
+        "words": 277,
+        "errors": 48,
+        "terms": 37,
+        "missedTerms": 7
+      },
+      "moonshine hinted": {
+        "words": 277,
+        "errors": 12,
+        "terms": 37,
+        "missedTerms": 5
+      },
+      "ensemble hinted": {
+        "words": 277,
+        "errors": 11,
+        "terms": 37,
+        "missedTerms": 5
+      },
+      "weighted hinted": {
+        "words": 277,
+        "errors": 10,
+        "terms": 37,
+        "missedTerms": 4
+      }
+    },
+    "voteChanges": [
+      {
+        "id": "3538-163624-0016",
+        "reference": "THEN SIGURD RODE BACK AND MET REGIN AND REGIN ASKED HIM TO ROAST FAFNIR'S HEART AND LET HIM TASTE OF IT",
+        "before": "Then Sigurd rode back and met Regan, and Regan asked him to roast fafner's heart and let him taste of it.",
+        "after": "Then Sigurd rode back and met Regan, and Regan asked him to roast Fafnir's heart and let him taste of it.",
+        "beforeErrors": 3,
+        "afterErrors": 2
+      }
+    ]
+  },
+  "punctuationFixes": [
+    {
+      "id": "2830-3980-0000",
+      "before": "In every way they sought to undermine the authority of saint. Paul.",
+      "after": "In every way they sought to undermine the authority of saint Paul."
+    },
+    {
+      "id": "6128-63244-0010",
+      "before": "On S Chancellor wondered how missus. Steinder would treat their branch of the question?",
+      "after": "On S Chancellor wondered how missus Steinder would treat their branch of the question?"
+    },
+    {
+      "id": "7975-280076-0011",
+      "before": "I brought the cattle to Kansas at fall and remained in saint. Clair County until February.",
+      "after": "I brought the cattle to Kansas at fall and remained in saint Clair County until February."
+    },
+    {
+      "id": "4852-28330-0001",
+      "before": "Guess mister. Finney went to his HIS as I don't remember seeing him cross the deck or come over that way at all.",
+      "after": "Guess mister Finney went to his HIS as I don't remember seeing him cross the deck or come over that way at all."
+    }
+  ]
+}

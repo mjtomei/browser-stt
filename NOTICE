@@ -1,0 +1,18 @@
+Extracted from Pageborne commit 0d2bf71cb5ad244adae9184190a49893a0758401.
+Third-party code, model and fixture licenses are included under vendor/stt and in built assets.
+
+The built speech worker adapts Transformers.js 4.3.0 constructSessions to load
+and release weight staging buffers serially. Its Apache-2.0 license is retained.
+Source adaptation: scripts/serial-speech-sessions.mjs and src/speech-session-loader.js.
+
+The optional three-model runtime includes sherpa-onnx v1.13.8
+(commit 11afbd009a7f8c08f4bcf2fc1b265d0df4670fbf), ONNX Runtime 1.28.2,
+kaldi-native-fbank 1.22.3 and linked third-party components. License texts are
+under vendor/ensemble-runtime and vendor/stt. The adapter is built from
+scripts/wasm with Emscripten 4.0.23; it contains no model weights.
+The Conformer and Zipformer model distributions use Apache-2.0; Moonshine
+uses the MIT license included in vendor/stt/moonshine-LICENSE. Downloads are
+pinned by immutable revision, byte length and SHA-256 in ensemble-models.json.
+
+Eigen source availability and the complete runtime notice inventory are in
+vendor/ensemble-runtime/SOURCES.md. See docs/THIRD-PARTY.md for distribution scope.

@@ -1,0 +1,1002 @@
+{
+  "date": "2026-10-13",
+  "hardware": "Linux aarch64 ARM workstation, Cortex-X925; shared host; single-thread WASM SIMD",
+  "model": {
+    "repository": "onnx-community/moonshine-tiny-ONNX",
+    "revision": "a6da1241cd305dcd64eab1edbd615f2bb9aabb95",
+    "backend": "wasm"
+  },
+  "physicalPhone": false,
+  "notes": [
+    "Two concatenated LibriSpeech recordings; the first three clips occur in both.",
+    "No reference text or vocabulary supplied to recognition; warm-up excluded.",
+    "Chunk size reaches the worker; each requested WAV is verified as one model segment.",
+    "P95 backlog is delivered audio minus last completed decode, not forced-aligned word lag.",
+    "Sentence-tail anchors use the final three reference words and original clip endpoints, which include trailing silence.",
+    "Changed words cumulatively count substitutions/deletions of already-visible normalized words. Pure appended text is excluded.",
+    "These are one run per configuration, not statistical estimates or phone measurements."
+  ],
+  "reports": [
+    {
+      "raw": "test-results/window-study-chromium-prose-context-paced.json",
+      "engine": "chromium",
+      "browserVersion": "154.0.8037.57",
+      "scenario": "prose",
+      "paced": true,
+      "samples": [
+        {
+          "id": "1272-128104-0000",
+          "file": "1272-128104-0000.wav",
+          "reference": "MISTER QUILTER IS THE APOSTLE OF THE MIDDLE CLASSES AND WE ARE GLAD TO WELCOME HIS GOSPEL",
+          "seconds": 5.855,
+          "sha256": "799f78ed4beb4de7ceae3a809262d4ce242394342ccd1d58cef7d49dbc2def46",
+          "row": 0
+        },
+        {
+          "id": "1272-128104-0001",
+          "file": "1272-128104-0001.wav",
+          "reference": "NOR IS MISTER QUILTER'S MANNER LESS INTERESTING THAN HIS MATTER",
+          "seconds": 4.815,
+          "sha256": "473b1bb573e8f7cdcd639c6e318036236190107b66bfe6892286121a92d464c1",
+          "row": 1
+        },
+        {
+          "id": "1272-128104-0002",
+          "file": "1272-128104-0002.wav",
+          "reference": "HE TELLS US THAT AT THIS FESTIVE SEASON OF THE YEAR WITH CHRISTMAS AND ROAST BEEF LOOMING BEFORE US SIMILES DRAWN FROM EATING AND ITS RESULTS OCCUR MOST READILY TO THE MIND",
+          "seconds": 12.485,
+          "sha256": "5f4d8f7331acffc3d2efbe0f764b9eb3447911dc17f9843e38e1083eb1685b9c",
+          "row": 2
+        },
+        {
+          "id": "1272-128104-0003",
+          "file": "1272-128104-0003.wav",
+          "reference": "HE HAS GRAVE DOUBTS WHETHER SIR FREDERICK LEIGHTON'S WORK IS REALLY GREEK AFTER ALL AND CAN DISCOVER IN IT BUT LITTLE OF ROCKY ITHACA",
+          "seconds": 9.9,
+          "sha256": "fc23353b884061a5c5784b0cf6b5c539680c50cfae993882822ebdd4a06ddf8c",
+          "row": 3
+        },
+        {
+          "id": "1272-128104-0004",
+          "file": "1272-128104-0004.wav",
+          "reference": "LINNELL'S PICTURES ARE A SORT OF UP GUARDS AND AT EM PAINTINGS AND MASON'S EXQUISITE IDYLLS ARE AS NATIONAL AS A JINGO POEM MISTER BIRKET FOSTER'S LANDSCAPES SMILE AT ONE MUCH IN THE SAME WAY THAT MISTER CARKER USED TO FLASH HIS TEETH AND MISTER JOHN COLLIER GIVES HIS SITTER A CHEERFUL SLAP ON THE BACK BEFORE HE SAYS LIKE A SHAMPOOER IN A TURKISH BATH NEXT MAN",
+          "seconds": 29.4,
+          "sha256": "4798e34d9a323ed835ae6055172236f8965dd5ccf146c25758711023ecc8b2e6",
+          "row": 4
+        },
+        {
+          "id": "1272-128104-0005",
+          "file": "1272-128104-0005.wav",
+          "reference": "IT IS OBVIOUSLY UNNECESSARY FOR US TO POINT OUT HOW LUMINOUS THESE CRITICISMS ARE HOW DELICATE IN EXPRESSION",
+          "seconds": 9.01,
+          "sha256": "abd89d9a5108f87f03d03875272e1f3f18bef61ea4c271a0ec5bbc3a5bfc223a",
+          "row": 5
+        },
+        {
+          "id": "1272-128104-0006",
+          "file": "1272-128104-0006.wav",
+          "reference": "ON THE GENERAL PRINCIPLES OF ART MISTER QUILTER WRITES WITH EQUAL LUCIDITY",
+          "seconds": 5.64,
+          "sha256": "acbc588a1ba63290a48aeb9b37c815475627ba58a815ff095042fa61729fe3a0",
+          "row": 6
+        },
+        {
+          "id": "1272-128104-0007",
+          "file": "1272-128104-0007.wav",
+          "reference": "PAINTING HE TELLS US IS OF A DIFFERENT QUALITY TO MATHEMATICS AND FINISH IN ART IS ADDING MORE FACT",
+          "seconds": 9.24,
+          "sha256": "66ea55755fe31a7af9bb121ad33fd2037dbc8e2fc66d4cfb3f50cb8fa1e63561",
+          "row": 7
+        },
+        {
+          "id": "1272-128104-0008",
+          "file": "1272-128104-0008.wav",
+          "reference": "AS FOR ETCHINGS THEY ARE OF TWO KINDS BRITISH AND FOREIGN",
+          "seconds": 5.12,
+          "sha256": "9514dcfa2f52cd7540c686c555213ca539b7ec8913b93913d14bfed151bdb72e",
+          "row": 8
+        },
+        {
+          "id": "1272-128104-0009",
+          "file": "1272-128104-0009.wav",
+          "reference": "HE LAMENTS MOST BITTERLY THE DIVORCE THAT HAS BEEN MADE BETWEEN DECORATIVE ART AND WHAT WE USUALLY CALL PICTURES MAKES THE CUSTOMARY APPEAL TO THE LAST JUDGMENT AND REMINDS US THAT IN THE GREAT DAYS OF ART MICHAEL ANGELO WAS THE FURNISHING UPHOLSTERER",
+          "seconds": 18.29,
+          "sha256": "f91fae94e75d6e831eede05bff930beab5300cfc484a806ea196df2d6f219e19",
+          "row": 9
+        }
+      ],
+      "runs": [
+        {
+          "policy": "context",
+          "windowSeconds": 15,
+          "overlapSeconds": 7.5,
+          "metrics": {
+            "audioSeconds": 109.755,
+            "firstWordMs": 1270.3999999761581,
+            "releaseMs": 1022.8000000715256,
+            "inferenceMs": 97133,
+            "calls": 112,
+            "updates": 333,
+            "revisions": 54,
+            "changedWords": 135,
+            "peakPcmBytes": 960000,
+            "longestActualModelSegment": 15,
+            "tokenLimitHits": 1,
+            "fallbackCalls": 0,
+            "backlogP95Seconds": 2.5,
+            "backlogEarlyMeanSeconds": 1.3695890410958904,
+            "backlogLateMeanSeconds": 1.4756267029972752,
+            "updateGapP95Ms": 1233,
+            "feedLateMs": 1.3000000715255737,
+            "timingValid": true
+          },
+          "score": {
+            "errors": 23,
+            "referenceWords": 254,
+            "wer": 0.09055118110236221,
+            "substitutions": 18,
+            "deletions": 3,
+            "insertions": 2
+          },
+          "text": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel, nor is Mr. Quilter's manner less interesting than his matter. He tells us that at this festive season of the year with Christmas and rose beef looming before us, similes drawn from eating and its results occur most readily to the mind. He has grave doubts whether Sir Frederick Layton's work is really Greek after all and can discover in it but little of Rocky Ithaca. Linnells's pictures are a sort of up up-guards and adam paintings and mason's exquisite idols are as national as a jingo poem. Mr. Burke fosters landscapes, smile at one much in the same way that Mr. Carcor used to flash his teeth, and Mr. John Caldier gives his cider a cheerful slap on the back before he says, like a shampoo or an Turkish bath next man, it is obviously unnecessary for us to point out how luminous these criticisms are how delicate an expression on the general principles of art and Mr. Quilter writes with equal lucidity. Painting he tells us is of a different quality to mathematics and finish in art is adding more effect. As for etchings, there are two kinds British and foreign. He laments most bitterly the divorce that has been made between decorative art and what we usually call pictures, makes a customary appeal to the last judgment and reminds us that in the great days of art, Michelangelo was the furnishing upholsterer.",
+          "anchors": [
+            {
+              "file": "1272-128104-0000.wav",
+              "anchor": "welcome his gospel",
+              "clipEndSeconds": 5.855,
+              "firstVisibleLagSeconds": 0.1778999999761579,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0001.wav",
+              "anchor": "than his matter",
+              "clipEndSeconds": 10.670000000000002,
+              "firstVisibleLagSeconds": 1.1093000000715243,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0002.wav",
+              "anchor": "to the mind",
+              "clipEndSeconds": 23.155,
+              "firstVisibleLagSeconds": 1.2383999999761564,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0003.wav",
+              "anchor": "of rocky ithaca",
+              "clipEndSeconds": 33.055,
+              "firstVisibleLagSeconds": 0.98989999997616,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0004.wav",
+              "anchor": "bath next man",
+              "clipEndSeconds": 62.455,
+              "firstVisibleLagSeconds": 0.865000000000002,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0005.wav",
+              "anchor": "delicate in expression",
+              "clipEndSeconds": 71.465,
+              "firstVisibleLagSeconds": 0.10839999997615735,
+              "presentAtFinish": false
+            },
+            {
+              "file": "1272-128104-0006.wav",
+              "anchor": "with equal lucidity",
+              "clipEndSeconds": 77.105,
+              "firstVisibleLagSeconds": 0.029899999976152003,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0007.wav",
+              "anchor": "adding more fact",
+              "clipEndSeconds": 86.345,
+              "firstVisibleLagSeconds": 9.018500000000003,
+              "presentAtFinish": false
+            },
+            {
+              "file": "1272-128104-0008.wav",
+              "anchor": "british and foreign",
+              "clipEndSeconds": 91.465,
+              "firstVisibleLagSeconds": 1.2828999999761521,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0009.wav",
+              "anchor": "the furnishing upholsterer",
+              "clipEndSeconds": 109.755,
+              "firstVisibleLagSeconds": 1.0217000000476872,
+              "presentAtFinish": true
+            }
+          ],
+          "medianAnchorLagSeconds": 1.0058000000119236
+        },
+        {
+          "policy": "context",
+          "windowSeconds": 30,
+          "overlapSeconds": 15,
+          "metrics": {
+            "audioSeconds": 109.755,
+            "firstWordMs": 1676.7000000476837,
+            "releaseMs": 3068.2999999523163,
+            "inferenceMs": 103846,
+            "calls": 65,
+            "updates": 281,
+            "revisions": 31,
+            "changedWords": 77,
+            "peakPcmBytes": 1920000,
+            "longestActualModelSegment": 30,
+            "tokenLimitHits": 2,
+            "fallbackCalls": 0,
+            "backlogP95Seconds": 5.6,
+            "backlogEarlyMeanSeconds": 2.4339726027397255,
+            "backlogLateMeanSeconds": 3.1990599455040876,
+            "updateGapP95Ms": 2265.3000000715256,
+            "feedLateMs": 10.700000047683716,
+            "timingValid": true
+          },
+          "score": {
+            "errors": 22,
+            "referenceWords": 254,
+            "wer": 0.08661417322834646,
+            "substitutions": 19,
+            "deletions": 3,
+            "insertions": 0
+          },
+          "text": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel. Nor is Mr. Quilter's manner less interesting than his matter. He tells us that at this festive season of the year, with Christmas and Rose beef looming before us, similes drawn from eating and its results occur most readily to the mind. He has grave doubts whether Sir Frederick Layton's work is really Greek after all and can discover in it but little of Rocky Ithaca. Linels' pictures are a sort of up-guards and adam paintings and Mason's exquisite idols are as national as a jingo poem. Mr. Burke fosters landscapes, smile at one much in the same way that Mr. Carcor used to flash his teeth. and Mr. John caudier gives his sitter a cheerful slap in the back before he says like a shampoo or an attorneys bath next man it is obviously unnecessary for us to point out how luminous these criticisms are how delicate an expression on the general principles of art mr cruelter writes with equal lucidity painting he tells us is of a different quality to mathematics and finish in art is adding more fact as for etchings there are two kinds: British and foreign, He laments most bitterly the divorce that has been made between decorative art and what we usually call pictures, makes a customary appeal to the last judgment and reminds us that in the great days of art Michelangelo was the furnishing upholsterer.",
+          "anchors": [
+            {
+              "file": "1272-128104-0000.wav",
+              "anchor": "welcome his gospel",
+              "clipEndSeconds": 5.855,
+              "firstVisibleLagSeconds": 0.056900000095367,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0001.wav",
+              "anchor": "than his matter",
+              "clipEndSeconds": 10.670000000000002,
+              "firstVisibleLagSeconds": 1.0387000000476814,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0002.wav",
+              "anchor": "to the mind",
+              "clipEndSeconds": 23.155,
+              "firstVisibleLagSeconds": 3.463800000071526,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0003.wav",
+              "anchor": "of rocky ithaca",
+              "clipEndSeconds": 33.055,
+              "firstVisibleLagSeconds": 3.9380000000000024,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0004.wav",
+              "anchor": "bath next man",
+              "clipEndSeconds": 62.455,
+              "firstVisibleLagSeconds": 2.6297000000476913,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0005.wav",
+              "anchor": "delicate in expression",
+              "clipEndSeconds": 71.465,
+              "firstVisibleLagSeconds": null,
+              "presentAtFinish": false
+            },
+            {
+              "file": "1272-128104-0006.wav",
+              "anchor": "with equal lucidity",
+              "clipEndSeconds": 77.105,
+              "firstVisibleLagSeconds": 3.842700000047685,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0007.wav",
+              "anchor": "adding more fact",
+              "clipEndSeconds": 86.345,
+              "firstVisibleLagSeconds": 2.015700000047687,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0008.wav",
+              "anchor": "british and foreign",
+              "clipEndSeconds": 91.465,
+              "firstVisibleLagSeconds": 2.7196000000238314,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0009.wav",
+              "anchor": "the furnishing upholsterer",
+              "clipEndSeconds": 109.755,
+              "firstVisibleLagSeconds": 3.0625,
+              "presentAtFinish": true
+            }
+          ],
+          "medianAnchorLagSeconds": 2.7196000000238314
+        },
+        {
+          "policy": "context",
+          "windowSeconds": 60,
+          "overlapSeconds": 30,
+          "metrics": {
+            "audioSeconds": 109.755,
+            "firstWordMs": 1271.1000000238419,
+            "releaseMs": 33354.5,
+            "inferenceMs": 137046,
+            "calls": 40,
+            "updates": 491,
+            "revisions": 27,
+            "changedWords": 156,
+            "peakPcmBytes": 3840000,
+            "longestActualModelSegment": 60,
+            "tokenLimitHits": 3,
+            "fallbackCalls": 3,
+            "backlogP95Seconds": 30.1,
+            "backlogEarlyMeanSeconds": 2.3668493150684933,
+            "backlogLateMeanSeconds": 22.501784741144412,
+            "updateGapP95Ms": 736.6999999284744,
+            "feedLateMs": 1.5,
+            "timingValid": true
+          },
+          "score": {
+            "errors": 345,
+            "referenceWords": 254,
+            "wer": 1.358267716535433,
+            "substitutions": 96,
+            "deletions": 2,
+            "insertions": 247
+          },
+          "text": "The Mr. Quilter is the apostle of the middle classes and we are glad to welcome his gospel. Nor is Mr. Quilter's manner less interesting than his matter. He has great doubts whether Sir Frederick Layton's work is really Greek after all and can discover in it but little of Rocky Ithaca. Lennell's pictures are a sort of up-guards and adam paintings and Mason's exquisite idols are as national as a jingo poem. Mr. Birch fosters landscapes smile at one much in the same way that Mr. Carthage is a national as a jingo poem. Mr. Birch fosters landscapes smile at one much in the same way that Mr. Carthage is a national as a jingo poem. Mr. Birch fosters landscapes smile at one much in the same way that Mr. Carthage is a national as a jingo poem. Mr. Birch fosters landscapes smile at one much in the same way that Mason's exquisite idols are as national as a jingo poem. Mr. Birch fosters landscapes smile at one much in the same way that Mason's a great gift. The most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the Turkish bath next man it is obviously unnecessary for us to point out how luminous these criticisms are how delicate an expression on the general principles of art mr. cruelter writes with equal lucidity painting he tells us is of a different quality to mathematics and finish in art is adding more fact as for etchings there are two kinds british And foreign, he laments most bitterly the divorce that has been made between decorative art and what we usually call pictures, makes a customary appeal to the last judgment and reminds us that in the great days of art Michelangelo was the furnishing upholsterer.",
+          "anchors": [
+            {
+              "file": "1272-128104-0000.wav",
+              "anchor": "welcome his gospel",
+              "clipEndSeconds": 5.855,
+              "firstVisibleLagSeconds": 0.4308000000715255,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0001.wav",
+              "anchor": "than his matter",
+              "clipEndSeconds": 10.670000000000002,
+              "firstVisibleLagSeconds": 0.6173000000715234,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0002.wav",
+              "anchor": "to the mind",
+              "clipEndSeconds": 23.155,
+              "firstVisibleLagSeconds": 2.13510000002384,
+              "presentAtFinish": false
+            },
+            {
+              "file": "1272-128104-0003.wav",
+              "anchor": "of rocky ithaca",
+              "clipEndSeconds": 33.055,
+              "firstVisibleLagSeconds": 3.765500000000003,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0004.wav",
+              "anchor": "bath next man",
+              "clipEndSeconds": 62.455,
+              "firstVisibleLagSeconds": 32.1195,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0005.wav",
+              "anchor": "delicate in expression",
+              "clipEndSeconds": 71.465,
+              "firstVisibleLagSeconds": null,
+              "presentAtFinish": false
+            },
+            {
+              "file": "1272-128104-0006.wav",
+              "anchor": "with equal lucidity",
+              "clipEndSeconds": 77.105,
+              "firstVisibleLagSeconds": 17.469499999999996,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0007.wav",
+              "anchor": "adding more fact",
+              "clipEndSeconds": 86.345,
+              "firstVisibleLagSeconds": 8.229500000000002,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0008.wav",
+              "anchor": "british and foreign",
+              "clipEndSeconds": 91.465,
+              "firstVisibleLagSeconds": 51.644100000023826,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0009.wav",
+              "anchor": "the furnishing upholsterer",
+              "clipEndSeconds": 109.755,
+              "firstVisibleLagSeconds": 33.354100000023834,
+              "presentAtFinish": true
+            }
+          ],
+          "medianAnchorLagSeconds": 8.229500000000002
+        }
+      ]
+    },
+    {
+      "raw": "test-results/window-study-chromium-mixed-context-paced.json",
+      "engine": "chromium",
+      "browserVersion": "154.0.8037.57",
+      "scenario": "mixed",
+      "paced": true,
+      "samples": [
+        {
+          "file": "1272-128104-0000.wav",
+          "reference": "MISTER QUILTER IS THE APOSTLE OF THE MIDDLE CLASSES AND WE ARE GLAD TO WELCOME HIS GOSPEL",
+          "source": "https://huggingface.co/datasets/hf-internal-testing/librispeech_asr_dummy",
+          "sha256": "6051d0d44c2291bbeac1e33042437eecec634eecc6868c7043b9fcc84832d4ef"
+        },
+        {
+          "file": "1272-128104-0001.wav",
+          "reference": "NOR IS MISTER QUILTER'S MANNER LESS INTERESTING THAN HIS MATTER",
+          "source": "https://huggingface.co/datasets/hf-internal-testing/librispeech_asr_dummy",
+          "sha256": "70b4f3754946d8497d70efa2cd89d7a84ba6b44d45ace5a93c6c7e6f01ad51cd"
+        },
+        {
+          "file": "1272-128104-0002.wav",
+          "reference": "HE TELLS US THAT AT THIS FESTIVE SEASON OF THE YEAR WITH CHRISTMAS AND ROAST BEEF LOOMING BEFORE US SIMILES DRAWN FROM EATING AND ITS RESULTS OCCUR MOST READILY TO THE MIND",
+          "source": "https://huggingface.co/datasets/hf-internal-testing/librispeech_asr_dummy",
+          "sha256": "e5297dc7ee3feaf7eebd8cdcf20c3cd82d9b9febf708f67c7b9581693f3d1d10"
+        },
+        {
+          "file": "1320-122617-0022.wav",
+          "reference": "THE DELAWARES ARE CHILDREN OF THE TORTOISE AND THEY OUTSTRIP THE DEER",
+          "source": "https://datasets-server.huggingface.co/rows?dataset=openslr/librispeech_asr&config=clean&split=test&offset=100&length=2",
+          "speaker": 1320,
+          "sha256": "c1d87da3b3624052673a076b7701e83059dce464bd0109b1688a6ae0b1f0c218"
+        },
+        {
+          "file": "1320-122617-0023.wav",
+          "reference": "UNCAS WHO HAD ALREADY APPROACHED THE DOOR IN READINESS TO LEAD THE WAY NOW RECOILED AND PLACED HIMSELF ONCE MORE IN THE BOTTOM OF THE LODGE",
+          "source": "https://datasets-server.huggingface.co/rows?dataset=openslr/librispeech_asr&config=clean&split=test&offset=100&length=2",
+          "speaker": 1320,
+          "sha256": "bfbbfc25c021c89938b11e431cc2968ae65298d6955b8956c984a230dad28d76"
+        },
+        {
+          "file": "2961-960-0003.wav",
+          "reference": "THEY WERE ABSORBED IN HIS THEOLOGY AND WERE UNDER THE DOMINION OF HIS NAME WHILE THAT WHICH WAS TRULY GREAT AND TRULY CHARACTERISTIC IN HIM HIS EFFORT TO REALIZE AND CONNECT ABSTRACTIONS WAS NOT UNDERSTOOD BY THEM AT ALL",
+          "source": "https://datasets-server.huggingface.co/rows?dataset=openslr/librispeech_asr&config=clean&split=test&offset=500&length=2",
+          "speaker": 2961,
+          "sha256": "08ad4ff79adf49c606f354b4913b7cd5b4b1ae8ead39fa8755d315c1f5e4df29"
+        },
+        {
+          "file": "2961-960-0004.wav",
+          "reference": "THERE IS NO DANGER OF THE MODERN COMMENTATORS ON THE TIMAEUS FALLING INTO THE ABSURDITIES OF THE NEO PLATONISTS",
+          "source": "https://datasets-server.huggingface.co/rows?dataset=openslr/librispeech_asr&config=clean&split=test&offset=500&length=2",
+          "speaker": 2961,
+          "sha256": "36244a2898fbcedcd48bf7abf52c3e476198c70d66bc8f617d89c2c5282e42f6"
+        },
+        {
+          "file": "8455-210777-0028.wav",
+          "reference": "JACK WOULD BECOME EVA'S HAPPY HUSBAND AND WOULD REMAIN AMIDST THE HURRIED DUTIES OF THE EAGER WORLD",
+          "source": "https://datasets-server.huggingface.co/rows?dataset=openslr/librispeech_asr&config=clean&split=test&offset=1000&length=2",
+          "speaker": 8455,
+          "sha256": "b951deba5b78d449f02fd9cfad1d3e795fb9e771d426c6750fa171b914e76d5c"
+        },
+        {
+          "file": "8455-210777-0029.wav",
+          "reference": "THINKING OF ALL THIS I WENT TO SLEEP",
+          "source": "https://datasets-server.huggingface.co/rows?dataset=openslr/librispeech_asr&config=clean&split=test&offset=1000&length=2",
+          "speaker": 8455,
+          "sha256": "455a835256a1a5bf32f3aea3dc73e62e4ce58e4c9fdc0faf83c6049a0b1a2d7c"
+        }
+      ],
+      "runs": [
+        {
+          "policy": "context",
+          "windowSeconds": 60,
+          "overlapSeconds": 30,
+          "metrics": {
+            "audioSeconds": 71.18,
+            "firstWordMs": 1182,
+            "releaseMs": 41766.200000047684,
+            "inferenceMs": 108059,
+            "calls": 33,
+            "updates": 369,
+            "revisions": 16,
+            "changedWords": 335,
+            "peakPcmBytes": 3840000,
+            "longestActualModelSegment": 60,
+            "tokenLimitHits": 3,
+            "fallbackCalls": 1,
+            "backlogP95Seconds": 19.4,
+            "backlogEarlyMeanSeconds": 1.7261603375527428,
+            "backlogLateMeanSeconds": 13.699915966386554,
+            "updateGapP95Ms": 1128.5,
+            "feedLateMs": 2.9000000953674316,
+            "timingValid": true
+          },
+          "score": {
+            "errors": 315,
+            "referenceWords": 180,
+            "wer": 1.75,
+            "substitutions": 66,
+            "deletions": 0,
+            "insertions": 249
+          },
+          "text": "Mr. Quilter is the apostle of the middle classes and we are glad to welcome his gospel. Nor is Mr. Quilter's manner less interesting than his matter. He tells us that at this festive season of the year, with Christmas and rose, beef looming before us, similes drawn from eating and its results, a cur, most readily to the mind. The Delawares are children of the tortoise and the outs stripped the deer. The Delawares are children of the tortoise and the outs stripped the deer. The Delawares are children of the Torah and the church of the church. They were absorbed in the history of the New York Platonist. They were absorbed in the modern common teachers of the New York Platonists. They were absorbed in the modern common teachers of the New York Platonists. They were absorbed in the modern common teachers of the New York Platonists. They were absorbed in the modern common teachers of the New York Platonists. They were absorbed in the modern common teachers of the New York Platonists. They were absorbed in the modern and the modern community of the Torres and the old people. They were absorbed in the church and the church of the New York Platonists. They were absorbed in the church of the Jewish people. They were also the first to be able to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to be the first to the first to be the first to be the first to the first to be the first to the first to the first to the first to the first to the first to the first to be the first to be the first to the first to the first to the first to be the first to be the first to be the Jack would become Eva's happy husband and would remain amidst the hurried duties of the eager world, thinking of all this I went to sleep."
+        },
+        {
+          "policy": "context",
+          "windowSeconds": 30,
+          "overlapSeconds": 15,
+          "metrics": {
+            "audioSeconds": 71.18,
+            "firstWordMs": 1274.1999999284744,
+            "releaseMs": 4625,
+            "inferenceMs": 69379,
+            "calls": 43,
+            "updates": 200,
+            "revisions": 20,
+            "changedWords": 50,
+            "peakPcmBytes": 1920000,
+            "longestActualModelSegment": 30,
+            "tokenLimitHits": 0,
+            "fallbackCalls": 0,
+            "backlogP95Seconds": 6.5,
+            "backlogEarlyMeanSeconds": 1.6860759493670887,
+            "backlogLateMeanSeconds": 3.8919327731092435,
+            "updateGapP95Ms": 2463.899999976158,
+            "feedLateMs": 13.799999952316284,
+            "timingValid": true
+          },
+          "score": {
+            "errors": 8,
+            "referenceWords": 180,
+            "wer": 0.044444444444444446,
+            "substitutions": 8,
+            "deletions": 0,
+            "insertions": 0
+          },
+          "text": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel. Nor is Mr. Quilter's manner less interesting than his matter. He tells us that at this festive season of the year, with Christmas and rose beef looming before us, similes drawn from eating and its results occur most readily to the mind. The Delawares are children of the tortoise and they outstrip the deer. Honkus, who had already approached the door and readiness to lead the way, now recoiled and placed himself once more in the bottom of the lodge. They were absorbed in his theology and were under the dominion of his name, while that which was truly great and truly characteristic in him, his effort to realize and connect abstractions was not understood by them at all. There is no danger of the modern commentators on the TBS following the intradib absurdities of the neo-platinists. Jack would become Eva's happy husband and would remain amidst the hurried duties of the eager world. Thinking of all this, I went to sleep."
+        },
+        {
+          "policy": "context",
+          "windowSeconds": 15,
+          "overlapSeconds": 7.5,
+          "metrics": {
+            "audioSeconds": 71.18,
+            "firstWordMs": 1272.2999999523163,
+            "releaseMs": 1384.7000000476837,
+            "inferenceMs": 63739,
+            "calls": 66,
+            "updates": 199,
+            "revisions": 29,
+            "changedWords": 35,
+            "peakPcmBytes": 960000,
+            "longestActualModelSegment": 15,
+            "tokenLimitHits": 0,
+            "fallbackCalls": 0,
+            "backlogP95Seconds": 3.1,
+            "backlogEarlyMeanSeconds": 1.4451476793248943,
+            "backlogLateMeanSeconds": 1.7057983193277308,
+            "updateGapP95Ms": 1427,
+            "feedLateMs": 2,
+            "timingValid": true
+          },
+          "score": {
+            "errors": 10,
+            "referenceWords": 180,
+            "wer": 0.05555555555555555,
+            "substitutions": 6,
+            "deletions": 0,
+            "insertions": 4
+          },
+          "text": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel, nor is Mr. Quilter's manner less interesting than his matter. He tells us that at this festive season of the year with Christmas and rose beef looming before us, similes drawn from eating and its results occur most readily to the mind. The Delawares are children of the tortoise, and they outstrip the deer, uncas, who had already approached the door and readiness to lead the way, now recoiled and placed himself once more in the bottom of the lodge. they were absorbed in his theology and were under the dominion of his name, while that which was truly great and truly characteristic in him, his effort to realize and connect abstractions was not understood by them at all. There is no danger of the modern commentators on the T. B. S. following the interview absurdities of the New York Platonists. Nests. Jack would become Eva's happy husband and would remain amidst the hurried duties of the eager world, thinking of all this I went to sleep."
+        }
+      ]
+    },
+    {
+      "raw": "test-results/window-study-chromium-prose-current-policy.json",
+      "engine": "chromium",
+      "browserVersion": "154.0.8037.57",
+      "scenario": "prose",
+      "paced": true,
+      "samples": [
+        {
+          "id": "1272-128104-0000",
+          "file": "1272-128104-0000.wav",
+          "reference": "MISTER QUILTER IS THE APOSTLE OF THE MIDDLE CLASSES AND WE ARE GLAD TO WELCOME HIS GOSPEL",
+          "seconds": 5.855,
+          "sha256": "799f78ed4beb4de7ceae3a809262d4ce242394342ccd1d58cef7d49dbc2def46",
+          "row": 0
+        },
+        {
+          "id": "1272-128104-0001",
+          "file": "1272-128104-0001.wav",
+          "reference": "NOR IS MISTER QUILTER'S MANNER LESS INTERESTING THAN HIS MATTER",
+          "seconds": 4.815,
+          "sha256": "473b1bb573e8f7cdcd639c6e318036236190107b66bfe6892286121a92d464c1",
+          "row": 1
+        },
+        {
+          "id": "1272-128104-0002",
+          "file": "1272-128104-0002.wav",
+          "reference": "HE TELLS US THAT AT THIS FESTIVE SEASON OF THE YEAR WITH CHRISTMAS AND ROAST BEEF LOOMING BEFORE US SIMILES DRAWN FROM EATING AND ITS RESULTS OCCUR MOST READILY TO THE MIND",
+          "seconds": 12.485,
+          "sha256": "5f4d8f7331acffc3d2efbe0f764b9eb3447911dc17f9843e38e1083eb1685b9c",
+          "row": 2
+        },
+        {
+          "id": "1272-128104-0003",
+          "file": "1272-128104-0003.wav",
+          "reference": "HE HAS GRAVE DOUBTS WHETHER SIR FREDERICK LEIGHTON'S WORK IS REALLY GREEK AFTER ALL AND CAN DISCOVER IN IT BUT LITTLE OF ROCKY ITHACA",
+          "seconds": 9.9,
+          "sha256": "fc23353b884061a5c5784b0cf6b5c539680c50cfae993882822ebdd4a06ddf8c",
+          "row": 3
+        },
+        {
+          "id": "1272-128104-0004",
+          "file": "1272-128104-0004.wav",
+          "reference": "LINNELL'S PICTURES ARE A SORT OF UP GUARDS AND AT EM PAINTINGS AND MASON'S EXQUISITE IDYLLS ARE AS NATIONAL AS A JINGO POEM MISTER BIRKET FOSTER'S LANDSCAPES SMILE AT ONE MUCH IN THE SAME WAY THAT MISTER CARKER USED TO FLASH HIS TEETH AND MISTER JOHN COLLIER GIVES HIS SITTER A CHEERFUL SLAP ON THE BACK BEFORE HE SAYS LIKE A SHAMPOOER IN A TURKISH BATH NEXT MAN",
+          "seconds": 29.4,
+          "sha256": "4798e34d9a323ed835ae6055172236f8965dd5ccf146c25758711023ecc8b2e6",
+          "row": 4
+        },
+        {
+          "id": "1272-128104-0005",
+          "file": "1272-128104-0005.wav",
+          "reference": "IT IS OBVIOUSLY UNNECESSARY FOR US TO POINT OUT HOW LUMINOUS THESE CRITICISMS ARE HOW DELICATE IN EXPRESSION",
+          "seconds": 9.01,
+          "sha256": "abd89d9a5108f87f03d03875272e1f3f18bef61ea4c271a0ec5bbc3a5bfc223a",
+          "row": 5
+        },
+        {
+          "id": "1272-128104-0006",
+          "file": "1272-128104-0006.wav",
+          "reference": "ON THE GENERAL PRINCIPLES OF ART MISTER QUILTER WRITES WITH EQUAL LUCIDITY",
+          "seconds": 5.64,
+          "sha256": "acbc588a1ba63290a48aeb9b37c815475627ba58a815ff095042fa61729fe3a0",
+          "row": 6
+        },
+        {
+          "id": "1272-128104-0007",
+          "file": "1272-128104-0007.wav",
+          "reference": "PAINTING HE TELLS US IS OF A DIFFERENT QUALITY TO MATHEMATICS AND FINISH IN ART IS ADDING MORE FACT",
+          "seconds": 9.24,
+          "sha256": "66ea55755fe31a7af9bb121ad33fd2037dbc8e2fc66d4cfb3f50cb8fa1e63561",
+          "row": 7
+        },
+        {
+          "id": "1272-128104-0008",
+          "file": "1272-128104-0008.wav",
+          "reference": "AS FOR ETCHINGS THEY ARE OF TWO KINDS BRITISH AND FOREIGN",
+          "seconds": 5.12,
+          "sha256": "9514dcfa2f52cd7540c686c555213ca539b7ec8913b93913d14bfed151bdb72e",
+          "row": 8
+        },
+        {
+          "id": "1272-128104-0009",
+          "file": "1272-128104-0009.wav",
+          "reference": "HE LAMENTS MOST BITTERLY THE DIVORCE THAT HAS BEEN MADE BETWEEN DECORATIVE ART AND WHAT WE USUALLY CALL PICTURES MAKES THE CUSTOMARY APPEAL TO THE LAST JUDGMENT AND REMINDS US THAT IN THE GREAT DAYS OF ART MICHAEL ANGELO WAS THE FURNISHING UPHOLSTERER",
+          "seconds": 18.29,
+          "sha256": "f91fae94e75d6e831eede05bff930beab5300cfc484a806ea196df2d6f219e19",
+          "row": 9
+        }
+      ],
+      "runs": [
+        {
+          "policy": "pause",
+          "windowSeconds": 15,
+          "overlapSeconds": 7.5,
+          "metrics": {
+            "audioSeconds": 109.755,
+            "firstWordMs": 1178.2000000476837,
+            "releaseMs": 1032.8000000715256,
+            "inferenceMs": 62821,
+            "calls": 193,
+            "updates": 378,
+            "revisions": 89,
+            "changedWords": 220,
+            "peakPcmBytes": 960000,
+            "longestActualModelSegment": 10.5,
+            "tokenLimitHits": 10,
+            "fallbackCalls": 0,
+            "backlogP95Seconds": 1.3,
+            "backlogEarlyMeanSeconds": 0.6583013698630138,
+            "backlogLateMeanSeconds": 0.6399863760217984,
+            "updateGapP95Ms": 840,
+            "feedLateMs": 3.100000023841858,
+            "timingValid": true
+          },
+          "score": {
+            "errors": 27,
+            "referenceWords": 254,
+            "wer": 0.1062992125984252,
+            "substitutions": 21,
+            "deletions": 5,
+            "insertions": 1
+          },
+          "text": "Mr. Quilter is the apostle of the middle classes, and we are glad to welcome his gospel. Nor is Mr. Quilter's manner less interesting than his matter. He tells us that at this festive season of the year with Christmas and rose beef looming before us. Similes drawn from eating and its results occur most readily to the mind. He has grave doubts whether Sir Frederick Layton's work is really Greek after all. And can discover in it but little of Waukee Issachar. Linels pictures are a sort of. Up guards and atom paintings. And mason's exquisite idols are as national as a jingo poem. Mr. Burke fosters landscapes, smile at one, much in the same way as at Mr. Carcor, used to flash his teeth. And Mr. John Collier gives his cider a cheerful slap on the back before he says, like a shampoo or an Turkish bath next man. It is obviously unnecessary for us to point out how luminous these criticisms are, how delicate an expression. Under general principles of art, Mr. Quilter writes with equal lucidity. Painting, he tells us, is... Of a different quality to mathematics. And finish in art is. Adding more effect. As for etchings, thereof two kinds. British and foreign. He laments most bitterly the divorce that has been made between decorative art and. What we usually call pictures. Makes a customary appeal to the last judgment and reminds us that in the great days of art, Michelangelo was the furnishing upholsterer.",
+          "anchors": [
+            {
+              "file": "1272-128104-0000.wav",
+              "anchor": "welcome his gospel",
+              "clipEndSeconds": 5.855,
+              "firstVisibleLagSeconds": 0.33780000007152555,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0001.wav",
+              "anchor": "than his matter",
+              "clipEndSeconds": 10.670000000000002,
+              "firstVisibleLagSeconds": 0.13390000009536607,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0002.wav",
+              "anchor": "to the mind",
+              "clipEndSeconds": 23.155,
+              "firstVisibleLagSeconds": -0.07139999997615831,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0003.wav",
+              "anchor": "of rocky ithaca",
+              "clipEndSeconds": 33.055,
+              "firstVisibleLagSeconds": null,
+              "presentAtFinish": false
+            },
+            {
+              "file": "1272-128104-0004.wav",
+              "anchor": "bath next man",
+              "clipEndSeconds": 62.455,
+              "firstVisibleLagSeconds": 0.872400000095368,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0005.wav",
+              "anchor": "delicate in expression",
+              "clipEndSeconds": 71.465,
+              "firstVisibleLagSeconds": null,
+              "presentAtFinish": false
+            },
+            {
+              "file": "1272-128104-0006.wav",
+              "anchor": "with equal lucidity",
+              "clipEndSeconds": 77.105,
+              "firstVisibleLagSeconds": 0.15899999999999181,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0007.wav",
+              "anchor": "adding more fact",
+              "clipEndSeconds": 86.345,
+              "firstVisibleLagSeconds": null,
+              "presentAtFinish": false
+            },
+            {
+              "file": "1272-128104-0008.wav",
+              "anchor": "british and foreign",
+              "clipEndSeconds": 91.465,
+              "firstVisibleLagSeconds": -0.24519999992847374,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0009.wav",
+              "anchor": "the furnishing upholsterer",
+              "clipEndSeconds": 109.755,
+              "firstVisibleLagSeconds": 1.0324000000953788,
+              "presentAtFinish": true
+            }
+          ],
+          "medianAnchorLagSeconds": 0.15899999999999181
+        }
+      ]
+    },
+    {
+      "raw": "test-results/window-study-chromium-prose-60-sanity.json",
+      "engine": "chromium",
+      "browserVersion": "154.0.8037.57",
+      "scenario": "prose",
+      "paced": false,
+      "samples": [
+        {
+          "id": "1272-128104-0000",
+          "file": "1272-128104-0000.wav",
+          "reference": "MISTER QUILTER IS THE APOSTLE OF THE MIDDLE CLASSES AND WE ARE GLAD TO WELCOME HIS GOSPEL",
+          "seconds": 5.855,
+          "sha256": "799f78ed4beb4de7ceae3a809262d4ce242394342ccd1d58cef7d49dbc2def46",
+          "row": 0
+        },
+        {
+          "id": "1272-128104-0001",
+          "file": "1272-128104-0001.wav",
+          "reference": "NOR IS MISTER QUILTER'S MANNER LESS INTERESTING THAN HIS MATTER",
+          "seconds": 4.815,
+          "sha256": "473b1bb573e8f7cdcd639c6e318036236190107b66bfe6892286121a92d464c1",
+          "row": 1
+        },
+        {
+          "id": "1272-128104-0002",
+          "file": "1272-128104-0002.wav",
+          "reference": "HE TELLS US THAT AT THIS FESTIVE SEASON OF THE YEAR WITH CHRISTMAS AND ROAST BEEF LOOMING BEFORE US SIMILES DRAWN FROM EATING AND ITS RESULTS OCCUR MOST READILY TO THE MIND",
+          "seconds": 12.485,
+          "sha256": "5f4d8f7331acffc3d2efbe0f764b9eb3447911dc17f9843e38e1083eb1685b9c",
+          "row": 2
+        },
+        {
+          "id": "1272-128104-0003",
+          "file": "1272-128104-0003.wav",
+          "reference": "HE HAS GRAVE DOUBTS WHETHER SIR FREDERICK LEIGHTON'S WORK IS REALLY GREEK AFTER ALL AND CAN DISCOVER IN IT BUT LITTLE OF ROCKY ITHACA",
+          "seconds": 9.9,
+          "sha256": "fc23353b884061a5c5784b0cf6b5c539680c50cfae993882822ebdd4a06ddf8c",
+          "row": 3
+        },
+        {
+          "id": "1272-128104-0004",
+          "file": "1272-128104-0004.wav",
+          "reference": "LINNELL'S PICTURES ARE A SORT OF UP GUARDS AND AT EM PAINTINGS AND MASON'S EXQUISITE IDYLLS ARE AS NATIONAL AS A JINGO POEM MISTER BIRKET FOSTER'S LANDSCAPES SMILE AT ONE MUCH IN THE SAME WAY THAT MISTER CARKER USED TO FLASH HIS TEETH AND MISTER JOHN COLLIER GIVES HIS SITTER A CHEERFUL SLAP ON THE BACK BEFORE HE SAYS LIKE A SHAMPOOER IN A TURKISH BATH NEXT MAN",
+          "seconds": 29.4,
+          "sha256": "4798e34d9a323ed835ae6055172236f8965dd5ccf146c25758711023ecc8b2e6",
+          "row": 4
+        },
+        {
+          "id": "1272-128104-0005",
+          "file": "1272-128104-0005.wav",
+          "reference": "IT IS OBVIOUSLY UNNECESSARY FOR US TO POINT OUT HOW LUMINOUS THESE CRITICISMS ARE HOW DELICATE IN EXPRESSION",
+          "seconds": 9.01,
+          "sha256": "abd89d9a5108f87f03d03875272e1f3f18bef61ea4c271a0ec5bbc3a5bfc223a",
+          "row": 5
+        },
+        {
+          "id": "1272-128104-0006",
+          "file": "1272-128104-0006.wav",
+          "reference": "ON THE GENERAL PRINCIPLES OF ART MISTER QUILTER WRITES WITH EQUAL LUCIDITY",
+          "seconds": 5.64,
+          "sha256": "acbc588a1ba63290a48aeb9b37c815475627ba58a815ff095042fa61729fe3a0",
+          "row": 6
+        },
+        {
+          "id": "1272-128104-0007",
+          "file": "1272-128104-0007.wav",
+          "reference": "PAINTING HE TELLS US IS OF A DIFFERENT QUALITY TO MATHEMATICS AND FINISH IN ART IS ADDING MORE FACT",
+          "seconds": 9.24,
+          "sha256": "66ea55755fe31a7af9bb121ad33fd2037dbc8e2fc66d4cfb3f50cb8fa1e63561",
+          "row": 7
+        },
+        {
+          "id": "1272-128104-0008",
+          "file": "1272-128104-0008.wav",
+          "reference": "AS FOR ETCHINGS THEY ARE OF TWO KINDS BRITISH AND FOREIGN",
+          "seconds": 5.12,
+          "sha256": "9514dcfa2f52cd7540c686c555213ca539b7ec8913b93913d14bfed151bdb72e",
+          "row": 8
+        },
+        {
+          "id": "1272-128104-0009",
+          "file": "1272-128104-0009.wav",
+          "reference": "HE LAMENTS MOST BITTERLY THE DIVORCE THAT HAS BEEN MADE BETWEEN DECORATIVE ART AND WHAT WE USUALLY CALL PICTURES MAKES THE CUSTOMARY APPEAL TO THE LAST JUDGMENT AND REMINDS US THAT IN THE GREAT DAYS OF ART MICHAEL ANGELO WAS THE FURNISHING UPHOLSTERER",
+          "seconds": 18.29,
+          "sha256": "f91fae94e75d6e831eede05bff930beab5300cfc484a806ea196df2d6f219e19",
+          "row": 9
+        }
+      ],
+      "runs": [
+        {
+          "policy": "context",
+          "windowSeconds": 60,
+          "overlapSeconds": 30,
+          "metrics": {
+            "audioSeconds": 109.755,
+            "firstWordMs": 889,
+            "releaseMs": 0.3999999761581421,
+            "inferenceMs": 72999,
+            "calls": 6,
+            "updates": 396,
+            "revisions": 10,
+            "changedWords": 57,
+            "peakPcmBytes": 1920000,
+            "longestActualModelSegment": 60,
+            "tokenLimitHits": 3,
+            "fallbackCalls": 2,
+            "backlogP95Seconds": 30,
+            "backlogEarlyMeanSeconds": 30,
+            "backlogLateMeanSeconds": 24.877499999999998,
+            "updateGapP95Ms": 95,
+            "feedLateMs": null,
+            "timingValid": false
+          },
+          "score": {
+            "errors": 345,
+            "referenceWords": 254,
+            "wer": 1.358267716535433,
+            "substitutions": 96,
+            "deletions": 2,
+            "insertions": 247
+          },
+          "text": "The Mr. Quilter is the apostle of the middle classes and we are glad to welcome his gospel. Nor is Mr. Quilter's manner less interesting than his matter. He has great doubts whether Sir Frederick Layton's work is really Greek after all and can discover in it but little of Rocky Ithaca. Lennell's pictures are a sort of up-guards and adam paintings and Mason's exquisite idols are as national as a jingo poem. Mr. Birch fosters landscapes smile at one much in the same way that Mr. Carthage is a national as a jingo poem. Mr. Birch fosters landscapes smile at one much in the same way that Mr. Carthage is a national as a jingo poem. Mr. Birch fosters landscapes smile at one much in the same way that Mr. Carthage is a national as a jingo poem. Mr. Birch fosters landscapes smile at one much in the same way that Mason's exquisite idols are as national as a jingo poem. Mr. Birch fosters landscapes smile at one much in the same way that Mason's a great gift. The most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the most of the Turkish bath next man it is obviously unnecessary for us to point out how luminous these criticisms are how delicate an expression on the general principles of art mr. cruelter writes with equal lucidity painting he tells us is of a different quality to mathematics and finish in art is adding more fact as for etchings there are two kinds british And foreign, he laments most bitterly the divorce that has been made between decorative art and what we usually call pictures, makes a customary appeal to the last judgment and reminds us that in the great days of art Michelangelo was the furnishing upholsterer.",
+          "anchors": [
+            {
+              "file": "1272-128104-0000.wav",
+              "anchor": "welcome his gospel",
+              "clipEndSeconds": 5.855,
+              "firstVisibleLagSeconds": -4.496600000023842,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0001.wav",
+              "anchor": "than his matter",
+              "clipEndSeconds": 10.670000000000002,
+              "firstVisibleLagSeconds": -8.971200000047686,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0002.wav",
+              "anchor": "to the mind",
+              "clipEndSeconds": 23.155,
+              "firstVisibleLagSeconds": -20.563800000071527,
+              "presentAtFinish": false
+            },
+            {
+              "file": "1272-128104-0003.wav",
+              "anchor": "of rocky ithaca",
+              "clipEndSeconds": 33.055,
+              "firstVisibleLagSeconds": -24.581400000095368,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0004.wav",
+              "anchor": "bath next man",
+              "clipEndSeconds": 62.455,
+              "firstVisibleLagSeconds": -5.158300000071527,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0005.wav",
+              "anchor": "delicate in expression",
+              "clipEndSeconds": 71.465,
+              "firstVisibleLagSeconds": null,
+              "presentAtFinish": false
+            },
+            {
+              "file": "1272-128104-0006.wav",
+              "anchor": "with equal lucidity",
+              "clipEndSeconds": 77.105,
+              "firstVisibleLagSeconds": -19.808300000071533,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0007.wav",
+              "anchor": "adding more fact",
+              "clipEndSeconds": 86.345,
+              "firstVisibleLagSeconds": -29.048300000071528,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0008.wav",
+              "anchor": "british and foreign",
+              "clipEndSeconds": 91.465,
+              "firstVisibleLagSeconds": -18.31360000002384,
+              "presentAtFinish": true
+            },
+            {
+              "file": "1272-128104-0009.wav",
+              "anchor": "the furnishing upholsterer",
+              "clipEndSeconds": 109.755,
+              "firstVisibleLagSeconds": -36.60360000002383,
+              "presentAtFinish": true
+            }
+          ],
+          "medianAnchorLagSeconds": -19.808300000071533
+        }
+      ]
+    }
+  ]
+}

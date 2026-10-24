@@ -1,0 +1,162 @@
+{
+  "method": "One serial and three concurrent identical 30-second-window paced trials; distinct performance CPU pairs. Compare actual full-window inference duration.",
+  "cases": [
+    {
+      "label": "serial",
+      "raw": "test-results/window-study-chromium-calibration-serial.json",
+      "execution": {
+        "lane": "cal-serial",
+        "cpuAffinity": "5-6"
+      },
+      "metrics": {
+        "audioSeconds": 97.88,
+        "firstWordMs": 2677.1999999284744,
+        "releaseMs": 2359.7999999523163,
+        "inferenceMs": 90506,
+        "calls": 62,
+        "updates": 265,
+        "revisions": 39,
+        "changedWords": 108,
+        "peakPcmBytes": 1920000,
+        "longestActualModelSegment": 30,
+        "tokenLimitHits": 0,
+        "fallbackCalls": 0,
+        "backlogP95Seconds": 4.9,
+        "backlogEarlyMeanSeconds": 1.9809815950920244,
+        "backlogLateMeanSeconds": 3.144892966360857,
+        "updateGapP95Ms": 2075.899999976158,
+        "feedLateMs": 22,
+        "timingValid": true
+      },
+      "errors": 18,
+      "full30MedianMs": 2687,
+      "text": "No words were spoken, no language was uttered, save down of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and naught in reality. I heard a noise behind. I turned and saw kaffir his black eyes shining, while in his hand he held a gleaming knife. he lifted it above his head as if to strike, but i had the strength of ten men, and I hurled him from me onward said a distant voice no sound broke the stillness of the night \"'The story of its evil influence came back to me and in my bewildered condition \"'I wondered whether there was not some truth in what had been said. \"'What was that?' \"'What then a human hand, \"'large and shapely, appeared distinctly on the surface of the pond, \"'nothing more, \"'not even the risk to which it might be attached. it did not beckon or indeed move at all it was as still as the hand of death I awoke to consciousness fighting at first it seemed as if I was fighting with the phantom, but gradually my opponent became more real to me. It was Kafir, a sound of voices, a flash of light, a feeling of freedom, and I was awake. where said another voice which I recognized as Voltaire's. caffer i had scarcely known when i had been saying or doing after this time but as he spoke i looked at my hand"
+    },
+    {
+      "label": "parallel-0",
+      "raw": "test-results/window-study-chromium-calibration-parallel-0.json",
+      "execution": {
+        "lane": "cal-0",
+        "cpuAffinity": "5-6"
+      },
+      "metrics": {
+        "audioSeconds": 97.88,
+        "firstWordMs": 3286.2000000476837,
+        "releaseMs": 2111.899999976158,
+        "inferenceMs": 90328,
+        "calls": 61,
+        "updates": 265,
+        "revisions": 35,
+        "changedWords": 107,
+        "peakPcmBytes": 1920000,
+        "longestActualModelSegment": 30,
+        "tokenLimitHits": 0,
+        "fallbackCalls": 0,
+        "backlogP95Seconds": 4.9,
+        "backlogEarlyMeanSeconds": 2.016871165644172,
+        "backlogLateMeanSeconds": 3.431743119266056,
+        "updateGapP95Ms": 2135.8000000715256,
+        "feedLateMs": 21.399999976158142,
+        "timingValid": true
+      },
+      "errors": 18,
+      "full30MedianMs": 2809,
+      "text": "No words were spoken, no language was uttered, save down of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and naught in reality. I heard a noise behind. I turned and saw kaffir his black eyes shining, while in his hand he held a gleaming knife. he lifted it above his head as if to strike, but i had the strength of ten men, and I hurled him from me onward said a distant voice no sound broke the stillness of the night \"'The story of its evil influence came back to me and in my bewildered condition \"'I wondered whether there was not some truth in what had been said. \"'What was that?' \"'What then a human hand, \"'large and shapely, appeared distinctly on the surface of the pond, \"'nothing more, \"'not even the risk to which it might be attached. it did not beckon or indeed move at all it was as still as the hand of death I awoke to consciousness fighting at first it seemed as if I was fighting with the phantom, but gradually my opponent became more real to me. It was Kafir, a sound of voices, a flash of light, a feeling of freedom, and I was awake. where said another voice which I recognized as Voltaire's. caffer i had scarcely known when i had been saying or doing after this time but as he spoke i looked at my hand"
+    },
+    {
+      "label": "parallel-1",
+      "raw": "test-results/window-study-chromium-calibration-parallel-1.json",
+      "execution": {
+        "lane": "cal-1",
+        "cpuAffinity": "7-8"
+      },
+      "metrics": {
+        "audioSeconds": 97.88,
+        "firstWordMs": 2390.2999999523163,
+        "releaseMs": 3239.100000023842,
+        "inferenceMs": 91521,
+        "calls": 61,
+        "updates": 262,
+        "revisions": 32,
+        "changedWords": 84,
+        "peakPcmBytes": 1920000,
+        "longestActualModelSegment": 30,
+        "tokenLimitHits": 0,
+        "fallbackCalls": 0,
+        "backlogP95Seconds": 5.1,
+        "backlogEarlyMeanSeconds": 2.009509202453988,
+        "backlogLateMeanSeconds": 3.3219571865443425,
+        "updateGapP95Ms": 2162.1999999284744,
+        "feedLateMs": 5.100000023841858,
+        "timingValid": true
+      },
+      "errors": 18,
+      "full30MedianMs": 2811,
+      "text": "No words were spoken, no language was uttered, save down of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and naught in reality. I heard a noise behind. I turned and saw kaffir his black eyes shining, while in his hand he held a gleaming knife. he lifted it above his head as if to strike, but i had the strength of ten men, and I hurled him from me onward said a distant voice no sound broke the stillness of the night \"'The story of its evil influence came back to me and in my bewildered condition \"'I wondered whether there was not some truth in what had been said. \"'What was that?' \"'What then a human hand, \"'large and shapely, appeared distinctly on the surface of the pond, \"'nothing more, \"'not even the risk to which it might be attached. it did not beckon or indeed move at all it was as still as the hand of death I awoke to consciousness fighting at first it seemed as if I was fighting with the phantom, but gradually my opponent became more real to me. It was Kafir, a sound of voices, a flash of light, a feeling of freedom, and I was awake. where said another voice which I recognized as Voltaire's. caffer i had scarcely known when i had been saying or doing after this time but as he spoke i looked at my hand"
+    },
+    {
+      "label": "parallel-2",
+      "raw": "test-results/window-study-chromium-calibration-parallel-2.json",
+      "execution": {
+        "lane": "cal-2",
+        "cpuAffinity": "15-16"
+      },
+      "metrics": {
+        "audioSeconds": 97.88,
+        "firstWordMs": 3388.7999999523163,
+        "releaseMs": 3250,
+        "inferenceMs": 91248,
+        "calls": 62,
+        "updates": 261,
+        "revisions": 36,
+        "changedWords": 94,
+        "peakPcmBytes": 1920000,
+        "longestActualModelSegment": 30,
+        "tokenLimitHits": 0,
+        "fallbackCalls": 0,
+        "backlogP95Seconds": 5.3,
+        "backlogEarlyMeanSeconds": 1.9392638036809817,
+        "backlogLateMeanSeconds": 3.5396941896024465,
+        "updateGapP95Ms": 2195.399999976158,
+        "feedLateMs": 23.799999952316284,
+        "timingValid": true
+      },
+      "errors": 18,
+      "full30MedianMs": 2656,
+      "text": "No words were spoken, no language was uttered, save down of wailing and hissing, and that somehow was indistinct, as if it existed in fancy and naught in reality. I heard a noise behind. I turned and saw kaffir his black eyes shining, while in his hand he held a gleaming knife. he lifted it above his head as if to strike, but i had the strength of ten men, and I hurled him from me onward said a distant voice no sound broke the stillness of the night \"'The story of its evil influence came back to me and in my bewildered condition \"'I wondered whether there was not some truth in what had been said. \"'What was that?' \"'What then a human hand, \"'large and shapely, appeared distinctly on the surface of the pond, \"'nothing more, \"'not even the risk to which it might be attached. it did not beckon or indeed move at all it was as still as the hand of death I awoke to consciousness fighting at first it seemed as if I was fighting with the phantom, but gradually my opponent became more real to me. It was Kafir, a sound of voices, a flash of light, a feeling of freedom, and I was awake. where said another voice which I recognized as Voltaire's. caffer i had scarcely known when i had been saying or doing after this time but as he spoke i looked at my hand"
+    }
+  ],
+  "maxFullWindowSlowdown": 0.04614812058057316,
+  "recovery": {
+    "raw": "test-results/window-study-chromium-calibration-recovery.json",
+    "execution": {
+      "lane": "cal-recovery",
+      "cpuAffinity": "5-6"
+    },
+    "metrics": {
+      "audioSeconds": 97.88,
+      "firstWordMs": 3286.1999999284744,
+      "releaseMs": 3413.100000023842,
+      "inferenceMs": 91343,
+      "calls": 63,
+      "updates": 267,
+      "revisions": 38,
+      "changedWords": 104,
+      "peakPcmBytes": 1920000,
+      "longestActualModelSegment": 30,
+      "tokenLimitHits": 0,
+      "fallbackCalls": 0,
+      "backlogP95Seconds": 4.9,
+      "backlogEarlyMeanSeconds": 1.9788343558282209,
+      "backlogLateMeanSeconds": 3.0614067278287465,
+      "updateGapP95Ms": 2075.899999976158,
+      "feedLateMs": 22.600000023841858,
+      "timingValid": true
+    },
+    "errors": 18,
+    "full30MedianMs": 2702,
+    "sameFinalTextAsSerial": true,
+    "slowdownVsSerial": 0.005582433941198284,
+    "reason": "Repeated after shared-host memory-pressure interruption; no memory stalls during recovery calibration."
+  }
+}

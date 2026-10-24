@@ -1,0 +1,37 @@
+{
+  "best": "raw-plain:conformer-small+zipformer-20m+moonshine-base+whisper-base.en",
+  "strongest": "conformer-small/15/0/plain",
+  "bestSingle": "conformer-small/60/15/hints",
+  "comparisons": [
+    {
+      "candidate": "raw-plain:conformer-small+zipformer-20m+moonshine-base+whisper-base.en",
+      "baseline": "moonshine-tiny/15/0/hints",
+      "wins": 15,
+      "ties": 0,
+      "losses": 0,
+      "fixed": 241,
+      "introduced": 30,
+      "errorReductionPercent": 56.11702127659575
+    },
+    {
+      "candidate": "raw-plain:conformer-small+zipformer-20m+moonshine-base+whisper-base.en",
+      "baseline": "conformer-small/15/0/plain",
+      "wins": 14,
+      "ties": 0,
+      "losses": 1,
+      "fixed": 113,
+      "introduced": 33,
+      "errorReductionPercent": 32.6530612244898
+    },
+    {
+      "candidate": "raw-plain:conformer-small+zipformer-20m+moonshine-base+whisper-base.en",
+      "baseline": "conformer-small/60/15/hints",
+      "wins": 14,
+      "ties": 1,
+      "losses": 0,
+      "fixed": 113,
+      "introduced": 40,
+      "errorReductionPercent": 30.672268907563026
+    }
+  ]
+}

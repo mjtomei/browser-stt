@@ -1,0 +1,410 @@
+{
+  "date": "2026-10-20",
+  "physicalPhone": false,
+  "productionChanged": false,
+  "protocol": "38 author-written text cases with punctuation removed, plus saved real ASR hypotheses/production ensemble votes from 25 public LibriSpeech clips. References withheld from punctuation inference. Text cases do not compare fresh Moonshine audio inference. Single desktop pass, 3 calls per text; warm timing excludes first call. Curated reference punctuation is not uniquely correct; stylistic alternatives count as mismatches. Unsupported punctuation/notation cases excluded from supported F1. WASM heap is not total process memory.",
+  "runs": [
+    {
+      "browser": "chromium",
+      "precision": "int8",
+      "preparation": {
+        "loadMs": 261.19999980926514,
+        "initializationMs": 165.29999995231628,
+        "emptyHeap": 33554432,
+        "loadedHeap": 33554432
+      },
+      "medianWarmMs": 28.40000009536743,
+      "p95WarmMs": 36.09999990463257,
+      "maxLinearHeap": 33554432,
+      "supportedCases": 32,
+      "supportedPunctuation": {
+        "tp": 35,
+        "fp": 7,
+        "fn": 32,
+        "precision": 0.8333333333333334,
+        "recall": 0.5223880597014925,
+        "f1": 0.6422018348623854
+      },
+      "interiorPunctuation": {
+        "tp": 23,
+        "fp": 5,
+        "fn": 12,
+        "precision": 0.8214285714285714,
+        "recall": 0.6571428571428571,
+        "f1": 0.7301587301587301
+      },
+      "and": {
+        "required": 7,
+        "correct": 6,
+        "falseCommaBeforeAndInControls": 0
+      },
+      "naturalClips": 25,
+      "naturalLostTerminalMark": 16,
+      "lexicalPreservedCases": 89,
+      "naturalCommaAdditions": [
+        {
+          "id": "6930-81414-0004",
+          "after": "condition",
+          "before": "i",
+          "beforeAnd": false,
+          "original": "The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said.",
+          "candidate": "The story of its evil influence came back to me, and in my bewildered condition, I wondered whether there was not some truth in what had been said"
+        },
+        {
+          "id": "8224-274384-0006",
+          "after": "psalm",
+          "before": "which",
+          "beforeAnd": false,
+          "original": "The king stood up and called for that psalm which begins with these words.",
+          "candidate": "The king stood up and called for that Psalm, which begins with these words"
+        },
+        {
+          "id": "5105-28233-0000",
+          "after": "months",
+          "before": "and",
+          "beforeAnd": true,
+          "original": "Length of service, fourteen years, three months and five days.",
+          "candidate": "Length of service, fourteen years, three months, and five days"
+        },
+        {
+          "id": "3538-163624-0001",
+          "after": "last",
+          "before": "his",
+          "beforeAnd": false,
+          "original": "The old king went out and fought bravely, but at last his sword broke and he was wounded and his men fled.",
+          "candidate": "The old king went out and fought bravely, but at last, his sword broke and he was wounded and his men fled"
+        },
+        {
+          "id": "7975-280076-0025",
+          "after": "eighteen",
+          "before": "seventy",
+          "beforeAnd": false,
+          "original": "About the last of December, eighteen seventy three, I arrived in Carroll parish, Louisiana.",
+          "candidate": "About the last of December Eighteen, seventy three I arrived in Carroll Parish. Louisiana"
+        }
+      ],
+      "commaOnlyOutputs": [
+        {
+          "id": "6930-81414-0004",
+          "original": "The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said.",
+          "output": "The story of its evil influence came back to me, and in my bewildered condition, I wondered whether there was not some truth in what had been said."
+        },
+        {
+          "id": "8224-274384-0006",
+          "original": "The king stood up and called for that psalm which begins with these words.",
+          "output": "The king stood up and called for that psalm, which begins with these words."
+        },
+        {
+          "id": "5105-28233-0000",
+          "original": "Length of service, fourteen years, three months and five days.",
+          "output": "Length of service, fourteen years, three months, and five days."
+        },
+        {
+          "id": "3538-163624-0001",
+          "original": "The old king went out and fought bravely, but at last his sword broke and he was wounded and his men fled.",
+          "output": "The old king went out and fought bravely, but at last, his sword broke and he was wounded and his men fled."
+        },
+        {
+          "id": "7975-280076-0025",
+          "original": "About the last of December, eighteen seventy three, I arrived in Carroll parish, Louisiana.",
+          "output": "About the last of December, eighteen, seventy three, I arrived in Carroll parish, Louisiana."
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "precision": "fp32",
+      "preparation": {
+        "loadMs": 308.7000000476837,
+        "initializationMs": 185.89999985694885,
+        "emptyHeap": 33554432,
+        "loadedHeap": 58064896
+      },
+      "medianWarmMs": 17.5,
+      "p95WarmMs": 20.299999952316284,
+      "maxLinearHeap": 58064896,
+      "supportedCases": 32,
+      "supportedPunctuation": {
+        "tp": 34,
+        "fp": 7,
+        "fn": 33,
+        "precision": 0.8292682926829268,
+        "recall": 0.5074626865671642,
+        "f1": 0.6296296296296297
+      },
+      "interiorPunctuation": {
+        "tp": 23,
+        "fp": 5,
+        "fn": 12,
+        "precision": 0.8214285714285714,
+        "recall": 0.6571428571428571,
+        "f1": 0.7301587301587301
+      },
+      "and": {
+        "required": 7,
+        "correct": 5,
+        "falseCommaBeforeAndInControls": 0
+      },
+      "naturalClips": 25,
+      "naturalLostTerminalMark": 15,
+      "lexicalPreservedCases": 89,
+      "naturalCommaAdditions": [
+        {
+          "id": "8224-274384-0006",
+          "after": "psalm",
+          "before": "which",
+          "beforeAnd": false,
+          "original": "The king stood up and called for that psalm which begins with these words.",
+          "candidate": "The king stood up and called for that Psalm, which begins with these words"
+        },
+        {
+          "id": "5105-28233-0000",
+          "after": "months",
+          "before": "and",
+          "beforeAnd": true,
+          "original": "Length of service, fourteen years, three months and five days.",
+          "candidate": "Length of service, fourteen years, three months, and five days"
+        },
+        {
+          "id": "3538-163624-0001",
+          "after": "last",
+          "before": "his",
+          "beforeAnd": false,
+          "original": "The old king went out and fought bravely, but at last his sword broke and he was wounded and his men fled.",
+          "candidate": "The old king went out and fought bravely, but at last, his sword broke and he was wounded and his men fled"
+        },
+        {
+          "id": "7975-280076-0025",
+          "after": "eighteen",
+          "before": "seventy",
+          "beforeAnd": false,
+          "original": "About the last of December, eighteen seventy three, I arrived in Carroll parish, Louisiana.",
+          "candidate": "About the last of December Eighteen, seventy three I arrived in Carroll Parish. Louisiana"
+        }
+      ],
+      "commaOnlyOutputs": [
+        {
+          "id": "8224-274384-0006",
+          "original": "The king stood up and called for that psalm which begins with these words.",
+          "output": "The king stood up and called for that psalm, which begins with these words."
+        },
+        {
+          "id": "5105-28233-0000",
+          "original": "Length of service, fourteen years, three months and five days.",
+          "output": "Length of service, fourteen years, three months, and five days."
+        },
+        {
+          "id": "3538-163624-0001",
+          "original": "The old king went out and fought bravely, but at last his sword broke and he was wounded and his men fled.",
+          "output": "The old king went out and fought bravely, but at last, his sword broke and he was wounded and his men fled."
+        },
+        {
+          "id": "7975-280076-0025",
+          "original": "About the last of December, eighteen seventy three, I arrived in Carroll parish, Louisiana.",
+          "output": "About the last of December, eighteen, seventy three, I arrived in Carroll parish, Louisiana."
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "precision": "int8",
+      "preparation": {
+        "loadMs": 330.00000000000006,
+        "initializationMs": 143.00000000000003,
+        "emptyHeap": 33554432,
+        "loadedHeap": 33554432
+      },
+      "medianWarmMs": 27.999999999999773,
+      "p95WarmMs": 33.00000000000091,
+      "maxLinearHeap": 33554432,
+      "supportedCases": 32,
+      "supportedPunctuation": {
+        "tp": 35,
+        "fp": 7,
+        "fn": 32,
+        "precision": 0.8333333333333334,
+        "recall": 0.5223880597014925,
+        "f1": 0.6422018348623854
+      },
+      "interiorPunctuation": {
+        "tp": 23,
+        "fp": 5,
+        "fn": 12,
+        "precision": 0.8214285714285714,
+        "recall": 0.6571428571428571,
+        "f1": 0.7301587301587301
+      },
+      "and": {
+        "required": 7,
+        "correct": 6,
+        "falseCommaBeforeAndInControls": 0
+      },
+      "naturalClips": 25,
+      "naturalLostTerminalMark": 16,
+      "lexicalPreservedCases": 89,
+      "naturalCommaAdditions": [
+        {
+          "id": "6930-81414-0004",
+          "after": "condition",
+          "before": "i",
+          "beforeAnd": false,
+          "original": "The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said.",
+          "candidate": "The story of its evil influence came back to me, and in my bewildered condition, I wondered whether there was not some truth in what had been said"
+        },
+        {
+          "id": "8224-274384-0006",
+          "after": "psalm",
+          "before": "which",
+          "beforeAnd": false,
+          "original": "The king stood up and called for that psalm which begins with these words.",
+          "candidate": "The king stood up and called for that Psalm, which begins with these words"
+        },
+        {
+          "id": "5105-28233-0000",
+          "after": "months",
+          "before": "and",
+          "beforeAnd": true,
+          "original": "Length of service, fourteen years, three months and five days.",
+          "candidate": "Length of service, fourteen years, three months, and five days"
+        },
+        {
+          "id": "3538-163624-0001",
+          "after": "last",
+          "before": "his",
+          "beforeAnd": false,
+          "original": "The old king went out and fought bravely, but at last his sword broke and he was wounded and his men fled.",
+          "candidate": "The old king went out and fought bravely, but at last, his sword broke and he was wounded and his men fled"
+        },
+        {
+          "id": "7975-280076-0025",
+          "after": "eighteen",
+          "before": "seventy",
+          "beforeAnd": false,
+          "original": "About the last of December, eighteen seventy three, I arrived in Carroll parish, Louisiana.",
+          "candidate": "About the last of December Eighteen, seventy three I arrived in Carroll Parish. Louisiana"
+        }
+      ],
+      "commaOnlyOutputs": [
+        {
+          "id": "6930-81414-0004",
+          "original": "The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said.",
+          "output": "The story of its evil influence came back to me, and in my bewildered condition, I wondered whether there was not some truth in what had been said."
+        },
+        {
+          "id": "8224-274384-0006",
+          "original": "The king stood up and called for that psalm which begins with these words.",
+          "output": "The king stood up and called for that psalm, which begins with these words."
+        },
+        {
+          "id": "5105-28233-0000",
+          "original": "Length of service, fourteen years, three months and five days.",
+          "output": "Length of service, fourteen years, three months, and five days."
+        },
+        {
+          "id": "3538-163624-0001",
+          "original": "The old king went out and fought bravely, but at last his sword broke and he was wounded and his men fled.",
+          "output": "The old king went out and fought bravely, but at last, his sword broke and he was wounded and his men fled."
+        },
+        {
+          "id": "7975-280076-0025",
+          "original": "About the last of December, eighteen seventy three, I arrived in Carroll parish, Louisiana.",
+          "output": "About the last of December, eighteen, seventy three, I arrived in Carroll parish, Louisiana."
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "precision": "fp32",
+      "preparation": {
+        "loadMs": 453,
+        "initializationMs": 155,
+        "emptyHeap": 33554432,
+        "loadedHeap": 58064896
+      },
+      "medianWarmMs": 17,
+      "p95WarmMs": 21,
+      "maxLinearHeap": 58064896,
+      "supportedCases": 32,
+      "supportedPunctuation": {
+        "tp": 34,
+        "fp": 7,
+        "fn": 33,
+        "precision": 0.8292682926829268,
+        "recall": 0.5074626865671642,
+        "f1": 0.6296296296296297
+      },
+      "interiorPunctuation": {
+        "tp": 23,
+        "fp": 5,
+        "fn": 12,
+        "precision": 0.8214285714285714,
+        "recall": 0.6571428571428571,
+        "f1": 0.7301587301587301
+      },
+      "and": {
+        "required": 7,
+        "correct": 5,
+        "falseCommaBeforeAndInControls": 0
+      },
+      "naturalClips": 25,
+      "naturalLostTerminalMark": 15,
+      "lexicalPreservedCases": 89,
+      "naturalCommaAdditions": [
+        {
+          "id": "8224-274384-0006",
+          "after": "psalm",
+          "before": "which",
+          "beforeAnd": false,
+          "original": "The king stood up and called for that psalm which begins with these words.",
+          "candidate": "The king stood up and called for that Psalm, which begins with these words"
+        },
+        {
+          "id": "5105-28233-0000",
+          "after": "months",
+          "before": "and",
+          "beforeAnd": true,
+          "original": "Length of service, fourteen years, three months and five days.",
+          "candidate": "Length of service, fourteen years, three months, and five days"
+        },
+        {
+          "id": "3538-163624-0001",
+          "after": "last",
+          "before": "his",
+          "beforeAnd": false,
+          "original": "The old king went out and fought bravely, but at last his sword broke and he was wounded and his men fled.",
+          "candidate": "The old king went out and fought bravely, but at last, his sword broke and he was wounded and his men fled"
+        },
+        {
+          "id": "7975-280076-0025",
+          "after": "eighteen",
+          "before": "seventy",
+          "beforeAnd": false,
+          "original": "About the last of December, eighteen seventy three, I arrived in Carroll parish, Louisiana.",
+          "candidate": "About the last of December Eighteen, seventy three I arrived in Carroll Parish. Louisiana"
+        }
+      ],
+      "commaOnlyOutputs": [
+        {
+          "id": "8224-274384-0006",
+          "original": "The king stood up and called for that psalm which begins with these words.",
+          "output": "The king stood up and called for that psalm, which begins with these words."
+        },
+        {
+          "id": "5105-28233-0000",
+          "original": "Length of service, fourteen years, three months and five days.",
+          "output": "Length of service, fourteen years, three months, and five days."
+        },
+        {
+          "id": "3538-163624-0001",
+          "original": "The old king went out and fought bravely, but at last his sword broke and he was wounded and his men fled.",
+          "output": "The old king went out and fought bravely, but at last, his sword broke and he was wounded and his men fled."
+        },
+        {
+          "id": "7975-280076-0025",
+          "original": "About the last of December, eighteen seventy three, I arrived in Carroll parish, Louisiana.",
+          "output": "About the last of December, eighteen, seventy three, I arrived in Carroll parish, Louisiana."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {vote,align,fitCalibration}from'../scripts/ensemble/vote.mjs';
+const h=(model,words,confidence)=>({model,words:words.split(' ').map((text,i)=>({text,confidence:Array.isArray(confidence)?confidence[i]:confidence}))});
+test('confidence can outweigh a numerical majority',()=>assert.equal(vote([h('a','a blue car',.95),h('b','a red car',.2),h('c','a red car',.2)]).text,'a blue car'));
+test('aligns missing words rather than voting by word position',()=>assert.equal(vote([h('a','we read the paper',.9),h('b','we read paper',.9),h('c','we read the paper',.8)]).text,'we read the paper'));
+test('null votes remove unsupported insertions',()=>assert.equal(vote([h('a','a very good book',.8),h('b','a good book',.9),h('c','a good book',.9)]).text,'a good book'));
+test('same-model crops cannot outvote independent models by count alone',()=>assert.equal(vote([h('a','red',.9),h('a','red',.9),h('a','red',.9),h('b','blue',.95),h('c','blue',.95)]).text,'blue'));
+test('unscored words fail rather than pretend to be certain',()=>assert.throws(()=>vote([h('a','word',null)]),/confidence/));
+test('monotone calibration remains bounded',()=>{const f=fitCalibration([{confidence:.1,correct:true},{confidence:.9,correct:false}]);let last=0;for(let p=0;p<=1;p+=.01){assert(f(p)>=last);assert(f(p)>0&&f(p)<1);last=f(p);}});
+test('repeated words preserve separate alignment positions',()=>assert.equal(vote([h('a','very very good',.9),h('b','very very good',.8)]).text,'very very good'));
+test('alignment handles clipped starts',()=>assert.deepEqual(align(['one','two','three'],['two','three']),[[0,-1],[1,0],[2,1]]));

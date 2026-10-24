@@ -1,0 +1,268 @@
+{
+  "description": "Saved real recognizer hypotheses and recomputed production ensemble text from 25 public LibriSpeech utterances. No punctuation reference labels. Used as text input to the punctuation experiment; no fresh audio recognition implied.",
+  "source": "https://www.openslr.org/12/",
+  "audioLicense": "CC BY 4.0",
+  "ensembleCommit": "3dc65cdf56e598baf47a3bd555b04bb96a187003",
+  "sourceFiles": [
+    {
+      "path": "test-results/dictation/baseline-chromium.json",
+      "sha256": "d5562e2a308cd8f9b2a8115895edf743cb6532d67cf265e1a7bd959dd4f3aa9f"
+    },
+    {
+      "path": "test-results/dictation/terms-chromium.json",
+      "sha256": "ccb2a0e0affb7b1d10a55b8827e9e3be33944f57b2c00de0a86589f61df5b96b"
+    }
+  ],
+  "rows": [
+    {
+      "id": "6930-81414-0004",
+      "source": "moonshine",
+      "original": "The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said."
+    },
+    {
+      "id": "6930-81414-0004",
+      "source": "ensemble",
+      "original": "The story of its evil influence came back to me, and in my bewildered condition I wondered whether there was not some truth in what had been said."
+    },
+    {
+      "id": "260-123288-0008",
+      "source": "moonshine",
+      "original": "There's a heavy storm coming on, I cried, pointing towards the horizon."
+    },
+    {
+      "id": "260-123288-0008",
+      "source": "ensemble",
+      "original": "There's a heavy storm coming on, I cried, pointing towards the horizon."
+    },
+    {
+      "id": "7127-75947-0014",
+      "source": "moonshine",
+      "original": "Forgive me, I hardly know what I am saying. A thousand times. Forgive me, Madame was right, quite right. This brutal exile has completely turned my brain."
+    },
+    {
+      "id": "7127-75947-0014",
+      "source": "ensemble",
+      "original": "Forgive me, I hardly know what I am saying. A thousand times. Forgive me, Madame was right, quite right. This brutal exile has completely turned my brain."
+    },
+    {
+      "id": "8230-279154-0023",
+      "source": "moonshine",
+      "original": "In this case, as in most others, what may be taken as certain in advance is rather vague."
+    },
+    {
+      "id": "8230-279154-0023",
+      "source": "ensemble",
+      "original": "In this case, as in most others, what may be taken as certain in advance is rather vague."
+    },
+    {
+      "id": "1284-1180-0013",
+      "source": "moonshine",
+      "original": "And you must be O Jovian lucky, she added."
+    },
+    {
+      "id": "1284-1180-0013",
+      "source": "ensemble",
+      "original": "And you must be O THE unlucky she added."
+    },
+    {
+      "id": "2830-3980-0000",
+      "source": "moonshine",
+      "original": "In every way they sought to undermine the authority of St. Paul."
+    },
+    {
+      "id": "2830-3980-0000",
+      "source": "ensemble",
+      "original": "In every way they sought to undermine the authority of saint Paul."
+    },
+    {
+      "id": "4077-13754-0000",
+      "source": "moonshine",
+      "original": "The army found the people in poverty and left them in comparative wealth."
+    },
+    {
+      "id": "4077-13754-0000",
+      "source": "ensemble",
+      "original": "The army found the people in poverty and left them in comparative wealth."
+    },
+    {
+      "id": "8224-274384-0006",
+      "source": "moonshine",
+      "original": "The king stood up and called for that psalm which begins with these words."
+    },
+    {
+      "id": "8224-274384-0006",
+      "source": "ensemble",
+      "original": "The king stood up and called for that psalm which begins with these words."
+    },
+    {
+      "id": "5105-28233-0000",
+      "source": "moonshine",
+      "original": "Length of service, fourteen years, three months and five days."
+    },
+    {
+      "id": "5105-28233-0000",
+      "source": "ensemble",
+      "original": "Length of service, fourteen years, three months and five days."
+    },
+    {
+      "id": "2300-131720-0024",
+      "source": "moonshine",
+      "original": "But the plant ran, and it was the first three wire station in this country."
+    },
+    {
+      "id": "2300-131720-0024",
+      "source": "ensemble",
+      "original": "But the plant ran, and it was the first three wire station in this country."
+    },
+    {
+      "id": "7902-96592-0017",
+      "source": "moonshine",
+      "original": "Go round and open the door. I was shut in last night by mistake."
+    },
+    {
+      "id": "7902-96592-0017",
+      "source": "ensemble",
+      "original": "Go round and open the door. I was shut in last night by mistake."
+    },
+    {
+      "id": "6128-63244-0010",
+      "source": "moonshine",
+      "original": "On if Chancellor wondered how Mrs. Steinder would treat their branch of the question?"
+    },
+    {
+      "id": "6128-63244-0010",
+      "source": "ensemble",
+      "original": "On S Chancellor wondered how missus Steinder would treat their branch of the question?"
+    },
+    {
+      "id": "7975-280076-0011",
+      "source": "moonshine",
+      "original": "I brought the cattle to Kansas at fall and remained in St. Clair County until February."
+    },
+    {
+      "id": "7975-280076-0011",
+      "source": "ensemble",
+      "original": "I brought the cattle to Kansas at fall and remained in saint Clair County until February."
+    },
+    {
+      "id": "3538-163624-0001",
+      "source": "moonshine",
+      "original": "The old king went out and fought bravely, but at last his sword broke and he was wounded and his men fled."
+    },
+    {
+      "id": "3538-163624-0001",
+      "source": "ensemble",
+      "original": "The old king went out and fought bravely, but at last his sword broke and he was wounded and his men fled."
+    },
+    {
+      "id": "4852-28330-0001",
+      "source": "moonshine",
+      "original": "Guess Mr. Finney went to his quitter, whose I don't remember seeing him cross a deck or come over that way at all."
+    },
+    {
+      "id": "4852-28330-0001",
+      "source": "ensemble",
+      "original": "Guess mister Finney went to his HIS as I don't remember seeing him cross the deck or come over that way at all."
+    },
+    {
+      "id": "260-123288-0009",
+      "source": "moonshine",
+      "original": "Those clouds seem as if they were going to crush the sea."
+    },
+    {
+      "id": "260-123288-0009",
+      "source": "ensemble",
+      "original": "Those clouds seem as if they were going to crush the sea."
+    },
+    {
+      "id": "7127-75947-0023",
+      "source": "moonshine",
+      "original": "It is too difficult, replied Mademoiselle de Terneshaunt, laughing loudly."
+    },
+    {
+      "id": "7127-75947-0023",
+      "source": "ensemble",
+      "original": "It is too difficult, replied Mademoiselle de DENISCHALANT laughing loudly."
+    },
+    {
+      "id": "8230-279154-0028",
+      "source": "moonshine",
+      "original": "I can set to work now to remember things I never remembered before, such as what I had to eat for breakfast this morning, and it can hardly be wholly habit that enables me to do this."
+    },
+    {
+      "id": "8230-279154-0028",
+      "source": "ensemble",
+      "original": "I can set to work now to remember things I never remembered before, such as what I had to eat for breakfast this morning, and it can hardly be wholly habit that enables me to do this."
+    },
+    {
+      "id": "1284-1180-0017",
+      "source": "moonshine",
+      "original": "At one end stood a great fireplace, in which a blue log was blazing with a blue flame, and over the fire hung four kettles in a row, all bubbling and steaming at a great rate."
+    },
+    {
+      "id": "1284-1180-0017",
+      "source": "ensemble",
+      "original": "At one end stood a great fireplace, in which a blue log was blazing with a blue flame, and over the fire hung four kettles in a row, all bubbling and steaming at a great rate."
+    },
+    {
+      "id": "2830-3980-0011",
+      "source": "moonshine",
+      "original": "Paul declares that the false apostles were called or sent neither by men nor by man."
+    },
+    {
+      "id": "2830-3980-0011",
+      "source": "ensemble",
+      "original": "Paul declares that the false apostles were called or sent neither by men nor by man."
+    },
+    {
+      "id": "8224-274384-0009",
+      "source": "moonshine",
+      "original": "The Parliament and the Scots laid their proposals before the King."
+    },
+    {
+      "id": "8224-274384-0009",
+      "source": "ensemble",
+      "original": "The Parliament and the Scots laid their proposals before the King."
+    },
+    {
+      "id": "7902-96592-0026",
+      "source": "moonshine",
+      "original": "He has gone to give the alarm, thought the prisoner, and he looked excitedly round for a wave escape."
+    },
+    {
+      "id": "7902-96592-0026",
+      "source": "ensemble",
+      "original": "He has gone to give the alarm, thought the prisoner, and he looked excitedly round for a way of escape."
+    },
+    {
+      "id": "7975-280076-0025",
+      "source": "moonshine",
+      "original": "About the last of December, eighteen seventy three, I arrived in Carroll parish, Louisiana."
+    },
+    {
+      "id": "7975-280076-0025",
+      "source": "ensemble",
+      "original": "About the last of December, eighteen seventy three, I arrived in carol parish, Louisiana."
+    },
+    {
+      "id": "3538-163624-0016",
+      "source": "moonshine",
+      "original": "Then Sigurd rode back and met Regan, and Regan asked him to roast Fafnir's heart and let him taste of it."
+    },
+    {
+      "id": "3538-163624-0016",
+      "source": "ensemble",
+      "original": "Then Sigurd rode back and met Regan, and Regan asked him to roast Fafnir's heart and let him taste of it."
+    },
+    {
+      "id": "4852-28330-0006",
+      "source": "moonshine",
+      "original": "Chris lost no time as soon as he could do it without being noticed and hurrying down to his cabin."
+    },
+    {
+      "id": "4852-28330-0006",
+      "source": "ensemble",
+      "original": "Chris lost no time as soon as he could do it without being noticed and hurrying down to his cabin."
+    }
+  ]
+}

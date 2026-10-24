@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Browser STT</title>
+<style>
+:root{font:17px system-ui;color-scheme:light dark}body{max-width:780px;margin:24px auto;padding:0 18px 50px}h1{font-size:1.6rem}button,input,select,textarea{font:inherit;padding:9px;border:1px solid #888;border-radius:6px}button{cursor:pointer}button:disabled{cursor:default;opacity:.5}.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:16px 0}label{display:inline-flex;gap:8px;align-items:center}input[type=number]{width:75px}input[type=file]{max-width:100%;box-sizing:border-box}textarea{display:block;width:100%;box-sizing:border-box;min-height:80px}pre{white-space:pre-wrap;overflow-wrap:anywhere}#words{line-height:1.8;min-height:3em;border:1px solid #888;padding:12px;border-radius:6px}.uncertain{opacity:.5;text-decoration:underline dotted}audio{max-width:100%}details{margin:18px 0}summary{cursor:pointer}p{line-height:1.5}#progress{min-height:2em}small{opacity:.8}
+</style></head><body>
+<h1>Browser STT</h1><p>Local speech recognition. Tiny drafts use CPU SIMD; optional Small corrections use WebGPU. Audio stays on this device.</p>
+<div class="row"><label><input id="refine" type="checkbox">Small GPU corrections (586 MB download)</label><button id="prepare">Prepare / retry models</button></div>
+<p id="models" aria-live="polite"></p>
+<div class="row"><button id="record">Record</button><button id="stop" disabled>Stop recording</button><button id="cancel" disabled>Cancel</button></div>
+<label>Or open audio <input id="file" type="file" accept="audio/*"></label>
+<p><audio id="playback" controls hidden></audio></p>
+<div class="row"><button id="transcribe" disabled>Transcribe recording</button><button id="save-audio" disabled>Save WAV</button></div>
+<p id="progress" role="status"></p>
+<div class="row"><label>Confidence <select id="metric"><option value="minimum">Minimum token</option><option value="mean">Average token</option><option value="geometricMean">Geometric average</option></select></label><label>Threshold <input id="threshold" type="number" min="0" max="1" step="0.05" value="0.9"></label></div>
+<p><small>Underlined, dimmed words fall below the threshold. Scores are not calibrated probabilities that a word is correct. Hover a word for scores.</small></p>
+<div id="words" aria-live="polite"></div>
+<details><summary>Compare accuracy and speed</summary><p>Enter what was actually said to score your recording. The reference is used only for scoring and is never supplied to recognition.</p><label for="reference">Reference transcript</label><textarea id="reference"></textarea><div class="row"><button id="compare" disabled>Compare recording</button><button id="samples">Run 18 sample tests</button><button id="save-report" disabled>Save JSON</button></div><pre id="summary"></pre></details>
+<details><summary>Raw results and word confidence</summary><pre id="output"></pre></details>
+<script type="module" src="./main.js"></script></body></html>

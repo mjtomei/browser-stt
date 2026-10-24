@@ -1,0 +1,933 @@
+{
+  "cardinality": [
+    {
+      "size": 2,
+      "subsets": 28,
+      "best": {
+        "name": "calibrated:conformer-small+zipformer-20m",
+        "kind": "cross-model",
+        "count": 15,
+        "repetitionCases": 0,
+        "errors": 203,
+        "words": 4311,
+        "wer": 0.047088842495940614,
+        "substitutions": 150,
+        "deletions": 15,
+        "insertions": 38,
+        "fixed": 235,
+        "introduced": 62
+      },
+      "members": [
+        "conformer-small",
+        "zipformer-20m"
+      ],
+      "conditions": [
+        {
+          "prefix": "raw:",
+          "best": {
+            "name": "raw:conformer-small+zipformer-20m",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 214,
+            "words": 4311,
+            "wer": 0.04964045465089306,
+            "substitutions": 157,
+            "deletions": 13,
+            "insertions": 44,
+            "fixed": 238,
+            "introduced": 76
+          }
+        },
+        {
+          "prefix": "calibrated:",
+          "best": {
+            "name": "calibrated:conformer-small+zipformer-20m",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 203,
+            "words": 4311,
+            "wer": 0.047088842495940614,
+            "substitutions": 150,
+            "deletions": 15,
+            "insertions": 38,
+            "fixed": 235,
+            "introduced": 62
+          }
+        },
+        {
+          "prefix": "raw-plain:",
+          "best": {
+            "name": "raw-plain:conformer-small+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 203,
+            "words": 4311,
+            "wer": 0.047088842495940614,
+            "substitutions": 152,
+            "deletions": 16,
+            "insertions": 35,
+            "fixed": 223,
+            "introduced": 50
+          }
+        },
+        {
+          "prefix": "calibrated-plain:",
+          "best": {
+            "name": "calibrated-plain:conformer-small+zipformer-20m",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 203,
+            "words": 4311,
+            "wer": 0.047088842495940614,
+            "substitutions": 154,
+            "deletions": 14,
+            "insertions": 35,
+            "fixed": 235,
+            "introduced": 62
+          }
+        }
+      ]
+    },
+    {
+      "size": 3,
+      "subsets": 56,
+      "best": {
+        "name": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+        "kind": "cross-model",
+        "count": 15,
+        "repetitionCases": 0,
+        "errors": 168,
+        "words": 4311,
+        "wer": 0.03897007654836465,
+        "substitutions": 134,
+        "deletions": 15,
+        "insertions": 19,
+        "fixed": 236,
+        "introduced": 28
+      },
+      "members": [
+        "conformer-small",
+        "zipformer-20m",
+        "moonshine-base"
+      ],
+      "conditions": [
+        {
+          "prefix": "raw:",
+          "best": {
+            "name": "raw:conformer-small+zipformer-20m+moonshine-base",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 172,
+            "words": 4311,
+            "wer": 0.0398979355138019,
+            "substitutions": 136,
+            "deletions": 16,
+            "insertions": 20,
+            "fixed": 236,
+            "introduced": 32
+          }
+        },
+        {
+          "prefix": "calibrated:",
+          "best": {
+            "name": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 168,
+            "words": 4311,
+            "wer": 0.03897007654836465,
+            "substitutions": 134,
+            "deletions": 15,
+            "insertions": 19,
+            "fixed": 236,
+            "introduced": 28
+          }
+        },
+        {
+          "prefix": "raw-plain:",
+          "best": {
+            "name": "raw-plain:conformer-small+zipformer-20m+moonshine-base",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 168,
+            "words": 4311,
+            "wer": 0.03897007654836465,
+            "substitutions": 132,
+            "deletions": 16,
+            "insertions": 20,
+            "fixed": 240,
+            "introduced": 32
+          }
+        },
+        {
+          "prefix": "calibrated-plain:",
+          "best": {
+            "name": "calibrated-plain:conformer-small+zipformer-20m+moonshine-base",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 168,
+            "words": 4311,
+            "wer": 0.03897007654836465,
+            "substitutions": 134,
+            "deletions": 15,
+            "insertions": 19,
+            "fixed": 238,
+            "introduced": 30
+          }
+        }
+      ]
+    },
+    {
+      "size": 4,
+      "subsets": 70,
+      "best": {
+        "name": "raw-plain:conformer-small+zipformer-20m+moonshine-base+whisper-base.en",
+        "kind": "cross-model",
+        "count": 15,
+        "repetitionCases": 0,
+        "errors": 165,
+        "words": 4311,
+        "wer": 0.038274182324286705,
+        "substitutions": 130,
+        "deletions": 14,
+        "insertions": 21,
+        "fixed": 241,
+        "introduced": 30
+      },
+      "members": [
+        "conformer-small",
+        "zipformer-20m",
+        "moonshine-base",
+        "whisper-base.en"
+      ],
+      "conditions": [
+        {
+          "prefix": "raw:",
+          "best": {
+            "name": "raw:conformer-small+zipformer-20m+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 175,
+            "words": 4311,
+            "wer": 0.040593829737879845,
+            "substitutions": 137,
+            "deletions": 18,
+            "insertions": 20,
+            "fixed": 235,
+            "introduced": 34
+          }
+        },
+        {
+          "prefix": "calibrated:",
+          "best": {
+            "name": "calibrated:conformer-small+zipformer-20m+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 171,
+            "words": 4311,
+            "wer": 0.03966597077244259,
+            "substitutions": 134,
+            "deletions": 18,
+            "insertions": 19,
+            "fixed": 235,
+            "introduced": 30
+          }
+        },
+        {
+          "prefix": "raw-plain:",
+          "best": {
+            "name": "raw-plain:conformer-small+zipformer-20m+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 165,
+            "words": 4311,
+            "wer": 0.038274182324286705,
+            "substitutions": 130,
+            "deletions": 14,
+            "insertions": 21,
+            "fixed": 241,
+            "introduced": 30
+          }
+        },
+        {
+          "prefix": "calibrated-plain:",
+          "best": {
+            "name": "calibrated-plain:conformer-small+zipformer-20m+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 167,
+            "words": 4311,
+            "wer": 0.038738111807005336,
+            "substitutions": 130,
+            "deletions": 15,
+            "insertions": 22,
+            "fixed": 235,
+            "introduced": 26
+          }
+        }
+      ]
+    },
+    {
+      "size": 5,
+      "subsets": 56,
+      "best": {
+        "name": "raw-plain:moonshine-tiny+conformer-small+zipformer-20m+whisper-tiny.en+whisper-base.en",
+        "kind": "cross-model",
+        "count": 15,
+        "repetitionCases": 0,
+        "errors": 171,
+        "words": 4311,
+        "wer": 0.03966597077244259,
+        "substitutions": 134,
+        "deletions": 14,
+        "insertions": 23,
+        "fixed": 217,
+        "introduced": 12
+      },
+      "members": [
+        "moonshine-tiny",
+        "conformer-small",
+        "zipformer-20m",
+        "whisper-tiny.en",
+        "whisper-base.en"
+      ],
+      "conditions": [
+        {
+          "prefix": "raw:",
+          "best": {
+            "name": "raw:conformer-small+zipformer-20m+moonshine-tiny-streaming+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 178,
+            "words": 4311,
+            "wer": 0.041289723961957785,
+            "substitutions": 142,
+            "deletions": 15,
+            "insertions": 21,
+            "fixed": 230,
+            "introduced": 32
+          }
+        },
+        {
+          "prefix": "calibrated:",
+          "best": {
+            "name": "calibrated:conformer-small+zipformer-20m+moonshine-tiny-streaming+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 176,
+            "words": 4311,
+            "wer": 0.040825794479239154,
+            "substitutions": 139,
+            "deletions": 17,
+            "insertions": 20,
+            "fixed": 230,
+            "introduced": 30
+          }
+        },
+        {
+          "prefix": "raw-plain:",
+          "best": {
+            "name": "raw-plain:moonshine-tiny+conformer-small+zipformer-20m+whisper-tiny.en+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 171,
+            "words": 4311,
+            "wer": 0.03966597077244259,
+            "substitutions": 134,
+            "deletions": 14,
+            "insertions": 23,
+            "fixed": 217,
+            "introduced": 12
+          }
+        },
+        {
+          "prefix": "calibrated-plain:",
+          "best": {
+            "name": "calibrated-plain:conformer-small+zipformer-20m+moonshine-tiny-streaming+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 171,
+            "words": 4311,
+            "wer": 0.03966597077244259,
+            "substitutions": 128,
+            "deletions": 18,
+            "insertions": 25,
+            "fixed": 236,
+            "introduced": 31
+          }
+        }
+      ]
+    },
+    {
+      "size": 6,
+      "subsets": 28,
+      "best": {
+        "name": "calibrated-plain:conformer-small+zipformer-20m+moonshine-tiny-streaming+vosk-small+moonshine-base+whisper-base.en",
+        "kind": "cross-model",
+        "count": 15,
+        "repetitionCases": 0,
+        "errors": 172,
+        "words": 4311,
+        "wer": 0.0398979355138019,
+        "substitutions": 134,
+        "deletions": 17,
+        "insertions": 21,
+        "fixed": 227,
+        "introduced": 23
+      },
+      "members": [
+        "conformer-small",
+        "zipformer-20m",
+        "moonshine-tiny-streaming",
+        "vosk-small",
+        "moonshine-base",
+        "whisper-base.en"
+      ],
+      "conditions": [
+        {
+          "prefix": "raw:",
+          "best": {
+            "name": "raw:conformer-small+zipformer-20m+moonshine-tiny-streaming+vosk-small+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 181,
+            "words": 4311,
+            "wer": 0.041985618186035724,
+            "substitutions": 142,
+            "deletions": 16,
+            "insertions": 23,
+            "fixed": 226,
+            "introduced": 31
+          }
+        },
+        {
+          "prefix": "calibrated:",
+          "best": {
+            "name": "calibrated:conformer-small+zipformer-20m+moonshine-tiny-streaming+vosk-small+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 178,
+            "words": 4311,
+            "wer": 0.041289723961957785,
+            "substitutions": 139,
+            "deletions": 17,
+            "insertions": 22,
+            "fixed": 225,
+            "introduced": 27
+          }
+        },
+        {
+          "prefix": "raw-plain:",
+          "best": {
+            "name": "raw-plain:conformer-small+zipformer-20m+moonshine-tiny-streaming+whisper-tiny.en+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 177,
+            "words": 4311,
+            "wer": 0.04105775922059847,
+            "substitutions": 135,
+            "deletions": 18,
+            "insertions": 24,
+            "fixed": 235,
+            "introduced": 36
+          }
+        },
+        {
+          "prefix": "calibrated-plain:",
+          "best": {
+            "name": "calibrated-plain:conformer-small+zipformer-20m+moonshine-tiny-streaming+vosk-small+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 172,
+            "words": 4311,
+            "wer": 0.0398979355138019,
+            "substitutions": 134,
+            "deletions": 17,
+            "insertions": 21,
+            "fixed": 227,
+            "introduced": 23
+          }
+        }
+      ]
+    },
+    {
+      "size": 7,
+      "subsets": 8,
+      "best": {
+        "name": "calibrated-plain:conformer-small+zipformer-20m+moonshine-tiny-streaming+whisper-tiny.en+vosk-small+moonshine-base+whisper-base.en",
+        "kind": "cross-model",
+        "count": 15,
+        "repetitionCases": 0,
+        "errors": 179,
+        "words": 4311,
+        "wer": 0.04152168870331709,
+        "substitutions": 133,
+        "deletions": 18,
+        "insertions": 28,
+        "fixed": 226,
+        "introduced": 29
+      },
+      "members": [
+        "conformer-small",
+        "zipformer-20m",
+        "moonshine-tiny-streaming",
+        "whisper-tiny.en",
+        "vosk-small",
+        "moonshine-base",
+        "whisper-base.en"
+      ],
+      "conditions": [
+        {
+          "prefix": "raw:",
+          "best": {
+            "name": "raw:conformer-small+zipformer-20m+moonshine-tiny-streaming+whisper-tiny.en+vosk-small+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 190,
+            "words": 4311,
+            "wer": 0.04407330085826954,
+            "substitutions": 148,
+            "deletions": 20,
+            "insertions": 22,
+            "fixed": 219,
+            "introduced": 33
+          }
+        },
+        {
+          "prefix": "calibrated:",
+          "best": {
+            "name": "calibrated:moonshine-tiny+conformer-small+zipformer-20m+moonshine-tiny-streaming+vosk-small+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 187,
+            "words": 4311,
+            "wer": 0.0433774066341916,
+            "substitutions": 148,
+            "deletions": 16,
+            "insertions": 23,
+            "fixed": 203,
+            "introduced": 14
+          }
+        },
+        {
+          "prefix": "raw-plain:",
+          "best": {
+            "name": "raw-plain:moonshine-tiny+conformer-small+zipformer-20m+moonshine-tiny-streaming+whisper-tiny.en+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 183,
+            "words": 4311,
+            "wer": 0.04244954766875435,
+            "substitutions": 140,
+            "deletions": 17,
+            "insertions": 26,
+            "fixed": 211,
+            "introduced": 18
+          }
+        },
+        {
+          "prefix": "calibrated-plain:",
+          "best": {
+            "name": "calibrated-plain:conformer-small+zipformer-20m+moonshine-tiny-streaming+whisper-tiny.en+vosk-small+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 179,
+            "words": 4311,
+            "wer": 0.04152168870331709,
+            "substitutions": 133,
+            "deletions": 18,
+            "insertions": 28,
+            "fixed": 226,
+            "introduced": 29
+          }
+        }
+      ]
+    },
+    {
+      "size": 8,
+      "subsets": 1,
+      "best": {
+        "name": "raw-plain:moonshine-tiny+conformer-small+zipformer-20m+moonshine-tiny-streaming+whisper-tiny.en+vosk-small+moonshine-base+whisper-base.en",
+        "kind": "cross-model",
+        "count": 15,
+        "repetitionCases": 0,
+        "errors": 184,
+        "words": 4311,
+        "wer": 0.04268151241011366,
+        "substitutions": 144,
+        "deletions": 16,
+        "insertions": 24,
+        "fixed": 207,
+        "introduced": 15
+      },
+      "members": [
+        "moonshine-tiny",
+        "conformer-small",
+        "zipformer-20m",
+        "moonshine-tiny-streaming",
+        "whisper-tiny.en",
+        "vosk-small",
+        "moonshine-base",
+        "whisper-base.en"
+      ],
+      "conditions": [
+        {
+          "prefix": "raw:",
+          "best": {
+            "name": "raw:moonshine-tiny+conformer-small+zipformer-20m+moonshine-tiny-streaming+whisper-tiny.en+vosk-small+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 195,
+            "words": 4311,
+            "wer": 0.04523312456506611,
+            "substitutions": 149,
+            "deletions": 21,
+            "insertions": 25,
+            "fixed": 197,
+            "introduced": 16
+          }
+        },
+        {
+          "prefix": "calibrated:",
+          "best": {
+            "name": "calibrated:moonshine-tiny+conformer-small+zipformer-20m+moonshine-tiny-streaming+whisper-tiny.en+vosk-small+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 192,
+            "words": 4311,
+            "wer": 0.04453723034098817,
+            "substitutions": 146,
+            "deletions": 21,
+            "insertions": 25,
+            "fixed": 199,
+            "introduced": 15
+          }
+        },
+        {
+          "prefix": "raw-plain:",
+          "best": {
+            "name": "raw-plain:moonshine-tiny+conformer-small+zipformer-20m+moonshine-tiny-streaming+whisper-tiny.en+vosk-small+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 184,
+            "words": 4311,
+            "wer": 0.04268151241011366,
+            "substitutions": 144,
+            "deletions": 16,
+            "insertions": 24,
+            "fixed": 207,
+            "introduced": 15
+          }
+        },
+        {
+          "prefix": "calibrated-plain:",
+          "best": {
+            "name": "calibrated-plain:moonshine-tiny+conformer-small+zipformer-20m+moonshine-tiny-streaming+whisper-tiny.en+vosk-small+moonshine-base+whisper-base.en",
+            "kind": "cross-model",
+            "count": 15,
+            "repetitionCases": 0,
+            "errors": 185,
+            "words": 4311,
+            "wer": 0.04291347715147298,
+            "substitutions": 141,
+            "deletions": 16,
+            "insertions": 28,
+            "fixed": 208,
+            "introduced": 17
+          }
+        }
+      ]
+    }
+  ],
+  "trioBaseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+  "bestTrioWindows": "calibrated:top-three:15-both-grids",
+  "trioWindowComparisons": [
+    {
+      "candidate": "calibrated:top-three:15-both-grids",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 8,
+      "ties": 4,
+      "losses": 3,
+      "fixed": 26,
+      "introduced": 13,
+      "errorReductionPercent": 7.738095238095238
+    },
+    {
+      "candidate": "raw:top-three:15-both-grids",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 8,
+      "ties": 4,
+      "losses": 3,
+      "fixed": 26,
+      "introduced": 16,
+      "errorReductionPercent": 5.952380952380952
+    },
+    {
+      "candidate": "raw:top-three:15+30",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 6,
+      "ties": 4,
+      "losses": 5,
+      "fixed": 32,
+      "introduced": 28,
+      "errorReductionPercent": 2.380952380952381
+    },
+    {
+      "candidate": "calibrated:top-three:60-shifted",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 5,
+      "ties": 2,
+      "losses": 8,
+      "fixed": 37,
+      "introduced": 36,
+      "errorReductionPercent": 0.5952380952380952
+    },
+    {
+      "candidate": "calibrated:top-three:15-original",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 0,
+      "ties": 15,
+      "losses": 0,
+      "fixed": 0,
+      "introduced": 0,
+      "errorReductionPercent": 0
+    },
+    {
+      "candidate": "calibrated:top-three:30-shifted",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 3,
+      "ties": 5,
+      "losses": 7,
+      "fixed": 41,
+      "introduced": 42,
+      "errorReductionPercent": -0.5952380952380952
+    },
+    {
+      "candidate": "calibrated:top-three:15+30",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 6,
+      "ties": 4,
+      "losses": 5,
+      "fixed": 27,
+      "introduced": 30,
+      "errorReductionPercent": -1.7857142857142856
+    },
+    {
+      "candidate": "raw:top-three:15-original",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 2,
+      "ties": 7,
+      "losses": 6,
+      "fixed": 7,
+      "introduced": 11,
+      "errorReductionPercent": -2.380952380952381
+    },
+    {
+      "candidate": "raw:top-three:30-shifted",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 2,
+      "ties": 6,
+      "losses": 7,
+      "fixed": 43,
+      "introduced": 50,
+      "errorReductionPercent": -4.166666666666666
+    },
+    {
+      "candidate": "raw:top-three:60-shifted",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 4,
+      "ties": 2,
+      "losses": 9,
+      "fixed": 39,
+      "introduced": 46,
+      "errorReductionPercent": -4.166666666666666
+    },
+    {
+      "candidate": "calibrated:top-three:all-windows",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 6,
+      "ties": 4,
+      "losses": 5,
+      "fixed": 35,
+      "introduced": 42,
+      "errorReductionPercent": -4.166666666666666
+    },
+    {
+      "candidate": "raw:top-three:15+60",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 4,
+      "ties": 5,
+      "losses": 6,
+      "fixed": 33,
+      "introduced": 41,
+      "errorReductionPercent": -4.761904761904762
+    },
+    {
+      "candidate": "raw:top-three:all-windows",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 6,
+      "ties": 2,
+      "losses": 7,
+      "fixed": 33,
+      "introduced": 44,
+      "errorReductionPercent": -6.547619047619048
+    },
+    {
+      "candidate": "calibrated:top-three:15+60",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 4,
+      "ties": 5,
+      "losses": 6,
+      "fixed": 28,
+      "introduced": 40,
+      "errorReductionPercent": -7.142857142857142
+    },
+    {
+      "candidate": "raw:top-three:30+60",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 6,
+      "ties": 2,
+      "losses": 7,
+      "fixed": 39,
+      "introduced": 51,
+      "errorReductionPercent": -7.142857142857142
+    },
+    {
+      "candidate": "calibrated:top-three:30+60",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 6,
+      "ties": 2,
+      "losses": 7,
+      "fixed": 39,
+      "introduced": 51,
+      "errorReductionPercent": -7.142857142857142
+    },
+    {
+      "candidate": "raw:top-three:15-shifted",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 2,
+      "ties": 7,
+      "losses": 6,
+      "fixed": 33,
+      "introduced": 48,
+      "errorReductionPercent": -8.928571428571429
+    },
+    {
+      "candidate": "calibrated:top-three:15-shifted",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 3,
+      "ties": 6,
+      "losses": 6,
+      "fixed": 33,
+      "introduced": 48,
+      "errorReductionPercent": -8.928571428571429
+    },
+    {
+      "candidate": "calibrated:top-three:30-both-grids",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 4,
+      "ties": 2,
+      "losses": 9,
+      "fixed": 38,
+      "introduced": 54,
+      "errorReductionPercent": -9.523809523809524
+    },
+    {
+      "candidate": "raw:top-three:60-both-grids",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 4,
+      "ties": 3,
+      "losses": 8,
+      "fixed": 37,
+      "introduced": 55,
+      "errorReductionPercent": -10.714285714285714
+    },
+    {
+      "candidate": "calibrated:top-three:30-original",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 3,
+      "ties": 6,
+      "losses": 6,
+      "fixed": 33,
+      "introduced": 52,
+      "errorReductionPercent": -11.30952380952381
+    },
+    {
+      "candidate": "raw:top-three:30-both-grids",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 4,
+      "ties": 3,
+      "losses": 8,
+      "fixed": 38,
+      "introduced": 58,
+      "errorReductionPercent": -11.904761904761903
+    },
+    {
+      "candidate": "calibrated:top-three:60-both-grids",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 6,
+      "ties": 1,
+      "losses": 8,
+      "fixed": 35,
+      "introduced": 55,
+      "errorReductionPercent": -11.904761904761903
+    },
+    {
+      "candidate": "raw:top-three:30-original",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 3,
+      "ties": 5,
+      "losses": 7,
+      "fixed": 36,
+      "introduced": 59,
+      "errorReductionPercent": -13.690476190476192
+    },
+    {
+      "candidate": "calibrated:top-three:60-original",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 4,
+      "ties": 1,
+      "losses": 10,
+      "fixed": 35,
+      "introduced": 78,
+      "errorReductionPercent": -25.595238095238095
+    },
+    {
+      "candidate": "raw:top-three:60-original",
+      "baseline": "calibrated:conformer-small+zipformer-20m+moonshine-base",
+      "wins": 3,
+      "ties": 1,
+      "losses": 11,
+      "fixed": 31,
+      "introduced": 79,
+      "errorReductionPercent": -28.57142857142857
+    }
+  ]
+}

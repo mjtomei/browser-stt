@@ -1,0 +1,47 @@
+{
+  "repository": "onnx-community/whisper-small.en",
+  "revision": "482fb8ba081b6e906f92efe103622316b2a0cc69",
+  "directory": "whisper-small.en",
+  "files": [
+    {
+      "file": "config.json",
+      "bytes": 2203,
+      "sha256": "8825c4174cb86f94d9fa67614942f8aa17bfbbdf2fae5426d4adfd0bc5893c43"
+    },
+    {
+      "file": "generation_config.json",
+      "bytes": 1956,
+      "sha256": "5490747ca976d6b3765280a0697d66489020c2afa6e754244d9cd093e1639331"
+    },
+    {
+      "file": "onnx/decoder_model_merged_q4.onnx",
+      "bytes": 233146255,
+      "sha256": "86a8c61d69876771dda2717b6f7037deb4f55dbc54fac9d6c13520036e4ba88f"
+    },
+    {
+      "file": "onnx/encoder_model.onnx",
+      "bytes": 352825870,
+      "sha256": "695836adae236d456605813b548bdab33df8924587e2252d7eba01cdfeb015b3"
+    },
+    {
+      "file": "preprocessor_config.json",
+      "bytes": 339,
+      "sha256": "a6a76d28c93edb273669eb9e0b0636a2bddbb1272c3261e47b7ca6dfdbac1b8d"
+    },
+    {
+      "file": "special_tokens_map.json",
+      "bytes": 2173,
+      "sha256": "98bdf3ec5b32e31575b02f64b0a32bde7c0449075d34484a7df9bdd3cdeb9fb9"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 2405679,
+      "sha256": "5eb60cec1e77aeeb6869a2bb5a8e01a84c3fe5d072d75369343021fe6f5310d0"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 282662,
+      "sha256": "93879c3dccdd4b976f709acd85b44778873f30c275e67026f30ca1e4c975230c"
+    }
+  ]
+}

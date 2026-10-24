@@ -1,0 +1,26 @@
+[
+  {
+    "model": "whisper-base.en",
+    "browserVersion": "154.0.8037.57",
+    "words": 34,
+    "nativeTextExact": false
+  },
+  {
+    "model": "moonshine-base",
+    "browserVersion": "154.0.8037.57",
+    "words": 35,
+    "nativeTextExact": true
+  },
+  {
+    "model": "moonshine-tiny",
+    "browserVersion": "154.0.8037.57",
+    "words": 34,
+    "nativeTextExact": true
+  },
+  {
+    "model": "whisper-tiny.en",
+    "browserVersion": "154.0.8037.57",
+    "words": 34,
+    "nativeTextExact": false
+  }
+]

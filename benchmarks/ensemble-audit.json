@@ -1,0 +1,1099 @@
+{
+  "at": "2026-10-13T20:05:18.664Z",
+  "cases": 15,
+  "models": 8,
+  "configurations": 780,
+  "incomplete": [],
+  "rows": [
+    {
+      "model": "conformer-small",
+      "case": "01-clean-6930-81414",
+      "sha256": "46df01f0c0ca7eb10f45789f9b75a956b265117a3559379e6f9075a7f40ea381",
+      "calls": 58,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "02-clean-260-123288",
+      "sha256": "579573def5e18069f0104f0ed688b6b43bf2fd229aeb638f7baad6b6589d0669",
+      "calls": 63,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "03-clean-7127-75947",
+      "sha256": "3890d74167cedcd296cb3437d11c63518cd5788bc5c745de747d882d2aebc29f",
+      "calls": 58,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "04-clean-8230-279154",
+      "sha256": "d4a6303fb84bf7325501d1f75f47fae3be8edd7c33b5621622296d0f9bf65ff3",
+      "calls": 62,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "05-clean-1284-1180",
+      "sha256": "32729190e575e7de1c2cab5140a71e154d7f9d775617e7ff10e559be71e033c5",
+      "calls": 60,
+      "fallbackCalls": 2,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "06-clean-2830-3980",
+      "sha256": "b349ec1a0818eb347ed5daf330a3671919396d3ff1f3454cc6859ab93ca1121f",
+      "calls": 55,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "07-clean-4077-13754",
+      "sha256": "10aa74de988f9647db9ed611c0469d67d2f23c8c5478be0924e9487a6cf1889d",
+      "calls": 59,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "08-clean-8224-274384",
+      "sha256": "51ad84a189c22ad18cb02e0b8870d8f00e844c1528f9bc5cd49e2bdf86b8c3e6",
+      "calls": 60,
+      "fallbackCalls": 1,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "09-clean-5105-28233",
+      "sha256": "31aa043978c8434292299448d620ab9e952929721a1bf75ac7b1cd29dec53ae4",
+      "calls": 79,
+      "fallbackCalls": 16,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "10-clean-2300-131720",
+      "sha256": "264fa3bf71d85dd0ff73487ceb830dc17ea712a2425fcc459b1f55932c8d541b",
+      "calls": 74,
+      "fallbackCalls": 11,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "11-other-7902-96592",
+      "sha256": "6ed360d459e4128467b09a5767c1e84882759c39bd716aab301b6204f814f200",
+      "calls": 63,
+      "fallbackCalls": 5,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "12-other-6128-63244",
+      "sha256": "975ca195cb16f9a94461de921110edfa0116171d0e5024c6bd71c7a3efc5b99a",
+      "calls": 66,
+      "fallbackCalls": 11,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "13-other-7975-280076",
+      "sha256": "dabef1e55d13a44c54cd5f407ce64cbc7e77a59417907ab95988dbc35795f1f5",
+      "calls": 68,
+      "fallbackCalls": 10,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "14-other-3538-163624",
+      "sha256": "6f2a7298186a01c85779a4c6e6e33382ff084fe50a137a92fd79301190641297",
+      "calls": 55,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "conformer-small",
+      "case": "15-other-4852-28330",
+      "sha256": "bb175c92e8e0b28521e64d543d1ee184124e7392e5abe21f02a2fc7e97361a47",
+      "calls": 58,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "01-clean-6930-81414",
+      "sha256": "8a43e161a3ee3569dae871c3a0dc9e891736f1389c0cd4830880701e65f34d4c",
+      "calls": 63,
+      "fallbackCalls": 5,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "02-clean-260-123288",
+      "sha256": "edcefd8610ab4a9b0245d328535ec8cb3b344e2a4d83db8221f7f728746cbdbd",
+      "calls": 67,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "03-clean-7127-75947",
+      "sha256": "d4cd8d83881fb4b24f8b7619ce5c2e3dded2b18b1020e8c85bbf66b323ec15c6",
+      "calls": 62,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "04-clean-8230-279154",
+      "sha256": "b3355c98ef06425da41ac2f50ddb37b1d894985269503b0c90c25c3e40473b21",
+      "calls": 64,
+      "fallbackCalls": 6,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "05-clean-1284-1180",
+      "sha256": "8f80ad2b4742d429185101889cdeca44e18d140e2aaebb76a46d04783cba828a",
+      "calls": 62,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "06-clean-2830-3980",
+      "sha256": "23a62416d667aa62f68805ea867966115eced9150c692025e5ff43f27cf30ad5",
+      "calls": 60,
+      "fallbackCalls": 5,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "07-clean-4077-13754",
+      "sha256": "bd82267ce75bc500aac3c64c6ef5978ff78442c2229d0b81d781df828489b027",
+      "calls": 62,
+      "fallbackCalls": 3,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "08-clean-8224-274384",
+      "sha256": "65a5f59860a068e6bccb84abd842a58a69a9406c823ee20fa83bc18fbb0dd432",
+      "calls": 63,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "09-clean-5105-28233",
+      "sha256": "5a34378efdae788034a1314b548d41863ccbd947744d0371f0af9bbb793b4411",
+      "calls": 79,
+      "fallbackCalls": 16,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "10-clean-2300-131720",
+      "sha256": "2fa7c4bac5b125f296cf55b3f13c3e6e405d95a0374cd3a482e3916312a6ea6d",
+      "calls": 76,
+      "fallbackCalls": 13,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "11-other-7902-96592",
+      "sha256": "1ef87ad12938ab99625a009e7636cd1fabc0202115e3d5794e3d79dfcd19ca4e",
+      "calls": 66,
+      "fallbackCalls": 8,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "12-other-6128-63244",
+      "sha256": "94d191bf214641d4caa76a6595f38058c427dd4c2fcd3528d5aa4c7c3e2ff6fc",
+      "calls": 70,
+      "fallbackCalls": 15,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "13-other-7975-280076",
+      "sha256": "662bde7261084eb6c477074e38a49481c73b8eb199478da9477d0554ce8ddaa1",
+      "calls": 69,
+      "fallbackCalls": 11,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "14-other-3538-163624",
+      "sha256": "fce6f408dd88c5632296e8eddec3e139d37ea7f7b9622190f6e91f95ab565e23",
+      "calls": 57,
+      "fallbackCalls": 2,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-base",
+      "case": "15-other-4852-28330",
+      "sha256": "b37bdb382f5efe33ceae85ee961fe362ddb910a365da55b01668cf8eb8c96123",
+      "calls": 66,
+      "fallbackCalls": 8,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "01-clean-6930-81414",
+      "sha256": "30839c5d06d46a7bbc0b006ee8b633fc6924ead573a232728e3a5c55b03ecdf7",
+      "calls": 65,
+      "fallbackCalls": 7,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "02-clean-260-123288",
+      "sha256": "e43ca8a3041b438797c23e12642b9576167e47128261e186ef56d7d1c2765060",
+      "calls": 69,
+      "fallbackCalls": 6,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "03-clean-7127-75947",
+      "sha256": "5e9154be8a1cebad4133fe3543666502e177926e7bc89748ce9f6f78d07ba90c",
+      "calls": 63,
+      "fallbackCalls": 5,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "04-clean-8230-279154",
+      "sha256": "f74dca78b5a9f44c936894ee224ca1003565d42b8d57f2c1677907761444a598",
+      "calls": 66,
+      "fallbackCalls": 8,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "05-clean-1284-1180",
+      "sha256": "0d31d352b2af352460fe1314899be3ca559cb9bf06462c5e4a2fbfb0f5ab1d54",
+      "calls": 62,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "06-clean-2830-3980",
+      "sha256": "b357288ce5a0c0075f4aeb21f355e5e24cb66a53b6fba79808d3c44638bc79cd",
+      "calls": 61,
+      "fallbackCalls": 6,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "07-clean-4077-13754",
+      "sha256": "c9dd578746f7767a1a05ab51e959186d05c11f93bab717a8f9b82ddb64ae0208",
+      "calls": 63,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "08-clean-8224-274384",
+      "sha256": "a7e286a6f7bd925d39d66d8f059d46ac52c8cdd36b1ac7ec37d795b8c916fcf9",
+      "calls": 67,
+      "fallbackCalls": 8,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "09-clean-5105-28233",
+      "sha256": "19f16b976e3bf0884da2633875ad905232d0b64f8c47a1c8cbccabc73188498d",
+      "calls": 79,
+      "fallbackCalls": 16,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "10-clean-2300-131720",
+      "sha256": "5769e7ea22eb2145e1df81fae827437e3b005748af89fdb37c3d0ae094f3fca0",
+      "calls": 73,
+      "fallbackCalls": 10,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "11-other-7902-96592",
+      "sha256": "a59f75e8c211e2607fc173acba7e297234ea28bcbbf7c0bcbbe4c38b334151d8",
+      "calls": 69,
+      "fallbackCalls": 11,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "12-other-6128-63244",
+      "sha256": "71c042770408160ae7321fddee81ddd996fa0a7a9af036cd7ca8979097af2d21",
+      "calls": 70,
+      "fallbackCalls": 15,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "13-other-7975-280076",
+      "sha256": "8656074f643c3c8c0146d3d5c860168dd5b7d860e1b13192a788eb3421930142",
+      "calls": 69,
+      "fallbackCalls": 11,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "14-other-3538-163624",
+      "sha256": "8335eadacf2b9f050d245194ff4cf75b33d88180c520b575ed507327eb259ec7",
+      "calls": 59,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny",
+      "case": "15-other-4852-28330",
+      "sha256": "fd96807068edb4ed1a0c058306361ac68d09ea94b03a89e3082b9737c34bb856",
+      "calls": 62,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "01-clean-6930-81414",
+      "sha256": "d3f3ef7f2d0a880a2ad83cbdd427a0edc6fcb12be3ec16b3dc0335a59413f812",
+      "calls": 62,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "02-clean-260-123288",
+      "sha256": "0bc2160b6b6c8944adfca90149d12df1756c0fc4db9416a234c9a0bbe007b271",
+      "calls": 65,
+      "fallbackCalls": 2,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "03-clean-7127-75947",
+      "sha256": "86932aba9d2527803a812b634ef487061fe96a34fb6091e8ede029e7b697838b",
+      "calls": 58,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "04-clean-8230-279154",
+      "sha256": "a5ded32143594ef00cdbbb0094ad2990483dfe9b3bfe33fef961e81656fad7fb",
+      "calls": 64,
+      "fallbackCalls": 6,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "05-clean-1284-1180",
+      "sha256": "47d259671b1a842532251b17be42b722434206b2069cfa08e311e09acc2ad319",
+      "calls": 59,
+      "fallbackCalls": 1,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "06-clean-2830-3980",
+      "sha256": "a90ede03cc60d102016d4c761030e81f69124504565db928fc783a8747bbe4d2",
+      "calls": 57,
+      "fallbackCalls": 2,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "07-clean-4077-13754",
+      "sha256": "c7ec9fe45f4a56d883e773f5472946eb353a922394f5a30e7c838e79f8c58561",
+      "calls": 59,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "08-clean-8224-274384",
+      "sha256": "b253a36837f8bc4958d910d73c42802eefd78556afae2b61b7b3604391481c2d",
+      "calls": 60,
+      "fallbackCalls": 1,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "09-clean-5105-28233",
+      "sha256": "98c66a60f0e5d1bc99339ce4d598523e921246e115dd20b90a82defe476f5dec",
+      "calls": 79,
+      "fallbackCalls": 16,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "10-clean-2300-131720",
+      "sha256": "7c8bf80515fcbcc769b13f7510b6795b63485b9d409c01780882170adc1c0e40",
+      "calls": 77,
+      "fallbackCalls": 14,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "11-other-7902-96592",
+      "sha256": "5fdf6f7136fcc7318255211b09fb6c2d08a8c961488755669f9199a27d9be6e9",
+      "calls": 64,
+      "fallbackCalls": 6,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "12-other-6128-63244",
+      "sha256": "7507911177ee3e83928bbf296440db5d157af820350b7410cd19a533ef0afeb3",
+      "calls": 70,
+      "fallbackCalls": 15,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "13-other-7975-280076",
+      "sha256": "eecfb1ae514b749c698310211b0f6b34996782ebbe5c5189f637879571f6d738",
+      "calls": 72,
+      "fallbackCalls": 14,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "14-other-3538-163624",
+      "sha256": "7e483b5e5702f0b3c5b85f4fed5aadd92bb049760e7f45b991a61cae3d44ce14",
+      "calls": 60,
+      "fallbackCalls": 5,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "moonshine-tiny-streaming",
+      "case": "15-other-4852-28330",
+      "sha256": "769846918b73ded40565c6a7e2e58f71fbbaa64258d3adbe7bb44bb585f61358",
+      "calls": 64,
+      "fallbackCalls": 6,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "01-clean-6930-81414",
+      "sha256": "88565da1e9310ac36b63e07dc5a6f6e660f99b19332c068e25c46b92e053502d",
+      "calls": 59,
+      "fallbackCalls": 1,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "02-clean-260-123288",
+      "sha256": "202a46a7b6d44f86a0b05ee66e25d046f5d722e043e544c5266263f79194888f",
+      "calls": 64,
+      "fallbackCalls": 1,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "03-clean-7127-75947",
+      "sha256": "8f79a8936bce87d223be729d8f01a07e672b3eefdc876675e1c615a6d15414e9",
+      "calls": 58,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "04-clean-8230-279154",
+      "sha256": "700645a1f40959a144b791aa0e41026dccce036b9b8eb61f29c223a8737462e4",
+      "calls": 61,
+      "fallbackCalls": 3,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "05-clean-1284-1180",
+      "sha256": "ffbe7014dcf6efc5575b22e81be0f5ba2f21e2485c5f5e131943ec0a1699ed3e",
+      "calls": 61,
+      "fallbackCalls": 3,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "06-clean-2830-3980",
+      "sha256": "361ac54caa95d2d9dc2d22b3fc9e0b87babdf7604694fe41cfb8ec59926c7feb",
+      "calls": 55,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "07-clean-4077-13754",
+      "sha256": "35dca76387400a71f2eeb8c7911e3d1bc9c457924706f970ae0fbbd043c82308",
+      "calls": 59,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "08-clean-8224-274384",
+      "sha256": "ccc7aa80f55761c019cb63cfa6330d641f814df590ded5549f154ff0f5dab9ca",
+      "calls": 60,
+      "fallbackCalls": 1,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "09-clean-5105-28233",
+      "sha256": "800933c3f5566fcc09d3cfc0f93634522b723249e3f28e7bb32cf58740b612ec",
+      "calls": 73,
+      "fallbackCalls": 10,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "10-clean-2300-131720",
+      "sha256": "b15ed78e8b4455c1a14c41ba2b5fdb748ce349c95b8309c1b1b57c4f2417d738",
+      "calls": 75,
+      "fallbackCalls": 12,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "11-other-7902-96592",
+      "sha256": "2d6e193c06d837a22e0ed91ebfcbbe50479b045feaf06bd9c1a7b63657018602",
+      "calls": 62,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "12-other-6128-63244",
+      "sha256": "88b36971c066bb6ef98ca3cdd7a8803358e60cf40293b6859a59bad936d0f5d9",
+      "calls": 58,
+      "fallbackCalls": 3,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "13-other-7975-280076",
+      "sha256": "2580c4b729439fab2808a1f56fab21f7ba1b494afed70bba888eca61c6dd30ff",
+      "calls": 66,
+      "fallbackCalls": 8,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "14-other-3538-163624",
+      "sha256": "7531c51aa6b9e8c15114b484263bd1c230321568db34bfa18a28dc12b95fa7a9",
+      "calls": 57,
+      "fallbackCalls": 2,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "vosk-small",
+      "case": "15-other-4852-28330",
+      "sha256": "d21d133f8e1d970d35a0406243d196c52be39a933ca34d585c2660e34c55ed03",
+      "calls": 58,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "01-clean-6930-81414",
+      "sha256": "147411ec5d160ff48f62fbaeed116035ab4b0fb65e352f18daba1baabd85693e",
+      "calls": 66,
+      "fallbackCalls": 14,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "02-clean-260-123288",
+      "sha256": "6cb0cdce84855934addd4d246bbd86c70708618c36f5052036ce5c7af15d0509",
+      "calls": 68,
+      "fallbackCalls": 12,
+      "failedAttempts": [
+        {
+          "key": "{\"start\":15,\"end\":45,\"window\":30,\"shift\":0,\"hints\":true}",
+          "start": 15,
+          "end": 45,
+          "window": 30,
+          "shift": 0,
+          "hints": true,
+          "error": "Error: Non-zero status code returned while running If node. Name:'optimum::if' Status Message: Non-zero status code returned while running Reshape node. Name:'/model/decoder/layers.0/self_attn/Reshape_6' Status Message: /onnxruntime_src/onnxruntime/core/providers/cpu/tensor/reshape_helper.h:91 onnxruntime::ReshapeHelper::ReshapeHelper(const onnxruntime::TensorShape&, onnxruntime::TensorShapeVector&, bool) input_shape_size == requested_shape_size was false. The input tensor cannot be reshaped to the requested shape. Input shape:{8,0,64}, requested shape:{1,8,64,64}\n"
+        }
+      ],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "03-clean-7127-75947",
+      "sha256": "3a436aa7ec06861c32415b48ed3af5324bf0e6ece3fe779a85feefe1ecdba14d",
+      "calls": 71,
+      "fallbackCalls": 19,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "04-clean-8230-279154",
+      "sha256": "ebd907640b8e7e69bc0cb112285c57415b1f56db0de0bbb7e036bba952bd5322",
+      "calls": 72,
+      "fallbackCalls": 20,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "05-clean-1284-1180",
+      "sha256": "1816de9b84f029ecf114076696566a089f2140328da390c8e90f62890f50c501",
+      "calls": 74,
+      "fallbackCalls": 22,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "06-clean-2830-3980",
+      "sha256": "f0f16340140679b5f0f7646c077663a0a1d9e65e00cccd91c6c780a2c3b7a151",
+      "calls": 62,
+      "fallbackCalls": 13,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "07-clean-4077-13754",
+      "sha256": "e658e46aed26b19375959509f11c7d825d7273986b9bb56e1997d186620df996",
+      "calls": 73,
+      "fallbackCalls": 20,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "08-clean-8224-274384",
+      "sha256": "85bc006b41ab72c7860eb09eb48da74ccdbceb02f99c1b5245300ddf079192b7",
+      "calls": 74,
+      "fallbackCalls": 21,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "09-clean-5105-28233",
+      "sha256": "32a6ce0ee2826654ed5c1c615b43a7c5242200188a33aecd5f5f009d105d8e7b",
+      "calls": 93,
+      "fallbackCalls": 37,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "10-clean-2300-131720",
+      "sha256": "53a011b24044754ae52bf7041a7c83242d1a5eb79adf9059a93cc20aa07ca060",
+      "calls": 83,
+      "fallbackCalls": 27,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "11-other-7902-96592",
+      "sha256": "ace24d0c2649809ef042286fb546da3bac1de69c9d41777ac806012b80d80559",
+      "calls": 77,
+      "fallbackCalls": 25,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "12-other-6128-63244",
+      "sha256": "33d917ddc768a22d278de9475061b8915154d8a5dc1b78ffe9be8c5bddb647b4",
+      "calls": 80,
+      "fallbackCalls": 31,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "13-other-7975-280076",
+      "sha256": "ff944b98a0a732f99a3006e763b784f68ae41b2e31dc7d65651ccc11ccbad242",
+      "calls": 79,
+      "fallbackCalls": 27,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "14-other-3538-163624",
+      "sha256": "237901dfc3ea128d38751f6e03b264707cc8cc8a5bd5624eb495930316f82fd6",
+      "calls": 77,
+      "fallbackCalls": 28,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-base.en",
+      "case": "15-other-4852-28330",
+      "sha256": "24256cf604de08008af8d3ec82de174dcce406cce53312239b3ac204e321f681",
+      "calls": 77,
+      "fallbackCalls": 25,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "01-clean-6930-81414",
+      "sha256": "6b63e35caeb36a9bd2c9c609676eddcb4af19ced5bd7287fd496a5584693510e",
+      "calls": 71,
+      "fallbackCalls": 19,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "02-clean-260-123288",
+      "sha256": "27f46c4d9eff86ff941e6373ff1f3f2deb105ad1a9de60d2fe6b08247d0de162",
+      "calls": 73,
+      "fallbackCalls": 17,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "03-clean-7127-75947",
+      "sha256": "d31bb0f5f837a92c5b938f05d72d8264714a1f85caefb25d365d3aeca68f7b9d",
+      "calls": 80,
+      "fallbackCalls": 28,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "04-clean-8230-279154",
+      "sha256": "d46c7eb2788d47cec4c403ff4f9fdd197e6187634f47ebde6e6fd5fcc22f0a38",
+      "calls": 74,
+      "fallbackCalls": 22,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "05-clean-1284-1180",
+      "sha256": "bb70c73b17d3d827b833d003f57fa7f1d9337bec28fa6c883482a852a82e4395",
+      "calls": 81,
+      "fallbackCalls": 29,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "06-clean-2830-3980",
+      "sha256": "fb216283d0b35609d163525988a610c70b1cb33d482edd62217cac19de6a25cc",
+      "calls": 59,
+      "fallbackCalls": 10,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "07-clean-4077-13754",
+      "sha256": "8502dc8b37507a4079ba6fd1bd98139918449659acac3c9c7709d5f7782685a5",
+      "calls": 75,
+      "fallbackCalls": 22,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "08-clean-8224-274384",
+      "sha256": "c03988eebec8b0f286d15853b285424d117c9929fafe8a24545093b064b4592d",
+      "calls": 66,
+      "fallbackCalls": 13,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "09-clean-5105-28233",
+      "sha256": "4139bb0c5ad389628929771184bb4321945217a2576c3e87cee950de08dd8455",
+      "calls": 87,
+      "fallbackCalls": 31,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "10-clean-2300-131720",
+      "sha256": "c647c9d36319d67ab179adb497a25e041e20062cebf4e97776fb52a53a751d54",
+      "calls": 79,
+      "fallbackCalls": 23,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "11-other-7902-96592",
+      "sha256": "0751f299e3637aaff9ebce99573855bafcf57a9d79baf24ab8c11478383858d8",
+      "calls": 76,
+      "fallbackCalls": 24,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "12-other-6128-63244",
+      "sha256": "cc9678f394dd02d64ff0a49f0967482a890f43106e0924446c67b51008dacd05",
+      "calls": 78,
+      "fallbackCalls": 29,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "13-other-7975-280076",
+      "sha256": "973a00a1389c6d524b2d2cc6c7f056a493fcb9fae869c9c262007076f1c0e294",
+      "calls": 80,
+      "fallbackCalls": 28,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "14-other-3538-163624",
+      "sha256": "cfed9e63700c7b00db86f82a57812e4230e9b2e5942c61d5137f458bc6513f1b",
+      "calls": 74,
+      "fallbackCalls": 25,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "whisper-tiny.en",
+      "case": "15-other-4852-28330",
+      "sha256": "ede96e441e4f540e2d5633dcbabd2b71f0f75278aca1928eec2ca4ff19bcf3c5",
+      "calls": 81,
+      "fallbackCalls": 29,
+      "failedAttempts": [],
+      "configs": 5
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "01-clean-6930-81414",
+      "sha256": "a9dd66cb2b88539784fce95a487ce832497f412677219f6d640a5d734bfc4ef9",
+      "calls": 59,
+      "fallbackCalls": 1,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "02-clean-260-123288",
+      "sha256": "3ef93f471dc89e401597bc04a2f779b258ea3c2de46f7857fe70d18e0488a6c3",
+      "calls": 63,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "03-clean-7127-75947",
+      "sha256": "4a32bb48fe5542ced64fbc3af02fc8bf85d9fee62f21ca77b102f6847e75e9cd",
+      "calls": 60,
+      "fallbackCalls": 2,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "04-clean-8230-279154",
+      "sha256": "7372ee9ca43bf36c70dcb04bf88ef6f1367e7610eb9f00437e9d7313a14cc7d2",
+      "calls": 61,
+      "fallbackCalls": 3,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "05-clean-1284-1180",
+      "sha256": "0405e1078c777bd7ab1dc063344ea91115b4e8c5b1c1bdf1d2ee932a3833b404",
+      "calls": 58,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "06-clean-2830-3980",
+      "sha256": "089c8e6ce0114e6e7c488baae7d2371a52c538f436453d168ae63c1ab59166e7",
+      "calls": 55,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "07-clean-4077-13754",
+      "sha256": "65caa9bf213e7d9e1e72ef3b876fc2c6cb6a2bb96631e426d323f635f3624c7c",
+      "calls": 59,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "08-clean-8224-274384",
+      "sha256": "ed7cca5874b2db9a6a3b7fa52701846714f00518a65005a5d107ca5060487d58",
+      "calls": 60,
+      "fallbackCalls": 1,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "09-clean-5105-28233",
+      "sha256": "6b67c5b8ad64dd4a3f0f40ab05948d21d903641fc79a0be8f12e9971eb7df869",
+      "calls": 79,
+      "fallbackCalls": 16,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "10-clean-2300-131720",
+      "sha256": "85df108cc76748c639263c735780fb627fee568fe30fa36415fbdafe87b5270d",
+      "calls": 71,
+      "fallbackCalls": 8,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "11-other-7902-96592",
+      "sha256": "47bce6568fce09e5c5e04663ec4ce451964703ad9d26b5c778cc19a6d7fa1f3a",
+      "calls": 62,
+      "fallbackCalls": 4,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "12-other-6128-63244",
+      "sha256": "e0bd392d78fafd5a19cd48b17638b20c94f4e041a7a1a548f8abeba84f38f125",
+      "calls": 61,
+      "fallbackCalls": 6,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "13-other-7975-280076",
+      "sha256": "0cde8a5bf2f7f8e804a1f882b05cf756d9acd440a3e6a60ed23fac9ecc227d45",
+      "calls": 70,
+      "fallbackCalls": 12,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "14-other-3538-163624",
+      "sha256": "d1d12e2186faabf7966f8e1732d601fb22da9e27f3ee6a12b4e8fcbe55555a4c",
+      "calls": 55,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    },
+    {
+      "model": "zipformer-20m",
+      "case": "15-other-4852-28330",
+      "sha256": "8fd67a7f9f986d1060e51972c6e314c665c86c1290363fb382a72ea5a581d423",
+      "calls": 58,
+      "fallbackCalls": 0,
+      "failedAttempts": [],
+      "configs": 7
+    }
+  ]
+}

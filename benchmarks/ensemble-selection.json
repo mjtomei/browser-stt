@@ -1,0 +1,97 @@
+{
+  "selected": [
+    "conformer-small",
+    "zipformer-20m",
+    "moonshine-base"
+  ],
+  "windowVariantsForVoting": false,
+  "scope": "User selected three models, one transcription stream per model; ordinary rolling buffers still support long audio. Research selection only; no production integration yet.",
+  "measuredModelFiles": [
+    {
+      "model": "Conformer CTC Small",
+      "bytes": 46431465,
+      "files": [
+        {
+          "file": "sherpa-onnx-nemo-ctc-en-conformer-small/model.int8.onnx",
+          "bytes": 46419854
+        },
+        {
+          "file": "sherpa-onnx-nemo-ctc-en-conformer-small/tokens.txt",
+          "bytes": 11611
+        }
+      ]
+    },
+    {
+      "model": "Zipformer 20M",
+      "bytes": 45459529,
+      "files": [
+        {
+          "file": "sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/encoder-epoch-99-avg-1.int8.onnx",
+          "bytes": 42845182
+        },
+        {
+          "file": "sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/decoder-epoch-99-avg-1.onnx",
+          "bytes": 2092272
+        },
+        {
+          "file": "sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/joiner-epoch-99-avg-1.int8.onnx",
+          "bytes": 259572
+        },
+        {
+          "file": "sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/tokens.txt",
+          "bytes": 5048
+        },
+        {
+          "file": "sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/bpe.model",
+          "bytes": 244865
+        },
+        {
+          "file": "sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/bpe.vocab",
+          "bytes": 12590
+        }
+      ]
+    },
+    {
+      "model": "Moonshine Base",
+      "bytes": 157499298,
+      "files": [
+        {
+          "file": "moonshine-base/config.json",
+          "bytes": 922
+        },
+        {
+          "file": "moonshine-base/generation_config.json",
+          "bytes": 147
+        },
+        {
+          "file": "moonshine-base/onnx/decoder_model_merged_q4.onnx",
+          "bytes": 72781828
+        },
+        {
+          "file": "moonshine-base/onnx/encoder_model.onnx",
+          "bytes": 80818781
+        },
+        {
+          "file": "moonshine-base/preprocessor_config.json",
+          "bytes": 128
+        },
+        {
+          "file": "moonshine-base/special_tokens_map.json",
+          "bytes": 3
+        },
+        {
+          "file": "moonshine-base/tokenizer.json",
+          "bytes": 3761754
+        },
+        {
+          "file": "moonshine-base/tokenizer_config.json",
+          "bytes": 135735
+        }
+      ]
+    }
+  ],
+  "totalBytes": 249390292,
+  "sizeScope": "Required model files from tested adapters, uncompressed decimal bytes; not download compression, runtime memory, complete WASM app size, or a verified Hub upload.",
+  "hubAcceptedCurrentPackageBytes": 82316590,
+  "hubSizeLimitVerified": false
+}
