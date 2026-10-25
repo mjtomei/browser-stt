@@ -1,3 +1,7 @@
+# Current work: spoken filenames, 0.1.18
+
+Optional filename context/formatting is shared with Pageborne. It normalizes explicit spoken dots and suffix letter names, restores unique context spellings, and runs before ensemble alignment. Joined internal punctuation is preserved even without the opt-in formatter. Weights, WASM and verification/cache keys are unchanged. `scripts/filename-browser-test.mjs` is a synthetic eSpeak diagnostic, not an accuracy benchmark; its poor acoustic results did not establish a recognition gain. See VALIDATION.md for measured checks and limitations.
+
 # Browser STT release handoff
 
 The production ensemble and version 0.1.17 source are published as a standalone repository. Pageborne imports this source through a pinned Git dependency; npm prepare builds full/CPU workers. The engineering report moved from Pageborne into README.md, with recorded data under benchmarks/. Runtime/model/cache identities are unchanged.

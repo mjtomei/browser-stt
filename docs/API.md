@@ -30,6 +30,23 @@ Each aligned word includes UTF-16 `start`/`end`, `text`, contributing token IDs/
 
 TypeScript declarations cover the public root API. Lower-level module subpaths remain available for integration and testing.
 
+## Spoken filenames
+
+`filenamesInText(text)` extracts filenames from chat/document text, excluding URLs. `filenameVocabulary(names)` provides at most 48 spoken hints for 24 filenames. A host app controls which document/chat supplies that context.
+
+```js
+import { filenamesInText, filenameVocabulary, formatSpokenFilenames } from '@pageborne/browser-stt';
+const filenames = filenamesInText('Please edit `todo.txt` and `AGENTS.md`.');
+stream.start(filenameVocabulary(filenames), { filenames });
+// "to do dot tee ex tee and agents dot em dee" -> "todo.txt and AGENTS.md"
+// One-shot/remote recognition can use the same formatter:
+const result = formatSpokenFilenames({ text: 'open agents dot md' }, filenames);
+```
+
+Passing `filenames` (even an empty array) opts `EnsembleStream.start` / `voteSpeech` into formatting before alignment and after voting. Arrays are shared for the recording, like the existing vocabulary array; a host can fill them after starting microphone capture. Omit the option for ordinary dictation. `formatSpokenFilenames(result, names)` is also a standalone, idempotent transform.
+
+Unknown names need an explicit spoken “dot” and a common suffix; only explicit separators such as “underscore” or “hyphen” join preceding words. Context can recover spaces, case and camelCase in a uniquely matching name. Ambiguous spellings are not selected. Sentence periods, “dot product,” incomplete suffixes and ordinary prose remain unchanged. Confidence uses the weakest contributing evidence, preserving uncertainty and UTF-16 offsets; this is spelling normalization, not new acoustic evidence. A recognizer that misses the name or hears “not” instead of “dot” may still fail. There is no additional model, download, saved-cache change or remote text-correction call.
+
 ## Validation and research
 
 `npm run test:browser` exercises actual Tiny inference, confidence controls, WAV export and AudioWorklet capture in Chromium. Add `-- --webkit` with `WEBKIT_PATH` for a locally installed WebKit runner. These are desktop tests, not iPhone performance results.

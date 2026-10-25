@@ -44,3 +44,11 @@ flagged ONNX Runtime's public upstream Actions build path because it starts
 with the CI runner's home directory. The audit now normalizes only that known
 upstream build root before checking home paths. Private checkout paths and
 credentials remain checked; no runtime binary is exempted.
+
+## Spoken filenames — 2026-10-25
+
+Version 0.1.18 adds an opt-in formatter plus ensemble alignment of equivalent spoken/literal filenames. All 144 unit tests and strict public API types passed, including `todo dot txt`, `agents dot md`, spelled letter names, ambiguous names, ordinary prose, joined punctuation, confidence preservation and UTF-16 offsets. Full/CPU worker builds and the source audit passed. Model manifests, runtime binaries and verification identities did not change.
+
+Pageborne integration checks passed in Chromium and WebKit for both phone and glasses capture paths. Those checks use controlled recognizer responses and PCM to exercise actual streaming, voting, live drafts, final review, recent-chat context, typed edits and uncertainty rendering. They are not physical-device or acoustic accuracy tests.
+
+The optional `npm run test:filenames` diagnostic used actual Conformer, Zipformer and Moonshine WASM models in Chromium on nine eSpeak NG en-us synthetic filename phrases plus a dot-product control. **Exact filename recall was 0/9 both without and with the new hints/formatting.** The synthetic voice was often decoded poorly (including “dot” as “not”); this diagnostic establishes no acoustic accuracy gain. The conservative formatter intentionally does not repair those lexical substitutions. The dot-product control was not rewritten. Human dictation on the phone/glasses remains unmeasured; the change addresses context coverage, spelling normalization and cross-model alignment, not every acoustic recognition error. Synthetic audio and generated reports remain untracked local fixtures; eSpeak is an external test prerequisite, not a shipped runtime dependency.

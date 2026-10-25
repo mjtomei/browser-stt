@@ -7,9 +7,10 @@ export class EnsembleStream {
   constructor({ models, result, failure = () => {}, backlog = () => {}, confidence, streamOptions = {} }) {
     Object.assign(this, { models, result, failure, backlog, confidence, streamOptions }); this.active = false;
   }
-  start(vocabulary = []) {
+  start(vocabulary = [], { filenames } = {}) {
     this.cancel(); this.active = true; this.finishing = false; this.latest = null; this.error = null;
     this.vocabulary = vocabulary;
+    this.filenames = filenames;
     this.epoch = new AbortController(); this.values = new Map(); this.errors = new Map(); this.streams = new Map();
     const epoch = this.epoch;
     for (const id of Object.keys(this.models.entries)) {
@@ -47,7 +48,7 @@ export class EnsembleStream {
   publish(final = false) {
     const hypotheses = [...this.streams.keys()].filter(id => this.values.has(id)).map(id => ({ id, ...this.values.get(id) }));
     if (!hypotheses.length) return null;
-    const merged = voteSpeech(hypotheses, { final, confidence: this.confidence, vocabulary: this.vocabulary });
+    const merged = voteSpeech(hypotheses, { final, confidence: this.confidence, vocabulary: this.vocabulary, filenames: this.filenames });
     if (!merged.text) return null;
     this.latest = { ...merged, backend: 'wasm', model: 'Conformer + Zipformer + Moonshine Base', partial: !final,
       seconds: Math.max(...hypotheses.map(h => h.seconds || 0)), transcribeMs: Math.max(...hypotheses.map(h => h.transcribeMs || 0)),

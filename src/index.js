@@ -13,3 +13,4 @@ export * from './ensemble-speech.js';
 export * from './ensemble-cache.js';
 export * from './ensemble-stream.js';
 export * from './ensemble-vote.js';
+export * from './speech-filenames.js';

@@ -1,6 +1,6 @@
 {
   "name": "@pageborne/browser-stt",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "private": true,
   "type": "module",
   "description": "Local browser speech recognition with a streaming three-model ensemble, vocabulary hints, word confidence and persistent caching.",
@@ -41,7 +41,8 @@
     "test:types": "tsc --noEmit --strict --target ES2022 --module NodeNext --moduleResolution NodeNext test/api-types.ts",
     "prepare": "npm run build",
     "test:ensemble": "node scripts/ensemble-browser-test.mjs",
-    "release:audit": "node scripts/release-audit.mjs"
+    "release:audit": "node scripts/release-audit.mjs",
+    "test:filenames": "node scripts/filename-browser-test.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "4.3.0",

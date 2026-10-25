@@ -1,4 +1,12 @@
 import { ResidentSpeech, LocalSpeech, BrowserMicrophone, SpeechStream, classifyWords, runStreamingSpeechBenchmark, summarizeStreamingSpeech, type WordConfidence } from '@pageborne/browser-stt';
+import { EnsembleSpeech, EnsembleStream, filenamesInText, filenameVocabulary, formatSpokenFilenames, voteSpeech } from '@pageborne/browser-stt';
+
+const filenames: string[] = filenamesInText('Read `todo.txt` and `AGENTS.md`.');
+const ensemble = new EnsembleStream({ models: new EnsembleSpeech(), result() {} });
+ensemble.start(filenameVocabulary(filenames), { filenames });
+const formatted = formatSpokenFilenames({ text: 'agents dot md', words: [] as WordConfidence[], partial: true }, filenames);
+const partial: boolean = formatted.partial;
+void voteSpeech([{ id: 'moonshine', ...formatted }], { filenames }); void partial;
 
 const speech = new ResidentSpeech({ confidence: { metric: 'mean', threshold: .8, rules: { strict: { threshold: .9 } } } });
 const stream = new SpeechStream({

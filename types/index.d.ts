@@ -1,4 +1,10 @@
 export type Model = 'fast' | 'refine';
+/** Extract bounded filename spellings from prose/code, excluding URLs. */
+export function filenamesInText(text: string): string[];
+/** Spoken forms for up to 24 filenames, suitable for recognizer vocabulary hints. */
+export function filenameVocabulary(filenames?: string[]): string[];
+/** Opt-in post-vote formatting. Preserves metadata and remaps word confidence offsets. */
+export function formatSpokenFilenames<T extends { text: string; words?: WordConfidence[] }>(result: T, filenames?: string[]): T;
 export type Backend = 'wasm' | 'webgpu';
 export type ConfidenceMetric = 'minimum' | 'mean' | 'geometricMean';
 export interface ConfidenceRule { metric?: ConfidenceMetric; threshold?: number }
@@ -153,10 +159,10 @@ export interface EnsembleTranscription extends Transcription { models: EnsembleM
 export class EnsembleStream {
   constructor(options: { models: Pick<EnsembleSpeech, 'entries' | 'transcribe'> & Partial<Pick<EnsembleSpeech, 'prepare'>>; result: (result: EnsembleTranscription) => void; failure?: (error: Error) => void; backlog?: () => void; confidence?: ConfidenceOptions; streamOptions?: { intervalMs?: number; minAudioMs?: number; firstAudioMs?: number; firstIntervalMs?: number; commitOnPause?: boolean } });
   active: boolean; finishing: boolean; latest: EnsembleTranscription | null;
-  start(vocabulary?: string[]): void; receive(bytes: Uint8Array): void; cancel(): void;
+  start(vocabulary?: string[], options?: { filenames?: string[] }): void; receive(bytes: Uint8Array): void; cancel(): void;
   finish(audio: Blob | PcmReceipt, options?: { signal?: AbortSignal }): Promise<EnsembleTranscription>;
 }
-export function voteSpeech(hypotheses: Array<Pick<Transcription, 'text' | 'words'> & { id: string }>, options?: { final?: boolean; confidence?: ConfidenceOptions; vocabulary?: string[] }): { text: string; words: WordConfidence[]; models: string[] };
+export function voteSpeech(hypotheses: Array<Pick<Transcription, 'text' | 'words'> & { id: string }>, options?: { final?: boolean; confidence?: ConfidenceOptions; vocabulary?: string[]; filenames?: string[] }): { text: string; words: WordConfidence[]; models: string[] };
 export interface EnsembleCache { match(key: string): Promise<Response | undefined>; put(key: string, response: Response): Promise<void>; delete(key: string): Promise<unknown>; close(): void }
 export function nativeModelCache(kv: ModelKeyValue): EnsembleCache;
 export function alignPanel<A, B>(a: A[], b: B[], equal: (a: A, b: B) => boolean): Array<[number, number]>;

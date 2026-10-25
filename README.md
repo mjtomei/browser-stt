@@ -4,7 +4,7 @@
 
 Our contribution is the browser inference integration, streaming, hypothesis alignment, bounded vocabulary weighting, punctuation preservation and storage/memory work around pretrained models we did not train. Transcription stays on the device. A consuming app decides whether to send the resulting text elsewhere.
 
-Version **0.1.17** retains the production recognizer configuration and model identities. The bundled WASM was rebuilt with compiler paths remapped to remove local checkout information. This publication preparation changes packaging, documentation and reproducibility, not decoding behavior. The engineering report and recorded evaluations formerly maintained in Pageborne now live in this README and [`benchmarks/`](benchmarks/).
+Version **0.1.18** adds optional spoken-filename formatting and preserves joined filename punctuation during voting. Recognizer weights, runtime and saved verification identities are unchanged. The engineering report and recorded evaluations formerly maintained in Pageborne live in this README and [`benchmarks/`](benchmarks/).
 
 ## Install and build
 
@@ -94,6 +94,8 @@ The following results are recorded evaluations, not newly measured performance f
 Browser STT’s production ensemble combines Conformer CTC Small, Zipformer 20M and Moonshine Base in browser workers with WASM inference. Microphone PCM arrives incrementally. Bounded windows and overlap reconciliation maintain a growing transcript, while cancellation, review and edits prevent late decoder output from replacing user changes. The final Ask question is submitted only by the user.
 
 Consumers such as Pageborne rank document vocabulary near the reading position. Browser STT accepts those terms through different mechanisms: Conformer CTC beam vocabulary, Zipformer hotwords and Moonshine token bias. The ensemble aligns competing lexical hypotheses, chooses each word by measured acoustic confidence and vote, and keeps Moonshine's sentence punctuation when another recognizer wins the word (see Punctuation below). Complete dictionary words/phrases receive a **25% voting-weight bonus only at acoustic confidence ≥0.35**. Raw confidence is unchanged. An absent word or partial phrase gets no bonus, and strong conflicting evidence can still win.
+
+Consumers can also supply recent filenames. Saying “todo dot txt” or “agents dot em dee” can produce `todo.txt` or `AGENTS.md`, preserving a known filename's spelling and case. The opt-in formatter aligns equivalent filename spellings before voting and preserves word-confidence offsets afterward. It accepts common extensions without context; context adds exact names, separators and uncommon extensions. It does not guess a filename from unrelated speech or turn “not” into “dot.” See the [filename API](docs/API.md#spoken-filenames) and [validation limits](VALIDATION.md#spoken-filenames--2026-10-25).
 
 Opening probes use **250 ms of new audio and no coalescing delay** until a recognizer has visible text; later updates use **500/100 ms**. Cold preparation finishes before the decoder takes its audio snapshot, so it sees current speech rather than decoding an obsolete opening window while the rest waits. These scheduling numbers are not end-to-end latency promises.
 

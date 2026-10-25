@@ -73,6 +73,15 @@ test('aligned Moonshine sentence punctuation survives a voted word substitution'
     assert(r.words.every(w => r.text.slice(w.start, w.end) === w.text));
   }
 });
+test('voting preserves filename separators when their original lexical neighbours agree', () => {
+  for (const text of ['Read README.md now.', 'Edit speech_ui.js and server-config.ts.', 'Use archive.tar.gz.', 'The value is 12.5.']) {
+    const result = voteSpeech([hypothesis('moonshine', text)], { final: true });
+    assert.equal(result.text, text);
+    assert(result.words.every(w => result.text.slice(w.start, w.end) === w.text));
+  }
+  const result = voteSpeech([hypothesis('conformer', 'read readme md now'), hypothesis('zipformer', 'read readme md now'), hypothesis('moonshine', 'Read README.md now.')], { final: true });
+  assert.equal(result.text, 'Read README.md now.');
+});
 test('punctuation is not borrowed across gaps, unanchored disagreements, numeric separators or a lagging tail', () => {
   for (const [plain, moonshine, expected] of [
     ['please read the book now', 'Please read the look.', 'Please read the book now'],
@@ -123,6 +132,16 @@ test('voted expansions of abbreviations do not inherit a mid-sentence period', (
   }
   assert.equal(voteSpeech([hypothesis('moonshine', 'We visited St. Clair.')]).text, 'We visited St. Clair.');
 });
+test('opt-in filename formatting aligns letter names with literal filenames before voting', () => {
+  const hypotheses = [hypothesis('conformer', 'open to do dot t x t and agents dot m d'),
+    hypothesis('zipformer', 'OPEN TODO DOT TXT AND AGENTS DOT MD'),
+    hypothesis('moonshine', 'Open todo.txt and agents.md.')];
+  const r = voteSpeech(hypotheses, { final: true, filenames: ['todo.txt', 'AGENTS.md'] });
+  assert.equal(r.text, 'Open todo.txt and AGENTS.md.');
+  assert(r.words.every(w => r.text.slice(w.start, w.end) === w.text));
+  assert.equal(voteSpeech([hypothesis('conformer', 'open agents dot m d')]).text, 'open agents dot m d', 'other consumers opt in');
+});
+
 test('long shared histories retain the beginning and align an inserted word at the end', () => {
   const prefix = Array.from({ length: 1800 }, (_, i) => 'word' + i).join(' ');
   assert.equal(voteSpeech([hypothesis('a', prefix + ' the end'), hypothesis('b', prefix + ' the end'), hypothesis('c', prefix + ' the extra end')], { final: true }).text, prefix + ' the end');
