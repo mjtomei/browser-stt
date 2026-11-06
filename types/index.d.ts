@@ -163,6 +163,6 @@ export class EnsembleStream {
   finish(audio: Blob | PcmReceipt, options?: { signal?: AbortSignal }): Promise<EnsembleTranscription>;
 }
 export function voteSpeech(hypotheses: Array<Pick<Transcription, 'text' | 'words'> & { id: string }>, options?: { final?: boolean; confidence?: ConfidenceOptions; vocabulary?: string[]; filenames?: string[] }): { text: string; words: WordConfidence[]; models: string[] };
-export interface EnsembleCache { match(key: string): Promise<Response | undefined>; put(key: string, response: Response): Promise<void>; delete(key: string): Promise<unknown>; close(): void }
+export interface EnsembleCache { match(key: string): Promise<Response | undefined>; put(key: string, response: Response): Promise<void>; delete(key: string): Promise<unknown>; recover?(key: string): Promise<number>; close(): void }
 export function nativeModelCache(kv: ModelKeyValue): EnsembleCache;
 export function alignPanel<A, B>(a: A[], b: B[], equal: (a: A, b: B) => boolean): Array<[number, number]>;

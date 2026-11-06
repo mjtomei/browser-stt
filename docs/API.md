@@ -138,6 +138,13 @@ for explicit `models.open({ retry: true })`; other models remain usable. Browser
 storage may be evicted, and uninstall/clearing app data removes saved weights.
 Storage retention still depends on the host; see the device observations in the README.
 
+The native cache also exposes `await cache.recover(key)` to reclaim an abandoned
+write for a known checksum, `preparation:<model-id>` or `verification:<model-id>`.
+Call it only while that key is idle. It returns the number of stored characters
+cleared, preserves any committed file, and can resume after interruption.
+Rejected native writes also attempt this cleanup automatically; timed-out host
+calls leave the journal for recovery after reopening.
+
 In 0.1.10, `EnsembleEntry` exposes `downloadBytes`, `totalBytes`, and `setup`
 (stage plus loaded/total bytes). Preparation now runs a bundled 5.855-second
 LibriSpeech speech sample (CC BY 4.0) through each actual recognizer, requires recognizable

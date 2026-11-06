@@ -19,7 +19,25 @@ function paintBudget() {
 export function nativeModelCache(kv) {
   const breathe = paintBudget();
   const set = async (key, value) => { await kv.set(key, value); await breathe(); };
+  const recover = async key => {
+    const journal = prefix + 'pending:' + key;
+    const raw = await kv.get(journal); if (!raw) return 0;
+    let pending, current;
+    try { pending = JSON.parse(raw); current = JSON.parse(await kv.get(prefix + key) || 'null'); } catch { throw Error('Saved model recovery record is invalid.'); }
+    if (!/^[\w-]+$/.test(pending?.id) || !Number.isInteger(pending.chunks) || pending.chunks < 0 || pending.chunks > 50000) throw Error('Saved model recovery record is invalid.');
+    let cleared = 0;
+    // The pointer can commit before journal cleanup fails. Those are the live
+    // weights, not an abandoned download. Never remove their chunks.
+    if (current?.id !== pending.id) {
+      for (let i = 0; i <= pending.chunks; i++) {
+        const chunk = `${prefix}${pending.id}:${i}`, value = await kv.get(chunk);
+        if (value) { await set(chunk, ''); cleared += value.length; }
+      }
+    }
+    await set(journal, ''); return cleared;
+  };
   return {
+    recover,
     async match(key) {
       const raw = await kv.get(prefix + key); if (!raw) return undefined;
       let file; try { file = JSON.parse(raw); } catch {}
@@ -41,14 +59,8 @@ export function nativeModelCache(kv) {
       const write = async bytes => { await set(`${prefix}${id}:${index++}`, encode(bytes)); };
       // A journal makes an interrupted download recoverable on the next launch.
       const journal = prefix + 'pending:' + key;
-      const previous = await kv.get(journal);
-      if (previous) {
-        let old; try { old = JSON.parse(previous); } catch { old = {}; }
-        if (/^[\w-]+$/.test(old.id) && Number.isInteger(old.chunks) && old.chunks <= 50000) {
-          for (let i = 0; i <= old.chunks; i++) await set(`${prefix}${old.id}:${i}`, '');
-        }
-      }
       try {
+        await recover(key);
         // Verified model streams declare their size. Journal the bounded extent
         // once, rather than doubling every one of ~10,400 native chunk writes.
         // Recovery can clear unwritten keys safely after an interrupted save.
@@ -73,7 +85,10 @@ export function nativeModelCache(kv) {
         }
       } catch (error) {
         await reader.cancel().catch(() => {});
-        // Leave the journal for recovery if the host is no longer available.
+        // A rejected write should not strand partially downloaded weights at
+        // quota. A timed-out native call may still be running: keep its journal
+        // for the next launch rather than queueing cleanup behind it forever.
+        if (error.code !== 'bridge-timeout') await recover(key).catch(() => {});
         throw error;
       } finally { reader.releaseLock(); }
     },

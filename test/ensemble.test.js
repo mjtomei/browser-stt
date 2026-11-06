@@ -54,6 +54,47 @@ test('native cache commits only after EOF; quota failures leave no usable file',
   const set = kv.set; let count = 0; kv.set = async (k, v) => { if (++count === 4) throw Error('quota'); return set(k, v); };
   await assert.rejects(cache.put('a', new Response(new Uint8Array(100000))), /quota/);
   assert.equal(await cache.match('a'), undefined);
+  assert.equal([...kv.values.values()].filter(Boolean).length, 0, 'rejected writes release partial chunks immediately');
+});
+
+test('native recovery works at quota, preserves a committed file and resumes interrupted cleanup', async () => {
+  const kv = memory(), cache = nativeModelCache(kv), prefix = 'pageborne:models:v1:';
+  await cache.put('a', new Response('old weights'));
+  const live = kv.values.get(prefix + 'a'), liveId = JSON.parse(live).id;
+  const set = kv.set;
+  // A completed commit with an uncleared journal is never mistaken for trash.
+  kv.values.set(prefix + 'pending:a', JSON.stringify({ id: liveId, chunks: 1 }));
+  kv.set = async (key, value) => { if (value) throw Error('quota'); await set(key, value); };
+  assert.equal(await cache.recover('a'), 0);
+  assert.equal(await (await cache.match('a')).text(), 'old weights');
+  kv.values.set(prefix + 'pending:a', JSON.stringify({ id: 'orphan', chunks: 2 }));
+  kv.values.set(prefix + 'orphan:0', 'a'.repeat(32000)); kv.values.set(prefix + 'orphan:1', 'b'.repeat(32000));
+  kv.values.set('private-reading-history', 'keep');
+  let clears = 0;
+  kv.set = async (key, value) => { if (value || ++clears === 2) throw Error('quota'); await set(key, value); };
+  await assert.rejects(cache.recover('a'));
+  kv.set = async (key, value) => { if (value) throw Error('quota'); await set(key, value); };
+  assert.equal(await nativeModelCache(kv).recover('a'), 32000);
+  assert.equal(kv.values.get(prefix + 'pending:a'), '');
+  assert.equal(kv.values.get(prefix + 'orphan:0'), ''); assert.equal(kv.values.get(prefix + 'orphan:1'), '');
+  assert.equal(await (await cache.match('a')).text(), 'old weights');
+  assert.equal(kv.values.get('private-reading-history'), 'keep');
+  assert.equal(kv.values.get(prefix + 'a'), live);
+});
+
+test('timed-out native writes retain the recovery journal without queueing cleanup', async () => {
+  const kv = memory(), cache = nativeModelCache(kv), set = kv.set;
+  let timedOut = false;
+  kv.set = async (key, value) => {
+    if (timedOut) throw Error('Must not queue cleanup behind unsettled bridge call');
+    if (/:0$/.test(key)) { timedOut = true; throw Object.assign(Error('pending host call'), { code: 'bridge-timeout' }); }
+    await set(key, value);
+  };
+  await assert.rejects(cache.put('a', new Response('weights')), /pending host call/);
+  assert(kv.values.get('pageborne:models:v1:pending:a'));
+  kv.set = set;
+  await cache.recover('a');
+  assert.equal(kv.values.get('pageborne:models:v1:pending:a'), '');
 });
 
 test('confidence votes beat a high-confidence minority, preserve punctuation and expose disagreements', () => {

@@ -1,3 +1,7 @@
+# Current work: native cache recovery, 0.1.19
+
+Native cache recover(key) clears only journaled uncommitted chunks, including after quota errors. Committed weights are preserved when the journal points at the live manifest. Recovery is resumable and does not require nonempty writes. Rejected put attempts cleanup; bridge-timeout leaves recovery for reopening to avoid queuing behind an uncancellable native call. Model/runtime/verification identities are unchanged. 146 unit tests, strict API types, full/CPU builds, source audit and package dry-run passed. No inference benchmark or physical phone measurement; Pageborne exercises the adapter through a mocked-quota browser integration.
+
 # Current work: spoken filenames, 0.1.18
 
 Optional filename context/formatting is shared with Pageborne. It normalizes explicit spoken dots and suffix letter names, restores unique context spellings, and runs before ensemble alignment. Joined internal punctuation is preserved even without the opt-in formatter. Weights, WASM and verification/cache keys are unchanged. `scripts/filename-browser-test.mjs` is a synthetic eSpeak diagnostic, not an accuracy benchmark; its poor acoustic results did not establish a recognition gain. See VALIDATION.md for measured checks and limitations.

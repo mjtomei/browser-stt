@@ -4,7 +4,7 @@
 
 Our contribution is the browser inference integration, streaming, hypothesis alignment, bounded vocabulary weighting, punctuation preservation and storage/memory work around pretrained models we did not train. Transcription stays on the device. A consuming app decides whether to send the resulting text elsewhere.
 
-Version **0.1.18** adds optional spoken-filename formatting and preserves joined filename punctuation during voting. Recognizer weights, runtime and saved verification identities are unchanged. The engineering report and recorded evaluations formerly maintained in Pageborne live in this README and [`benchmarks/`](benchmarks/).
+Version **0.1.19** reclaims interrupted native model-cache writes after storage failures, while preserving committed weights. Optional spoken-filename formatting and joined filename punctuation remain available. Recognizer weights, runtime and saved verification identities are unchanged. The engineering report and recorded evaluations formerly maintained in Pageborne live in this README and [`benchmarks/`](benchmarks/).
 
 ## Install and build
 

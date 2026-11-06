@@ -1,6 +1,6 @@
 {
   "name": "@pageborne/browser-stt",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "private": true,
   "type": "module",
   "description": "Local browser speech recognition with a streaming three-model ensemble, vocabulary hints, word confidence and persistent caching.",
