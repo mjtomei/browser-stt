@@ -4,11 +4,21 @@ The [main report](../README.md#engineering-and-evaluations) distinguishes browse
 inference, native comparison experiments and physical-device observations.
 Recorded summaries are historical evidence, not newly measured release results.
 
+**Current recommendation: Fluid Speech Mini alone.** On 421 public clips and
+6,362 reference words without hints, Mini made 306 errors (4.81% WER), versus
+547 (8.60%) for the original three-model ensemble: 44.1% fewer errors. Combining
+that ensemble with Mini made 379 errors (5.96%). Existing models ran in
+Chromium/WASM; Fluid accuracy used native CPU ONNX. Later browser integration
+checks are separate from that accuracy corpus. These are not physical-phone
+or outdoor-glasses results. See the [comparison](fluidvoice-2026-11-19.json)
+and [current integration validation](../VALIDATION.md#fluid-speech-mini-browser-integration--2026-11-19).
+
 - `dictation-2026-10-19.json`: first-word latency and bounded vocabulary weighting.
 - `punctuation-2026-10-20.json`: rejected standalone punctuation model trial.
 - `fluidvoice-2026-11-19.json`: actual Fluid Speech Mini/Pro versus production
   models, standalone and ensembles; native/browser boundaries and unlabelled
-  private-recording limitations are explicit. No model was promoted.
+  private-recording limitations are explicit. This frozen report predates
+  deployment; Mini was subsequently integrated in 0.1.20 and selected by Pageborne.
 - `ensemble-*.json`: model selection, provenance, lexical alignment and streaming studies.
 - `window-study*.json`: fixed input manifests and window-size studies.
 - `baselines/`: exact earlier implementation files used by comparative harnesses.

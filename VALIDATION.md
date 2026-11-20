@@ -1,3 +1,7 @@
+## Mini recommendation documentation — 2026-11-19
+
+README/API quickstart and benchmark index now recommend Mini alone and show the recorded 4.81% versus 8.60% WER comparison, with the original ensemble + Mini at 5.96%. Error totals and the 44.1% relative reduction were checked against the frozen JSON. All 27 local links/anchors in the five changed documents, source audit (208 files) and diff whitespace checks passed. Runtime, default constructor, model/cache verification identities and package version are unchanged. This documentation update did not rerun inference or create new accuracy/device evidence.
+
 ## Fluid Speech Mini browser integration — 2026-11-19
 
 - 151 unit tests pass, including model selection, pinned assets, greedy TDT decisions, token/confidence alignment, filter shape validation and interrupted native retirement. Strict TypeScript check, full/CPU builds, source audit and package dry run pass.

@@ -1,3 +1,9 @@
+## 2026-11-19 — Recommend Mini and explain retained library value
+
+README now leads with the recorded 421-clip result: Mini alone 4.81% WER / 306 errors versus the original ensemble's 8.60% / 547, a 44.1% relative error reduction. Adding the original models to Mini gives 5.96% / 379. Main quickstart selects Mini explicitly; default constructor behavior remains unchanged for compatibility. Browser integration, streaming, confidence, filename formatting, cache recovery and evaluation remain useful; legacy acoustic bias/voting are not part of Mini's recommended configuration. Historical sections and the benchmark index distinguish the original comparison from later integration. Native-versus-browser, held-out-corpus and physical-phone limitations remain explicit.
+
+Documentation-only checks passed: all 27 local links/anchors in the five edited documents, headline figures against the frozen report, source audit (208 files) and diff whitespace. No inference, model/verification identity, runtime defaults, weights or version changed; no benchmark rerun was needed.
+
 ## 2026-11-19 — Fluid Speech Mini browser runtime, 0.1.20
 
 User selected Mini after the recorded 421-clip comparison. Mini is opt-in (`modelIds: ['fluid-mini']`) in the standalone API; Pageborne selects only Mini. Legacy default models, Tiny API and old verification identities are preserved. Mini has its own verification identity and pinned unchanged ONNX files. Runtime uses upstream mel filters and Parakeet preprocessing, bounded greedy TDT, word confidence, existing rolling windows, serial low-retention ONNX loading, and a JavaScript-typed local loader Blob for Even's .mjs MIME behavior. No Core ML bridge is present in the host; use ONNX/WASM. Upstream attribution/license are in README/NOTICE and shipped assets. Native cache deletion retains its descriptor until chunks are removed so app migration can resume.
@@ -6,19 +12,21 @@ Validation: 151 unit tests, strict API types, full/CPU builds, source audit and 
 
 User also asked about Inworld Voice Isolator for outdoor speech. Source review confirms traffic/wind/crowd training and a Python/PyTorch runtime; it is not enabled in Pageborne. Its listening/noise-removal benchmark does not establish Mini WER improvements. A 15-variant / three-utterance controlled pilot is now in benchmarks/voice-isolation-2026-11-19.json: Mini 0 errors, isolation+Mini 1 error over 230 scored words. Ceiling effect; no demonstrated gain and no physical outdoor evidence. Isolation remains off. Preserved Ask audio has no verified gold yet.
 
-# Latest evaluation: Fluid Speech, 2026-11-19 — no production change
+# Historical evaluation: Fluid Speech, 2026-11-19 — before integration
 
 The requested comparison of Fluid Speech Mini and Pro is complete. See
 `benchmarks/fluidvoice-2026-11-19.json` and VALIDATION.md. On 421 public clips
 (6,362 normalized words), current three-model voting made 547 errors, Mini
 306, Pro 302, and the best exploratory combination (Moonshine + Mini + Pro)
-300. Mini is the next candidate for a physical-phone experiment; the small
+300. At evaluation time Mini was the next candidate for integration; the small
 differences among Fluid variants/ensembles are not established advantages.
-Mini's measured ONNX download is 300 MB versus Pro's 801 MB. Neither is shipped.
+Mini's measured ONNX download is 300 MB versus Pro's 801 MB. The subsequent
+Mini browser integration is recorded above; Pro remains an evaluation candidate.
 
 Existing models used actual production Chromium/WASM; Fluid accuracy used
 native CPU ONNX, with separate successful browser inference smoke probes.
-No physical-phone or paced-streaming measurement was made. The 67 private Ask
+No physical-phone or paced-streaming measurement was made in that comparison.
+Subsequent browser streaming checks are recorded above. The 67 private Ask
 recordings also replayed locally, but have no verified reference transcripts;
 do not treat agreement with their captured text as accuracy. Private artifacts
 and evaluation harnesses remain outside this publication repository. The JSON

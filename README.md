@@ -1,8 +1,32 @@
 # Browser STT
 
-**Local speech recognition for browsers and embedded WebViews.** Browser STT supports Fluid Speech Mini and a Conformer/Zipformer/Moonshine ensemble, with streaming transcripts, word confidence and persistent model caching. It is the speech engine used by [Pageborne](https://github.com/mjtomei/pageborne), and has no glasses SDK, chat provider or agent dependency.
+**Local speech recognition for browsers and embedded WebViews.** Start with **Fluid Speech Mini alone**: it beats the original Conformer/Zipformer/Moonshine ensemble in our recorded comparison. Browser STT provides the browser runtime, streaming transcripts, word confidence and persistent model caching used by [Pageborne](https://github.com/mjtomei/pageborne), with no glasses SDK, chat provider or agent dependency.
 
-Our contribution is the browser inference integration, streaming, hypothesis alignment, bounded vocabulary weighting, punctuation preservation and storage/memory work around pretrained models we did not train. Transcription stays on the device. A consuming app decides whether to send the resulting text elsewhere.
+Our contribution is the browser integration around pretrained models we did not train. Inference runs on the device; the engine does not upload recordings or transcripts. A consuming app controls any subsequent sharing.
+
+## Recommended model and measured accuracy
+
+On **421 human-transcribed public clips** (221 LibriSpeech read-speech clips and 200 AMI meeting turns, **6,362 normalized reference words**), with no vocabulary hints:
+
+| Configuration | Word errors | Word error rate (lower is better) |
+| --- | ---: | ---: |
+| Original Conformer + Zipformer + Moonshine ensemble | 547 | 8.60% |
+| **Fluid Speech Mini alone** | **306** | **4.81%** |
+| Original ensemble + Mini | 379 | 5.96% |
+
+Mini alone made **44.1% fewer word errors** than the original ensemble. Adding the old models to Mini made this result worse. Pageborne now selects Mini alone, and the quickstart below does too. The legacy ensemble remains available for existing integrations and comparative experiments.
+
+These are recorded desktop results: the original models ran in Chromium/WASM, while Mini used its native CPU ONNX reference decoder. Subsequent browser integration checks matched six public native transcripts and exercised actual PCM streaming in Chromium and WebKit; we have not rerun the full accuracy corpus through the browser adapter. This is not a physical-iPhone or outdoor-glasses accuracy measurement. The read-speech corpus was used in earlier ensemble development, so it is not an independent held-out benchmark. Saved Ask recordings have no verified reference transcripts yet. See the [full comparison and protocol](benchmarks/fluidvoice-2026-11-19.json) and [browser validation](VALIDATION.md#fluid-speech-mini-browser-integration--2026-11-19).
+
+## What remains useful with one model
+
+- **Browser inference:** microphone capture/resampling, Mini feature extraction and TDT decoding, worker isolation, WASM asset hosting and WebView loader compatibility.
+- **Long dictation:** bounded audio windows, overlap reconciliation, live replacement transcripts and draining the final microphone bytes before returning a result.
+- **Interaction and confidence:** cancellation that rejects late results, token-derived word confidence for uncertainty displays, and optional spoken-filename formatting. Confidence is evidence, not a calibrated correctness probability.
+- **Storage and model lifecycle:** pinned hashes, reusable verification, persistent browser/native caches, interrupted-write recovery, lazy loading and explicit worker release.
+- **Evaluation and compatibility:** recorded comparisons, browser checks and the original recognizer/voting APIs remain useful for regression work and existing consumers.
+
+Mini's greedy decoder does not use the old recognizers' acoustic dictionary bias. Cross-model voting remains available, but adding the old models worsened Mini's result above. Filename formatting is a separate optional text transform. The old models remain supported, but we do not recommend running them alongside Mini on this evidence.
 
 ## Fluid Speech Mini
 
@@ -36,7 +60,7 @@ npm install 'git+https://github.com/mjtomei/browser-stt.git#COMMIT_SHA'
 
 Replace `COMMIT_SHA` with the reviewed full commit ID and commit the consumer's lockfile. npm installs this repository's build dependencies and runs `prepare`, compiling workers before installing the dependency. Standard installs must allow lifecycle scripts; an install using `--ignore-scripts` needs an explicit build before consuming assets. Updating requires selecting a new revision, not silently following the latest branch. Pageborne uses this Git dependency flow.
 
-## Use the ensemble
+## Quickstart: Fluid Speech Mini
 
 Configure Vite:
 
@@ -50,15 +74,15 @@ export default defineConfig({
 });
 ```
 
-Capture mono 16 kHz PCM, stream it to all three recognizers, and display replacement transcripts:
+Capture mono 16 kHz PCM, stream it to Mini, and display replacement transcripts. The shared API and asset option retain their `Ensemble` names even when selecting one model:
 
 ```js
 import { EnsembleSpeech, EnsembleStream, BrowserMicrophone } from '@pageborne/browser-stt';
 
-const models = new EnsembleSpeech();
+const models = new EnsembleSpeech({ modelIds: ['fluid-mini'] });
 const prepared = await models.open(); // downloads/checks missing models, then retains them
 if (prepared.some(result => result.status === 'rejected')) {
-  console.warn('Some models are unavailable; inspect models.entries.');
+  throw new Error('Fluid Speech Mini is unavailable; inspect models.entries.');
 }
 const stream = new EnsembleStream({
   models,
@@ -69,7 +93,7 @@ const mic = new BrowserMicrophone(() => {}, bytes => stream.receive(bytes));
 
 // Call from a user gesture (HTTPS or localhost microphone permission required).
 async function start() {
-  stream.start(['Pageborne', 'Kantorowicz']);
+  stream.start();
   try { await mic.start({ retainAudio: false }); }
   catch (error) { stream.cancel(); throw error; }
 }
@@ -80,7 +104,9 @@ async function stop() {
 // On edit/cancel: stream.cancel(). On disposal: stop capture, then models.close().
 ```
 
-The ensemble initially downloads about **249 MB**, checked against pinned revisions, lengths and SHA-256 hashes. All three models run on CPU/WASM SIMD in workers. Downloads/setup are serial; recognition can run independently. Models remain resident until the consumer closes them. Browser storage is origin-scoped and can be evicted; the native key/value adapter allows hosts such as Even to retain weights across changing installed-app origins.
+Mini initially downloads about **300 MB**, checked against pinned revisions, lengths and SHA-256 hashes, and runs on CPU/WASM in a worker. It remains resident until the consumer closes it. Browser storage is origin-scoped and can be evicted; the native key/value adapter allows hosts such as Even to retain weights across changing installed-app origins.
+
+For backwards compatibility, omitting `modelIds` still selects the original three-model ensemble (about **249 MB** of downloads). This default is preserved for existing consumers; it is not the recommended model selection. See the [legacy ensemble API](docs/API.md#original-three-model-ensemble-compatibility). Mini's download is larger than the old ensemble's; the accuracy result does not establish a storage, latency or phone-memory improvement.
 
 The library exposes confidence evidence, not calibrated correctness probabilities. Read [API and integration notes](docs/API.md) for streaming/backlog behavior, storage adapters, verification receipts, cancellation, model hints, the Tiny/optional-Whisper API and asset hosting. The older `npm run dev` demo exercises Tiny and optional Whisper; it is not the three-model evaluation UI.
 
@@ -90,16 +116,19 @@ The library exposes confidence evidence, not calibrated correctness probabilitie
 npm test
 npm run test:types
 npm run release:audit
-npm run test:ensemble -- --remote  # optional actual models; downloads missing weights
+FLUID_MODEL_DIR=/path/to/fluid-speech-mini-onnx npm run test:mini # optional actual Mini
+npm run test:ensemble -- --remote  # optional legacy models; downloads missing weights
 ```
 
-The real-model check requires an installed Chromium or WebKit and exercises each recognizer plus streaming. Use `CHROME_PATH` or `WEBKIT_PATH` to select a browser. Without `--remote`, supply local weight fixtures beneath `.state/ensemble/models/`. [Reproduction notes](docs/REPRODUCING.md) distinguish browser inference, native experiments and consumer/device observations.
+The real-model checks require an installed Chromium or WebKit and exercise inference plus streaming. Use `CHROME_PATH` or `WEBKIT_PATH` to select a browser. Mini requires its pinned local model files; add `-- --webkit --native` to test WebKit with the native cache adapter. For the legacy ensemble without `--remote`, supply local weight fixtures beneath `.state/ensemble/models/`. [Reproduction notes](docs/REPRODUCING.md) distinguish browser inference, native experiments and consumer/device observations.
 
 The following results are recorded evaluations, not newly measured performance from preparing this release. Audio/LLM correction research is preserved separately on `research/audio-llm-evaluations` in the original development repository; it is not in the production source snapshot. The unsuccessful punctuation-restoration trial below remains documented because it explains the choice to preserve Moonshine output.
 
 ## Engineering and evaluations
 
-Browser STT’s production ensemble combines Conformer CTC Small, Zipformer 20M and Moonshine Base in browser workers with WASM inference. Microphone PCM arrives incrementally. Bounded windows and overlap reconciliation maintain a growing transcript, while cancellation, review and edits prevent late decoder output from replacing user changes. The final Ask question is submitted only by the user.
+The following sections document the **original ensemble and its historical evaluations**, before Pageborne switched to Mini. They explain retained engineering and earlier experiments; their model recommendations and measurements should be read in that context.
+
+The original ensemble combines Conformer CTC Small, Zipformer 20M and Moonshine Base in browser workers with WASM inference. Microphone PCM arrives incrementally. Bounded windows and overlap reconciliation maintain a growing transcript, while cancellation, review and edits prevent late decoder output from replacing user changes. The final Ask question is submitted only by the user.
 
 Consumers such as Pageborne rank document vocabulary near the reading position. Browser STT accepts those terms through different mechanisms: Conformer CTC beam vocabulary, Zipformer hotwords and Moonshine token bias. The ensemble aligns competing lexical hypotheses, chooses each word by measured acoustic confidence and vote, and keeps Moonshine's sentence punctuation when another recognizer wins the word (see Punctuation below). Complete dictionary words/phrases receive a **25% voting-weight bonus only at acoustic confidence ≥0.35**. Raw confidence is unchanged. An absent word or partial phrase gets no bonus, and strong conflicting evidence can still win.
 

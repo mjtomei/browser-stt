@@ -1,6 +1,6 @@
 # Browser STT API and integration notes
 
-EnsembleSpeech/EnsembleStream are the Pageborne production integration. ResidentSpeech retains the earlier Tiny/optional-Small API for other consumers; its defaults are not changed by this release.
+`EnsembleSpeech` / `EnsembleStream` with `modelIds: ['fluid-mini']` are the recommended integration and Pageborne's current selection. Mini alone beats the original ensemble in the [recorded comparison](../README.md#recommended-model-and-measured-accuracy). Omitting `modelIds` preserves the original three-model default for compatibility. `ResidentSpeech` retains the earlier Tiny/optional-Small API for other consumers; its defaults are unchanged.
 
 ## Audio and streaming
 
@@ -69,7 +69,7 @@ Mini uses a serially initialized CPU/WASM ONNX worker with packed encoder weight
 
 Mini does not apply acoustic vocabulary bias. Dictionary inputs can still be recorded for evaluation; explicit filename formatting remains available. Core ML requires native host integration and is not exposed by this browser engine. See the README for required FluidVoice/NVIDIA/Moondream attribution.
 
-## Three-model streaming (opt-in)
+## Original three-model ensemble (compatibility)
 
 `EnsembleSpeech` and `EnsembleStream` run Conformer CTC Small, Zipformer 20M,
 and Moonshine Base in three independent CPU/SIMD workers. The existing
