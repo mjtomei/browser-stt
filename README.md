@@ -36,7 +36,7 @@ Select it with `new EnsembleSpeech({ modelIds: ['fluid-mini'] })`, using the sam
 
 The [Core ML build](https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-coreml) requires native Apple integration (iOS 18/macOS 15+) and can use the Neural Engine. FluidVoice reports a 253 MB package and roughly 277 MB runtime memory for a 15-second clip, versus roughly 500 MB for ONNX. These are vendor measurements, not iPhone results from this project. A WebView cannot load Core ML through this JavaScript API; its host would need to expose a native inference bridge. Browser STT uses ONNX/WASM.
 
-Version **0.1.20** adds the opt-in Fluid Speech Mini browser runtime and resumable retirement of native model-cache files. Existing three-model defaults and verification identities are preserved. Pageborne selects Mini alone. The engineering report and recorded evaluations live in this README and [`benchmarks/`](benchmarks/).
+Version **0.1.21** delivers Mini's partial words on a 150 ms cadence instead of waiting for sixteen decoder decisions. Partial output stops at a word boundary; the final transcript and confidence scores retain all words. Model weights, inference settings, saved verification and legacy defaults are unchanged. Pageborne selects Mini alone. The engineering report and recorded evaluations live in this README and [`benchmarks/`](benchmarks/).
 
 ## Install and build
 

@@ -42,10 +42,16 @@ try {
   console.log('Mini ready', JSON.stringify(report.ready));
   report.clip = await page.evaluate(async () => {
     const audio = await (await fetch('/stt/ensemble-check.wav')).blob();
-    return models.transcribe('fluid-mini', audio);
+    const started = performance.now(), updates = [];
+    const result = await models.transcribe('fluid-mini', audio, { onPartial: value => {
+      if (value.text) updates.push({ ms: performance.now() - started, text: value.text });
+    } });
+    return { ...result, partials: updates, firstWordMs: updates[0]?.ms };
   });
   assert.match(report.clip.text.toLowerCase(), /apostle/); assert(report.clip.words.length > 8);
   assert(report.clip.words.every(w => Number.isFinite(w.confidence) && w.text === report.clip.text.slice(w.start, w.end)));
+  assert(report.clip.partials.some(p => p.text && p.text !== report.clip.text), 'words arrive before the complete decode');
+  assert.match(report.clip.partials[0].text, /^(mr\.?|mister)(\s|$)/i, 'first prefix is a word, not a token fragment');
   console.log('Clip', report.clip.text, report.clip.transcribeMs);
   report.streaming = await page.evaluate(async () => {
     const { EnsembleStream } = await import('/src/ensemble-stream.js');
@@ -115,6 +121,6 @@ try {
   assert.equal(report.cachedReload.verified, true); assert.equal(report.cachedReload.ready.verification, 'saved');
   assert.deepEqual(report.errors, []); report.passed = true;
 } finally {
-  await mkdir('test-results', { recursive: true }); await writeFile(`test-results/fluid-mini-${engine}${native ? '-native' : ''}.json`, JSON.stringify(report, null, 2));
+  await mkdir('test-results', { recursive: true }); await writeFile(process.env.FLUID_REPORT || `test-results/fluid-mini-${engine}${native ? '-native' : ''}.json`, JSON.stringify(report, null, 2));
   await browser.close(); await server.close();
 }

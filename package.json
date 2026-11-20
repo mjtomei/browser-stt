@@ -1,6 +1,6 @@
 {
   "name": "@pageborne/browser-stt",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "private": true,
   "type": "module",
   "description": "Local browser speech recognition with Fluid Speech Mini and a streaming ensemble, word confidence and persistent caching.",

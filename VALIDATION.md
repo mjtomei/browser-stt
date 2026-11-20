@@ -1,3 +1,11 @@
+## Earlier Mini partial words — 2026-11-20
+
+Version 0.1.21: 152 unit tests, strict API types, full/CPU builds and source audit pass. Actual Mini inference and paced streaming pass in Chromium and desktop WebKit, including cancellation/retry, silence and offline verification reuse. WebKit also exercises native string storage and an incorrect .mjs MIME response. Complete transcripts and confidence spans are unchanged for the bundled public clip. New regression assertions require an early nonempty word prefix rather than a lone token fragment.
+
+In individual CPU-limited desktop runs, the previous six-second clip emitted its first nonempty partial at 2258 ms, essentially completion; the updated runs emitted the completed word at 2127 ms (Chromium) and 2110 ms (WebKit), about 200 ms before completion. Paced-stream totals varied and do not establish an overall speedup. These measurements demonstrate earlier delivery within a decode, not physical-phone latency or battery savings. ONNX graph optimization was tried and reverted; model weights, inference options and verification identity remain unchanged.
+
+Six fixed public read/conversational clips match normalized native Mini output in Chromium. A 34.832-second concatenated recording drains across overlapping windows and retains its final words. This checks delivery/completion, not the accuracy of every rolling-window splice or a new corpus benchmark.
+
 ## Mini recommendation documentation — 2026-11-19
 
 README/API quickstart and benchmark index now recommend Mini alone and show the recorded 4.81% versus 8.60% WER comparison, with the original ensemble + Mini at 5.96%. Error totals and the 44.1% relative reduction were checked against the frozen JSON. All 27 local links/anchors in the five changed documents, source audit (208 files) and diff whitespace checks passed. Runtime, default constructor, model/cache verification identities and package version are unchanged. This documentation update did not rerun inference or create new accuracy/device evidence.

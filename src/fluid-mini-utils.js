@@ -31,3 +31,12 @@ export function fluidDecision(logits, config) {
   if (token === config.blank_token_id && step === 0) step = 1;
   return { token, step, probability: 1 / sum };
 }
+
+// A token may be only the first letter of a word. Live output can safely show
+// the preceding words while the decoder finishes the current one. The final
+// result always retains the full text and all confidence spans.
+export function fluidPartial(value) {
+  const boundary = value.text.search(/\s+\S*$/u);
+  const text = boundary < 0 ? '' : value.text.slice(0, boundary).trimEnd();
+  return { text, words: value.words.filter(word => word.end <= text.length) };
+}

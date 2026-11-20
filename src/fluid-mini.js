@@ -3,7 +3,7 @@ import { ParakeetFeatureExtractor } from '@huggingface/transformers';
 import cpuWasm from '../node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm?url';
 import { confidenceWords } from './speech-confidence.js';
 import { releaseModelBuffer } from './speech-session-loader.js';
-import { fluidMelFilters, fluidTokenizer, fluidDecision } from './fluid-mini-utils.js';
+import { fluidMelFilters, fluidTokenizer, fluidDecision, fluidPartial } from './fluid-mini-utils.js';
 
 const first = output => Object.values(output)[0];
 const tick = () => new Promise(resolve => setTimeout(resolve, 0));
@@ -65,7 +65,7 @@ export async function fluidMiniRecognizer(base, readFile, stage = () => {}) {
       encoded = await run(sessions.encoder, { hidden_states: tensor(hidden, [1, total, hiddenSize]), length: tensor(new BigInt64Array([BigInt(valid)]), [1]) });
       const stateShape = [config.decoder_layers, 1, config.decoder_hidden_size], stateSize = config.decoder_layers * config.decoder_hidden_size;
       decoded = Object.values(await run(sessions.decoder, { token: tensor(new BigInt64Array([BigInt(config.blank_token_id)]), [1, 1]), h_in: tensor(new Float32Array(stateSize), stateShape), c_in: tensor(new Float32Array(stateSize), stateShape) }));
-      const scores = [], ids = []; let t = 0, lastPartial = 0;
+      const scores = [], ids = []; let t = 0, lastPartial = -Infinity, published = '';
       const result = () => { const text = tokenizer.decode(ids).trim(); return { text, words: confidenceWords(text, scores, tokenizer.decode, confidence) }; };
       for (let i = 0; i < config.max_symbols_per_step * total - 1; i++) {
         check();
@@ -79,6 +79,14 @@ export async function fluidMiniRecognizer(base, readFile, stage = () => {}) {
         ids.push(token); if (!tokenizer.skip.has(token)) scores.push({ token, probability });
         t += step;
         if (t >= valid || token === config.eos_token_id) return result();
+        // Publish newly decoded text by elapsed time, not every sixteen token
+        // decisions. Short questions can finish before reaching that counter.
+        if (!tokenizer.skip.has(token) && performance.now() - lastPartial >= 150) {
+          const value = fluidPartial(result());
+          if (value.text && value.text !== published) {
+            partial(value); published = value.text; lastPartial = performance.now();
+          }
+        }
         if (token !== config.blank_token_id) {
           const tokenInput = tensor(new BigInt64Array([BigInt(token)]), [1, 1]);
           let next; try { next = Object.values(await sessions.decoder.run({ token: tokenInput, h_in: decoded[1], c_in: decoded[2] })); }
@@ -86,7 +94,6 @@ export async function fluidMiniRecognizer(base, readFile, stage = () => {}) {
           dispose(decoded); decoded = next;
         }
         if (i % 16 === 0) {
-          if (performance.now() - lastPartial > 150) { partial(result()); lastPartial = performance.now(); }
           await tick(); check();
         }
       }

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { fluidDecision, fluidMelFilters, fluidTokenizer } from '../src/fluid-mini-utils.js';
+import { fluidDecision, fluidMelFilters, fluidTokenizer, fluidPartial } from '../src/fluid-mini-utils.js';
 import { EnsembleSpeech, fluidSpeechMini } from '../src/ensemble-speech.js';
 import { confidenceWords } from '../src/speech-confidence.js';
 import { nativeModelCache } from '../src/ensemble-cache.js';
@@ -42,6 +42,14 @@ test('NumPy filter loading validates type and dimensions before use', () => {
   assert.deepEqual(fluidMelFilters(bytes.buffer, 2, 2), [[1, 2], [3, 4]]);
   assert.throws(() => fluidMelFilters(bytes.buffer, 128, 257), /shape/);
   assert.throws(() => fluidMelFilters(bytes.buffer.slice(0, -1), 2, 2), /shape/);
+});
+
+test('live Mini prefixes wait for a word boundary and preserve matching confidence spans', () => {
+  const words = [{ text: 'Mr.', start: 0, end: 2, confidence: .8 }, { text: 'Qu', start: 4, end: 6, confidence: .7 }];
+  assert.deepEqual(fluidPartial({ text: 'M', words: [] }), { text: '', words: [] });
+  assert.deepEqual(fluidPartial({ text: 'Mr. Qu', words }), { text: 'Mr.', words: [words[0]] });
+  assert.deepEqual(fluidPartial({ text: 'naïve café', words: [{ start: 0, end: 5 }] }), { text: 'naïve', words: [{ start: 0, end: 5 }] });
+  assert.equal(words.length, 2, 'final confidence data is left intact');
 });
 
 test('retiring native weights resumes after interrupted deletion without orphaned chunks', async () => {
