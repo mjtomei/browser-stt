@@ -50,7 +50,8 @@ export class EnsembleStream {
     if (!hypotheses.length) return null;
     const merged = voteSpeech(hypotheses, { final, confidence: this.confidence, vocabulary: this.vocabulary, filenames: this.filenames });
     if (!merged.text) return null;
-    this.latest = { ...merged, backend: 'wasm', model: 'Conformer + Zipformer + Moonshine Base', partial: !final,
+    const model = Object.values(this.models.entries).map(entry => entry.model?.name).filter(Boolean).join(' + ') || hypotheses.map(h => h.id).join(' + ');
+    this.latest = { ...merged, backend: 'wasm', model, partial: !final,
       seconds: Math.max(...hypotheses.map(h => h.seconds || 0)), transcribeMs: Math.max(...hypotheses.map(h => h.transcribeMs || 0)),
       unavailableModels: [...this.errors.keys()] };
     this.result(this.latest); return this.latest;

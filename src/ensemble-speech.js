@@ -1,9 +1,12 @@
 import manifests from '../vendor/stt/ensemble-models.json' with { type: 'json' };
+import miniManifest from '../vendor/stt/fluid-mini.json' with { type: 'json' };
 import { EnsembleModelStore } from './ensemble-cache.js';
 import { ensembleVerificationKey, savedEnsembleVerification, saveEnsembleVerification } from './ensemble-verification.js';
 import { safeTimeout as setTimeout, cancelTimeout as clearTimeout } from './timers.js';
 
 export const ensembleModels = Object.freeze(manifests);
+export const fluidSpeechMini = Object.freeze(miniManifest);
+const availableModels = [...ensembleModels, fluidSpeechMini];
 const abort = () => new DOMException('Transcription cancelled.', 'AbortError');
 const wait = (promise, signal) => {
   if (!signal) return promise;
@@ -85,9 +88,11 @@ class ModelWorker {
 // Models stay resident until close(). Initializations are serial to avoid three
 // simultaneous peak allocations; inference runs independently in three workers.
 export class EnsembleSpeech {
-  constructor({ base = new URL('./stt/', document.baseURI).href, store = new EnsembleModelStore(), changed = () => {}, failure = () => {}, checkpoint, verificationDevice } = {}) {
+  constructor({ base = new URL('./stt/', document.baseURI).href, store = new EnsembleModelStore(), modelIds = ensembleModels.map(m => m.id), changed = () => {}, failure = () => {}, checkpoint, verificationDevice } = {}) {
+    if (!modelIds.length || new Set(modelIds).size !== modelIds.length || modelIds.some(id => !availableModels.some(m => m.id === id))) throw Error('Unknown or duplicate speech model selection.');
+    this.models = modelIds.map(id => availableModels.find(m => m.id === id));
     Object.assign(this, { base, store, changed, failure, checkpoint, verificationDevice }); this.generation = 0; this.loading = Promise.resolve();
-    this.entries = Object.fromEntries(ensembleModels.map(model => [model.id, { model, state: 'idle', progress: '',
+    this.entries = Object.fromEntries(this.models.map(model => [model.id, { model, state: 'idle', progress: '',
       downloadBytes: 0, totalBytes: model.files.reduce((n, f) => n + (f.text === undefined ? f.bytes : 0), 0),
       setup: { stage: 'waiting', loadedBytes: 0, totalBytes: model.files.reduce((n, f) => n + f.bytes, 0) } }]));
   }
@@ -103,9 +108,9 @@ export class EnsembleSpeech {
     return Object.values(this.entries).every(entry => entry.verified);
   }
   open({ retry = false } = {}) {
-    const models = [...ensembleModels].sort((a, b) => Number(b.id === 'moonshine') - Number(a.id === 'moonshine'));
+    const models = [...this.models].sort((a, b) => Number(b.id === 'moonshine') - Number(a.id === 'moonshine'));
     const jobs = new Map(models.map(m => [m.id, this.prepare(m.id, { retry })]));
-    return Promise.allSettled(ensembleModels.map(m => jobs.get(m.id)));
+    return Promise.allSettled(this.models.map(m => jobs.get(m.id)));
   }
   prepare(id, { retry = false, signal } = {}) {
     // Cancellation stops this caller's wait, never another recording's shared

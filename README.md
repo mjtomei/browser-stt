@@ -1,10 +1,18 @@
 # Browser STT
 
-**Local speech recognition for browsers and embedded WebViews.** Browser STT combines Conformer CTC Small, Zipformer 20M and Moonshine Base into a streaming transcript with vocabulary hints, word confidence and persistent model caching. It is the speech engine used by [Pageborne](https://github.com/mjtomei/pageborne), and has no glasses SDK, chat provider or agent dependency.
+**Local speech recognition for browsers and embedded WebViews.** Browser STT supports Fluid Speech Mini and a Conformer/Zipformer/Moonshine ensemble, with streaming transcripts, word confidence and persistent model caching. It is the speech engine used by [Pageborne](https://github.com/mjtomei/pageborne), and has no glasses SDK, chat provider or agent dependency.
 
 Our contribution is the browser inference integration, streaming, hypothesis alignment, bounded vocabulary weighting, punctuation preservation and storage/memory work around pretrained models we did not train. Transcription stays on the device. A consuming app decides whether to send the resulting text elsewhere.
 
-Version **0.1.19** reclaims interrupted native model-cache writes after storage failures, while preserving committed weights. Optional spoken-filename formatting and joined filename punctuation remain available. Recognizer weights, runtime and saved verification identities are unchanged. The engineering report and recorded evaluations formerly maintained in Pageborne live in this README and [`benchmarks/`](benchmarks/).
+## Fluid Speech Mini
+
+Pageborne selects **Fluid Speech Mini by FluidVoice**, built on **NVIDIA Parakeet TDT 0.6B v3** and **Moondream Parakeet Ultra**. These models are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See the [official ONNX model](https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-onnx), its [license](vendor/stt/fluid-mini-LICENSE) and [attribution notice](vendor/stt/fluid-mini-NOTICE). We use the unmodified, packed ONNX weights at revision `fc592620325027419883cf272e70588d8a788c0a`; our adaptation is browser preprocessing, greedy TDT decoding, confidence reporting and rolling audio windows. We did not train the model. Its license and notice ship with application assets.
+
+Select it with `new EnsembleSpeech({ modelIds: ['fluid-mini'] })`, using the same `EnsembleStream`, storage and verification APIs below. The default constructor retains the original three-model ensemble for existing consumers. Mini downloads about **300 MB**, runs locally in a CPU/WASM worker, and preserves sentence punctuation. Its greedy decoder does not apply acoustic vocabulary bias; optional spoken-filename formatting still uses filename context. [Recorded comparison](benchmarks/fluidvoice-2026-11-19.json) distinguishes native accuracy measurements from browser smoke checks and physical-phone measurements.
+
+The [Core ML build](https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-coreml) requires native Apple integration (iOS 18/macOS 15+) and can use the Neural Engine. FluidVoice reports a 253 MB package and roughly 277 MB runtime memory for a 15-second clip, versus roughly 500 MB for ONNX. These are vendor measurements, not iPhone results from this project. A WebView cannot load Core ML through this JavaScript API; its host would need to expose a native inference bridge. Browser STT uses ONNX/WASM.
+
+Version **0.1.20** adds the opt-in Fluid Speech Mini browser runtime and resumable retirement of native model-cache files. Existing three-model defaults and verification identities are preserved. Pageborne selects Mini alone. The engineering report and recorded evaluations live in this README and [`benchmarks/`](benchmarks/).
 
 ## Install and build
 

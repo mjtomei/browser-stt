@@ -7,7 +7,7 @@ const verificationRuntime = '0.1.16';
 // change do: a receipt certifies a particular inference implementation/device.
 export function ensembleVerificationKey(model, device) {
   if (!device) return null;
-  const identity = JSON.stringify([1, verificationRuntime, device, model.id, model.directory,
+  const identity = JSON.stringify([1, model.verificationRuntime || verificationRuntime, device, model.id, model.directory,
     model.files.map(file => [file.file, file.bytes, file.sha256, file.text])]);
   return Array.from(sha256(new TextEncoder().encode(identity)), n => n.toString(16).padStart(2, '0')).join('');
 }

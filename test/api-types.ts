@@ -1,5 +1,5 @@
 import { ResidentSpeech, LocalSpeech, BrowserMicrophone, SpeechStream, classifyWords, runStreamingSpeechBenchmark, summarizeStreamingSpeech, type WordConfidence } from '@pageborne/browser-stt';
-import { EnsembleSpeech, EnsembleStream, filenamesInText, filenameVocabulary, formatSpokenFilenames, voteSpeech } from '@pageborne/browser-stt';
+import { EnsembleSpeech, EnsembleStream, fluidSpeechMini, filenamesInText, filenameVocabulary, formatSpokenFilenames, voteSpeech } from '@pageborne/browser-stt';
 
 const filenames: string[] = filenamesInText('Read `todo.txt` and `AGENTS.md`.');
 const ensemble = new EnsembleStream({ models: new EnsembleSpeech(), result() {} });
@@ -25,3 +25,6 @@ void microphone.start({ retainAudio: false }).then(async () => stream.finish(awa
 new SpeechStream({ transcribe: (audio, options) => speech.transcribe('fast', audio, options), result() {}, overlapSeconds: 7.5, backlog() {} });
 new SpeechStream({ transcribe: (audio, options) => speech.transcribe('fast', audio, options), result() {}, windowSeconds: 30, overlapSeconds: 15, commitOnPause: false });
 void speech.transcribe('fast', new Blob(), { chunkSeconds: 60 }).then(result => { const seconds: number | undefined = result.segments?.[0].seconds; void seconds; });
+
+const mini = new EnsembleSpeech({ modelIds: ['fluid-mini'] });
+void mini.prepare('fluid-mini'); void fluidSpeechMini.files;

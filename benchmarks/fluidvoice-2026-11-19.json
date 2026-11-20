@@ -1,0 +1,4020 @@
+{
+  "title": "Fluid Speech versus the Pageborne ensemble",
+  "date": "2026-11-19",
+  "sources": {
+    "mini": "https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-onnx",
+    "pro": "https://huggingface.co/FluidVoice-Labs/fluid-speech-pro-onnx",
+    "AMI": "https://groups.inf.ed.ac.uk/ami/corpus/overview.shtml",
+    "LibriSpeech": "https://www.openslr.org/12"
+  },
+  "modelRevisions": {
+    "mini": "fc592620325027419883cf272e70588d8a788c0a",
+    "pro": "fa588e9f87f1b9ad0ca2e2d8f7eaf84dc3803581"
+  },
+  "downloadBytes": {
+    "mini": 300146787,
+    "pro": 800847271
+  },
+  "protocol": {
+    "date": "2026-11-19",
+    "engineRevision": "381fa371d8c4c56a942f0625e78a9b654f04872c",
+    "host": {
+      "machine": "aarch64",
+      "system": "Linux",
+      "cpu": "NVIDIA GB10 Grace ARM64, shared host",
+      "gpuUsed": false
+    },
+    "inputCounts": {
+      "public": 221,
+      "speakers": 15,
+      "silence": 3,
+      "private": 67
+    },
+    "publicAudioSeconds": 1501.8200625,
+    "privateAudioSeconds": 2124.85,
+    "protocol": [
+      "Replay all 221 human-transcribed constituent LibriSpeech clips from the frozen 15-speaker expanded-window study, without selecting by candidate errors.",
+      "Same PCM16 mono 16kHz files; WAV SHA-256 matches frozen manifest. References only used in scoring, never model prompts.",
+      "Production 0.1.19 Conformer, Zipformer and Moonshine in Chromium/WASM with one inference thread; sequential models per clip.",
+      "Baseline transcribes clips up to 15 seconds in one pass, and 17 longer clips via production SpeechStream with 15-second windows and 7.5-second overlap. This is completed-recording decoding, not paced microphone streaming.",
+      "Separate existing-model no-dictionary and saved disjoint same-chapter dictionary conditions. Fluid decoders have no hints; ensemble voting uses same dictionary in hinted condition.",
+      "Fluid Speech Mini ONNX packed 2/4-bit and Fluid Speech Pro ONNX int8 run via native ONNX Runtime CPU, one thread, greedy decoding, clean mode off. All public clips fit one pass.",
+      "Mini official Python implementation and onnx-asr Pro; instrumentation observes token posterior without altering token selection. Word confidence is minimum overlapping token probability, matching production default.",
+      "Fixed-order production voteSpeech across all 31 nonempty subsets; raw uncalibrated confidences and uniform-vote sensitivity control. No confidence tuning on evaluation references.",
+      "Micro-averaged WER after whisper-normalizer 1.0.1 EnglishTextNormalizer; standalone plus ensembles scored identically.",
+      "Speaker-cluster paired bootstrap, 5000 resamples seeded 20261119, exploratory evidence; historical selection corpus is not independent of earlier ensemble development.",
+      "Private Ask recordings have no verified references. Only transcript agreement/behavior evaluated, never scored as accuracy. Saved baseline was captured live; Fluid replay was offline with longer bounded windows, so comparisons are diagnostic.",
+      "Timing is full-clip warm decoding on shared desktop, not physical iPhone or end-of-speech latency. Native Fluid and browser baseline timings are distinct runtime categories. Accuracy runs were concurrent independent CPU jobs; browser compatibility probe uses precomputed official acoustic features.",
+      "Model changes have not been deployed; private audio/transcripts stay in protected local evaluation directory."
+    ],
+    "supplement": {
+      "corpus": "AMI",
+      "sourceManifestSha256": "f5a4c61cdf7f9c5773a74bd47921ccd21baa141b604a2b96bf46d98f1738eb8e",
+      "selection": "50 turn indices per meeting, round(i*(N-1)/49) for i=0..49, preserving all selected lexical turns including short fillers; fixed before candidate inference on this subset",
+      "meetings": [
+        "ES2004a",
+        "IS1009a",
+        "TS3003a",
+        "EN2002a"
+      ],
+      "clips": 200,
+      "annotationWords": 2031,
+      "seconds": 793.666,
+      "hints": false,
+      "referenceLeakage": false,
+      "license": "AMI consortium, CC BY 4.0"
+    },
+    "dictionaryOverlapWithTestIds": 0,
+    "harnessNotes": [
+      "The Pro confidence adapter initially stopped on a spacing contraction (use apostrophe em). Character mapping was fixed to follow the unchanged rendered text; the stopped case was rerun and retained. No candidate transcripts were edited.",
+      "AMI sampling was fixed before inference on that subset; all 200 selected turns are retained.",
+      "Both native models passed three silent inputs of 1, 5 and 15 seconds."
+    ]
+  },
+  "results": {
+    "normalization": "whisper-normalizer 1.0.1 EnglishTextNormalizer; words pooled, not mean utterance WER",
+    "summaries": [
+      {
+        "configuration": "conformer",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 690,
+        "wer": 0.10845646023263125,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 442
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 107
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 141
+          }
+        }
+      },
+      {
+        "configuration": "zipformer",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 2379,
+        "wer": 0.3739390128890286,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 1375
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 588
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 416
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 729,
+        "wer": 0.11458660798491041,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 485
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 105
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 139
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 690,
+        "wer": 0.10845646023263125,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 442
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 107
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 141
+          }
+        }
+      },
+      {
+        "configuration": "moonshine",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 637,
+        "wer": 0.10012574662055958,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 425
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 89
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 123
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 546,
+        "wer": 0.0858220685319082,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 361
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 79
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 106
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 690,
+        "wer": 0.10845646023263125,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 442
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 107
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 141
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 689,
+        "wer": 0.10829927695693178,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 467
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 98
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 124
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 2374,
+        "wer": 0.3731530965105313,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 1373
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 584
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 417
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 547,
+        "wer": 0.08597925180760767,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 362
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 71
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 114
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 662,
+        "wer": 0.1040553285130462,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 447
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 84
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 131
+          }
+        }
+      },
+      {
+        "configuration": "mini",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 306,
+        "wer": 0.04809808236403647,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 207
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 49
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 50
+          }
+        }
+      },
+      {
+        "configuration": "conformer+mini",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 347,
+        "wer": 0.054542596667714556,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 231
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 52
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 64
+          }
+        }
+      },
+      {
+        "configuration": "conformer+mini",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 690,
+        "wer": 0.10845646023263125,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 442
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 107
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 141
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+mini",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 345,
+        "wer": 0.054228230116315626,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 237
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 48
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 60
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+mini",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 2374,
+        "wer": 0.3731530965105313,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 1373
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 584
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 417
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+mini",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 416,
+        "wer": 0.06538824269097768,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 284
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 54
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 78
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+mini",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 618,
+        "wer": 0.09713926438226973,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 431
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 81
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 106
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+mini",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 370,
+        "wer": 0.05815781200880226,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 262
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 54
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 54
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+mini",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 637,
+        "wer": 0.10012574662055958,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 425
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 89
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 123
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+mini",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 372,
+        "wer": 0.0584721785602012,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 247
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 55
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 70
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+mini",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 457,
+        "wer": 0.07183275699465577,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 301
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 64
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 92
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+mini",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 378,
+        "wer": 0.05941527821439799,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 253
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 56
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 69
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+mini",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 530,
+        "wer": 0.08330713612071676,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 366
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 68
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 96
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+mini",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 379,
+        "wer": 0.059572461490097456,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 255
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 53
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 71
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+mini",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 485,
+        "wer": 0.0762338887142408,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 325
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 67
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 93
+          }
+        }
+      },
+      {
+        "configuration": "pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 302,
+        "wer": 0.0474693492612386,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 209
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 50
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 43
+          }
+        }
+      },
+      {
+        "configuration": "conformer+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 351,
+        "wer": 0.055171329770512416,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 239
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 57
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 55
+          }
+        }
+      },
+      {
+        "configuration": "conformer+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 690,
+        "wer": 0.10845646023263125,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 442
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 107
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 141
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 348,
+        "wer": 0.05469977994341402,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 240
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 51
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 57
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 2374,
+        "wer": 0.3731530965105313,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 1373
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 584
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 417
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 417,
+        "wer": 0.06554542596667715,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 289
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 56
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 72
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 615,
+        "wer": 0.09666771455517133,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 432
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 81
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 102
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 368,
+        "wer": 0.05784344545740333,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 259
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 55
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 54
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 637,
+        "wer": 0.10012574662055958,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 425
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 89
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 123
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 363,
+        "wer": 0.057057529078906,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 237
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 60
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 66
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 449,
+        "wer": 0.07057529078906004,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 297
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 65
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 87
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 361,
+        "wer": 0.05674316252750707,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 240
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 54
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 67
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 521,
+        "wer": 0.08189248663942157,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 358
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 70
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 93
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 367,
+        "wer": 0.05768626218170387,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 244
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 54
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 69
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 480,
+        "wer": 0.07544797233574348,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 324
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 67
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 89
+          }
+        }
+      },
+      {
+        "configuration": "mini+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 301,
+        "wer": 0.04731216598553914,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 204
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 50
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 47
+          }
+        }
+      },
+      {
+        "configuration": "mini+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 306,
+        "wer": 0.04809808236403647,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 207
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 49
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 50
+          }
+        }
+      },
+      {
+        "configuration": "conformer+mini+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 310,
+        "wer": 0.04872681546683433,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 215
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 50
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 45
+          }
+        }
+      },
+      {
+        "configuration": "conformer+mini+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 321,
+        "wer": 0.05045583149952845,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 225
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 48
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 48
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+mini+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 302,
+        "wer": 0.0474693492612386,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 209
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 47
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 46
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+mini+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 317,
+        "wer": 0.049827098396730586,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 224
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 45
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 48
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+mini+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 312,
+        "wer": 0.04904118201823326,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 218
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 47
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 47
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+mini+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 399,
+        "wer": 0.06271612700408677,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 273
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 58
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 68
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+mini+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 300,
+        "wer": 0.04715498270983967,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 204
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 50
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 46
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+mini+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 312,
+        "wer": 0.04904118201823326,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 219
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 47
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 46
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+mini+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 320,
+        "wer": 0.050298648223828984,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 222
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 47
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 51
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+mini+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 363,
+        "wer": 0.057057529078906,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 241
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 58
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 64
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+mini+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 302,
+        "wer": 0.0474693492612386,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 205
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 48
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 49
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+mini+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 365,
+        "wer": 0.05737189563030493,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 246
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 54
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 65
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+mini+pro",
+        "hints": false,
+        "rule": "raw",
+        "clips": 421,
+        "words": 6362,
+        "errors": 325,
+        "wer": 0.05108456460232631,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 222
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 50
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 53
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+mini+pro",
+        "hints": false,
+        "rule": "uniform",
+        "clips": 421,
+        "words": 6362,
+        "errors": 370,
+        "wer": 0.05815781200880226,
+        "byGroup": {
+          "ami": {
+            "clips": 200,
+            "words": 2041,
+            "errors": 253
+          },
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 56
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 61
+          }
+        }
+      },
+      {
+        "configuration": "conformer",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 238,
+        "wer": 0.05507984262902106,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 104
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 134
+          }
+        }
+      },
+      {
+        "configuration": "zipformer",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 920,
+        "wer": 0.21291367738949318,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 527
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 393
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 228,
+        "wer": 0.05276556352696135,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 95
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 133
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 238,
+        "wer": 0.05507984262902106,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 104
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 134
+          }
+        }
+      },
+      {
+        "configuration": "moonshine",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 214,
+        "wer": 0.04952557278407776,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 94
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 120
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 186,
+        "wer": 0.04304559129831058,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 79
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 107
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 238,
+        "wer": 0.05507984262902106,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 104
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 134
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 207,
+        "wer": 0.047905577412635965,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 89
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 118
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 916,
+        "wer": 0.2119879657486693,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 522
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 394
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 175,
+        "wer": 0.040499884286044896,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 66
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 109
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 203,
+        "wer": 0.04697986577181208,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 79
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 124
+          }
+        }
+      },
+      {
+        "configuration": "mini",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 99,
+        "wer": 0.022911363110391113,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 49
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 50
+          }
+        }
+      },
+      {
+        "configuration": "conformer+mini",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 115,
+        "wer": 0.026614209673686648,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 51
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 64
+          }
+        }
+      },
+      {
+        "configuration": "conformer+mini",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 238,
+        "wer": 0.05507984262902106,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 104
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 134
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+mini",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 109,
+        "wer": 0.02522564221245082,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 51
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 58
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+mini",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 916,
+        "wer": 0.2119879657486693,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 522
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 394
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+mini",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 127,
+        "wer": 0.029391344596158296,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 53
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 74
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+mini",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 174,
+        "wer": 0.040268456375838924,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 75
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 99
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+mini",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 108,
+        "wer": 0.02499421430224485,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 53
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 55
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+mini",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 214,
+        "wer": 0.04952557278407776,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 94
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 120
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+mini",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 122,
+        "wer": 0.02823420504512844,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 54
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 68
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+mini",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 154,
+        "wer": 0.03563989817171951,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 65
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 89
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+mini",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 120,
+        "wer": 0.0277713492247165,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 53
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 67
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+mini",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 156,
+        "wer": 0.03610275399213145,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 65
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 91
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+mini",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 121,
+        "wer": 0.028002777134922472,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 52
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 69
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+mini",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 153,
+        "wer": 0.03540847026151354,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 62
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 91
+          }
+        }
+      },
+      {
+        "configuration": "pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 93,
+        "wer": 0.02152279564915529,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 50
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 43
+          }
+        }
+      },
+      {
+        "configuration": "conformer+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 111,
+        "wer": 0.02568849803286276,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 56
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 55
+          }
+        }
+      },
+      {
+        "configuration": "conformer+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 238,
+        "wer": 0.05507984262902106,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 104
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 134
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 108,
+        "wer": 0.02499421430224485,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 51
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 57
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 916,
+        "wer": 0.2119879657486693,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 522
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 394
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 123,
+        "wer": 0.028465632955334413,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 53
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 70
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 168,
+        "wer": 0.0388798889146031,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 73
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 95
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 109,
+        "wer": 0.02522564221245082,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 55
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 54
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 214,
+        "wer": 0.04952557278407776,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 94
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 120
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 121,
+        "wer": 0.028002777134922472,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 57
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 64
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 149,
+        "wer": 0.034482758620689655,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 65
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 84
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 116,
+        "wer": 0.026845637583892617,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 51
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 65
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 150,
+        "wer": 0.03471418653089563,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 61
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 89
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 116,
+        "wer": 0.026845637583892617,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 49
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 67
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 149,
+        "wer": 0.034482758620689655,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 62
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 87
+          }
+        }
+      },
+      {
+        "configuration": "mini+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 96,
+        "wer": 0.0222170793797732,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 49
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 47
+          }
+        }
+      },
+      {
+        "configuration": "mini+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 99,
+        "wer": 0.022911363110391113,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 49
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 50
+          }
+        }
+      },
+      {
+        "configuration": "conformer+mini+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 93,
+        "wer": 0.02152279564915529,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 48
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 45
+          }
+        }
+      },
+      {
+        "configuration": "conformer+mini+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 95,
+        "wer": 0.02198565146956723,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 47
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 48
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+mini+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 94,
+        "wer": 0.02175422355936126,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 46
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 48
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+mini+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 88,
+        "wer": 0.020365656098125434,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 41
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 47
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+mini+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 95,
+        "wer": 0.02198565146956723,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 47
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 48
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+mini+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 119,
+        "wer": 0.02753992131451053,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 54
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 65
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+mini+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 96,
+        "wer": 0.0222170793797732,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 50
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 46
+          }
+        }
+      },
+      {
+        "configuration": "moonshine+mini+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 93,
+        "wer": 0.02152279564915529,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 47
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 46
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+mini+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 98,
+        "wer": 0.02267993520018514,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 47
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 51
+          }
+        }
+      },
+      {
+        "configuration": "conformer+moonshine+mini+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 119,
+        "wer": 0.02753992131451053,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 57
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 62
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+mini+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 96,
+        "wer": 0.0222170793797732,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 47
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 49
+          }
+        }
+      },
+      {
+        "configuration": "zipformer+moonshine+mini+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 113,
+        "wer": 0.026151353853274707,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 49
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 64
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+mini+pro",
+        "hints": true,
+        "rule": "raw",
+        "clips": 221,
+        "words": 4321,
+        "errors": 102,
+        "wer": 0.023605646841009027,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 49
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 53
+          }
+        }
+      },
+      {
+        "configuration": "conformer+zipformer+moonshine+mini+pro",
+        "hints": true,
+        "rule": "uniform",
+        "clips": 221,
+        "words": 4321,
+        "errors": 112,
+        "wer": 0.025919925943068734,
+        "byGroup": {
+          "clean": {
+            "clips": 130,
+            "words": 2693,
+            "errors": 52
+          },
+          "other": {
+            "clips": 91,
+            "words": 1628,
+            "errors": 60
+          }
+        }
+      }
+    ],
+    "bootstrap": [
+      {
+        "target": "mini",
+        "hints": false,
+        "deltaWer": -0.03788116944357121,
+        "low": -0.05749380239884169,
+        "high": -0.019581522348278244
+      },
+      {
+        "target": "pro",
+        "hints": false,
+        "deltaWer": -0.03850990254636907,
+        "low": -0.057081622189368256,
+        "high": -0.020494634807961747
+      },
+      {
+        "target": "conformer+zipformer+moonshine+mini",
+        "hints": false,
+        "deltaWer": -0.026406790317510215,
+        "low": -0.03796186028822596,
+        "high": -0.014890964099882
+      },
+      {
+        "target": "conformer+zipformer+moonshine+pro",
+        "hints": false,
+        "deltaWer": -0.028292989625903806,
+        "low": -0.04014633121137125,
+        "high": -0.015335987453611666
+      },
+      {
+        "target": "conformer+mini+pro",
+        "hints": false,
+        "deltaWer": -0.03725243634077334,
+        "low": -0.055153814389180086,
+        "high": -0.019748588565376375
+      },
+      {
+        "target": "moonshine+mini+pro",
+        "hints": false,
+        "deltaWer": -0.038824269097768,
+        "low": -0.05638168402493382,
+        "high": -0.021048773713166206
+      },
+      {
+        "target": "mini",
+        "hints": true,
+        "deltaWer": -0.017588521175653783,
+        "low": -0.03027854577475174,
+        "high": -0.006670861393766513
+      },
+      {
+        "target": "pro",
+        "hints": true,
+        "deltaWer": -0.01897708863688961,
+        "low": -0.034761509798872624,
+        "high": -0.006422001354961357
+      },
+      {
+        "target": "conformer+zipformer+moonshine+mini",
+        "hints": true,
+        "deltaWer": -0.012497107151122426,
+        "low": -0.020644586417667796,
+        "high": -0.005378576309335002
+      },
+      {
+        "target": "conformer+zipformer+moonshine+pro",
+        "hints": true,
+        "deltaWer": -0.013654246702152279,
+        "low": -0.022163521175277805,
+        "high": -0.006466333138115078
+      },
+      {
+        "target": "conformer+mini+pro",
+        "hints": true,
+        "deltaWer": -0.01897708863688961,
+        "low": -0.03259896394777818,
+        "high": -0.007516942524068339
+      },
+      {
+        "target": "moonshine+mini+pro",
+        "hints": true,
+        "deltaWer": -0.018282804906271696,
+        "low": -0.03249668000632437,
+        "high": -0.007045437283922067
+      }
+    ],
+    "pairwiseBootstrap": [
+      {
+        "corpus": "read",
+        "source": "conformer+zipformer+moonshine",
+        "target": "mini",
+        "clusters": 15,
+        "deltaWer": -0.019902800277713493,
+        "low": -0.03309168084115396,
+        "high": -0.009252403738018387
+      },
+      {
+        "corpus": "read",
+        "source": "conformer+zipformer+moonshine",
+        "target": "pro",
+        "clusters": 15,
+        "deltaWer": -0.021291367738949317,
+        "low": -0.03705512501922902,
+        "high": -0.009046915004387406
+      },
+      {
+        "corpus": "read",
+        "source": "mini",
+        "target": "pro",
+        "clusters": 15,
+        "deltaWer": -0.001388567461235825,
+        "low": -0.005035971223021582,
+        "high": 0.0018353888221687355
+      },
+      {
+        "corpus": "read",
+        "source": "mini",
+        "target": "mini+pro",
+        "clusters": 15,
+        "deltaWer": -0.0004628558204119417,
+        "low": -0.0024420227784651503,
+        "high": 0.0015993329495924444
+      },
+      {
+        "corpus": "read",
+        "source": "pro",
+        "target": "mini+pro",
+        "clusters": 15,
+        "deltaWer": 0.0009257116408238834,
+        "low": -0.0011879447433519228,
+        "high": 0.0038760574443017404
+      },
+      {
+        "corpus": "conversation",
+        "source": "conformer+zipformer+moonshine",
+        "target": "mini",
+        "clusters": 4,
+        "deltaWer": -0.07594316511513964,
+        "low": -0.11238293444328824,
+        "high": -0.04351851851851852
+      },
+      {
+        "corpus": "conversation",
+        "source": "conformer+zipformer+moonshine",
+        "target": "pro",
+        "clusters": 4,
+        "deltaWer": -0.07496325330720235,
+        "low": -0.1040582726326743,
+        "high": -0.049074074074074076
+      },
+      {
+        "corpus": "conversation",
+        "source": "mini",
+        "target": "pro",
+        "clusters": 4,
+        "deltaWer": 0.0009799118079372856,
+        "low": -0.006538618716796077,
+        "high": 0.012864918357248886
+      },
+      {
+        "corpus": "conversation",
+        "source": "mini",
+        "target": "mini+pro",
+        "clusters": 4,
+        "deltaWer": -0.0014698677119059284,
+        "low": -0.00834326579261025,
+        "high": 0.00850850850850851
+      },
+      {
+        "corpus": "conversation",
+        "source": "pro",
+        "target": "mini+pro",
+        "clusters": 4,
+        "deltaWer": -0.002449779519843214,
+        "low": -0.006271379703534778,
+        "high": 0.0015710919088766694
+      }
+    ],
+    "timing": [
+      {
+        "model": "mini",
+        "clips": 221,
+        "medianMs": 1291.5752260014415,
+        "p95Ms": 2902.8656099690124,
+        "rtf": 0.22004565909222149,
+        "peakRss": 521736192
+      },
+      {
+        "model": "pro",
+        "clips": 221,
+        "medianMs": 1336.82097599376,
+        "p95Ms": 3249.273333000019,
+        "rtf": 0.2320806015139055,
+        "peakRss": 1239367680
+      },
+      {
+        "model": "conformer",
+        "clips": 221,
+        "medianMs": 141.5,
+        "p95Ms": 509.0,
+        "rtf": 0.028639982294990988
+      },
+      {
+        "model": "zipformer",
+        "clips": 221,
+        "medianMs": 430.9000000357628,
+        "p95Ms": 1476.7999999523163,
+        "rtf": 0.0849760255482463
+      },
+      {
+        "model": "moonshine",
+        "clips": 221,
+        "medianMs": 1222.1000000238419,
+        "p95Ms": 4122.100000023842,
+        "rtf": 0.2345945488395482
+      }
+    ],
+    "privateAgreementNotAccuracy": [
+      {
+        "model": "mini",
+        "recordings": 54,
+        "normalizedExactAgreement": 11,
+        "currentWords": 3720,
+        "differenceWords": 183
+      },
+      {
+        "model": "pro",
+        "recordings": 54,
+        "normalizedExactAgreement": 11,
+        "currentWords": 3720,
+        "differenceWords": 197
+      },
+      {
+        "model": "conformer+zipformer+moonshine+mini",
+        "recordings": 52,
+        "normalizedExactAgreement": 13,
+        "currentWords": 3702,
+        "differenceWords": 116
+      },
+      {
+        "model": "conformer+zipformer+moonshine+pro",
+        "recordings": 52,
+        "normalizedExactAgreement": 15,
+        "currentWords": 3702,
+        "differenceWords": 114
+      }
+    ],
+    "silence": {
+      "conformer": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        }
+      ],
+      "zipformer": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        }
+      ],
+      "conformer+zipformer": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "moonshine": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        }
+      ],
+      "conformer+moonshine": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "zipformer+moonshine": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+zipformer+moonshine": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "mini": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        }
+      ],
+      "conformer+mini": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "zipformer+mini": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+zipformer+mini": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "moonshine+mini": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+moonshine+mini": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "zipformer+moonshine+mini": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+zipformer+moonshine+mini": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        }
+      ],
+      "conformer+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "zipformer+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+zipformer+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "moonshine+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+moonshine+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "zipformer+moonshine+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+zipformer+moonshine+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "mini+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+mini+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "zipformer+mini+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+zipformer+mini+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "moonshine+mini+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+moonshine+mini+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "zipformer+moonshine+mini+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ],
+      "conformer+zipformer+moonshine+mini+pro": [
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-1",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-5",
+          "text": "",
+          "rule": "uniform"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "raw"
+        },
+        {
+          "id": "silence-15",
+          "text": "",
+          "rule": "uniform"
+        }
+      ]
+    }
+  },
+  "browserCompatibility": {
+    "mini": {
+      "runtime": {
+        "common": "1.31.0-dev.20260911-2a43ec07e",
+        "web": "1.31.0-dev.20260914-8d85527a0"
+      },
+      "threads": 1,
+      "sessions": [
+        {
+          "name": "frontend",
+          "ok": true,
+          "ms": 506.89999997615814
+        },
+        {
+          "name": "encoder",
+          "ok": true,
+          "ms": 1423.699999988079
+        },
+        {
+          "name": "decoder",
+          "ok": true,
+          "ms": 150.80000001192093
+        },
+        {
+          "name": "joint",
+          "ok": true,
+          "ms": 108.69999998807907
+        }
+      ],
+      "runs": [
+        {
+          "repeat": 0,
+          "ms": 4426.900000035763,
+          "seconds": 12.895,
+          "featureExtraction": "precomputed using official Python frontend",
+          "matchesNativeTranscript": true
+        },
+        {
+          "repeat": 1,
+          "ms": 4251.5,
+          "seconds": 12.895,
+          "featureExtraction": "precomputed using official Python frontend",
+          "matchesNativeTranscript": true
+        },
+        {
+          "repeat": 2,
+          "ms": 4186.699999988079,
+          "seconds": 12.895,
+          "featureExtraction": "precomputed using official Python frontend",
+          "matchesNativeTranscript": true
+        }
+      ]
+    },
+    "pro": {
+      "runtime": {
+        "common": "1.31.0-dev.20260911-2a43ec07e",
+        "web": "1.31.0-dev.20260914-8d85527a0"
+      },
+      "threads": 1,
+      "sessions": [
+        {
+          "name": "encoder-model.int8",
+          "ok": true,
+          "ms": 3842.199999988079
+        },
+        {
+          "name": "decoder_joint-model.int8",
+          "ok": true,
+          "ms": 273.19999998807907
+        }
+      ],
+      "runs": [
+        {
+          "repeat": 0,
+          "ms": 4710.200000047684,
+          "seconds": 12.895,
+          "featureExtraction": "precomputed using onnx-asr",
+          "matchesNativeTranscript": true
+        },
+        {
+          "repeat": 1,
+          "ms": 4415.099999964237,
+          "seconds": 12.895,
+          "featureExtraction": "precomputed using onnx-asr",
+          "matchesNativeTranscript": true
+        },
+        {
+          "repeat": 2,
+          "ms": 4408.300000011921,
+          "seconds": 12.895,
+          "featureExtraction": "precomputed using onnx-asr",
+          "matchesNativeTranscript": true
+        }
+      ]
+    }
+  }
+}

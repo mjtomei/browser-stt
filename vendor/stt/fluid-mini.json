@@ -1,0 +1,59 @@
+{
+  "id": "fluid-mini",
+  "name": "Fluid Speech Mini",
+  "directory": "fluid-speech-mini-onnx",
+  "verificationRuntime": "fluid-mini-1",
+  "repository": "FluidVoice-Labs/fluid-speech-mini-onnx",
+  "revision": "fc592620325027419883cf272e70588d8a788c0a",
+  "license": "CC-BY-4.0",
+  "files": [
+    {
+      "file": "config.json",
+      "bytes": 508,
+      "sha256": "0c4d0c84dadc0d439dfe3c843a4b482bf3ebb50421f781fcbafc7236903234f4",
+      "url": "https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-onnx/resolve/fc592620325027419883cf272e70588d8a788c0a/config.json"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 1159959,
+      "sha256": "7c200d88ac60da4de246cbd38e981a732f2e82580fdd285cb757d8d1f4af9627",
+      "url": "https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-onnx/resolve/fc592620325027419883cf272e70588d8a788c0a/tokenizer.json"
+    },
+    {
+      "file": "mel_filters.npy",
+      "bytes": 131712,
+      "sha256": "ce607f7ae1ce68fd01c02e1177fb1d11ee209c6176d35e47011917ca7d9cd4f2",
+      "url": "https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-onnx/resolve/fc592620325027419883cf272e70588d8a788c0a/mel_filters.npy"
+    },
+    {
+      "file": "encoder.onnx",
+      "bytes": 426102,
+      "sha256": "f8b3a45e71a33b44179a21ef6d6474779747846c4b01c9fd690abcebb88bea86",
+      "url": "https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-onnx/resolve/fc592620325027419883cf272e70588d8a788c0a/encoder.onnx"
+    },
+    {
+      "file": "encoder.onnx.data",
+      "bytes": 253429760,
+      "sha256": "f865c582bec1bd57aa7f2242f3739f38987b7bf471fee4dca7d5c2714eec0747",
+      "url": "https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-onnx/resolve/fc592620325027419883cf272e70588d8a788c0a/encoder.onnx.data"
+    },
+    {
+      "file": "frontend.onnx",
+      "bytes": 8697130,
+      "sha256": "cdbea06631920f25f6183e1389129e9c37106a766c6e130b7f0389b9531b43b7",
+      "url": "https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-onnx/resolve/fc592620325027419883cf272e70588d8a788c0a/frontend.onnx"
+    },
+    {
+      "file": "decoder.onnx",
+      "bytes": 24461296,
+      "sha256": "9ac7e6c22952c242d56df0992ba19489a05b87a8ed37e23798469b9316099af8",
+      "url": "https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-onnx/resolve/fc592620325027419883cf272e70588d8a788c0a/decoder.onnx"
+    },
+    {
+      "file": "joint.onnx",
+      "bytes": 11840320,
+      "sha256": "2e704908834b9f8cc7db88757b8966bac266e19bc00a527c46e9950281205253",
+      "url": "https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-onnx/resolve/fc592620325027419883cf272e70588d8a788c0a/joint.onnx"
+    }
+  ]
+}

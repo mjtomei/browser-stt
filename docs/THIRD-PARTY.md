@@ -1,6 +1,6 @@
 # Third-party components
 
-Reviewed 2026-10-24 against Browser STT 0.1.17, its lockfile, vendored runtime,
+Reviewed 2026-11-19 against Browser STT 0.1.20, its lockfile, vendored runtime,
 model manifests and browser build inputs. The inventory separates browser
 artifacts from optional native packages installed by npm.
 
@@ -12,6 +12,7 @@ artifacts from optional native packages installed by npm.
 | Conformer and Zipformer model distributions | Apache-2.0 | Preserve notices with downloaded models. Immutable download revisions/hashes are recorded in the model manifest. |
 | Transformers.js, Jinja, Tokenizers | Apache-2.0 | Preserve notices. `NOTICE` identifies the Transformers session-loader adaptation. |
 | hclust_cpp, KissFFT | BSD-3-Clause | Preserve copyright, full terms and disclaimer. |
+| Fluid Speech Mini by FluidVoice, built on NVIDIA Parakeet TDT 0.6B v3 and Moondream Parakeet Ultra | CC BY 4.0 | Preserve attribution, license/link and modification notice. Unmodified ONNX weights; browser preprocessing/decoder adaptation described in README. Shipped notices: `vendor/stt/fluid-mini-LICENSE` and `fluid-mini-NOTICE`. |
 | LibriSpeech fixtures and excerpts | CC BY 4.0 | Attribute dataset/authors, link the license and describe conversions. See `vendor/stt/librispeech-LICENSE.txt` and fixture manifests. |
 | sharp/libvips (npm transitive native dependency) | Apache-2.0 / LGPL-3.0-or-later | Not included in browser workers or source/package exports. A distributor shipping native dependencies must preserve their notices and meet library source/relinking obligations. |
 

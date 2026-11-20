@@ -14,7 +14,7 @@ Audio storage rolls only after the current phrase/window has received a complete
 
 Set `overlapSeconds: 7.5` to retain half of a forced 15-second window (the package default remains 0 for existing consumers). Pageborne enables this. Clean phrase pauses need no overlap. Only neighbouring acoustic windows are candidates for matching: unique three-word anchors align the old suffix with the new prefix. A clipped/misrecognised opening in the newer pass can be discarded before a later strong anchor. Confidence helps choose anchored disagreements, with a conservative preference for the older reading and reduced weight for its last two cut-edge words when the newer pass has following context. Scores are not calibrated correctness probabilities. Unmatched old words are retained; ambiguous/repeated or missing anchors trigger a new-audio-only fallback before any samples are discarded. This extra inference can increase work and is not a guarantee of improved accuracy on every recording.
 
-Release reuses completed/in-flight results, preserving committed phrases; only unfinished audio needs processing. A short question with a new tail can still require another pass over its current window. Show the draft for immediate review while finishing and cancel the stream on edit/send/cancel. `SpeechRefinement` remains a separate optional layer; Pageborne uses the three-model ensemble described below.
+Release reuses completed/in-flight results, preserving committed phrases; only unfinished audio needs processing. A short question with a new tail can still require another pass over its current window. Show the draft for immediate review while finishing and cancel the stream on edit/send/cancel. `SpeechRefinement` remains a separate optional layer; Pageborne selects Fluid Speech Mini through the same EnsembleSpeech/EnsembleStream APIs.
 
 Unreleased experiment controls: `SpeechStream({ windowSeconds: 30, overlapSeconds: 15, commitOnPause: false, ... })` retains acoustic context across pauses. `windowSeconds` accepts 2–60 seconds (default 15); overlap is capped at half the chosen window. `commitOnPause` defaults to true. The stream also passes its window size to Tiny's decoder as `chunkSeconds`, avoiding an additional hidden 15-second split. Direct `LocalSpeech`/`ResidentSpeech` calls accept `chunkSeconds` (default 15); non-default values are Tiny-only. Final worker results expose `segments` with actual duration, non-special token count and token allowance. Defaults and Pageborne's installed package are unchanged. **60 seconds is not recommended:** real-model tests produced repetition and long delays. See the [15/30/60-second comparison](window-study.md) before changing these settings.
 
@@ -61,11 +61,19 @@ The speech worker loads ONNX sessions serially and releases each source weight b
 
 Consumers can supply `ResidentSpeech({ prepareModel })` to checkpoint optional GPU preparation. The async hook receives the entry and `{ model, retry, progress }`, and normally returns `entry.local.prepare(entry.backend, options)`. If it delays startup for persistent storage, check the captured `entry.generation` before starting the worker; a changed generation means it was closed. Pageborne uses this for an explicit-retry recovery path after interrupted preparation, independently of diagnostic logging.
 
+## Fluid Speech Mini
+
+`new EnsembleSpeech({ modelIds: ['fluid-mini'], ... })` selects Mini alone; `fluidSpeechMini` exports its pinned manifest. `modelIds` accepts a nonempty list of unique known IDs. Omitting it preserves the three original models. Entry/status maps contain only selected models. `EnsembleStream` uses those entries and reports the selected model names.
+
+Mini uses a serially initialized CPU/WASM ONNX worker with packed encoder weights, the upstream mel filters, Parakeet preprocessing and greedy TDT decoding. Its manifest is `vendor/stt/fluid-mini.json` (300,146,787 downloaded bytes). It preserves punctuation, reports token-derived word confidence and uses the existing rolling windows, cancellation, storage and saved-verification contracts. It has its own verification runtime identity; adding Mini does not invalidate old recognizers' checks.
+
+Mini does not apply acoustic vocabulary bias. Dictionary inputs can still be recorded for evaluation; explicit filename formatting remains available. Core ML requires native host integration and is not exposed by this browser engine. See the README for required FluidVoice/NVIDIA/Moondream attribution.
+
 ## Three-model streaming (opt-in)
 
 `EnsembleSpeech` and `EnsembleStream` run Conformer CTC Small, Zipformer 20M,
 and Moonshine Base in three independent CPU/SIMD workers. The existing
-`ResidentSpeech` API and Tiny/optional-Small baseline are unchanged. Pageborne selects the ensemble explicitly.
+`ResidentSpeech` API and Tiny/optional-Small baseline are unchanged. The default preserves this ensemble; Pageborne selects Mini alone.
 
 ```js
 import { EnsembleSpeech, EnsembleStream, EnsembleModelStore } from '@pageborne/browser-stt';

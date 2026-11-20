@@ -54,6 +54,7 @@ export function speechAssets({ cacheDir = speechAssetRoot, benchmarks = true, re
       for (const [name, file] of [['moonshine', 'vendor/stt/moonshine-LICENSE'], ['whisper', 'vendor/stt/whisper-LICENSE'], ['onnxruntime', 'vendor/stt/onnxruntime-LICENSE'], ['transformers.js', dependencyFile('@huggingface/transformers', 'LICENSE')]]) files.push([`licenses/stt/${name}.txt`, path.resolve(root, file)]);
       for (const name of ['jinja', 'tokenizers']) files.push([`licenses/stt/${name}.txt`, dependencyFile(`@huggingface/${name}`, 'LICENSE')]);
       files.push(['licenses/stt/noble-hashes.txt', dependencyFile('@noble/hashes', 'LICENSE')]);
+      for (const name of ['LICENSE', 'NOTICE']) files.push([`licenses/stt/fluid-mini-${name}.txt`, path.join(root, `vendor/stt/fluid-mini-${name}`)]);
       files.push(['licenses/stt/NOTICE.txt', path.join(root, 'NOTICE')]);
       files.push(...await builtFiles(path.join(root, refinement ? 'dist' : 'dist/cpu')));
       if (ensemble) {

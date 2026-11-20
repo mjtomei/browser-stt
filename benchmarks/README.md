@@ -6,6 +6,9 @@ Recorded summaries are historical evidence, not newly measured release results.
 
 - `dictation-2026-10-19.json`: first-word latency and bounded vocabulary weighting.
 - `punctuation-2026-10-20.json`: rejected standalone punctuation model trial.
+- `fluidvoice-2026-11-19.json`: actual Fluid Speech Mini/Pro versus production
+  models, standalone and ensembles; native/browser boundaries and unlabelled
+  private-recording limitations are explicit. No model was promoted.
 - `ensemble-*.json`: model selection, provenance, lexical alignment and streaming studies.
 - `window-study*.json`: fixed input manifests and window-size studies.
 - `baselines/`: exact earlier implementation files used by comparative harnesses.

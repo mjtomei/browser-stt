@@ -131,10 +131,11 @@ export function summarizeStreamingSpeech(runs: StreamingBenchmarkRun[]): Record<
   wer: number | null; firstWordMs: number | null; releaseMs: number | null; updateCount: number | null; revisions: number | null;
   backlogP95Ms: number | null; backlogAtReleaseMs: number | null; backlogEarlyMs: number | null; backlogLateMs: number | null; maxUpdateGapMs: number | null }>;
 
-export type EnsembleModelId = 'conformer' | 'zipformer' | 'moonshine';
+export type EnsembleModelId = 'conformer' | 'zipformer' | 'moonshine' | 'fluid-mini';
 export interface EnsembleAsset { file: string; bytes: number; sha256: string; url?: string; text?: string }
 export interface EnsembleManifest { id: EnsembleModelId; name: string; directory: string; files: EnsembleAsset[] }
 export const ensembleModels: readonly EnsembleManifest[];
+export const fluidSpeechMini: Readonly<EnsembleManifest>;
 export interface ModelKeyValue { get(key: string): Promise<string | null | undefined>; set(key: string, value: string): Promise<unknown> }
 export class EnsembleModelStore {
   constructor(options?: { kv?: ModelKeyValue | Promise<ModelKeyValue> | (() => Promise<ModelKeyValue>); fetch?: typeof fetch });
@@ -145,7 +146,7 @@ export class EnsembleModelStore {
 }
 export interface EnsembleEntry { verified?: boolean; model: EnsembleManifest; state: 'idle' | 'downloading' | 'loading' | 'ready' | 'error'; progress: string; downloadBytes: number; totalBytes: number; setup: { stage: 'waiting' | 'runtime' | 'loading' | 'initializing' | 'checking' | 'ready'; loadedBytes: number; totalBytes: number; file?: string; component?: string; fileLoadedBytes?: number; fileBytes?: number; startedAt?: number; stageStartedAt?: number; lastProgressAt?: number }; error?: Error; ready?: ModelInfo }
 export class EnsembleSpeech {
-  constructor(options?: { base?: string; store?: EnsembleModelStore; changed?: () => void; failure?: (error: Error, backend: Backend, model: string) => void; checkpoint?: () => void | Promise<void>; verificationDevice?: string });
+  constructor(options?: { base?: string; store?: EnsembleModelStore; modelIds?: EnsembleModelId[]; changed?: () => void; failure?: (error: Error, backend: Backend, model: string) => void; checkpoint?: () => void | Promise<void>; verificationDevice?: string });
   entries: Record<EnsembleModelId, EnsembleEntry>;
   restoreVerification(): Promise<boolean>;
   store: EnsembleModelStore;

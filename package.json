@@ -1,9 +1,9 @@
 {
   "name": "@pageborne/browser-stt",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "private": true,
   "type": "module",
-  "description": "Local browser speech recognition with a streaming three-model ensemble, vocabulary hints, word confidence and persistent caching.",
+  "description": "Local browser speech recognition with Fluid Speech Mini and a streaming ensemble, word confidence and persistent caching.",
   "engines": {
     "node": ">=22.13.0"
   },
@@ -42,12 +42,14 @@
     "prepare": "npm run build",
     "test:ensemble": "node scripts/ensemble-browser-test.mjs",
     "release:audit": "node scripts/release-audit.mjs",
-    "test:filenames": "node scripts/filename-browser-test.mjs"
+    "test:filenames": "node scripts/filename-browser-test.mjs",
+    "test:mini": "node scripts/fluid-mini-browser-test.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "4.3.0",
     "@noble/hashes": "2.4.0",
-    "wasm-feature-detect": "1.9.0"
+    "wasm-feature-detect": "1.9.0",
+    "onnxruntime-web": "1.31.0-dev.20260914-8d85527a0"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

@@ -94,13 +94,15 @@ export function nativeModelCache(kv) {
     },
     async delete(key) {
       const raw = await kv.get(prefix + key);
-      await set(prefix + key, '');
       if (raw) {
         let file; try { file = JSON.parse(raw); } catch { file = {}; }
         if (/^[\w-]+$/.test(file.id) && Number.isInteger(file.chunks) && file.chunks <= 50000) {
           for (let i = 0; i < file.chunks; i++) await set(`${prefix}${file.id}:${i}`, '');
         }
       }
+      // Retain the chunk descriptor until cleanup completes so an interrupted
+      // retirement can resume, rather than orphaning large model downloads.
+      await set(prefix + key, '');
     },
     close() {},
   };

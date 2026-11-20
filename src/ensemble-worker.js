@@ -5,6 +5,7 @@ import { decodeCtc, tokenTable, piecesResult } from './ctc-context.js';
 import speechRuntimeSource from '../vendor/ensemble-runtime/pageborne-speech.mjs?raw';
 import { releaseModelBuffer } from './speech-session-loader.js';
 import { modelFileBuffer } from './model-file-buffer.js';
+import { fluidMiniRecognizer } from './fluid-mini.js';
 
 let runtime, engine, model, tokens, base, serial = 0, tail = Promise.resolve();
 let reportSetup = () => {}, loadedBytes = 0, lastProgress = 0, modelComponent = '';
@@ -26,7 +27,7 @@ async function readFile(file) {
   progress();
   const handle = await rpc('open', { file: file.file });
   const headers = { 'content-length': String(file.bytes), 'content-type': 'application/octet-stream' };
-  if (model.id === 'moonshine' && file.file.endsWith('.onnx')) {
+  if ((model.id === 'moonshine' || model.id === 'fluid-mini') && /\.onnx(?:\.data)?$/.test(file.file)) {
     const response = new Response(null, { headers }); let consumed = false;
     response.arrayBuffer = () => {
       if (consumed) return Promise.reject(new TypeError('Model response already consumed.'));
@@ -72,7 +73,13 @@ async function prepare(data) {
   model = data.model; base = data.base;
   reportSetup = progress => self.postMessage({ id: data.id, progress });
   loadedBytes = 0; reportSetup({ stage: 'runtime', loadedBytes });
-  if (model.id === 'moonshine') {
+  if (model.id === 'fluid-mini') {
+    engine = await fluidMiniRecognizer(base, name => {
+      const file = model.files.find(f => f.file === name);
+      if (!file) throw Error('Unknown Fluid Speech Mini asset.');
+      return readFile(file);
+    }, progress => checkpoint({ ...progress, loadedBytes, file: '', fileLoadedBytes: 0, fileBytes: 0 }));
+  } else if (model.id === 'moonshine') {
     engine = await moonshineRecognizer(base, async input => {
       const pathname = new URL(typeof input === 'string' ? input : input.url, base).pathname;
       const file = model.files.find(f => pathname.endsWith('/moonshine/' + f.file));
