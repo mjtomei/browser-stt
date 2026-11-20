@@ -113,3 +113,7 @@ word offsets and browser/native smoke transcript parity were checked. An
 instrumentation-only Pro apostrophe-spacing mismatch was repaired and the
 stopped case resumed; no transcript was edited or case excluded. Private audio
 and transcripts were not copied into the repository or uploaded externally.
+
+## Inworld isolation pilot — 2026-11-19
+
+The separate CPU reference evaluation of Inworld Voice Isolator v1 realtime (20 ms look-ahead) before Mini is recorded in `benchmarks/voice-isolation-2026-11-19.json`. Three human-transcribed utterances, five variants each (clean, wind/engine at +10 and 0 dB SNR), 230 scored words: raw Mini 0 errors, isolated Mini 1 error (shapely → shavely). No aggregate gain established; only 46 unique words and the baseline is already perfect. No change to production audio or inference. Reference implementation median isolation RTF 4.17; peak process RSS 2,047,967,232 bytes, CPU-only under a 180% quota. These figures include PyTorch and are not measurements of an optimized iPhone port. Real outdoor Ask audio still needs reference transcription for meaningful WER.

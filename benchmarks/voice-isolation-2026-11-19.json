@@ -1,0 +1,473 @@
+{
+  "date": "2026-11-19",
+  "type": "small controlled pilot",
+  "physicalPhone": false,
+  "uniqueUtterances": 3,
+  "conditionsPerUtterance": 5,
+  "audioVariants": 15,
+  "uniqueReferenceWords": 46,
+  "scoredWordsPerPipeline": 230,
+  "results": {
+    "raw": {
+      "errors": 0,
+      "words": 230,
+      "wer": 0.0
+    },
+    "isolated": {
+      "errors": 1,
+      "words": 230,
+      "wer": 0.004347826086956522
+    }
+  },
+  "conditions": [
+    {
+      "noise": "clean",
+      "snrDb": null,
+      "words": 46,
+      "rawErrors": 0,
+      "isolatedErrors": 0
+    },
+    {
+      "noise": "wind",
+      "snrDb": 10,
+      "words": 46,
+      "rawErrors": 0,
+      "isolatedErrors": 0
+    },
+    {
+      "noise": "wind",
+      "snrDb": 0,
+      "words": 46,
+      "rawErrors": 0,
+      "isolatedErrors": 0
+    },
+    {
+      "noise": "engine",
+      "snrDb": 10,
+      "words": 46,
+      "rawErrors": 0,
+      "isolatedErrors": 0
+    },
+    {
+      "noise": "engine",
+      "snrDb": 0,
+      "words": 46,
+      "rawErrors": 0,
+      "isolatedErrors": 1
+    }
+  ],
+  "isolation": {
+    "mode": "streaming",
+    "lookaheadMs": 20,
+    "cpuThreads": 2,
+    "cpuQuotaPercent": 180,
+    "medianRealTimeFactor": 4.165031725878019,
+    "peakRssBytes": 2047967232
+  },
+  "limitations": [
+    "small controlled pilot, not physical outdoor glasses recordings",
+    "one wind recording and one engine recording; no competing-talker or clipping/wind-on-microphone simulation",
+    "ASR accuracy assessed against human public references; no private audio uploaded",
+    "Mini already recognized all raw cases correctly: this pilot has a ceiling effect and cannot establish gains on difficult noisy speech.",
+    "Only three utterances / 46 unique reference words; do not generalize accuracy percentages to outdoor dictation."
+  ],
+  "protocol": {
+    "model": "inworld/voice-isolator",
+    "revision": "9b0285b3fe8403aa8e2f1dbb2165a80a4294c970",
+    "checkpoint": "denoiser_realtime.safetensors",
+    "sha256": "76598f05523c0669e76562a8b2f31c9d395fca316e80c907ee11775e7497ae0f",
+    "mode": "streaming",
+    "lookaheadFrames": 2,
+    "device": "cpu",
+    "precision": "fp32",
+    "torch": "2.15.0+cpu",
+    "clips": [
+      {
+        "id": "6930-81414-0006",
+        "seconds": 6.8,
+        "reference": "WHAT THEN A HUMAN HAND LARGE AND SHAPELY APPEARED DISTINCTLY ON THE SURFACE OF THE POND"
+      },
+      {
+        "id": "260-123288-0008",
+        "seconds": 5.515,
+        "reference": "THERE'S A HEAVY STORM COMING ON I CRIED POINTING TOWARDS THE HORIZON"
+      },
+      {
+        "id": "7127-75947-0015",
+        "seconds": 6.26,
+        "reference": "THERE CANNOT BE A DOUBT HE RECEIVED YOU KINDLY FOR IN FACT YOU RETURNED WITHOUT HIS PERMISSION"
+      }
+    ],
+    "conditions": [
+      [
+        "clean",
+        null
+      ],
+      [
+        "wind",
+        10
+      ],
+      [
+        "wind",
+        0
+      ],
+      [
+        "engine",
+        10
+      ],
+      [
+        "engine",
+        0
+      ]
+    ],
+    "mixing": "Whole-clip RMS SNR at 16 kHz; noise tiled; common peak gain <=0.95; float WAV; isolator resamples internally to/from 48 kHz. No peak clipping. Deterministic first three eligible distinct speakers before observing output.",
+    "limitations": [
+      "small controlled pilot, not physical outdoor glasses recordings",
+      "one wind recording and one engine recording; no competing-talker or clipping/wind-on-microphone simulation",
+      "ASR accuracy assessed against human public references; no private audio uploaded"
+    ]
+  },
+  "noiseSources": [
+    {
+      "filename": "1-137296-A-16.wav",
+      "fold": "1",
+      "target": "16",
+      "category": "wind",
+      "esc10": "False",
+      "src_file": "137296",
+      "take": "A",
+      "url": "https://raw.githubusercontent.com/karolpiczak/ESC-50/master/audio/1-137296-A-16.wav"
+    },
+    {
+      "filename": "1-18527-A-44.wav",
+      "fold": "1",
+      "target": "44",
+      "category": "engine",
+      "esc10": "False",
+      "src_file": "18527",
+      "take": "A",
+      "url": "https://raw.githubusercontent.com/karolpiczak/ESC-50/master/audio/1-18527-A-44.wav"
+    }
+  ],
+  "speechSource": {
+    "dataset": "LibriSpeech test-clean",
+    "license": "CC BY 4.0",
+    "url": "https://www.openslr.org/12",
+    "attribution": "Panayotov et al., LibriSpeech: An ASR corpus based on public domain audio books (2015)."
+  },
+  "noiseAttribution": {
+    "dataset": "ESC-50",
+    "url": "https://github.com/karolpiczak/ESC-50",
+    "author": "Karol J. Piczak",
+    "audioDistributed": false
+  },
+  "recognition": {
+    "model": "FluidVoice-Labs/fluid-speech-mini-onnx",
+    "revision": "fc592620325027419883cf272e70588d8a788c0a",
+    "runtime": "ONNX Runtime CPU 1.31.0, one thread, upstream greedy decoder",
+    "normalizer": "Whisper EnglishTextNormalizer; word-level Levenshtein distance",
+    "privateAudioUsed": false
+  },
+  "cases": [
+    {
+      "id": "6930-81414-0006-clean",
+      "input": "raw",
+      "condition": "clean",
+      "snr": null,
+      "words": 16,
+      "errors": 0,
+      "text": "What, then, a human hand, large and shapely, appeared distinctly on the surface of the pond?",
+      "seconds": 1.4977277310099453
+    },
+    {
+      "id": "6930-81414-0006-clean",
+      "input": "isolated",
+      "condition": "clean",
+      "snr": null,
+      "words": 16,
+      "errors": 0,
+      "text": "What, then, a human hand, large and shapely, appeared distinctly on the surface of the pond.",
+      "seconds": 1.4678416309761815
+    },
+    {
+      "id": "6930-81414-0006-wind-10",
+      "input": "raw",
+      "condition": "wind",
+      "snr": 10,
+      "words": 16,
+      "errors": 0,
+      "text": "What, then, a human hand, large and shapely, appeared distinctly on the surface of the pond?",
+      "seconds": 1.4760797989438288
+    },
+    {
+      "id": "6930-81414-0006-wind-10",
+      "input": "isolated",
+      "condition": "wind",
+      "snr": 10,
+      "words": 16,
+      "errors": 0,
+      "text": "What, then, a human hand, large and shapely, appeared distinctly on the surface of the pond.",
+      "seconds": 1.4866498740157112
+    },
+    {
+      "id": "6930-81414-0006-wind-0",
+      "input": "raw",
+      "condition": "wind",
+      "snr": 0,
+      "words": 16,
+      "errors": 0,
+      "text": "What, then, a human hand, large and shapely, appeared distinctly on the surface of the pond?",
+      "seconds": 1.483560294029303
+    },
+    {
+      "id": "6930-81414-0006-engine-10",
+      "input": "raw",
+      "condition": "engine",
+      "snr": 10,
+      "words": 16,
+      "errors": 0,
+      "text": "What, then, a human hand, large and shapely, appeared distinctly on the surface of the pond?",
+      "seconds": 1.4897606360027567
+    },
+    {
+      "id": "6930-81414-0006-engine-0",
+      "input": "raw",
+      "condition": "engine",
+      "snr": 0,
+      "words": 16,
+      "errors": 0,
+      "text": "What, then, a human hand, large and shapely, appeared distinctly on the surface of the pond?",
+      "seconds": 1.4612854769802652
+    },
+    {
+      "id": "260-123288-0008-clean",
+      "input": "raw",
+      "condition": "clean",
+      "snr": null,
+      "words": 13,
+      "errors": 0,
+      "text": "There's a heavy storm coming on, I cried, pointing towards the horizon.",
+      "seconds": 1.3078980820137076
+    },
+    {
+      "id": "260-123288-0008-wind-10",
+      "input": "raw",
+      "condition": "wind",
+      "snr": 10,
+      "words": 13,
+      "errors": 0,
+      "text": "There's a heavy storm coming on, I cried, pointing towards the horizon.",
+      "seconds": 1.3078270410187542
+    },
+    {
+      "id": "260-123288-0008-wind-0",
+      "input": "raw",
+      "condition": "wind",
+      "snr": 0,
+      "words": 13,
+      "errors": 0,
+      "text": "There's a heavy storm coming on, I cried, pointing towards the horizon.",
+      "seconds": 1.3028023240040056
+    },
+    {
+      "id": "260-123288-0008-engine-10",
+      "input": "raw",
+      "condition": "engine",
+      "snr": 10,
+      "words": 13,
+      "errors": 0,
+      "text": "There's a heavy storm coming on, I cried, pointing towards the horizon.",
+      "seconds": 1.301022453000769
+    },
+    {
+      "id": "260-123288-0008-engine-0",
+      "input": "raw",
+      "condition": "engine",
+      "snr": 0,
+      "words": 13,
+      "errors": 0,
+      "text": "There's a heavy storm coming on, I cried, pointing towards the horizon.",
+      "seconds": 1.299730536993593
+    },
+    {
+      "id": "7127-75947-0015-clean",
+      "input": "raw",
+      "condition": "clean",
+      "snr": null,
+      "words": 17,
+      "errors": 0,
+      "text": "There cannot be a doubt he received you kindly, for in fact you returned without his permission.",
+      "seconds": 1.4084576559835114
+    },
+    {
+      "id": "7127-75947-0015-wind-10",
+      "input": "raw",
+      "condition": "wind",
+      "snr": 10,
+      "words": 17,
+      "errors": 0,
+      "text": "There cannot be a doubt he received you kindly, for in fact you returned without his permission.",
+      "seconds": 1.412568970990833
+    },
+    {
+      "id": "7127-75947-0015-wind-0",
+      "input": "raw",
+      "condition": "wind",
+      "snr": 0,
+      "words": 17,
+      "errors": 0,
+      "text": "There cannot be a doubt he received you kindly, for in fact you returned without his permission.",
+      "seconds": 1.3991284219664522
+    },
+    {
+      "id": "7127-75947-0015-engine-10",
+      "input": "raw",
+      "condition": "engine",
+      "snr": 10,
+      "words": 17,
+      "errors": 0,
+      "text": "There cannot be a doubt he received you kindly, for in fact you returned without his permission.",
+      "seconds": 1.3968709459877573
+    },
+    {
+      "id": "7127-75947-0015-engine-0",
+      "input": "raw",
+      "condition": "engine",
+      "snr": 0,
+      "words": 17,
+      "errors": 0,
+      "text": "There cannot be a doubt he received you kindly, for in fact you returned without his permission.",
+      "seconds": 1.407250524032861
+    },
+    {
+      "id": "6930-81414-0006-wind-0",
+      "input": "isolated",
+      "condition": "wind",
+      "snr": 0,
+      "words": 16,
+      "errors": 0,
+      "text": "What, then, a human hand, large and shapely, appeared distinctly on the surface of the pond.",
+      "seconds": 1.488515467965044
+    },
+    {
+      "id": "6930-81414-0006-engine-10",
+      "input": "isolated",
+      "condition": "engine",
+      "snr": 10,
+      "words": 16,
+      "errors": 0,
+      "text": "What, then, a human hand, large and shapely, appeared distinctly on the surface of the pond.",
+      "seconds": 1.4978842490236275
+    },
+    {
+      "id": "6930-81414-0006-engine-0",
+      "input": "isolated",
+      "condition": "engine",
+      "snr": 0,
+      "words": 16,
+      "errors": 1,
+      "text": "What, then, a human hand, large and shavely, appeared distinctly on the surface of the pond.",
+      "seconds": 1.4901905760052614
+    },
+    {
+      "id": "260-123288-0008-clean",
+      "input": "isolated",
+      "condition": "clean",
+      "snr": null,
+      "words": 13,
+      "errors": 0,
+      "text": "There's a heavy storm coming on, I cried, pointing towards the horizon.",
+      "seconds": 1.3734039749833755
+    },
+    {
+      "id": "260-123288-0008-wind-10",
+      "input": "isolated",
+      "condition": "wind",
+      "snr": 10,
+      "words": 13,
+      "errors": 0,
+      "text": "There's a heavy storm coming on, I cried, pointing towards the horizon.",
+      "seconds": 1.3145337959867902
+    },
+    {
+      "id": "260-123288-0008-wind-0",
+      "input": "isolated",
+      "condition": "wind",
+      "snr": 0,
+      "words": 13,
+      "errors": 0,
+      "text": "There's a heavy storm coming on, I cried, pointing towards the horizon.",
+      "seconds": 1.3906690429430455
+    },
+    {
+      "id": "260-123288-0008-engine-10",
+      "input": "isolated",
+      "condition": "engine",
+      "snr": 10,
+      "words": 13,
+      "errors": 0,
+      "text": "There's a heavy storm coming on, I cried, pointing towards the horizon.",
+      "seconds": 1.3227373789995909
+    },
+    {
+      "id": "260-123288-0008-engine-0",
+      "input": "isolated",
+      "condition": "engine",
+      "snr": 0,
+      "words": 13,
+      "errors": 0,
+      "text": "There's a heavy storm coming on, I cried, pointing towards the horizon.",
+      "seconds": 1.3734181170002557
+    },
+    {
+      "id": "7127-75947-0015-clean",
+      "input": "isolated",
+      "condition": "clean",
+      "snr": null,
+      "words": 17,
+      "errors": 0,
+      "text": "There cannot be a doubt he received you kindly, for in fact you returned without his permission.",
+      "seconds": 1.488728228956461
+    },
+    {
+      "id": "7127-75947-0015-wind-10",
+      "input": "isolated",
+      "condition": "wind",
+      "snr": 10,
+      "words": 17,
+      "errors": 0,
+      "text": "There cannot be a doubt he received you kindly, for in fact you returned without his permission.",
+      "seconds": 1.4321169989998452
+    },
+    {
+      "id": "7127-75947-0015-wind-0",
+      "input": "isolated",
+      "condition": "wind",
+      "snr": 0,
+      "words": 17,
+      "errors": 0,
+      "text": "There cannot be a doubt he received you kindly, for in fact you returned without his permission.",
+      "seconds": 1.554255265975371
+    },
+    {
+      "id": "7127-75947-0015-engine-10",
+      "input": "isolated",
+      "condition": "engine",
+      "snr": 10,
+      "words": 17,
+      "errors": 0,
+      "text": "There cannot be a doubt he received you kindly, for in fact you returned without his permission.",
+      "seconds": 1.4294194799731486
+    },
+    {
+      "id": "7127-75947-0015-engine-0",
+      "input": "isolated",
+      "condition": "engine",
+      "snr": 0,
+      "words": 17,
+      "errors": 0,
+      "text": "There cannot be a doubt he received you kindly, for in fact you returned without his permission.",
+      "seconds": 1.3911819930071943
+    }
+  ]
+}
