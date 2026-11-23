@@ -172,10 +172,10 @@ self.onmessage = ({ data }) => {
         const anchors = ['apostle', 'middle', 'gospel'].filter(word => checked.text?.toLowerCase().includes(word));
         if (anchors.length < 2 || checked.words?.length < 5 || !checked.words.every(word => Number.isFinite(word.confidence))) throw Error('The model could not transcribe the voice check. Retry setup.');
         }
-        self.postMessage({ id, result: { backend: 'wasm', model: model.name, simd: true, verified: true, verification: data.reuseVerification ? 'saved' : 'tested', wasmBytes: runtime?.HEAPU8.byteLength, loadMs: performance.now() - start } });
+        self.postMessage({ id, result: { backend: 'wasm', model: model.name, simd: true, ...engine?.info, verified: true, verification: data.reuseVerification ? 'saved' : 'tested', wasmBytes: runtime?.HEAPU8.byteLength, loadMs: performance.now() - start } });
       } else {
         const value = await transcribe(data, value => { if (!cancelled.has(id)) self.postMessage({ id, partial: value }); });
-        if (!cancelled.has(id)) self.postMessage({ id, result: { ...value, backend: 'wasm', model: model.name, seconds: waveSamples(data.audio).length / 16000, transcribeMs: performance.now() - start } });
+        if (!cancelled.has(id)) self.postMessage({ id, result: { ...value, backend: 'wasm', ...engine?.info, model: model.name, seconds: waveSamples(data.audio).length / 16000, transcribeMs: performance.now() - start } });
       }
     } catch (error) { if (!cancelled.has(id)) self.postMessage({ id, error: error?.message || String(error), errorName: error?.name, errorStack: error?.stack }); }
     finally { cancelled.delete(id); }

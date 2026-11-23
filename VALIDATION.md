@@ -1,3 +1,13 @@
+## Mini CPU threading — 2026-11-23
+
+Version 0.1.22 keeps the original packed model and SIMD execution, with up to four threads in an isolated/shared-memory host and one elsewhere. Ready/transcription metadata exposes the actual thread count. Mini receipts are versioned for the inference setting; legacy receipts and downloaded weights remain valid.
+
+- 154 unit tests, strict API types, full and CPU builds, source audit and package dry run pass.
+- Actual Chromium with isolation headers: four-thread preparation, PCM-to-text inference, six fixed public native-transcript comparisons, paced streaming, a 34.832-second overlapping recording, cancellation/retry, silence and offline reload pass. The bundled 5.855-second clip emitted its first stream word at 2227ms and drained 4016ms after release in this run. These short-utterance results do not establish a latency improvement.
+- Desktop WebKit passes both non-isolated one-thread and isolated four-thread execution, including actual PCM inference, paced streaming, cancellation/retry, silence and offline verified reload. Both use the native string-cache and incorrect module MIME fixtures. These fixtures do not establish Even host support.
+- The separate single-clip throughput probe records warm medians of 12.50s (one thread) and 4.18s (four), excluding mel extraction and startup. The production four-thread path subsequently transcribed that same 12.895-second clip in 3.992s with native transcript parity. See benchmarks/mini-cpu-threads-2026-11-23.json for the narrower probe protocol and limits.
+- No physical-phone latency, memory or battery measurement. Even host isolation support is unverified; JavaScript cannot supply the embedding host's response headers. GPU experiments were not integrated, per the user's CPU preference.
+
 ## Earlier Mini partial words — 2026-11-20
 
 Version 0.1.21: 152 unit tests, strict API types, full/CPU builds and source audit pass. Actual Mini inference and paced streaming pass in Chromium and desktop WebKit, including cancellation/retry, silence and offline verification reuse. WebKit also exercises native string storage and an incorrect .mjs MIME response. Complete transcripts and confidence spans are unchanged for the bundled public clip. New regression assertions require an early nonempty word prefix rather than a lone token fragment.

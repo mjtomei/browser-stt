@@ -1,4 +1,5 @@
 import { sha256 } from '@noble/hashes/sha2.js';
+import { fluidCpuThreads } from './fluid-runtime.js';
 // Advance only when the inference worker/runtime or its verification exercise
 // changes. Keep 0.1.16 receipts valid for stream/voting/UI-only releases.
 const verificationRuntime = '0.1.16';
@@ -7,7 +8,8 @@ const verificationRuntime = '0.1.16';
 // change do: a receipt certifies a particular inference implementation/device.
 export function ensembleVerificationKey(model, device) {
   if (!device) return null;
-  const identity = JSON.stringify([1, model.verificationRuntime || verificationRuntime, device, model.id, model.directory,
+  const runtime = model.id === 'fluid-mini' ? `${model.verificationRuntime}:threads=${fluidCpuThreads()}` : model.verificationRuntime || verificationRuntime;
+  const identity = JSON.stringify([1, runtime, device, model.id, model.directory,
     model.files.map(file => [file.file, file.bytes, file.sha256, file.text])]);
   return Array.from(sha256(new TextEncoder().encode(identity)), n => n.toString(16).padStart(2, '0')).join('');
 }

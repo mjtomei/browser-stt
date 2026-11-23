@@ -8,10 +8,16 @@ import assert from 'node:assert/strict';
 import { speechAssets } from './assets.mjs';
 const manifest = JSON.parse(await readFile('vendor/stt/fluid-mini.json'));
 const native = process.argv.includes('--native');
+const isolated = process.env.FLUID_ISOLATED === '1';
 const engine = process.argv.includes('--webkit') ? 'webkit' : 'chromium';
 const samples = process.env.FLUID_INPUTS ? JSON.parse(await readFile(process.env.FLUID_INPUTS, 'utf8')) : [];
 const modelDir = process.env.FLUID_MODEL_DIR || path.resolve('.state/ensemble/models', manifest.directory);
-const server = await createServer({ configFile: false, plugins: [speechAssets({ ensemble: true, refinement: false, benchmarks: false }), {
+const server = await createServer({ configFile: false, plugins: [{ name: 'fluid-isolation', configureServer(server) {
+  server.middlewares.use((_req, res, next) => {
+    if (isolated) { res.setHeader('Cross-Origin-Opener-Policy', 'same-origin'); res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp'); }
+    next();
+  });
+} }, speechAssets({ ensemble: true, refinement: false, benchmarks: false }), {
   name: 'fluid-fixtures', configureServer(server) { server.middlewares.use((req, res, next) => {
     if (req.url === '/fluid-test') { res.setHeader('Content-Type', 'text/html'); res.end('<!doctype html><title>Fluid Mini test</title>'); return; }
     const sample = samples.find((_, i) => req.url === '/sample/' + i);
@@ -21,12 +27,15 @@ const server = await createServer({ configFile: false, plugins: [speechAssets({ 
     res.setHeader('Content-Length', file.bytes); res.setHeader('Content-Type', 'application/octet-stream');
     createReadStream(path.join(modelDir, file.file)).on('error', e => res.destroy(e)).pipe(res);
   }); },
-} ], server: { host: '127.0.0.1', port: 0, watch: null }, optimizeDeps: { include: ['@noble/hashes/sha2.js'] } });
+} ], server: { host: '127.0.0.1', port: 0, watch: null, ...(isolated ? { headers: {
+  'Cross-Origin-Opener-Policy': 'same-origin', 'Cross-Origin-Embedder-Policy': 'require-corp',
+} } : {}) }, optimizeDeps: { include: ['@noble/hashes/sha2.js'] } });
 await server.listen();
 const browser = await (engine === 'webkit' ? webkit : chromium).launch({ headless: true, executablePath: engine === 'webkit' ? process.env.WEBKIT_PATH : process.env.CHROME_PATH || '/usr/bin/google-chrome', ...(engine === 'chromium' ? { args: ['--disable-gpu'] } : {}) });
-const report = { engine, nativeCache: native, incorrectModuleMime: true, physicalPhone: false, passed: false, errors: [] };
+const report = { engine, isolated, nativeCache: native, incorrectModuleMime: true, physicalPhone: false, passed: false, errors: [] };
 try {
   const page = await browser.newPage(); page.setDefaultTimeout(180000);
+  page.on('console', message => { if (['warning', 'error'].includes(message.type()) || message.text().startsWith('Mini setup:')) console.log(message.type(), message.text().slice(0, 1000)); });
   await page.route('**/stt/ort-wasm-simd-threaded.mjs', async route => { const response = await route.fetch(); await route.fulfill({ response, contentType: 'application/octet-stream' }); });
   page.on('pageerror', e => report.errors.push(e.message));
   await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/fluid-test`);
@@ -36,10 +45,18 @@ try {
     const lookup = new Map(fluidSpeechMini.files.map(f => [f.url, f]));
     const values = new Map(), kv = native ? { get: async key => values.get(key), set: async (key, value) => values.set(key, value) } : undefined;
     const store = new EnsembleModelStore({ kv, fetch: url => fetch('/model/' + lookup.get(url).sha256) });
-    window.models = new EnsembleSpeech({ store, modelIds: ['fluid-mini'], verificationDevice: 'test-desktop-browser' });
+    let phase;
+    window.models = new EnsembleSpeech({ store, modelIds: ['fluid-mini'], verificationDevice: 'test-desktop-browser', changed() {
+      const entry = models.entries['fluid-mini'], next = `${entry.state}:${entry.setup.stage}:${entry.setup.component || ''}`;
+      if (next !== phase) { phase = next; console.log('Mini setup:', phase); }
+    } });
     return models.prepare('fluid-mini');
   }, native);
   console.log('Mini ready', JSON.stringify(report.ready));
+  report.capabilities = await page.evaluate(() => ({ isolated: crossOriginIsolated, sharedMemory: typeof SharedArrayBuffer === 'function', cores: navigator.hardwareConcurrency }));
+  assert.equal(report.capabilities.isolated, isolated, 'requested response headers reached the test document');
+  const threads = report.capabilities.isolated && report.capabilities.sharedMemory ? Math.min(4, report.capabilities.cores) : 1;
+  assert.equal(report.ready.threads, threads);
   report.clip = await page.evaluate(async () => {
     const audio = await (await fetch('/stt/ensemble-check.wav')).blob();
     const started = performance.now(), updates = [];

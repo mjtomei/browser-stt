@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-23",
+  "model": "Fluid Speech Mini",
+  "modelRevision": "fc592620325027419883cf272e70588d8a788c0a",
+  "runtime": "1.31.0-dev.20260914-8d85527a0",
+  "sample": {
+    "corpus": "LibriSpeech",
+    "id": "6930-81414-0000",
+    "seconds": 12.895
+  },
+  "environment": {
+    "browser": "Chromium",
+    "platform": "Linux ARM64 desktop",
+    "cpuQuotaPercent": 400,
+    "physicalPhone": false
+  },
+  "method": "Sequential runs, identical precomputed official mel features; includes frontend, encoder and greedy decoder, excludes JavaScript mel extraction, cache loading, capture and display. First run is cold; two subsequent runs form the warm median. Unchanged ONNX weights and session options.",
+  "runs": [
+    {
+      "threads": 1,
+      "decodeMs": [
+        13028.425000011921,
+        12473.789999991655,
+        12526.959999978542
+      ],
+      "warmMedianMs": 12500.374999985099,
+      "transcriptMatchesSingleThread": true
+    },
+    {
+      "threads": 4,
+      "decodeMs": [
+        6450.2750000059605,
+        4310.545000016689,
+        4044.185000002384
+      ],
+      "warmMedianMs": 4177.365000009537,
+      "transcriptMatchesSingleThread": true
+    }
+  ],
+  "limitations": [
+    "One clip; not a corpus latency or accuracy benchmark.",
+    "No physical-phone latency, memory or battery measurement.",
+    "Embedded hosts without cross-origin isolation/shared memory remain single-threaded."
+  ],
+  "warmSpeedup": 2.992406696555499
+}

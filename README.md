@@ -36,7 +36,11 @@ Select it with `new EnsembleSpeech({ modelIds: ['fluid-mini'] })`, using the sam
 
 The [Core ML build](https://huggingface.co/FluidVoice-Labs/fluid-speech-mini-coreml) requires native Apple integration (iOS 18/macOS 15+) and can use the Neural Engine. FluidVoice reports a 253 MB package and roughly 277 MB runtime memory for a 15-second clip, versus roughly 500 MB for ONNX. These are vendor measurements, not iPhone results from this project. A WebView cannot load Core ML through this JavaScript API; its host would need to expose a native inference bridge. Browser STT uses ONNX/WASM.
 
-Version **0.1.21** delivers Mini's partial words on a 150 ms cadence instead of waiting for sixteen decoder decisions. Partial output stops at a word boundary; the final transcript and confidence scores retain all words. Model weights, inference settings, saved verification and legacy defaults are unchanged. Pageborne selects Mini alone. The engineering report and recorded evaluations live in this README and [`benchmarks/`](benchmarks/).
+Version **0.1.22** keeps Mini on CPU with SIMD and enables up to four execution threads when the host exposes cross-origin isolation and shared memory. Other hosts use one thread. Ready/transcription results report the actual `threads`; Mini's verification identity advances, while downloaded weights and legacy-model receipts remain valid. Partial words still arrive on the 150 ms cadence introduced in 0.1.21.
+
+To enable threads, serve the document and worker resources with `Cross-Origin-Opener-Policy: same-origin` and `Cross-Origin-Embedder-Policy: require-corp`. Cross-origin resources must permit CORS or embedding under that policy. An embedded app must arrange those headers in its host; JavaScript cannot enable isolation by itself. See [ONNX Runtime's threading requirements](https://onnxruntime.ai/docs/tutorials/web/env-flags-and-session-options.html#envwasmnumthreads).
+
+On one 12.895-second public clip, four CPU threads reduced warm decoding from 12.50 to 4.18 seconds (about 3×) in a desktop Chromium probe. This excludes mel extraction, startup, capture and display. The production browser path also passed six native-transcript parity cases, a 34.8-second overlapping stream, cancellation and offline reload with four threads. Short-utterance and release latency do not have an established speedup. This is not an iPhone or battery measurement. [Timing details](benchmarks/mini-cpu-threads-2026-11-23.json).
 
 ## Install and build
 

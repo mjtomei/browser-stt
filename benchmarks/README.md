@@ -13,6 +13,7 @@ checks are separate from that accuracy corpus. These are not physical-phone
 or outdoor-glasses results. See the [comparison](fluidvoice-2026-11-19.json)
 and [current integration validation](../VALIDATION.md#fluid-speech-mini-browser-integration--2026-11-19).
 
+- `mini-cpu-threads-2026-11-23.json`: one-versus-four-thread desktop Mini throughput probe; not phone or battery evidence.
 - `dictation-2026-10-19.json`: first-word latency and bounded vocabulary weighting.
 - `punctuation-2026-10-20.json`: rejected standalone punctuation model trial.
 - `fluidvoice-2026-11-19.json`: actual Fluid Speech Mini/Pro versus production

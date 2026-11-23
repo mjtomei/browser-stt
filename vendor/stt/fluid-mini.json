@@ -2,7 +2,7 @@
   "id": "fluid-mini",
   "name": "Fluid Speech Mini",
   "directory": "fluid-speech-mini-onnx",
-  "verificationRuntime": "fluid-mini-1",
+  "verificationRuntime": "fluid-mini-2",
   "repository": "FluidVoice-Labs/fluid-speech-mini-onnx",
   "revision": "fc592620325027419883cf272e70588d8a788c0a",
   "license": "CC-BY-4.0",

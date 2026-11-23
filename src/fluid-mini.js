@@ -4,13 +4,15 @@ import cpuWasm from '../node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded
 import { confidenceWords } from './speech-confidence.js';
 import { releaseModelBuffer } from './speech-session-loader.js';
 import { fluidMelFilters, fluidTokenizer, fluidDecision, fluidPartial } from './fluid-mini-utils.js';
+import { fluidCpuThreads } from './fluid-runtime.js';
 
 const first = output => Object.values(output)[0];
 const tick = () => new Promise(resolve => setTimeout(resolve, 0));
 const dispose = output => { for (const tensor of Object.values(output || {})) tensor.dispose(); };
 
 export async function fluidMiniRecognizer(base, readFile, stage = () => {}) {
-  ort.env.wasm.numThreads = 1; ort.env.wasm.proxy = false;
+  const threads = fluidCpuThreads();
+  ort.env.wasm.numThreads = threads; ort.env.wasm.proxy = false;
   const config = await (await readFile('config.json')).json();
   const tokenizer = fluidTokenizer(await (await readFile('tokenizer.json')).json(), config);
   const filters = fluidMelFilters(await (await readFile('mel_filters.npy')).arrayBuffer(), config.num_mel_bins, config.n_fft / 2 + 1);
@@ -42,7 +44,7 @@ export async function fluidMiniRecognizer(base, readFile, stage = () => {}) {
   const down = frames => { for (let i = 0; i < config.subsampling_layers; i++) frames = Math.floor((frames - 1) / config.subsampling_stride + 1); return frames; };
   const tensor = (data, dims) => new ort.Tensor(data instanceof Float32Array ? 'float32' : 'int64', data, dims);
   const run = async (session, input) => { try { return await session.run(input); } finally { dispose(input); } };
-  return { async transcribe(audio, { confidence, partial = () => {}, cancelled = () => false } = {}) {
+  return { info: { backend: 'wasm', simd: true, threads: ort.env.wasm.numThreads }, async transcribe(audio, { confidence, partial = () => {}, cancelled = () => false } = {}) {
     const check = () => { if (cancelled()) throw new DOMException('Transcription cancelled.', 'AbortError'); };
     check(); if (audio.length < config.hop_length * 2) return { text: '', words: [] };
     const extracted = await features(audio), frames = extracted.input_features.dims[1];
