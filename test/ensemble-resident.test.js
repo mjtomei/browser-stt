@@ -244,3 +244,38 @@ test('cancelling GPU recognition does not replay the recording on CPU', async ()
     assert.deepEqual(modes, ['auto']); assert.equal(models.entries['fluid-mini'].ready.backend, 'webgpu');
   } finally { models.close(); globalThis.Worker = previous; }
 });
+
+
+test('a fresh automatic Mini instance restores a checked CPU fallback without certifying GPU', async () => {
+  const previous = globalThis.Worker, prepares = [];
+  globalThis.Worker = class {
+    postMessage(data) {
+      if (data.operation !== 'prepare') return;
+      prepares.push({ acceleration: data.acceleration, saved: data.reuseVerification });
+      queueMicrotask(() => this.onmessage({ data: data.acceleration === 'auto'
+        ? { id: data.id, error: 'GPU unavailable', speechBackend: 'webgpu' }
+        : { id: data.id, result: { verified: true, backend: 'wasm', threads: 1 } } }));
+    }
+    terminate() {}
+  };
+  const { EnsembleModelStore } = await import('../src/ensemble-cache.js');
+  const records = new Map();
+  const cache = { match: async key => { const r = records.get(key); return r && new Response(r.bytes.slice(0), { headers: r.headers }); }, put: async (key, value) => { records.set(key, { bytes: await value.arrayBuffer(), headers: value.headers }); }, delete: async key => records.delete(key) };
+  const store = new EnsembleModelStore({ open: async () => cache }); store.ensure = async () => {};
+  const make = miniAcceleration => new EnsembleSpeech({ base: 'https://app.test/stt/', store, verificationDevice: 'phone-A', modelIds: ['fluid-mini'], miniAcceleration });
+  let models = make('wasm');
+  try {
+    for (const file of models.models[0].files) if (file.text === undefined) await cache.put(file.sha256, new Response('', { headers: { 'content-length': String(file.bytes), 'x-pageborne-sha256': file.sha256 } }));
+    await models.prepare('fluid-mini'); models.close();
+    for (let reload = 0; reload < 2; reload++) {
+      models = make('auto'); const before = prepares.length;
+      assert.equal(await models.restoreVerification(), true, 'saved CPU check lets reading open without loading models');
+      assert.equal(prepares.length, before); assert.equal(models.entries['fluid-mini'].state, 'idle');
+      await models.prepare('fluid-mini');
+      assert.deepEqual(prepares.slice(-2), [{ acceleration: 'auto', saved: false }, { acceleration: 'wasm', saved: true }]);
+      models.close();
+    }
+    models = make('auto'); await models.prepare('fluid-mini', { retry: true });
+    assert.deepEqual(prepares.slice(-2), [{ acceleration: 'auto', saved: false }, { acceleration: 'wasm', saved: false }], 'explicit retry rechecks both backends');
+  } finally { models.close(); globalThis.Worker = previous; }
+});

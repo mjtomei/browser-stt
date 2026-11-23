@@ -106,6 +106,11 @@ export class EnsembleSpeech {
   async restoreVerification() {
     for (const entry of Object.values(this.entries)) {
       entry.verified = await savedEnsembleVerification(this.store, entry.model, this.verificationKey(entry.model));
+      // A checked CPU fallback is enough to let the app open. Preparing voice
+      // still verifies/warms GPU before using it; this does not certify GPU.
+      if (!entry.verified && entry.model.id === 'fluid-mini' && this.acceleration === 'auto') {
+        entry.verified = await savedEnsembleVerification(this.store, entry.model, ensembleVerificationKey(entry.model, this.verificationDevice));
+      }
     }
     this.changed();
     return Object.values(this.entries).every(entry => entry.verified);
@@ -136,6 +141,8 @@ export class EnsembleSpeech {
       check(); const total = entry.totalBytes; let complete = 0;
       const signature = this.verificationKey(entry.model);
       const reuseVerification = !retry && await savedEnsembleVerification(this.store, entry.model, signature);
+      const reuseCpuVerification = entry.model.id === 'fluid-mini' && this.acceleration === 'auto'
+        ? !retry && await savedEnsembleVerification(this.store, entry.model, ensembleVerificationKey(entry.model, this.verificationDevice)) : reuseVerification;
       for (const file of entry.model.files) {
         if (file.text !== undefined) continue;
         check(); await this.store.ensure(file, bytes => { if (generation !== this.generation) return; entry.downloadBytes = complete + bytes; const now = performance.now(); if (now - (entry.notified || 0) < 150 && bytes !== file.bytes) return; entry.notified = now; entry.progress = `${((complete + bytes) / 1e6).toFixed(1)} / ${(total / 1e6).toFixed(1)} MB`; this.changed(); }); complete += file.bytes;
@@ -168,7 +175,7 @@ export class EnsembleSpeech {
           this.gpuFailure = { stage: 'preparation', message: String(error.message).slice(0, 500) };
           // A failed GPU runtime may poison its WASM state too. Retry in a fresh
           // worker with the same checked weights, before accepting any audio.
-          this.gpuFailed = true; ready = await initialize('wasm', false);
+          this.gpuFailed = true; ready = await initialize('wasm', reuseCpuVerification);
         }
         if (this.gpuFailed && entry.model.id === 'fluid-mini') {
           ready.accelerationFallback = 'gpu-unavailable'; ready.accelerationFailure = this.gpuFailure;

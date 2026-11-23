@@ -207,3 +207,8 @@ If GPU preparation or inference fails, a fresh CPU worker handles subsequent
 work. Inference failure retries the same Blob once, while aborts do not retry.
 `ready.accelerationFallback` and `accelerationFailure` explain the fallback.
 A failed GPU stays disabled for the lifetime of that `EnsembleSpeech` instance.
+
+`restoreVerification()` may accept a valid CPU fallback receipt in automatic
+mode, allowing app startup without loading the model. It does not certify the
+GPU: `prepare()` still checks and warms it before use. A matching CPU receipt
+can be reused if GPU preparation fails; explicit retry rechecks both backends.

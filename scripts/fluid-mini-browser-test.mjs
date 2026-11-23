@@ -135,7 +135,8 @@ try {
   });
   assert(report.silence.every(r => r.text === ''));
   report.cachedReload = await page.evaluate(async () => {
-    const store = models.store; models.close(); store.fetch = async () => { throw Error('Network disabled'); };
+    const store = models.store, Constructor = models.constructor, miniAcceleration = models.miniAcceleration; models.close(); store.fetch = async () => { throw Error('Network disabled'); };
+    window.models = new Constructor({ store, modelIds: ['fluid-mini'], miniAcceleration, verificationDevice: 'test-desktop-browser' });
     const verified = await models.restoreVerification(), ready = await models.prepare('fluid-mini');
     return { verified, ready, bytes: store.stats };
   });
