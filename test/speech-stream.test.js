@@ -291,6 +291,52 @@ test('half-window overlap keeps full acoustic passes and accepts a clipped openi
   assert.deepEqual(calls, [{ start: 0, end: 15, seconds: 15 }, { start: 7.5, end: 22.5, seconds: 15 }]);
 });
 
+test('batched overlap waits for fresh audio instead of repeatedly decoding the retained prefix', async () => {
+  const calls = [];
+  const stream = new SpeechStream({ windowSeconds: 6, overlapSeconds: 2, batchOverlaps: true, intervalMs: 0,
+    transcribe: async audio => { calls.push([stream.offset / 32000, (audio.size - 44) / 32000]); return { text: 'A unique matching sentence ends here.' }; }, result() {} });
+  try {
+    stream.start(); stream.receive(tone(6)); await tick();
+    for (let i = 0; i < 7; i++) { stream.receive(tone(.5)); await tick(); }
+    assert.deepEqual(calls, [[0, 6]], 'already decoded overlap is not rerun for each PCM addition');
+    stream.receive(tone(.5)); await tick();
+    assert.deepEqual(calls, [[0, 6], [4, 6]]);
+    const result = await stream.finish(pcmWave([tone(10)]));
+    assert.equal(result.text, 'A unique matching sentence ends here.');
+    assert.equal(calls.length, 2, 'finish reuses a complete pass');
+  } finally { stream.cancel(); }
+});
+
+test('batched overlap still drains a short flushed tail and commits a natural pause', async () => {
+  for (const pause of [false, true]) {
+    const calls = [];
+    const stream = new SpeechStream({ windowSeconds: 6, overlapSeconds: 2, batchOverlaps: true, intervalMs: 0,
+      transcribe: async audio => { calls.push((audio.size - 44) / 32000); return { text: calls.length === 1 ? 'The old stone bridge' : 'old stone bridge before sunset.' }; }, result() {} });
+    try {
+      stream.start(); const pcm = [tone(6), tone(.5)];
+      stream.receive(pcm[0]); await tick(); stream.receive(pcm[1]); await tick();
+      assert.equal(calls.length, 1);
+      if (pause) { pcm.push(new Uint8Array(16000)); stream.receive(pcm.at(-1)); await tick(); assert.equal(calls.length, 2, 'pause need not wait for a full window'); }
+      else pcm.push(tone(.1)); // Legacy microphone flush, not delivered to receive yet.
+      const result = await stream.finish(pcmWave(pcm));
+      assert.equal(result.text, 'The old stone bridge before sunset.');
+      assert.equal(calls.length, 2); assert(calls[1] < 6);
+      assert.equal(result.seconds, pause ? 7 : 6.6);
+    } finally { stream.cancel(); }
+  }
+});
+
+test('cancelling a batched window discards its pending PCM without leaking into the next recording', async () => {
+  const calls = [];
+  const stream = new SpeechStream({ windowSeconds: 6, overlapSeconds: 2, batchOverlaps: true, intervalMs: 0,
+    transcribe: async audio => { calls.push((audio.size - 44) / 32000); return { text: 'A unique matching sentence ends here.' }; }, result() {} });
+  try {
+    stream.start(); stream.receive(tone(6)); await tick(); stream.receive(tone(1)); await tick();
+    stream.cancel(); stream.start(); stream.receive(tone(.5)); await tick();
+    assert.deepEqual(calls, [6, .5]);
+  } finally { stream.cancel(); }
+});
+
 test('unmatched overlap falls back to new-only audio without erasing the previous words', async () => {
   const lengths = [];
   const stream = new SpeechStream({ overlapSeconds: 7.5, intervalMs: 0, transcribe: async audio => {

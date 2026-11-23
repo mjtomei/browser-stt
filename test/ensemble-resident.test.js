@@ -158,3 +158,89 @@ test('saved inference verification survives launches, but not device/model chang
     assert.equal(prepares.at(-1), false, 'explicit retry rechecks');
   } finally { models.close(); globalThis.Worker = previous; }
 });
+
+test('Mini GPU setup failure retries in a fresh CPU worker and records the fallback', async () => {
+  const previous = globalThis.Worker, workers = [], modes = [];
+  globalThis.Worker = class {
+    constructor() { workers.push(this); }
+    postMessage(data) {
+      if (data.operation !== 'prepare') return;
+      modes.push(data.acceleration);
+      queueMicrotask(() => this.onmessage({ data: data.acceleration === 'auto'
+        ? { id: data.id, error: 'GPU unavailable', speechBackend: 'webgpu' }
+        : { id: data.id, result: { verified: true, backend: 'wasm', threads: 1 } } }));
+    }
+    terminate() { this.closed = true; }
+  };
+  const store = { ensure: async () => {}, beginPreparation: async () => async () => {}, cancel() {} };
+  const models = new EnsembleSpeech({ base: 'https://app.test/stt/', store, modelIds: ['fluid-mini'], miniAcceleration: 'auto' });
+  try {
+    const ready = await models.prepare('fluid-mini');
+    assert.deepEqual(modes, ['auto', 'wasm']); assert.equal(workers[0].closed, true);
+    assert.equal(ready.accelerationFallback, 'gpu-unavailable'); assert.equal(ready.backend, 'wasm');
+    models.close(); await models.prepare('fluid-mini'); assert.deepEqual(modes, ['auto', 'wasm', 'wasm']);
+  } finally { models.close(); globalThis.Worker = previous; }
+});
+
+test('Mini GPU inference failure replays exactly the same audio once on CPU; CPU errors stop', async () => {
+  const previous = globalThis.Worker, payloads = []; let failCpu = false;
+  globalThis.Worker = class {
+    postMessage(data) {
+      if (data.operation === 'cancel') return;
+      let response;
+      if (data.operation === 'prepare') {
+        this.backend = data.acceleration === 'auto' ? 'webgpu' : 'wasm';
+        response = { result: { verified: true, backend: this.backend } };
+      } else {
+        payloads.push([...new Uint8Array(data.audio)]);
+        response = this.backend === 'webgpu' || failCpu ? { error: 'device stopped', speechBackend: this.backend }
+          : { result: { text: 'same recording', backend: this.backend } };
+      }
+      queueMicrotask(() => this.onmessage({ data: { id: data.id, ...response } }));
+    }
+    terminate() {}
+  };
+  const store = { ensure: async () => {}, beginPreparation: async () => async () => {}, cancel() {} };
+  const models = new EnsembleSpeech({ base: 'https://app.test/stt/', store, modelIds: ['fluid-mini'], miniAcceleration: 'auto' });
+  try {
+    const audio = new Blob([new Uint8Array([1, 3, 7])]);
+    assert.equal((await models.transcribe('fluid-mini', audio)).text, 'same recording');
+    assert.deepEqual(payloads, [[1, 3, 7], [1, 3, 7]]);
+    failCpu = true; await assert.rejects(models.transcribe('fluid-mini', audio), /device stopped/);
+    assert.equal(payloads.length, 3, 'a failed CPU attempt is not retried forever');
+  } finally { models.close(); globalThis.Worker = previous; }
+});
+
+test('automatic Mini acceleration keeps isolated multi-thread CPU execution', async () => {
+  const saved = Object.fromEntries(['Worker', 'navigator', 'crossOriginIsolated'].map(key => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
+  const modes = [];
+  Object.defineProperty(globalThis, 'navigator', { configurable: true, value: { hardwareConcurrency: 4, gpu: {} } });
+  Object.defineProperty(globalThis, 'crossOriginIsolated', { configurable: true, value: true });
+  globalThis.Worker = class {
+    postMessage(data) { modes.push(data.acceleration); queueMicrotask(() => this.onmessage({ data: { id: data.id, result: { verified: true, backend: 'wasm', threads: 4 } } })); }
+    terminate() {}
+  };
+  const store = { ensure: async () => {}, beginPreparation: async () => async () => {}, cancel() {} };
+  const models = new EnsembleSpeech({ base: 'https://app.test/stt/', store, modelIds: ['fluid-mini'], miniAcceleration: 'auto' });
+  try { assert.equal((await models.prepare('fluid-mini')).threads, 4); assert.deepEqual(modes, ['wasm']); }
+  finally { models.close(); for (const [key, descriptor] of Object.entries(saved)) { if (descriptor) Object.defineProperty(globalThis, key, descriptor); else delete globalThis[key]; } }
+});
+
+test('cancelling GPU recognition does not replay the recording on CPU', async () => {
+  const previous = globalThis.Worker, modes = []; let sent;
+  const started = new Promise(resolve => { sent = resolve; });
+  globalThis.Worker = class {
+    postMessage(data) {
+      if (data.operation === 'prepare') { modes.push(data.acceleration); queueMicrotask(() => this.onmessage({ data: { id: data.id, result: { verified: true, backend: 'webgpu' } } })); }
+      if (data.operation === 'transcribe') sent();
+    }
+    terminate() {}
+  };
+  const store = { ensure: async () => {}, beginPreparation: async () => async () => {}, cancel() {} };
+  const models = new EnsembleSpeech({ base: 'https://app.test/stt/', store, modelIds: ['fluid-mini'], miniAcceleration: 'auto' });
+  try {
+    const cancel = new AbortController(), job = models.transcribe('fluid-mini', new Blob([new Uint8Array([1, 2])]), { signal: cancel.signal });
+    const rejected = assert.rejects(job, { name: 'AbortError' }); await started; cancel.abort(); await rejected;
+    assert.deepEqual(modes, ['auto']); assert.equal(models.entries['fluid-mini'].ready.backend, 'webgpu');
+  } finally { models.close(); globalThis.Worker = previous; }
+});

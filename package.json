@@ -1,6 +1,6 @@
 {
   "name": "@pageborne/browser-stt",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "private": true,
   "type": "module",
   "description": "Local browser speech recognition with Fluid Speech Mini and a streaming ensemble, word confidence and persistent caching.",
@@ -19,7 +19,8 @@
     "docs",
     "benchmarks",
     "scripts/build-ensemble-wasm.sh",
-    "scripts/wasm"
+    "scripts/wasm",
+    "scripts/prepare-fluid-webgpu.py"
   ],
   "exports": {
     ".": {

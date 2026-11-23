@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-23",
+  "model": "Fluid Speech Mini",
+  "modelRevision": "fc592620325027419883cf272e70588d8a788c0a",
+  "backend": "wasm",
+  "threads": 4,
+  "simd": true,
+  "physicalPhone": false,
+  "protocol": "One sequential warmed desktop Chromium comparison, PCM delivered at capture speed in 100ms chunks. Four concatenated public LibriSpeech test-clean clips. Both runs retain 15-second windows, 7.5-second overlap and pause commitment. No GPU.",
+  "limits": [
+    "Small comparison, not a new corpus accuracy benchmark.",
+    "Order was baseline then batched; first-word timing can include residual warmup effects.",
+    "The physical Even host reports one CPU thread; these timings are not iPhone measurements.",
+    "Reported inference work below audio duration does not mean words arrive without delay."
+  ],
+  "runs": [
+    {
+      "batchOverlaps": false,
+      "audioMs": 36980,
+      "inferenceMs": 42410.014999985695,
+      "firstWordMs": 2553.390000015497,
+      "releaseMs": 6910.334999978542,
+      "calls": 14,
+      "backlogEarlyMs": 2500,
+      "backlogLateMs": 9768.130081300813,
+      "timingValid": true,
+      "maxFeedDelayMs": 1.3550000190734863,
+      "errors": 1,
+      "referenceWords": 89
+    },
+    {
+      "batchOverlaps": true,
+      "audioMs": 36980,
+      "inferenceMs": 31878.64500004053,
+      "firstWordMs": 1750.7549999952316,
+      "releaseMs": 2061.155000001192,
+      "calls": 13,
+      "backlogEarlyMs": 2455.2845528455287,
+      "backlogLateMs": 8460.81300813008,
+      "timingValid": true,
+      "maxFeedDelayMs": 15.71000000834465,
+      "errors": 1,
+      "referenceWords": 89
+    }
+  ],
+  "sameFinalTranscript": true,
+  "publicClipIds": [
+    "6930-81414-0000",
+    "6930-81414-0001",
+    "6930-81414-0002",
+    "6930-81414-0003"
+  ]
+}

@@ -78,7 +78,7 @@ async function prepare(data) {
       const file = model.files.find(f => f.file === name);
       if (!file) throw Error('Unknown Fluid Speech Mini asset.');
       return readFile(file);
-    }, progress => checkpoint({ ...progress, loadedBytes, file: '', fileLoadedBytes: 0, fileBytes: 0 }));
+    }, progress => checkpoint({ ...progress, loadedBytes, file: '', fileLoadedBytes: 0, fileBytes: 0 }), { acceleration: data.acceleration });
   } else if (model.id === 'moonshine') {
     engine = await moonshineRecognizer(base, async input => {
       const pathname = new URL(typeof input === 'string' ? input : input.url, base).pathname;
@@ -162,7 +162,7 @@ self.onmessage = ({ data }) => {
       if (cancelled.has(id)) return;
       if (data.operation === 'prepare') {
         await prepare(data);
-        if (!data.reuseVerification) {
+        if (!data.reuseVerification || engine?.info?.backend === 'webgpu') {
         reportSetup({ stage: 'checking', loadedBytes });
         // Bundled public-domain speech exercises the real encoder and decoder;
         // silent audio would bypass inference and falsely certify readiness.
@@ -172,12 +172,12 @@ self.onmessage = ({ data }) => {
         const anchors = ['apostle', 'middle', 'gospel'].filter(word => checked.text?.toLowerCase().includes(word));
         if (anchors.length < 2 || checked.words?.length < 5 || !checked.words.every(word => Number.isFinite(word.confidence))) throw Error('The model could not transcribe the voice check. Retry setup.');
         }
-        self.postMessage({ id, result: { backend: 'wasm', model: model.name, simd: true, ...engine?.info, verified: true, verification: data.reuseVerification ? 'saved' : 'tested', wasmBytes: runtime?.HEAPU8.byteLength, loadMs: performance.now() - start } });
+        self.postMessage({ id, result: { backend: 'wasm', model: model.name, simd: true, ...engine?.info, verified: true, verification: data.reuseVerification && engine?.info?.backend !== 'webgpu' ? 'saved' : 'tested', wasmBytes: runtime?.HEAPU8.byteLength, loadMs: performance.now() - start } });
       } else {
         const value = await transcribe(data, value => { if (!cancelled.has(id)) self.postMessage({ id, partial: value }); });
         if (!cancelled.has(id)) self.postMessage({ id, result: { ...value, backend: 'wasm', ...engine?.info, model: model.name, seconds: waveSamples(data.audio).length / 16000, transcribeMs: performance.now() - start } });
       }
-    } catch (error) { if (!cancelled.has(id)) self.postMessage({ id, error: error?.message || String(error), errorName: error?.name, errorStack: error?.stack }); }
+    } catch (error) { if (!cancelled.has(id)) self.postMessage({ id, error: error?.message || String(error), errorName: error?.name, errorStack: error?.stack, speechBackend: error?.speechBackend || engine?.info?.backend }); }
     finally { cancelled.delete(id); }
   });
 };

@@ -3,6 +3,7 @@ import miniManifest from '../vendor/stt/fluid-mini.json' with { type: 'json' };
 import { EnsembleModelStore } from './ensemble-cache.js';
 import { ensembleVerificationKey, savedEnsembleVerification, saveEnsembleVerification } from './ensemble-verification.js';
 import { safeTimeout as setTimeout, cancelTimeout as clearTimeout } from './timers.js';
+import { fluidCpuThreads } from './fluid-runtime.js';
 
 export const ensembleModels = Object.freeze(manifests);
 export const fluidSpeechMini = Object.freeze(miniManifest);
@@ -31,11 +32,12 @@ class ModelWorker {
       this.pending.delete(data.id); job.cleanup();
       if (data.error) {
         const error = Error(data.error); if (data.errorName) error.name = data.errorName;
+        if (data.speechBackend) error.speechBackend = data.speechBackend;
         if (data.errorStack) error.stack = data.errorStack;
         job.reject(error);
       } else job.resolve(data.result);
     };
-    this.worker.onerror = event => { event.preventDefault(); this.close(Error(`${this.model.name} worker could not run: ${event.message || 'worker stopped'}. Retry setup.`)); };
+    this.worker.onerror = event => { event.preventDefault(); this.close(Object.assign(Error(`${this.model.name} worker could not run: ${event.message || 'worker stopped'}. Retry setup.`), { speechBackend: this.speechBackend })); };
   }
   async cache({ request, action, file, handle }) {
     try {
@@ -69,7 +71,7 @@ class ModelWorker {
       const touch = () => {
         if (operation !== 'prepare') return;
         clearTimeout(timer);
-        timer = setTimeout(() => this.close(Error(`${this.model.name} setup stopped responding (${this.setup?.stage || 'starting'}${this.setup?.file || this.setup?.component ? ': ' + (this.setup.file || this.setup.component) : ''}). Retry setup.`)), 120000);
+        timer = setTimeout(() => this.close(Object.assign(Error(`${this.model.name} setup stopped responding (${this.setup?.stage || 'starting'}${this.setup?.file || this.setup?.component ? ': ' + (this.setup.file || this.setup.component) : ''}). Retry setup.`), { speechBackend: this.speechBackend })), 120000);
       };
       const cleanup = () => { signal?.removeEventListener('abort', cancel); clearTimeout(timer); };
       this.pending.set(id, { resolve, reject, cleanup, touch, partial: onPartial, progress: onProgress });
@@ -88,10 +90,11 @@ class ModelWorker {
 // Models stay resident until close(). Initializations are serial to avoid three
 // simultaneous peak allocations; inference runs independently in three workers.
 export class EnsembleSpeech {
-  constructor({ base = new URL('./stt/', document.baseURI).href, store = new EnsembleModelStore(), modelIds = ensembleModels.map(m => m.id), changed = () => {}, failure = () => {}, checkpoint, verificationDevice } = {}) {
+  constructor({ base = new URL('./stt/', document.baseURI).href, store = new EnsembleModelStore(), modelIds = ensembleModels.map(m => m.id), miniAcceleration = 'wasm', changed = () => {}, failure = () => {}, checkpoint, verificationDevice } = {}) {
     if (!modelIds.length || new Set(modelIds).size !== modelIds.length || modelIds.some(id => !availableModels.some(m => m.id === id))) throw Error('Unknown or duplicate speech model selection.');
+    if (!['wasm', 'auto'].includes(miniAcceleration)) throw Error('Unknown Mini acceleration mode.');
     this.models = modelIds.map(id => availableModels.find(m => m.id === id));
-    Object.assign(this, { base, store, changed, failure, checkpoint, verificationDevice }); this.generation = 0; this.loading = Promise.resolve();
+    Object.assign(this, { base, store, changed, failure, checkpoint, verificationDevice, miniAcceleration }); this.generation = 0; this.loading = Promise.resolve();
     this.entries = Object.fromEntries(this.models.map(model => [model.id, { model, state: 'idle', progress: '',
       downloadBytes: 0, totalBytes: model.files.reduce((n, f) => n + (f.text === undefined ? f.bytes : 0), 0),
       setup: { stage: 'waiting', loadedBytes: 0, totalBytes: model.files.reduce((n, f) => n + f.bytes, 0) } }]));
@@ -102,11 +105,17 @@ export class EnsembleSpeech {
   }
   async restoreVerification() {
     for (const entry of Object.values(this.entries)) {
-      entry.verified = await savedEnsembleVerification(this.store, entry.model, ensembleVerificationKey(entry.model, this.verificationDevice));
+      entry.verified = await savedEnsembleVerification(this.store, entry.model, this.verificationKey(entry.model));
     }
     this.changed();
     return Object.values(this.entries).every(entry => entry.verified);
   }
+  verificationKey(model) {
+    const device = model.id === 'fluid-mini' && this.verificationDevice && this.acceleration === 'auto'
+      ? `${this.verificationDevice}:webgpu=ed84438023e7954591b29780bd1f8b8d13b972018527271f83d4da2596ac0935` : this.verificationDevice;
+    return ensembleVerificationKey(model, device);
+  }
+  get acceleration() { return this.miniAcceleration === 'auto' && !this.gpuFailed && fluidCpuThreads() === 1 ? 'auto' : 'wasm'; }
   open({ retry = false } = {}) {
     const models = [...this.models].sort((a, b) => Number(b.id === 'moonshine') - Number(a.id === 'moonshine'));
     const jobs = new Map(models.map(m => [m.id, this.prepare(m.id, { retry })]));
@@ -125,7 +134,7 @@ export class EnsembleSpeech {
     entry.state = 'downloading'; entry.error = null; entry.progress = 'Waiting to download'; this.changed();
     const task = this.loading.catch(() => {}).then(async () => {
       check(); const total = entry.totalBytes; let complete = 0;
-      const signature = ensembleVerificationKey(entry.model, this.verificationDevice);
+      const signature = this.verificationKey(entry.model);
       const reuseVerification = !retry && await savedEnsembleVerification(this.store, entry.model, signature);
       for (const file of entry.model.files) {
         if (file.text !== undefined) continue;
@@ -137,9 +146,9 @@ export class EnsembleSpeech {
       const clearPreparation = await this.store.beginPreparation(entry.model, { retry });
       let ready;
       try {
-        check(); entry.client?.close(); entry.client = new ModelWorker(entry.model, this.store, this.base, this.checkpoint);
-        ready = await entry.client.request('prepare', { model: entry.model, base: this.base, reuseVerification }, { onProgress: progress => {
+        const onProgress = progress => {
           if (generation !== this.generation) return;
+          if (progress.backend) entry.client.speechBackend = progress.backend;
           const now = Date.now();
           if (progress.stage !== entry.setup.stage || progress.file !== undefined && progress.file !== entry.setup.file
             || progress.component !== undefined && progress.component !== entry.setup.component) entry.setup.stageStartedAt = now;
@@ -147,7 +156,24 @@ export class EnsembleSpeech {
           Object.assign(entry.setup, progress);
           entry.progress = ({ runtime: 'Starting runtime', loading: 'Loading saved files', initializing: 'Initializing model', checking: 'Checking transcription' })[progress.stage] || 'Preparing';
           this.changed();
-        } }); check();
+        };
+        const initialize = async (acceleration, verified = reuseVerification) => {
+          check(); entry.client?.close(); entry.client = new ModelWorker(entry.model, this.store, this.base, this.checkpoint);
+          return entry.client.request('prepare', { model: entry.model, base: this.base, reuseVerification: verified, acceleration }, { onProgress });
+        };
+        try { ready = await initialize(entry.model.id === 'fluid-mini' ? this.acceleration : 'wasm'); }
+        catch (error) {
+          check();
+          if (error.speechBackend !== 'webgpu' || error.name === 'AbortError') throw error;
+          this.gpuFailure = { stage: 'preparation', message: String(error.message).slice(0, 500) };
+          // A failed GPU runtime may poison its WASM state too. Retry in a fresh
+          // worker with the same checked weights, before accepting any audio.
+          this.gpuFailed = true; ready = await initialize('wasm', false);
+        }
+        if (this.gpuFailed && entry.model.id === 'fluid-mini') {
+          ready.accelerationFallback = 'gpu-unavailable'; ready.accelerationFailure = this.gpuFailure;
+        }
+        check();
         if (ready.verified !== true) throw Error('Model transcription check did not pass. Retry setup.');
       } catch (error) {
         // Terminate before touching storage again. A failed native cache read
@@ -156,7 +182,8 @@ export class EnsembleSpeech {
         entry.client?.close(); throw error;
       }
       await clearPreparation();
-      if (!reuseVerification) await saveEnsembleVerification(this.store, entry.model, signature);
+      const actualSignature = this.verificationKey(entry.model);
+      if (!reuseVerification || actualSignature !== signature) await saveEnsembleVerification(this.store, entry.model, actualSignature);
       check(); entry.verified = true;
       entry.state = 'ready'; entry.ready = ready; entry.progress = ''; entry.setup.stage = 'ready'; this.changed(); return ready;
     }).catch(error => {
@@ -173,6 +200,13 @@ export class EnsembleSpeech {
     const entry = this.entries[id], client = entry.client;
     try { return await client.request('transcribe', { audio: bytes, vocabulary: options.vocabulary, confidence: options.confidence }, options); }
     catch (error) {
+      if (error.name !== 'AbortError' && generation === this.generation && entry.client === client && entry.ready?.backend === 'webgpu') {
+        // Retain the caller's Blob and replay it once on CPU. Partial text is a
+        // draft; no captured PCM or final submission is discarded or duplicated.
+        this.gpuFailed = true; this.gpuFailure = { stage: 'inference', message: String(error.message).slice(0, 500) };
+        client.close(); entry.client = null; entry.ready = null; entry.state = 'idle';
+        return this.transcribe(id, audio, options);
+      }
       if (error.name !== 'AbortError' && entry.client === client) {
         client.close(); entry.state = 'error'; entry.error = error; entry.progress = ''; this.changed(); this.failure(error, 'wasm', entry.model.name);
       }

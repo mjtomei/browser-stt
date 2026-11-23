@@ -10,6 +10,9 @@ export default defineConfig(({ mode }) => ({
   resolve: { alias: mode === 'cpu' ? [{ find: 'onnxruntime-web/webgpu', replacement: 'onnxruntime-web/wasm' }, { find: '../node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm?url', replacement: fileURLToPath(new URL('./node_modules/onnxruntime-web/dist/ort-wasm-simd-threaded.wasm', import.meta.url)) + '?url' }] : [] },
   plugins: [bundledNotices(), serialSpeechSessions()],
   build: {
+    // These entry points run in workers. Vite's document-based dynamic-import
+    // preloader cannot run there; the module loader fetches GPU chunks itself.
+    modulePreload: false,
     target: 'esnext', outDir: mode === 'cpu' ? 'dist/cpu' : 'dist', assetsInlineLimit: 0,
     rollupOptions: {
       input: Object.fromEntries(['speech-worker', 'ensemble-worker', 'speech-capture-worklet'].map(name => [name, fileURLToPath(new URL(`./src/${name}.js`, import.meta.url))])),

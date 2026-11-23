@@ -37,10 +37,10 @@ function append(prefix, value) {
 // storage rolls only after a completed full-window pass. Overlap is optional
 // for existing consumers; Pageborne enables half-window overlap.
 export class SpeechStream {
-  constructor({ transcribe, prepare, result, failure = () => {}, backlog = () => {}, intervalMs = 100, minAudioMs = 500, firstAudioMs = minAudioMs, firstIntervalMs = intervalMs, overlapSeconds = 0, windowSeconds = 15, commitOnPause = true, confidence }) {
+  constructor({ transcribe, prepare, result, failure = () => {}, backlog = () => {}, intervalMs = 100, minAudioMs = 500, firstAudioMs = minAudioMs, firstIntervalMs = intervalMs, overlapSeconds = 0, windowSeconds = 15, commitOnPause = true, batchOverlaps = false, confidence }) {
     this.windowSeconds = speechWindowSeconds(windowSeconds);
     this.windowBytes = Math.round(this.windowSeconds * RATE / 2) * 2;
-    Object.assign(this, { transcribe, prepare, result, failure, backlog, intervalMs, firstIntervalMs, confidence, commitOnPause }); this.active = false;
+    Object.assign(this, { transcribe, prepare, result, failure, backlog, intervalMs, firstIntervalMs, confidence, commitOnPause, batchOverlaps }); this.active = false;
     this.minAudioBytes = RATE * Math.max(100, Math.min(15000, Number(minAudioMs) || 500)) / 1000;
     this.firstAudioBytes = Math.min(this.minAudioBytes, RATE * Math.max(100, Number(firstAudioMs) || 500) / 1000);
     this.overlapBytes = Math.round(Math.max(0, Math.min(this.windowSeconds / 2, Number(overlapSeconds) || 0)) * RATE / 2) * 2;
@@ -74,6 +74,11 @@ export class SpeechStream {
   }
   schedule() {
     if (!this.active || this.finishing || this.job || this.timer || this.length - this.lastEnd < this.minimumAudioBytes) return;
+    // The overlap has already been recognized. Replaying it for each small
+    // addition can consume the entire time needed to capture the next window.
+    // Batch these passes, but still decode a completed phrase immediately.
+    if (this.batchOverlaps && this.overlap && this.length - this.offset < this.windowBytes
+      && !(this.commitOnPause && phraseEnd(new DataView(this.bytes.buffer), this.offset - this.base, this.length - this.base, this.completedEnd - this.base))) return;
     this.timer = safeTimeout(() => { this.timer = null; void this.run(); }, this.visible ? this.intervalMs : this.firstIntervalMs);
   }
   get minimumAudioBytes() { return this.visible ? this.minAudioBytes : this.firstAudioBytes; }

@@ -43,20 +43,20 @@ export async function prepareSpeechAssets(manifest = 'model.json', include = () 
   return model;
 }
 
-export function speechAssets({ cacheDir = speechAssetRoot, benchmarks = true, refinement = true, ensemble = false } = {}) {
+export function speechAssets({ cacheDir = speechAssetRoot, benchmarks = true, refinement = true, ensemble = false, acceleration = false } = {}) {
   let files;
   return {
     name: 'local-speech-assets',
     async buildStart() {
       const models = ensemble ? [] : await Promise.all([prepareSpeechAssets('model.json', () => true, cacheDir), ...(refinement ? [prepareSpeechAssets('refinement-model.json', entry => !entry.file.endsWith('.onnx'), cacheDir)] : [])]);
       files = models.flatMap((model, index) => model.files.filter(entry => index === 0 || !entry.file.endsWith('.onnx')).map(entry => [`stt/${model.directory}/${entry.file}`, path.join(cacheDir, model.directory, entry.file)]));
-      for (const suffix of ['', ...(refinement ? ['.asyncify'] : [])]) files.push([`stt/ort-wasm-simd-threaded${suffix}.mjs`, dependencyFile('onnxruntime-web', `dist/ort-wasm-simd-threaded${suffix}.mjs`)]);
+      for (const suffix of ['', ...(refinement || acceleration ? ['.asyncify'] : [])]) files.push([`stt/ort-wasm-simd-threaded${suffix}.mjs`, dependencyFile('onnxruntime-web', `dist/ort-wasm-simd-threaded${suffix}.mjs`)]);
       for (const [name, file] of [['moonshine', 'vendor/stt/moonshine-LICENSE'], ['whisper', 'vendor/stt/whisper-LICENSE'], ['onnxruntime', 'vendor/stt/onnxruntime-LICENSE'], ['transformers.js', dependencyFile('@huggingface/transformers', 'LICENSE')]]) files.push([`licenses/stt/${name}.txt`, path.resolve(root, file)]);
       for (const name of ['jinja', 'tokenizers']) files.push([`licenses/stt/${name}.txt`, dependencyFile(`@huggingface/${name}`, 'LICENSE')]);
       files.push(['licenses/stt/noble-hashes.txt', dependencyFile('@noble/hashes', 'LICENSE')]);
       for (const name of ['LICENSE', 'NOTICE']) files.push([`licenses/stt/fluid-mini-${name}.txt`, path.join(root, `vendor/stt/fluid-mini-${name}`)]);
       files.push(['licenses/stt/NOTICE.txt', path.join(root, 'NOTICE')]);
-      files.push(...await builtFiles(path.join(root, refinement ? 'dist' : 'dist/cpu')));
+      files.push(...await builtFiles(path.join(root, refinement || acceleration ? 'dist' : 'dist/cpu')));
       if (ensemble) {
         for (const name of await readdir(path.join(root, 'vendor/ensemble-runtime'))) if (!name.endsWith('.mjs')) files.push([`stt/ensemble/${name}`, path.join(root, 'vendor/ensemble-runtime', name)]);
         files.push(['stt/ensemble-check.wav', path.join(root, 'vendor/stt/phone-benchmark/1272-128104-0000.wav')]);

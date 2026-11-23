@@ -24,6 +24,8 @@ export interface ModelInfo {
   verification?: 'saved' | 'tested';
   backend: Backend; model: string; simd: boolean; threads: number; loadMs: number; reused: boolean;
   sessionLoading?: string;
+  accelerationFallback?: 'gpu-unavailable';
+  accelerationFailure?: { stage: 'preparation' | 'inference'; message: string };
   adapter?: { vendor: string; architecture: string; fallback: boolean };
   download?: { downloadedBytes: number; cachedBytes: number; cacheAvailable: boolean; cacheError?: string };
 }
@@ -76,7 +78,7 @@ export class SpeechRecording {
   stop(): void; chunk(): void;
 }
 export class SpeechStream {
-  constructor(options: { transcribe: (audio: Blob, options: TranscribeOptions) => Promise<Transcription>; prepare?: (options: { signal: AbortSignal }) => Promise<unknown>; result: (result: Pick<Transcription, 'text' | 'words'>) => void; failure?: (error: Error) => void; backlog?: () => void; intervalMs?: number; minAudioMs?: number; firstAudioMs?: number; firstIntervalMs?: number; overlapSeconds?: number; windowSeconds?: number; commitOnPause?: boolean; confidence?: ConfidenceOptions });
+  constructor(options: { transcribe: (audio: Blob, options: TranscribeOptions) => Promise<Transcription>; prepare?: (options: { signal: AbortSignal }) => Promise<unknown>; result: (result: Pick<Transcription, 'text' | 'words'>) => void; failure?: (error: Error) => void; backlog?: () => void; intervalMs?: number; minAudioMs?: number; firstAudioMs?: number; firstIntervalMs?: number; overlapSeconds?: number; windowSeconds?: number; commitOnPause?: boolean; batchOverlaps?: boolean; confidence?: ConfidenceOptions });
   start(vocabulary?: string[]): void; receive(bytes: Uint8Array): void; cancel(): void;
   /** Drain pending work after the same microphone's stop() has flushed all PCM. */
   finish(audio: Blob | PcmReceipt, options?: { signal?: AbortSignal }): Promise<Transcription>;
@@ -146,7 +148,7 @@ export class EnsembleModelStore {
 }
 export interface EnsembleEntry { verified?: boolean; model: EnsembleManifest; state: 'idle' | 'downloading' | 'loading' | 'ready' | 'error'; progress: string; downloadBytes: number; totalBytes: number; setup: { stage: 'waiting' | 'runtime' | 'loading' | 'initializing' | 'checking' | 'ready'; loadedBytes: number; totalBytes: number; file?: string; component?: string; fileLoadedBytes?: number; fileBytes?: number; startedAt?: number; stageStartedAt?: number; lastProgressAt?: number }; error?: Error; ready?: ModelInfo }
 export class EnsembleSpeech {
-  constructor(options?: { base?: string; store?: EnsembleModelStore; modelIds?: EnsembleModelId[]; changed?: () => void; failure?: (error: Error, backend: Backend, model: string) => void; checkpoint?: () => void | Promise<void>; verificationDevice?: string });
+  constructor(options?: { base?: string; store?: EnsembleModelStore; modelIds?: EnsembleModelId[]; miniAcceleration?: 'wasm' | 'auto'; changed?: () => void; failure?: (error: Error, backend: Backend, model: string) => void; checkpoint?: () => void | Promise<void>; verificationDevice?: string });
   entries: Record<EnsembleModelId, EnsembleEntry>;
   restoreVerification(): Promise<boolean>;
   store: EnsembleModelStore;
@@ -158,7 +160,7 @@ export class EnsembleSpeech {
 }
 export interface EnsembleTranscription extends Transcription { models: EnsembleModelId[]; unavailableModels: EnsembleModelId[] }
 export class EnsembleStream {
-  constructor(options: { models: Pick<EnsembleSpeech, 'entries' | 'transcribe'> & Partial<Pick<EnsembleSpeech, 'prepare'>>; result: (result: EnsembleTranscription) => void; failure?: (error: Error) => void; backlog?: () => void; confidence?: ConfidenceOptions; streamOptions?: { intervalMs?: number; minAudioMs?: number; firstAudioMs?: number; firstIntervalMs?: number; commitOnPause?: boolean } });
+  constructor(options: { models: Pick<EnsembleSpeech, 'entries' | 'transcribe'> & Partial<Pick<EnsembleSpeech, 'prepare'>>; result: (result: EnsembleTranscription) => void; failure?: (error: Error) => void; backlog?: () => void; confidence?: ConfidenceOptions; streamOptions?: { intervalMs?: number; minAudioMs?: number; firstAudioMs?: number; firstIntervalMs?: number; windowSeconds?: number; overlapSeconds?: number; commitOnPause?: boolean; batchOverlaps?: boolean } });
   active: boolean; finishing: boolean; latest: EnsembleTranscription | null;
   start(vocabulary?: string[], options?: { filenames?: string[] }): void; receive(bytes: Uint8Array): void; cancel(): void;
   finish(audio: Blob | PcmReceipt, options?: { signal?: AbortSignal }): Promise<EnsembleTranscription>;

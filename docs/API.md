@@ -8,6 +8,8 @@
 
 `SpeechStream` accepts PCM chunks via `receive()` and delivers provisional replacement text (not deltas). It starts after 500 ms of new audio plus a 100 ms coalescing delay. Only one inference runs at once; decoder word updates remain available through `onPartial`. Full passes can revise provisional words. It commits completed phrases at quiet pauses (400 ms, conservative relative energy floor) and bounds uninterrupted recognition windows to 15 seconds. This is repeated growing-window inference, not an incremental acoustic decoder.
 
+Set `batchOverlaps: true` (also accepted in `EnsembleStream.streamOptions`) to avoid re-decoding a retained overlap for each small audio addition. After a committed overlapping window, the next pass waits for a full window or a natural pause. Releasing still drains all pending and flushed audio immediately, and cancellation discards it. Opening drafts and the acoustic window/overlap sizes are unchanged. This reduces repeated work during continuous speech; it does not turn an offline model into a streaming encoder or guarantee real-time performance on a device. The default is false for existing integrations.
+
 For long local dictation, call `microphone.start({ retainAudio: false })`, feed every `onChunk` to `stream.receive`, then `await stream.finish(await microphone.stop())`. Stop flushes final AudioWorklet PCM before returning a `{ kind: 'pcm-stream', bytes, seconds, checksum }` receipt. Finish verifies that every byte reached this stream, including the final flush, and drains pending inference. The checksum is a consistency check, not cryptographic authentication. No full-recording WAV is retained and there is no total-duration cap. Default microphone capture still retains a WAV and stops at 60 seconds for existing one-shot consumers; `finish` accepts that WAV too.
 
 Audio storage rolls only after the current phrase/window has received a complete recognition pass. Absolute audio positions, transcript prefixes and word-confidence character offsets survive compaction. The initial storage is 30 seconds of PCM (960,000 bytes), with a hard 120-second pending-audio bound. An optional `backlog` callback fires once when recognition falls 60 seconds behind; Pageborne stops capture and drains for review. An overrun is an explicit error, never silent truncation. This protects slow/model-loading cases without limiting ordinary recording duration.
@@ -191,3 +193,17 @@ checksum-pinned static dependencies. The checked-in runtime lets consumers
 build without Emscripten. No Python inference service is needed.
 
 `EnsembleSpeech` accepts an optional async `checkpoint` callback for host-owned setup diagnostics. Major Moonshine phase reports update `changed()` first, then await this callback before allocating a model file buffer or initializing an ONNX session. Keep it small and handle best-effort persistence failures in the callback. No transcript or audio is passed; model loading and the cached weights are otherwise unchanged.
+
+### Mini acceleration
+
+`EnsembleSpeech({ modelIds: ['fluid-mini'], miniAcceleration: 'auto' })` retains
+multi-thread WASM when available and otherwise attempts WebGPU. Include GPU
+assets with `speechAssets({ ensemble: true, refinement: false, acceleration: true })`.
+The default remains `miniAcceleration: 'wasm'`; CPU-only bundles are preserved.
+The GPU graph adapts float zero-point operations; upstream packed weights are
+unchanged. GPU initialization always runs the speech check, even when a saved
+receipt exists. `ready.backend`, `threads` and `adapter` describe actual execution.
+If GPU preparation or inference fails, a fresh CPU worker handles subsequent
+work. Inference failure retries the same Blob once, while aborts do not retry.
+`ready.accelerationFallback` and `accelerationFailure` explain the fallback.
+A failed GPU stays disabled for the lifetime of that `EnsembleSpeech` instance.

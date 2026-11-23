@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-23",
+  "modelRevision": "fc592620325027419883cf272e70588d8a788c0a",
+  "adaptedEncoderSha256": "ed84438023e7954591b29780bd1f8b8d13b972018527271f83d4da2596ac0935",
+  "physicalPhone": false,
+  "limits": [
+    "Desktop integration checks, not iPhone or battery measurements.",
+    "Six native-transcript comparisons do not replace a full accuracy corpus.",
+    "GPU graph changes floating-point evaluation order while preserving packed external weights.",
+    "NVIDIA and Apple timings were not a controlled hardware comparison."
+  ],
+  "hosts": [
+    {
+      "host": "Linux desktop NVIDIA",
+      "passed": true,
+      "ready": {
+        "backend": "webgpu",
+        "model": "Fluid Speech Mini",
+        "simd": true,
+        "threads": 1,
+        "adapter": {
+          "vendor": "nvidia",
+          "architecture": "",
+          "fallback": false
+        },
+        "verified": true,
+        "verification": "tested",
+        "loadMs": 42112
+      },
+      "corpus": [
+        {
+          "id": "6930-81414-0000",
+          "nativeParity": true,
+          "seconds": 12.895,
+          "ms": 2202.0999999940395
+        },
+        {
+          "id": "8224-274384-0010",
+          "nativeParity": true,
+          "seconds": 14.6,
+          "ms": 2601.300000011921
+        },
+        {
+          "id": "4852-28330-0019",
+          "nativeParity": true,
+          "seconds": 5.545,
+          "ms": 1375.0999999940395
+        },
+        {
+          "id": "ES2004a.sync.3",
+          "nativeParity": true,
+          "seconds": 1.792,
+          "ms": 780.5
+        },
+        {
+          "id": "TS3003a.sync.216",
+          "nativeParity": true,
+          "seconds": 0.224,
+          "ms": 638
+        },
+        {
+          "id": "EN2002a.sync.895",
+          "nativeParity": true,
+          "seconds": 3.44,
+          "ms": 756.9000000059605
+        }
+      ],
+      "streaming": {
+        "firstWordMs": 2375.9000000059605,
+        "releaseMs": 1451.5
+      },
+      "longStream": {
+        "seconds": 34.832,
+        "words": 81,
+        "ms": 7621.300000011921
+      },
+      "cancellation": "AbortError",
+      "silentClipsEmpty": true,
+      "cachedVerification": "tested"
+    },
+    {
+      "host": "macOS 26.5.2 Apple M2 24 GB, Chrome 157",
+      "passed": true,
+      "ready": {
+        "backend": "webgpu",
+        "model": "Fluid Speech Mini",
+        "simd": true,
+        "threads": 1,
+        "adapter": {
+          "vendor": "apple",
+          "architecture": "metal-3",
+          "fallback": false
+        },
+        "verified": true,
+        "verification": "tested",
+        "loadMs": 9528.400000095367
+      },
+      "corpus": [
+        {
+          "id": "6930-81414-0000",
+          "nativeParity": true,
+          "seconds": 12.895,
+          "ms": 1887
+        },
+        {
+          "id": "8224-274384-0010",
+          "nativeParity": true,
+          "seconds": 14.6,
+          "ms": 2104.399999856949
+        },
+        {
+          "id": "4852-28330-0019",
+          "nativeParity": true,
+          "seconds": 5.545,
+          "ms": 809.5999999046326
+        },
+        {
+          "id": "ES2004a.sync.3",
+          "nativeParity": true,
+          "seconds": 1.792,
+          "ms": 255.79999995231628
+        },
+        {
+          "id": "TS3003a.sync.216",
+          "nativeParity": true,
+          "seconds": 0.224,
+          "ms": 81.59999990463257
+        },
+        {
+          "id": "EN2002a.sync.895",
+          "nativeParity": true,
+          "seconds": 3.44,
+          "ms": 534.2999999523163
+        }
+      ],
+      "streaming": {
+        "firstWordMs": 645.1000001430511,
+        "releaseMs": 1159.5
+      },
+      "longStream": {
+        "seconds": 34.832,
+        "words": 81,
+        "ms": 5288.300000429153
+      },
+      "cancellation": "AbortError",
+      "silentClipsEmpty": true,
+      "cachedVerification": "tested"
+    }
+  ]
+}

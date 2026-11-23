@@ -2,7 +2,7 @@ import { ResidentSpeech, LocalSpeech, BrowserMicrophone, SpeechStream, classifyW
 import { EnsembleSpeech, EnsembleStream, fluidSpeechMini, filenamesInText, filenameVocabulary, formatSpokenFilenames, voteSpeech } from '@pageborne/browser-stt';
 
 const filenames: string[] = filenamesInText('Read `todo.txt` and `AGENTS.md`.');
-const ensemble = new EnsembleStream({ models: new EnsembleSpeech(), result() {} });
+const ensemble = new EnsembleStream({ models: new EnsembleSpeech(), result() {}, streamOptions: { windowSeconds: 15, overlapSeconds: 7.5, batchOverlaps: true } });
 ensemble.start(filenameVocabulary(filenames), { filenames });
 const formatted = formatSpokenFilenames({ text: 'agents dot md', words: [] as WordConfidence[], partial: true }, filenames);
 const partial: boolean = formatted.partial;
@@ -22,9 +22,9 @@ void speech.transcribe('fast', new Blob(), { onPartial: result => { const text: 
 void runStreamingSpeechBenchmark({ models: speech, samples: [{ id: 'one', label: 'One', reference: 'hello', audio: async () => new Blob() }],
   update: report => { const ms: number | null = summarizeStreamingSpeech(report.runs).refine.firstWordMs; void ms; } });
 void microphone.start({ retainAudio: false }).then(async () => stream.finish(await microphone.stop()));
-new SpeechStream({ transcribe: (audio, options) => speech.transcribe('fast', audio, options), result() {}, overlapSeconds: 7.5, backlog() {} });
+new SpeechStream({ transcribe: (audio, options) => speech.transcribe('fast', audio, options), result() {}, overlapSeconds: 7.5, batchOverlaps: true, backlog() {} });
 new SpeechStream({ transcribe: (audio, options) => speech.transcribe('fast', audio, options), result() {}, windowSeconds: 30, overlapSeconds: 15, commitOnPause: false });
 void speech.transcribe('fast', new Blob(), { chunkSeconds: 60 }).then(result => { const seconds: number | undefined = result.segments?.[0].seconds; void seconds; });
 
-const mini = new EnsembleSpeech({ modelIds: ['fluid-mini'] });
+const mini = new EnsembleSpeech({ modelIds: ['fluid-mini'], miniAcceleration: 'auto' });
 void mini.prepare('fluid-mini'); void fluidSpeechMini.files;

@@ -7,3 +7,11 @@ This model is built on:
   The decoder and joint network are Parakeet Ultra's.
 
 Attribution for use: "Fluid Speech Mini by FluidVoice. Built on NVIDIA Parakeet TDT 0.6B v3 and Moondream Parakeet Ultra."
+
+Browser STT adaptation (2026): optional WebGPU encoder graph. The packed
+upstream external weights, tokenizer, frontend, decoder and joint models are
+unchanged. Floating zero-point MatMulNBits operations are expressed using an
+integer midpoint plus an explicit linear correction for WebGPU compatibility.
+This changes floating-point evaluation order; it is not training or
+requantization. Reproduction: scripts/prepare-fluid-webgpu.py in Browser STT.
+Source: https://github.com/mjtomei/browser-stt
